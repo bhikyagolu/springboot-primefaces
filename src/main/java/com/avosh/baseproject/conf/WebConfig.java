@@ -13,6 +13,7 @@ public class WebConfig implements WebServerFactoryCustomizer<ConfigurableServlet
     public void customize(ConfigurableServletWebServerFactory factory) {
         factory.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/ns/error/access.xhtml"));
         factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/ns/error/notfound.xhtml"));
+        factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/ns/error/error.xhtml"));
         factory.addErrorPages(new ErrorPage("/ns/error/error.xhtml"));
     }
 }
