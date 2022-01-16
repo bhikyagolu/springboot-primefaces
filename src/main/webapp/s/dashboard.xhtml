@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="title">Empty Page</ui:define>
+    <ui:define name="title">Dashboard</ui:define>
 
     <ui:define name="content">
         <div class="dashboard p-grid ui-fluid">
@@ -59,6 +59,56 @@
                 <p:progressBar value="35" labelTemplate="" displayOnly="true"/>
             </div>
         </div>
+            <div class="p-col-12 p-md-6 p-lg-3">
+                <div class="card overview-box amazon">
+                    <div class="p-d-flex p-jc-between">
+                        <i class="logo pi pi-amazon p-mb-3"/>
+                        <p:commandButton id="amazon-button" type="button" icon="pi pi-ellipsis-v"
+                                         styleClass="rounded-button ui-button-flat ui-button-plain"/>
+                        <p:menu overlay="true" trigger="amazon-button" my="left top" at="left bottom">
+                            <p:menuitem value="Display More" icon="pi pi-chart-bar" url="#"/>
+                            <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
+                        </p:menu>
+                    </div>
+                    <h5 class="p-mb-3">Amazon</h5>
+                    <p class="p-mb-1"><strong>$6752</strong> / $9550</p>
+                    <p:progressBar value="70" labelTemplate="" displayOnly="true"/>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-3">
+                <div class="card overview-box youtube">
+                    <div class="p-d-flex p-jc-between">
+                        <i class="logo pi pi-youtube p-mb-3"/>
+                        <p:commandButton id="youtube-button" type="button" icon="pi pi-ellipsis-v"
+                                         styleClass="rounded-button ui-button-flat ui-button-plain"/>
+                        <p:menu overlay="true" trigger="youtube-button" my="left top" at="left bottom">
+                            <p:menuitem value="Display More" icon="pi pi-chart-bar" url="#"/>
+                            <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
+                        </p:menu>
+                    </div>
+                    <h5 class="p-mb-3">YouTube</h5>
+                    <p class="p-mb-1"><strong>$1132</strong> / $6987</p>
+                    <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-3">
+                <div class="card overview-box apple">
+                    <div class="p-d-flex p-jc-between">
+                        <i class="logo pi pi-apple p-mb-3"/>
+                        <p:commandButton id="apple-button" type="button" icon="pi pi-ellipsis-v"
+                                         styleClass="rounded-button ui-button-flat ui-button-plain"/>
+                        <p:menu overlay="true" trigger="apple-button" my="left top" at="left bottom">
+                            <p:menuitem value="Display More" icon="pi pi-chart-bar" url="#"/>
+                            <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
+                        </p:menu>
+                    </div>
+                    <h5 class="p-mb-3">Apple</h5>
+                    <p class="p-mb-1"><strong>$58990</strong> / $65650</p>
+                    <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
+                </div>
+            </div>
         </div>
     </ui:define>
 
