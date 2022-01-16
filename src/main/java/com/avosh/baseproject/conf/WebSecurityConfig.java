@@ -57,25 +57,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().rememberMe();
     }
 
-//        http.authorizeRequests()
-//                .antMatchers("/").anonymous()
-////                .antMatchers("/s/**").hasAnyRole("user")
-//                .antMatchers("/user").hasAnyRole("user")
-//                .antMatchers("/resources/**").permitAll()
-//                .antMatchers("/ws/**").permitAll()
-//                .antMatchers("/actuator/**").permitAll()
-//                .antMatchers("/swagger-ui/**").permitAll()
-//                .antMatchers("/ns/**").permitAll()
-//                .and().formLogin().loginPage("/ns/login.xhtml").permitAll()
-//                .defaultSuccessUrl("/s/dashboard.xhtml", true)
-//                .failureUrl("/ns/login.xhtml?error=true")
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-////                .deleteCookies("JSESSIONID").permitAll()
-//                .and().rememberMe();
-//        http.csrf().disable();
-//    }
 
 
     @Bean
