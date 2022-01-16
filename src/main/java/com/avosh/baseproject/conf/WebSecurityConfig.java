@@ -32,8 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //Disabled for development
         http.authorizeRequests()
-                .antMatchers("/").anonymous()
+                .antMatchers("/").permitAll()
 //                .antMatchers("/s/**").hasAnyRole("user")
                 .antMatchers("/user").hasAnyRole("user")
                 .antMatchers("/resources/**").permitAll()
@@ -41,16 +42,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/ns/**").permitAll()
-                .and().formLogin().loginPage("/ns/login.xhtml").permitAll()
-                .defaultSuccessUrl("/s/dashboard.xhtml", true)
-                .failureUrl("/ns/login.xhtml?error=true")
                 .and()
+                .csrf().disable()
+                .formLogin()
+                .loginPage("/ns/login.xhtml").permitAll()
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/s/dashboard.xhtml").and()
                 .logout()
                 .logoutUrl("/logout")
-//                .deleteCookies("JSESSIONID").permitAll()
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID").permitAll()
                 .and().rememberMe();
-        http.csrf().disable();
     }
+
+//        http.authorizeRequests()
+//                .antMatchers("/").anonymous()
+////                .antMatchers("/s/**").hasAnyRole("user")
+//                .antMatchers("/user").hasAnyRole("user")
+//                .antMatchers("/resources/**").permitAll()
+//                .antMatchers("/ws/**").permitAll()
+//                .antMatchers("/actuator/**").permitAll()
+//                .antMatchers("/swagger-ui/**").permitAll()
+//                .antMatchers("/ns/**").permitAll()
+//                .and().formLogin().loginPage("/ns/login.xhtml").permitAll()
+//                .defaultSuccessUrl("/s/dashboard.xhtml", true)
+//                .failureUrl("/ns/login.xhtml?error=true")
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
+////                .deleteCookies("JSESSIONID").permitAll()
+//                .and().rememberMe();
+//        http.csrf().disable();
+//    }
 
 
     @Bean

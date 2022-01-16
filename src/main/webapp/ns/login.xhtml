@@ -19,16 +19,16 @@
     
         <div id="login-wrapper">
 <!--            <p:graphicImage name="images/login-logo.png" library="omega-layout" />-->
-            <h:form>
+            <h:form prependId="false" id="frm_login"  onsubmit="document.getElementById('frm_login').action='/login';">
             <div id="login-container">
                 <span class="title">#{msg['login.title']}</span>
 
                 <div class="p-grid ui-fluid">
                     <div class="p-col-12">
-                        <p:inputText rendered="true" placeholder="#{msg['login.username']}" id="username" />
+                        <p:inputText rendered="true"  name="username"  placeholder="#{msg['login.username']}" id="username" />
                     </div>
                     <div class="p-col-12">
-                        <p:password rendered="true" placeholder="#{msg['login.password']}" feedback="false" id="password"/>
+                        <p:password rendered="true"  name="password" placeholder="#{msg['login.password']}" feedback="false" id="password"/>
                     </div>
                     <div class="p-col-12 p-md-6">
                         <span class="remember-me">#{msg['login.remember.me']}</span>
@@ -38,7 +38,7 @@
                         <p:link>#{msg['login.forgot.password']}</p:link>
                     </div>
                     <div class="p-col-12">
-                        <p:button href="/s/dashboard.xhtml" value="Sign In" icon="pi pi-user" />
+                        <p:commandButton type="submit" action="/login"  ajax="false"  value="#{msg['login.sign.in']}" icon="pi pi-user" />
                     </div>
                 </div>
             </div>
