@@ -18,7 +18,7 @@ private UserEntity userEntity;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("user"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
 
     }
 

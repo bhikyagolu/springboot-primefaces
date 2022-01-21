@@ -35,8 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //Disabled for development
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-//                .antMatchers("/s/**").hasAnyRole("user")
-                .antMatchers("/user").hasAnyRole("user")
+                .antMatchers("/s/**").hasAnyRole("USER")
+                .antMatchers("/user").hasAnyRole("USER")
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/ws/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
@@ -53,8 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-                .deleteCookies("JSESSIONID").permitAll()
-                .and().rememberMe();
+                .deleteCookies("JSESSIONID").permitAll();
+//                .and().rememberMe();
     }
 
 
