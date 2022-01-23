@@ -16,5 +16,9 @@
 		</resource-bundle>
 	</application>
 
+	<lifecycle>
+		<phase-listener>org.springframework.web.jsf.DelegatingPhaseListenerMulticaster</phase-listener>
+	</lifecycle>
+
 
 </faces-config>

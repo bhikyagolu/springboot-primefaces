@@ -1,7 +1,8 @@
 package com.avosh.baseproject.conf;
 
 
-import com.avosh.baseproject.entity.UserEntity;
+import com.avosh.baseproject.dto.SecUserDto;
+import com.avosh.baseproject.entity.SecUserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,10 +11,14 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class CustomUserDetail implements UserDetails {
-private UserEntity userEntity;
+private SecUserDto secUser;
 
-    public CustomUserDetail(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public SecUserDto getSecUser() {
+        return secUser;
+    }
+
+    public CustomUserDetail(SecUserDto secUser) {
+        this.secUser = secUser;
     }
 
     @Override
@@ -24,12 +29,12 @@ private UserEntity userEntity;
 
     @Override
     public String getPassword() {
-        return userEntity.getPassword();
+        return secUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userEntity.getUser();
+        return secUser.getEmail();
     }
 
     @Override
@@ -49,6 +54,6 @@ private UserEntity userEntity;
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return secUser.getIsEnable();
     }
 }
