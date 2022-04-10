@@ -2,7 +2,7 @@ package com.avosh.baseproject.conf;
 
 
 import com.avosh.baseproject.dto.SecUserDto;
-import com.avosh.baseproject.entity.SecUserEntity;
+import com.avosh.baseproject.entity.SecUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

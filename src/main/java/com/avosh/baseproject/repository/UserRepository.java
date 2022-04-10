@@ -2,13 +2,11 @@ package com.avosh.baseproject.repository;
 
 
 
-import com.avosh.baseproject.entity.SecUserEntity;
+import com.avosh.baseproject.entity.SecUser;
 import org.springframework.data.repository.Repository;
 
-import java.util.Optional;
+public interface UserRepository extends Repository<SecUser, Integer> {
 
-public interface UserRepository extends Repository<SecUserEntity, Integer> {
-
-    SecUserEntity findByEmail(String email);
+    SecUser findByEmail(String email);
 
 }

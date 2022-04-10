@@ -10,13 +10,14 @@ package com.avosh.baseproject.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 public class SecUserDto implements Serializable {
     private final long id;
     private final String name;
     private final String family;
-    private final Byte gender;
+    private final Boolean gender;
     private final String cellphone;
     private final String phone;
     private final String email;
@@ -25,12 +26,12 @@ public class SecUserDto implements Serializable {
     private final String nationalcode;
     private final Boolean isLogin;
     private final Boolean isEnable;
-    private final Timestamp lastLogin;
-    private final Timestamp createDate;
-    private final Timestamp updateDate;
+    private final Date lastLogin;
+    private final Date createDate;
+    private final Date updateDate;
     private final String token;
 
-    public SecUserDto(long id, String name, String family, Byte gender, String cellphone, String phone, String email, String address, String password, String nationalcode, Boolean isLogin, Boolean isEnable, Timestamp lastLogin, Timestamp createDate, Timestamp updateDate, String token) {
+    public SecUserDto(long id, String name, String family, Boolean gender, String cellphone, String phone, String email, String address, String password, String nationalcode, Boolean isLogin, Boolean isEnable, Date lastLogin, Date createDate, Date updateDate, String token) {
         this.id = id;
         this.name = name;
         this.family = family;
@@ -61,7 +62,7 @@ public class SecUserDto implements Serializable {
         return family;
     }
 
-    public Byte getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
@@ -97,15 +98,15 @@ public class SecUserDto implements Serializable {
         return isEnable;
     }
 
-    public Timestamp getLastLogin() {
+    public Date getLastLogin() {
         return lastLogin;
     }
 
-    public Timestamp getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public Timestamp getUpdateDate() {
+    public Date getUpdateDate() {
         return updateDate;
     }
 

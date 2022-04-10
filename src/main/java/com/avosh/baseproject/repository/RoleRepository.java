@@ -8,11 +8,11 @@
 
 package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.entity.SecUserEntity;
-import com.avosh.baseproject.entity.SecUserRoleEntity;
+
+import com.avosh.baseproject.entity.SecUserRole;
 import org.springframework.data.repository.Repository;
 
-public interface RoleRepository extends Repository<SecUserRoleEntity, Integer> {
-    SecUserRoleEntity findBySecUserId(Long Integer);
+public interface RoleRepository extends Repository<SecUserRole, Integer> {
+    SecUserRole findBySecUserId(Long Integer);
 
 }
