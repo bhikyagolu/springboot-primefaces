@@ -845,14 +845,14 @@ a {
   background-color: #ffedd1;
 }
 .dashboard .overview-box.youtube .ui-progressbar {
-  background: #ffe0e0;
+  background: #e6efc9;
 }
 .dashboard .overview-box.youtube .ui-progressbar .ui-progressbar-value {
-  background: #ff0000;
+  background: #a4c639;
 }
 .dashboard .overview-box.youtube .logo {
-  color: #ff0000;
-  background-color: #ffe0e0;
+  color: #a4c639;
+  background-color: #e6efc9;
 }
 .dashboard .overview-box.apple .ui-progressbar {
   background: #e5e5e5;

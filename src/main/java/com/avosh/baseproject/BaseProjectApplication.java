@@ -45,7 +45,7 @@ public class BaseProjectApplication extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index.xhtml");
+        registry.addViewController("/").setViewName("ns/login.xhtml");
     }
 
 }

@@ -46,7 +46,7 @@
         <div class="p-col-12 p-md-6 p-lg-3">
             <div class="card overview-box paypal">
                 <div class="p-d-flex p-jc-between">
-                    <i class="logo pi pi-paypal p-mb-3"/>
+                    <i class="logo pi pi-key p-mb-3"/>
                     <p:commandButton id="paypal-button" type="button" icon="pi pi-ellipsis-v"
                                      styleClass="rounded-button ui-button-flat ui-button-plain"/>
                     <p:menu overlay="true" trigger="paypal-button" my="left top" at="left bottom">
@@ -54,15 +54,15 @@
                         <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                     </p:menu>
                 </div>
-                <h5 class="p-mb-3">PayPal</h5>
-                <p class="p-mb-1"><strong>$421</strong> / $1212</p>
-                <p:progressBar value="35" labelTemplate="" displayOnly="true"/>
+                <h5 class="p-mb-3">#{msg['dashboard.register']}</h5>
+                <p class="p-mb-3"><strong>421</strong></p>
+
             </div>
         </div>
             <div class="p-col-12 p-md-6 p-lg-3">
                 <div class="card overview-box amazon">
                     <div class="p-d-flex p-jc-between">
-                        <i class="logo pi pi-amazon p-mb-3"/>
+                        <i class="logo pi pi-eye p-mb-3"/>
                         <p:commandButton id="amazon-button" type="button" icon="pi pi-ellipsis-v"
                                          styleClass="rounded-button ui-button-flat ui-button-plain"/>
                         <p:menu overlay="true" trigger="amazon-button" my="left top" at="left bottom">
@@ -70,16 +70,16 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">Amazon</h5>
-                    <p class="p-mb-1"><strong>$6752</strong> / $9550</p>
-                    <p:progressBar value="70" labelTemplate="" displayOnly="true"/>
+                    <h5 class="p-mb-3">#{msg['dashboard.view']}</h5>
+                    <p class="p-mb-3"><strong>824</strong></p>
+
                 </div>
             </div>
 
             <div class="p-col-12 p-md-6 p-lg-3">
                 <div class="card overview-box youtube">
                     <div class="p-d-flex p-jc-between">
-                        <i class="logo pi pi-youtube p-mb-3"/>
+                        <i class="logo pi pi-android p-mb-3"/>
                         <p:commandButton id="youtube-button" type="button" icon="pi pi-ellipsis-v"
                                          styleClass="rounded-button ui-button-flat ui-button-plain"/>
                         <p:menu overlay="true" trigger="youtube-button" my="left top" at="left bottom">
@@ -87,7 +87,7 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">YouTube</h5>
+                    <h5 class="p-mb-3">#{msg['dashboard.android']}</h5>
                     <p class="p-mb-1"><strong>$1132</strong> / $6987</p>
                     <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
                 </div>
@@ -104,7 +104,7 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">Apple</h5>
+                    <h5 class="p-mb-3">#{msg['dashboard.apple']}</h5>
                     <p class="p-mb-1"><strong>$58990</strong> / $65650</p>
                     <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
                 </div>
