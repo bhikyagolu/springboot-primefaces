@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("request")
-public class LoginBean {
+public class LoginBean extends BaseBean{
 
 }

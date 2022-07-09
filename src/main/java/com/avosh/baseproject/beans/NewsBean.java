@@ -8,16 +8,10 @@
 
 package com.avosh.baseproject.beans;
 
-import com.avosh.baseproject.services.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
 @Scope("request")
-public class MessageBean extends BaseBean{
-
-    @Autowired
-    MessageService messageService;
-
+public class NewsBean extends BaseBean{
 }

@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@ManagedBean
-@ViewScoped
 public class GuestPreferences implements Serializable {
 
     private String theme = "blue";

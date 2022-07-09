@@ -12,7 +12,7 @@ import javax.faces.bean.RequestScoped;
 
 @Component
 @Scope("request")
-public class DashboardBean {
+public class DashboardBean extends BaseBean{
     private String name ;
     private String family;
     Authentication authentication;
