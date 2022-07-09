@@ -12,8 +12,6 @@ import javax.faces.bean.RequestScoped;
 
 @Component
 @Scope("request")
-@ManagedBean
-@RequestScoped
 public class DashboardBean {
     private String name ;
     private String family;

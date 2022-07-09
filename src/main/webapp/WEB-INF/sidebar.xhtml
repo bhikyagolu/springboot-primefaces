@@ -31,8 +31,9 @@
                     <p:menuitem id="om_news" value="#{msg['sidebar.news']}" icon="pi pi-fw pi-home" outcome="/s/news/index"/>
                     <p:menuitem id="om_posts" value="#{msg['sidebar.posts']}" icon="pi pi-fw pi-id-card" outcome="/s/posts/index"/>
                     <p:submenu id="om_messages" label="#{msg['sidebar.messages']}" icon="pi pi-fw pi-star" badge="0">
-                        <p:menuitem id="om_messages_input" value="#{msg['sidebar.message.input']}" icon="pi pi-fw pi-id-card" outcome="/s/messages/index"/>
-                        <p:menuitem id="om_messages_output" value="#{msg['sidebar.message.output']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/index"/>
+                        <p:menuitem id="om_messages_input" value="#{msg['sidebar.message.input']}" icon="pi pi-fw pi-id-card" outcome="/s/messages/input"/>
+                        <p:menuitem id="om_messages_output" value="#{msg['sidebar.message.output']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/output"/>
+                        <p:menuitem id="om_messages_sms" value="#{msg['sidebar.message.sms']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/sms"/>
                     </p:submenu>
                     <p:menuitem id="om_users" value="#{msg['sidebar.users']}" icon="pi pi-fw pi-id-card" outcome="/s/users/index"/>
                     <p:submenu id="om_financial" label="#{msg['sidebar.financial']}" icon="pi pi-fw pi-star" >
