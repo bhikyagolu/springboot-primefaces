@@ -8,16 +8,36 @@
 
 package com.avosh.baseproject.beans;
 
+import com.avosh.baseproject.dto.MessageDto;
 import com.avosh.baseproject.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Scope("request")
 public class MessageBean extends BaseBean{
-
     @Autowired
     MessageService messageService;
 
+    private MessageDto messageDto;
+    private List<MessageDto> messageDtoList;
+
+    public MessageDto getMessageDto() {
+        return messageDto;
+    }
+
+    public void setMessageDto(MessageDto messageDto) {
+        this.messageDto = messageDto;
+    }
+
+    public List<MessageDto> getMessageDtoList() {
+        return messageDtoList;
+    }
+
+    public void setMessageDtoList(List<MessageDto> messageDtoList) {
+        this.messageDtoList = messageDtoList;
+    }
 }

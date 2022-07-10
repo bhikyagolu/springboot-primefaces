@@ -8,10 +8,31 @@
 
 package com.avosh.baseproject.beans;
 
+import com.avosh.baseproject.dto.NewsDto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Scope("request")
 public class NewsBean extends BaseBean{
+    private NewsDto newsDto;
+    private List<NewsDto> newsDtoList;
+
+    public NewsDto getNewsDto() {
+        return newsDto;
+    }
+
+    public void setNewsDto(NewsDto newsDto) {
+        this.newsDto = newsDto;
+    }
+
+    public List<NewsDto> getNewsDtoList() {
+        return newsDtoList;
+    }
+
+    public void init(){
+
+    }
 }
