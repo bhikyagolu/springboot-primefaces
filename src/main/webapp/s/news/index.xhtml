@@ -13,77 +13,86 @@
             <div class="grid crud-demo">
                 <div class="col-12">
                     <div class="card">
-
                         <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{newsBean.newsDtoList}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      selection="#{newsBean.newsDtoListSelected}" rowKey="#{data.id}" rowIndexVar="row"
                                      paginator="true" rows="10" paginatorPosition="bottom" rowSelectMode="add">
                             <f:facet name="header">
                                 <div class="p-d-flex p-jc-between p-ai-center">
-                                    <p:commandButton id="new"  type="button" value="#{msg['menu.new']}" onclick="PF('dialogNew').show()"
-                                                     icon="pi pi-plus"/>
-
+                                    <p:commandButton id="new" type="button" value="#{msg['menu.new']}"
+                                                     onclick="PF('dialogNew').show()" icon="pi pi-plus"/>
                                     <div class="customers-table-header">
                                         <span class="ui-input-icon-left filter-container">
-                                        <i class="pi pi-search"/>
-                                        <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
-                                                     placeholder="Search "/>
-                                    </span>
-                                        <span style="font-weight: bold">
-
-                                        <p:commandButton id="toggler" type="button"
-                                                         icon="pi pi-align-justify"/>
-                                        <p:columnToggler datasource="dataTable" trigger="toggler"/>
-
+                                            <i class="pi pi-search"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
+                                                         placeholder="Search "/>
                                         </span>
                                         <span style="font-weight: bold">
-                                            <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
-                                            <p:dataExporter type="xls" target="dataTable" fileName="date"/>
-                                        </p:commandButton>
-
-                                        <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2">
-                                            <p:dataExporter type="pdf" target="dataTable" fileName="date"/>
-                                        </p:commandButton>
-
-                                         </span>
+                                            <p:commandButton id="toggler" type="button" icon="pi pi-align-justify"/>
+                                            <p:columnToggler datasource="dataTable" trigger="toggler"/>
+                                        </span>
                                     </div>
                                 </div>
 
                             </f:facet>
-                            <p:column headerText="#{msg['table.header.index']}" style="width: 3rem;vertical-align: middle;text-align: center">
+                            <p:column headerText="#{msg['table.header.index']}" width="10%" responsivePriority="6"
+                                      style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.user.name}" filterBy="#{data.user.name}">
+                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.user.name}"
+                                      filterBy="#{data.user.name}">
                                 <p:graphicImage name="images/profile.png" library="omega-layout" width="32"
+                                                responsivePriority="1"
                                                 style="vertical-align: middle"/>
                                 <h:outputText value="#{data.user.name}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.brief']}" sortBy="#{data.brief}" filterBy="#{data.brief}"
-                                      style="text-align: center;">
+                            <p:column headerText="#{msg['table.header.brief']}" sortBy="#{data.brief}"
+                                      filterBy="#{data.brief}"
+                                      responsivePriority="3">
                                 <h:outputText value="#{data.brief}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.news']}" sortBy="#{data.news}" filterBy="#{data.news}"
-                                      style="text-align: center;">
+                            <p:column headerText="#{msg['table.header.news']}" sortBy="#{data.news}"
+                                      filterBy="#{data.news}"
+                                      responsivePriority="4">
                                 <h:outputText value="#{data.news}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.createDateTime}"
-                                      filterBy="#{data.createDateTime}" style="text-align: center;">
+                                      filterBy="#{data.createDateTime}" responsivePriority="5">
                                 <h:outputText value="#{data.createDateTime}">
                                     <f:convertDateTime pattern="yyyy/MM/dd hh:mm a"/>
                                 </h:outputText>
                             </p:column>
 
-                            <p:column headerText="#{msg['table.header.operation']}" style="width: 8rem; text-align: center;">
-                                <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary" buttonStyle="box-shadow: 0 0 10px">
-                                    <p:menuitem value="#{msg['menu.delete']}"  update=":messages" icon="pi pi-times"/>
+                            <p:column headerText="#{msg['table.header.operation']}" width="10%"
+                                      style="text-align: center;" responsivePriority="2">
+                                <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary"
+                                              buttonStyle="box-shadow: 0 0 10px">
+                                    <p:menuitem value="#{msg['menu.delete']}" update=":messages" icon="pi pi-times"/>
                                 </p:menuButton>
                             </p:column>
+                            <f:facet name="footer">
+                                 <span style="font-weight: bold">
+                                        <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
+                                            <p:dataExporter type="xls" target="dataTable" fileName="exort"/>
+                                        </p:commandButton>
+
+                                        <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2">
+                                            <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
+                                        </p:commandButton>
+
+                                        <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
+                                            <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
+                                        </p:commandButton>
+
+                                 </span>
+                            </f:facet>
                         </p:dataTable>
                     </div>
                 </div>
             </div>
 
-            <p:dialog header="#{msg['dialog.title.new']}" widgetVar="dialogNew" modal="true" showEffect="fade" hideEffect="fade"
+            <p:dialog header="#{msg['dialog.title.new']}" widgetVar="dialogNew" modal="true" showEffect="fade"
+                      hideEffect="fade"
                       resizable="false">
 
             </p:dialog>
