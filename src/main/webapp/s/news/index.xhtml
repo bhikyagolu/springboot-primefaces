@@ -7,50 +7,86 @@
 
     <ui:define name="title">#{msg['page.news']}</ui:define>
 
+
     <ui:define name="content">
         <h:form id="form">
             <div class="grid crud-demo">
                 <div class="col-12">
                     <div class="card">
-                        <p:toolbar styleClass="mb-4">
-                            <p:toolbarGroup>
-                                <p:commandButton value="New" icon="pi pi-plus" styleClass="ui-button-success"
-                                                 style="margin-right: .5rem"/>
-                                <p:commandButton id="delete-products-button" icon="pi pi-trash"
-                                                 styleClass="ui-button-danger" update="@this">
-                                    <p:confirm header="Confirmation" message="Delete the selected products?"
-                                               icon="pi pi-exclamation-triangle"/>
-                                </p:commandButton>
-                            </p:toolbarGroup>
-                            <p:toolbarGroup align="right">
-                                <p:fileUpload mode="simple" skinSimple="true" label="Import"
-                                              chooseIcon="pi pi-download"/>
-                                <!--                    <p:commandButton value="Export" icon="pi pi-upload" styleClass="ui-button-help" ajax="false">-->
-                                <!--                        <p:dataExporter type="pdf" target="dt-products" fileName="products"/>-->
-                                <!--                    </p:commandButton>-->
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                        <div class="col-12" style="margin-top: 5px">
 
-                                <p:dataTable id="dt-products" widgetVar="dtProducts" var="news" value="#{newsBean.newsDtoList}" reflow="true" styleClass="products-table"
-                                              rowKey="#{news.id}" paginator="true" rows="10" rowSelectMode="add" paginatorPosition="bottom">
+                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{newsBean.newsDtoList}"
+                                     reflow="true" style="min-height: 500px" resizableColumns="true"
+                                     selection="#{newsBean.newsDtoListSelected}" rowKey="#{data.id}" rowIndexVar="row"
+                                     paginator="true" rows="10" paginatorPosition="bottom" rowSelectMode="add">
+                            <f:facet name="header">
+                                <div class="p-d-flex p-jc-between p-ai-center">
+                                    <p:commandButton id="new"  type="button" value="#{msg['menu.new']}" onclick="PF('dialogNew').show()"
+                                                     icon="pi pi-plus"/>
 
-                                    <p:column headerText="Code" sortBy="#{news.brif}" filterBy="#{news.brif}">
-                                        <h:outputText value="#{news.brif}" />
-                                    </p:column>
-                                    <p:column headerText="Code" sortBy="#{news.brif}" filterBy="#{news.brif}">
-                                        <h:outputText value="#{news.brif}" />
-                                    </p:column>
-                                    <p:column headerText="Code" sortBy="#{news.brif}" filterBy="#{news.brif}">
-                                        <h:outputText value="#{news.brif}" />
-                                    </p:column>
+                                    <div class="customers-table-header">
+                                        <span class="ui-input-icon-left filter-container">
+                                        <i class="pi pi-search"/>
+                                        <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
+                                                     placeholder="Search "/>
+                                    </span>
+                                        <span style="font-weight: bold">
 
-                                </p:dataTable>
+                                        <p:commandButton id="toggler" type="button"
+                                                         icon="pi pi-align-justify"/>
+                                        <p:columnToggler datasource="dataTable" trigger="toggler"/>
 
-                        </div>
+                                        </span>
+                                        <span style="font-weight: bold">
+                                            <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
+                                            <p:dataExporter type="xls" target="dataTable" fileName="date"/>
+                                        </p:commandButton>
+
+                                        <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2">
+                                            <p:dataExporter type="pdf" target="dataTable" fileName="date"/>
+                                        </p:commandButton>
+
+                                         </span>
+                                    </div>
+                                </div>
+
+                            </f:facet>
+                            <p:column headerText="#{msg['table.header.index']}" style="width: 3rem;vertical-align: middle;text-align: center">
+                                <h:outputText value=" #{row+1}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.user.name}" filterBy="#{data.user.name}">
+                                <p:graphicImage name="images/profile.png" library="omega-layout" width="32"
+                                                style="vertical-align: middle"/>
+                                <h:outputText value="#{data.user.name}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.brief']}" sortBy="#{data.brief}" filterBy="#{data.brief}"
+                                      style="text-align: center;">
+                                <h:outputText value="#{data.brief}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.news']}" sortBy="#{data.news}" filterBy="#{data.news}"
+                                      style="text-align: center;">
+                                <h:outputText value="#{data.news}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.createDateTime}"
+                                      filterBy="#{data.createDateTime}" style="text-align: center;">
+                                <h:outputText value="#{data.createDateTime}">
+                                    <f:convertDateTime pattern="yyyy/MM/dd hh:mm a"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column headerText="#{msg['table.header.operation']}" style="width: 8rem; text-align: center;">
+                                <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary" buttonStyle="box-shadow: 0 0 10px">
+                                    <p:menuitem value="#{msg['menu.delete']}"  update=":messages" icon="pi pi-times"/>
+                                </p:menuButton>
+                            </p:column>
+                        </p:dataTable>
                     </div>
                 </div>
             </div>
+
+            <p:dialog header="#{msg['dialog.title.new']}" widgetVar="dialogNew" modal="true" showEffect="fade" hideEffect="fade"
+                      resizable="false">
+
+            </p:dialog>
         </h:form>
     </ui:define>
 

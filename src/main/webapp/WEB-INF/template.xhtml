@@ -17,6 +17,11 @@
     <h:outputScript name="js/layout.js" library="omega-layout"/>
     <h:outputScript name="js/prism.js" library="omega-layout"/>
     <ui:insert name="head"/>
+    <style>
+        .ui-datatable .ui-column-filter{
+            display: none;!important;
+        }
+    </style>
 </h:head>
 
 <h:body styleClass="#{guestPreferences.menuMode} #{guestPreferences.inputStyleClass}">
@@ -27,6 +32,9 @@
         <ui:include src="sidebar.xhtml"/>
 
         <div class="main">
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
             <ui:insert name="content"/>
         </div>
 
