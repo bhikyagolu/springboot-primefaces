@@ -32,7 +32,7 @@ public class OmegaMenu extends AbstractMenu implements Widget, ComponentSystemEv
     public static final String COMPONENT_FAMILY = "org.primefaces.component";
     private static final String DEFAULT_RENDERER = "org.primefaces.component.OmegaMenuRenderer";
 //    private static final String[] LEGACY_RESOURCES = new String[]{"primefaces.css","jquery/jquery.js","jquery/jquery-plugins.js","primefaces.js"};
-private static final String[] LEGACY_RESOURCES = new String[]{"components.css","jquery/jquery.js","jquery/jquery-plugins.js","core.js"};
+//private static final String[] LEGACY_RESOURCES = new String[]{"components.css","jquery/jquery.js","jquery/jquery-plugins.js","core.js"};
     private static final String[] MODERN_RESOURCES = new String[]{"components.css","jquery/jquery.js","jquery/jquery-plugins.js","core.js"};
 
     protected enum PropertyKeys {
@@ -117,7 +117,7 @@ private static final String[] LEGACY_RESOURCES = new String[]{"components.css","
                 isPrimeConfig = false;
             }
 
-            String[] resources = (isPrimeConfig) ? MODERN_RESOURCES : LEGACY_RESOURCES;
+            String[] resources = MODERN_RESOURCES;
 
             for(String res : resources) {
                 UIComponent component = context.getApplication().createComponent(UIOutput.COMPONENT_TYPE);

@@ -9,9 +9,12 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.NewsDto;
+import com.avosh.baseproject.dto.UserDto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -19,6 +22,16 @@ import java.util.List;
 public class NewsBean extends BaseBean{
     private NewsDto newsDto;
     private List<NewsDto> newsDtoList;
+    private List<NewsDto> newsDtoListSelected;
+
+    public NewsBean() {
+        UserDto userDto = new UserDto();
+        userDto.setName("gholi");
+        userDto.setFamily("gholipor");
+        NewsDto dto = new NewsDto(1l,"brif","news",new Date(),userDto);
+        newsDtoList = new ArrayList<>();
+        newsDtoList.add(dto);
+    }
 
     public NewsDto getNewsDto() {
         return newsDto;
@@ -30,6 +43,14 @@ public class NewsBean extends BaseBean{
 
     public List<NewsDto> getNewsDtoList() {
         return newsDtoList;
+    }
+
+    public List<NewsDto> getNewsDtoListSelected() {
+        return newsDtoListSelected;
+    }
+
+    public void setNewsDtoListSelected(List<NewsDto> newsDtoListSelected) {
+        this.newsDtoListSelected = newsDtoListSelected;
     }
 
     public void init(){
