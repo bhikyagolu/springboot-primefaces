@@ -10,7 +10,7 @@ package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class MessageDto {
+public class MessageDto extends BaseDto{
     private Long id;
     private String title;
     private String message;

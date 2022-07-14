@@ -10,22 +10,20 @@ package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class NewsDto {
+public class NewsDto extends BaseDto{
     private Long id;
-    private String brif;
+    private String brief;
     private String news;
     private Date createDateTime;
-    private String authour;
-    private Long authourID;
+    private UserDto user;
 
-    public NewsDto(Long id, String brif, String news, Date createDateTime, String authour, Long authourID) {
+
+    public NewsDto(Long id, String brief, String news, Date createDateTime, UserDto user) {
         this.id = id;
-
-        this.brif = brif;
+        this.brief = brief;
         this.news = news;
         this.createDateTime = createDateTime;
-        this.authour = authour;
-        this.authourID = authourID;
+        this.user = user;
     }
 
     public Long getId() {
@@ -38,12 +36,12 @@ public class NewsDto {
 
 
 
-    public String getBrif() {
-        return brif;
+    public String getBrief() {
+        return brief;
     }
 
-    public void setBrif(String brif) {
-        this.brif = brif;
+    public void setBrief(String brief) {
+        this.brief = brief;
     }
 
     public String getNews() {
@@ -62,19 +60,11 @@ public class NewsDto {
         this.createDateTime = createDateTime;
     }
 
-    public String getAuthour() {
-        return authour;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setAuthour(String authour) {
-        this.authour = authour;
-    }
-
-    public Long getAuthourID() {
-        return authourID;
-    }
-
-    public void setAuthourID(Long authourID) {
-        this.authourID = authourID;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 }
