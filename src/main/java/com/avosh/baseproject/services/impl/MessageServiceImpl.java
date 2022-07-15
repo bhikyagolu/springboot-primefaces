@@ -8,14 +8,11 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.repository.MessageRepository;
-import com.avosh.baseproject.services.BaseService;
 import com.avosh.baseproject.services.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageServiceImpl implements MessageService {
+public class MessageServiceImpl extends CrudService implements MessageService {
 
     @Override
     public void doAdd() {

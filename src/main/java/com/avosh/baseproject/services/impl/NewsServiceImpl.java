@@ -9,13 +9,12 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.repository.MessageRepository;
-import com.avosh.baseproject.services.BaseService;
 import com.avosh.baseproject.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NewsServiceImpl implements NewsService {
+public class NewsServiceImpl extends CrudService implements NewsService {
     @Autowired
     MessageRepository messageRepository;
 

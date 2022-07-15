@@ -6,7 +6,12 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services;
+package com.avosh.baseproject.services.impl;
 
-public interface NewsService extends BaseService {
+import com.avosh.baseproject.entity.BaseEntity;
+import com.avosh.baseproject.repository.BaseRepository;
+import com.avosh.baseproject.services.BaseService;
+
+public abstract class CrudService<R extends BaseRepository, M extends BaseEntity> implements BaseService {
+
 }
