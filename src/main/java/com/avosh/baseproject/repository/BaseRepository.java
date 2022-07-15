@@ -8,9 +8,18 @@
 
 package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.entity.Message;
-import org.springframework.stereotype.Repository;
+import com.avosh.baseproject.entity.BaseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-@Repository
-public interface MessageRepository extends BaseRepository<Message, Integer> {
+import java.io.Serializable;
+@NoRepositoryBean
+public interface BaseRepository <T extends BaseEntity , PK extends Serializable>
+        extends CrudRepository<T, PK> {
+
+    Iterable<T> findAll(Sort sort);
+    Page<T> findAll(Pageable pageable);
 }

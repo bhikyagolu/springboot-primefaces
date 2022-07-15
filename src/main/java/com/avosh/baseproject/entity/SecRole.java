@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SecRole.findAll", query = "SELECT s FROM SecRole s")})
-public class SecRole implements Serializable {
+public class SecRole implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id

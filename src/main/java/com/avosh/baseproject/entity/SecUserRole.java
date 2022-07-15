@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SecUserRole.findAll", query = "SELECT s FROM SecUserRole s")})
-public class SecUserRole implements Serializable {
+public class SecUserRole implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId

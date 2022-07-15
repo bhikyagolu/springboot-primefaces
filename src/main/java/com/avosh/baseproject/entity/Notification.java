@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n")})
-public class Notification implements Serializable {
+public class Notification implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId

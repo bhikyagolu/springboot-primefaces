@@ -10,9 +10,10 @@ package com.avosh.baseproject.repository;
 
 
 import com.avosh.baseproject.entity.SecUserRole;
-import org.springframework.data.repository.Repository;
+import org.springframework.stereotype.Repository;
 
-public interface RoleRepository extends Repository<SecUserRole, Integer> {
+@Repository
+public interface RoleRepository extends BaseRepository<SecUserRole, Integer> {
     SecUserRole findBySecUserId(Long Integer);
 
 }

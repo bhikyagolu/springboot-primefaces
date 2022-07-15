@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SystemStatus.findAll", query = "SELECT s FROM SystemStatus s")})
-public class SystemStatus implements Serializable {
+public class SystemStatus implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
