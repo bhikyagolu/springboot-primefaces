@@ -6,39 +6,21 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.beans;
+package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.BaseDto;
+import com.avosh.baseproject.repository.MessageRepository;
 import com.avosh.baseproject.services.BaseService;
+import com.avosh.baseproject.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
+@Service
+public class NewsServiceImpl implements NewsService {
+    @Autowired
+    MessageRepository messageRepository;
 
-public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
-
-    public SRV service;
-    public BaseDto dto;
-
-    public BaseDto getDto() {
-        return dto;
-    }
-
-    public void setDto(BaseDto dto) {
-        this.dto = dto;
-    }
-
-    public void doAdd(){
-        service.doAdd();
-    }
-
-    public void doDelete(){
-
-    }
-    public void doFind(){
-
-    }
-    public void doEdit(){
+    @Override
+    public void doAdd() {
 
     }
 }

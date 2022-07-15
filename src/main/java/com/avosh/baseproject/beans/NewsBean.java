@@ -10,6 +10,9 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.services.MessageService;
+import com.avosh.baseproject.services.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +22,16 @@ import java.util.List;
 
 @Component
 @Scope("request")
-public class NewsBean extends BaseBean{
+public class NewsBean extends BaseBean<NewsService,NewsDto>{
+
     private NewsDto newsDto;
     private List<NewsDto> newsDtoList;
-    private List<NewsDto> newsDtoListSelected;
+
+
+    @Autowired
+    public void setService(NewsService service) {
+        this.service = service;
+    }
 
     public NewsBean() {
         UserDto userDto = new UserDto();
@@ -31,6 +40,7 @@ public class NewsBean extends BaseBean{
         NewsDto dto = new NewsDto(1l,"brif","news",new Date(),userDto);
         newsDtoList = new ArrayList<>();
         newsDtoList.add(dto);
+
     }
 
     public NewsDto getNewsDto() {
@@ -43,14 +53,6 @@ public class NewsBean extends BaseBean{
 
     public List<NewsDto> getNewsDtoList() {
         return newsDtoList;
-    }
-
-    public List<NewsDto> getNewsDtoListSelected() {
-        return newsDtoListSelected;
-    }
-
-    public void setNewsDtoListSelected(List<NewsDto> newsDtoListSelected) {
-        this.newsDtoListSelected = newsDtoListSelected;
     }
 
     public void init(){

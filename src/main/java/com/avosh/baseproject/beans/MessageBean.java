@@ -18,9 +18,11 @@ import java.util.List;
 
 @Component
 @Scope("request")
-public class MessageBean extends BaseBean{
+public class MessageBean extends BaseBean<MessageService,MessageDto>{
     @Autowired
-    MessageService messageService;
+    public void setService(MessageService service) {
+        this.service = service;
+    }
 
     private MessageDto messageDto;
     private List<MessageDto> messageDtoList;

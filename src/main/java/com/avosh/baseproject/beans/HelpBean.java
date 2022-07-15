@@ -6,19 +6,7 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services.impl;
+package com.avosh.baseproject.beans;
 
-import com.avosh.baseproject.repository.MessageRepository;
-import com.avosh.baseproject.services.BaseService;
-import com.avosh.baseproject.services.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MessageServiceImpl implements MessageService {
-
-    @Override
-    public void doAdd() {
-
-    }
+public class HelpBean extends BaseBean{
 }

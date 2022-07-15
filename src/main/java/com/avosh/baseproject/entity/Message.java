@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m")})
-public class Message implements Serializable {
+public class Message implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
