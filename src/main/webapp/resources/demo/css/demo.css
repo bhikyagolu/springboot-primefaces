@@ -112,17 +112,6 @@
     display: none !important;
   }
 }
-pre {
-  font-family: monospace;
-  background: #e3e3e3;
-  color: var(--text-color);
-  padding: 1em;
-  font-size: 14px;
-  border-radius: 3px;
-  overflow: auto;
-  line-height: 1.5;
-}
-
 .crud-demo .ui-datatable {
   margin-top: 1rem;
 }
@@ -182,29 +171,6 @@ pre {
   line-height: 1.5;
 }
 
-.grid-demo .grid-item {
-  text-align: center;
-  border-radius: 4px;
-  font-size: 1.5rem;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-.grid-demo .grid-item.grid-item-stretched {
-  height: 100%;
-  box-sizing: border-box;
-}
-.grid-demo .vertical-container {
-  margin: 0;
-  height: 200px;
-}
-.grid-demo .nested-grid .p-col-12 {
-  padding-bottom: 0;
-}
-
 .icons-demo .icons-list {
   text-align: center;
   color: var(--text-color-secondary);
@@ -212,44 +178,6 @@ pre {
 .icons-demo .icons-list i {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-}
-
-.spacing-demo li {
-  line-height: 1.5;
-}
-
-.demo-container {
-  border: 1px solid var(--surface-d);
-}
-
-.vertical-container {
-  margin: 0;
-  height: 200px;
-  background: var(--surface-d);
-  border-radius: 4px;
-}
-
-.elevation-demo .shadow-container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-.elevation-demo .box {
-  min-height: 100px;
-  min-width: 150px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 2rem;
-  border-radius: 4px;
 }
 
 .list-demo .product-name {
@@ -363,7 +291,7 @@ pre {
 .messages-demo .ui-button.ui-widget {
   min-width: 6rem;
 }
-.messages-demo .p-field > label {
+.messages-demo .field > label {
   width: 125px;
 }
 
@@ -454,57 +382,20 @@ pre {
     margin-top: 1rem;
   }
 }
-.floatlabel-demo .p-field {
+.floatlabel-demo .field {
   margin-top: 2rem;
 }
 
-.flexbox-demo .p-d-flex > div,
-.flexbox-demo .box {
-  background-color: var(--surface-e);
-  text-align: center;
-  padding: 1rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-}
-.flexbox-demo .p-d-flex > div {
-  width: 8rem;
-}
-.flexbox-demo .doc-table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: var(--surface-a);
-}
-.flexbox-demo .doc-table th {
-  border-bottom: 1px solid var(--surface-d);
-  padding: 1rem;
-  text-align: left;
-}
-.flexbox-demo .doc-table tbody td {
-  padding: 1rem;
-  border-bottom: 1px solid var(--surface-d);
-}
-.flexbox-demo .doc-tablewrapper {
-  margin: 1rem 0;
-  overflow: auto;
-}
-
-/* PrismJS 1.22.0
-https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+javascript+bash+java&plugins=line-numbers */
 /**
- * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
- * @author Tim  Shedor
- */
-/*
-Attention: This is not the original CSS downloaded from PrismJS! There are some PrimeFaces-specific modifications.
-Some var(iable)-usages have been introduced to adapt color-scheme to dark PrimeFaces-themes like Vela and Arya.
+* prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+* Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
+* @author Tim  Shedor
 */
 code[class*=language-],
 pre[class*=language-] {
   color: black;
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 1em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -530,25 +421,23 @@ pre[class*=language-] {
 
 pre[class*=language-] > code {
   position: relative;
-  border-left: 10px solid var(--surface-d) !important;
-  /*box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;*/
-  background-color: var(--surface-e) !important;
+  border-left: 10px solid #358ccb;
+  box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  background-color: #fdfdfd;
   background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
   background-size: 3em 3em;
   background-origin: content-box;
   background-attachment: local;
-  color: var(--text-color);
 }
 
-code[class*=language-] {
+code[class*=language] {
   max-height: inherit;
-  height: inherit;
   padding: 0 1em;
   display: block;
   overflow: auto;
 }
 
-/* Margin bottom to accommodate shadow */
+/* Margin bottom to accomodate shadow */
 :not(pre) > code[class*=language-],
 pre[class*=language-] {
   background-color: #fdfdfd;
@@ -569,6 +458,36 @@ pre[class*=language-] {
   white-space: normal;
 }
 
+pre[class*=language-]:before,
+pre[class*=language-]:after {
+  content: "";
+  z-index: -2;
+  display: block;
+  position: absolute;
+  bottom: 0.75em;
+  left: 0.18em;
+  width: 40%;
+  height: 20%;
+  max-height: 13em;
+  box-shadow: 0px 13px 8px #979797;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+
+:not(pre) > code[class*=language-]:after,
+pre[class*=language-]:after {
+  right: 0.75em;
+  left: auto;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
 .token.comment,
 .token.block-comment,
 .token.prolog,
@@ -578,7 +497,7 @@ pre[class*=language-] {
 }
 
 .token.punctuation {
-  color: var(--text-color);
+  color: #5F6364;
 }
 
 .token.property,
@@ -644,7 +563,7 @@ pre[class*=language-] {
   cursor: help;
 }
 
-.token.namespace {
+.namespace {
   opacity: 0.7;
 }
 
@@ -655,16 +574,23 @@ pre[class*=language-]:after {
     box-shadow: none;
   }
 }
+/* Plugin styles */
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+  color: #e0d7d1;
+}
+
 /* Plugin styles: Line Numbers */
-pre[class*=language-].line-numbers.line-numbers {
+pre[class*=language-].line-numbers {
   padding-left: 0;
 }
 
-pre[class*=language-].line-numbers.line-numbers code {
+pre[class*=language-].line-numbers code {
   padding-left: 3.8em;
 }
 
-pre[class*=language-].line-numbers.line-numbers .line-numbers-rows {
+pre[class*=language-].line-numbers .line-numbers-rows {
   left: 0;
 }
 
@@ -684,42 +610,135 @@ pre .line-highlight {
   margin-top: 0;
 }
 
-pre[class*=language-].line-numbers {
-  position: relative;
-  padding-left: 3.8em;
-  counter-reset: linenumber;
+/* PrimeFaces styles */
+pre[class*=language-]:before, pre[class*=language-]:after {
+  display: none !important;
+}
+pre[class*=language-] code {
+  border-left: 6px solid var(--surface-border) !important;
+  box-shadow: none !important;
+  background: var(--surface-ground) !important;
+  margin: 1em 0;
+  color: var(--text-color);
 }
 
-pre[class*=language-].line-numbers > code {
-  position: relative;
-  white-space: inherit;
+.language-css .token.string,
+.style .token.string {
+  background: transparent;
 }
 
-.line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  left: -3.8em;
-  width: 3em;
-  /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
-  border-right: 1px solid var(--surface-d) !important;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+.block-section {
+  margin-bottom: 4rem;
+}
+
+.block-header {
+  padding: 1rem 2rem;
+  background-color: var(--surface-section);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: 1px solid var(--surface-d);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.block-header .block-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.block-header .block-title .badge-free {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--orange-500);
+  color: white;
+  margin-left: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.block-header .block-title .badge-new {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--green-500);
+  color: white;
+  margin-left: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.block-header .block-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   user-select: none;
 }
-
-.line-numbers-rows > span {
-  display: block;
-  counter-increment: linenumber;
+.block-header .block-actions a {
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.block-header .block-actions a:last-child {
+  margin-right: 0;
+}
+.block-header .block-actions a:not(.block-action-disabled):hover {
+  background-color: var(--surface-c);
+}
+.block-header .block-actions a.block-action-active {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.block-header .block-actions a.block-action-copy i {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+.block-header .block-actions a.block-action-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: auto !important;
+}
+.block-header .block-actions a .pi-lock {
+  margin-right: 0.5rem;
 }
 
-.line-numbers-rows > span:before {
-  content: counter(linenumber);
-  color: var(--text-color-secondary);
+.block-content {
+  padding: 0;
+  border: 1px solid var(--surface-d);
+  border-top: 0 none;
+}
+.block-content > div {
+  display: none;
+}
+.block-content > div.block-content-active {
   display: block;
-  padding-right: 0.8em;
-  text-align: right;
+}
+
+.block-section pre[class*=language-] {
+  margin: 0 !important;
+}
+.block-section pre[class*=language-]:before, .block-section pre[class*=language-]:after {
+  display: none !important;
+}
+.block-section pre[class*=language-] code {
+  border-left: 0 none !important;
+  box-shadow: none !important;
+  background: var(--surface-e) !important;
+  margin: 0;
+  color: var(--text-color);
+  font-size: 14px;
+  padding: 1.5rem 2rem !important;
+}
+
+@media screen and (max-width: 575px) {
+  .block-header {
+    flex-direction: column;
+    align-items: start;
+  }
+  .block-header .block-actions {
+    margin-top: 1rem;
+  }
 }

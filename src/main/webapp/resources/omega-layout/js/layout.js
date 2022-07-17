@@ -288,7 +288,7 @@ PrimeFaces.OmegaConfigurator = {
 
     changeScheme: function(theme) {
         var library = 'primefaces-omega';
-        // var linkElement = $('link[href*="theme.css"]');
+        var linkElement = $('link[href*="theme.css"]');
         var href = linkElement.attr('href');
         var index = href.indexOf(library) + 1;
         var currentTheme = href.substring(index + library.length);

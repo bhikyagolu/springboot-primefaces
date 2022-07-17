@@ -1,14 +1,7 @@
-/* PrismJS 1.22.0
-https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+javascript+bash+java&plugins=line-numbers */
 /**
- * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
- * @author Tim  Shedor
- */
-
-/*
-Attention: This is not the original CSS downloaded from PrismJS! There are some PrimeFaces-specific modifications.
-Some var(iable)-usages have been introduced to adapt color-scheme to dark PrimeFaces-themes like Vela and Arya.
+* prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+* Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
+* @author Tim  Shedor
 */
 
 code[class*="language-"],
@@ -16,7 +9,6 @@ pre[class*="language-"] {
   color: black;
   background: none;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 1em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -43,25 +35,23 @@ pre[class*="language-"] {
 }
 pre[class*="language-"]>code {
   position: relative;
-  border-left: 10px solid var(--surface-d) !important;
-  /*box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;*/
-  background-color: var(--surface-e) !important;
+  border-left: 10px solid #358ccb;
+  box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  background-color: #fdfdfd;
   background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
   background-size: 3em 3em;
   background-origin: content-box;
   background-attachment: local;
-  color: var(--text-color);
 }
 
-code[class*="language-"] {
+code[class*="language"] {
   max-height: inherit;
-  height: inherit;
   padding: 0 1em;
   display: block;
   overflow: auto;
 }
 
-/* Margin bottom to accommodate shadow */
+/* Margin bottom to accomodate shadow */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background-color: #fdfdfd;
@@ -82,6 +72,36 @@ pre[class*="language-"] {
   white-space: normal;
 }
 
+pre[class*="language-"]:before,
+pre[class*="language-"]:after {
+  content: '';
+  z-index: -2;
+  display: block;
+  position: absolute;
+  bottom: 0.75em;
+  left: 0.18em;
+  width: 40%;
+  height: 20%;
+  max-height: 13em;
+  box-shadow: 0px 13px 8px #979797;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+
+:not(pre) > code[class*="language-"]:after,
+pre[class*="language-"]:after {
+  right: 0.75em;
+  left: auto;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
 .token.comment,
 .token.block-comment,
 .token.prolog,
@@ -91,7 +111,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-  color: var(--text-color);
+  color: #5F6364;
 }
 
 .token.property,
@@ -156,7 +176,7 @@ pre[class*="language-"] {
   cursor: help;
 }
 
-.token.namespace {
+.namespace {
   opacity: .7;
 }
 
@@ -169,16 +189,23 @@ pre[class*="language-"] {
 
 }
 
+/* Plugin styles */
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+  color: #e0d7d1;
+}
+
 /* Plugin styles: Line Numbers */
-pre[class*="language-"].line-numbers.line-numbers {
+pre[class*="language-"].line-numbers {
   padding-left: 0;
 }
 
-pre[class*="language-"].line-numbers.line-numbers code {
+pre[class*="language-"].line-numbers code {
   padding-left: 3.8em;
 }
 
-pre[class*="language-"].line-numbers.line-numbers .line-numbers-rows {
+pre[class*="language-"].line-numbers .line-numbers-rows {
   left: 0;
 }
 
@@ -195,44 +222,23 @@ pre[data-line] code {
 pre .line-highlight {
   margin-top: 0;
 }
+  
+/* PrimeFaces styles */
+pre[class*="language-"] {
+  &:before, &:after {
+    display: none !important;
+  }
 
-pre[class*="language-"].line-numbers {
-  position: relative;
-  padding-left: 3.8em;
-  counter-reset: linenumber;
+  code {
+    border-left: 6px solid var(--surface-border) !important;
+    box-shadow: none !important;
+    background: var(--surface-ground) !important;
+    margin: 1em 0;
+    color: var(--text-color);
+  }
 }
 
-pre[class*="language-"].line-numbers > code {
-  position: relative;
-  white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  left: -3.8em;
-  width: 3em; /* works for line-numbers below 1000 lines */
-  letter-spacing: -1px;
-  border-right: 1px solid var(--surface-d) !important;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-}
-
-.line-numbers-rows > span {
-  display: block;
-  counter-increment: linenumber;
-}
-
-.line-numbers-rows > span:before {
-  content: counter(linenumber);
-  color: var(--text-color-secondary);
-  display: block;
-  padding-right: 0.8em;
-  text-align: right;
+.language-css .token.string,
+.style .token.string {
+  background: transparent;
 }

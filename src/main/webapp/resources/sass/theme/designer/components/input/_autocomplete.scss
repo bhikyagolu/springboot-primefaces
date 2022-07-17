@@ -77,7 +77,8 @@ body {
     border: $inputOverlayBorder;
     box-shadow: $inputOverlayShadow;
 
-    .ui-autocomplete-emptyMessage {
+    .ui-autocomplete-emptyMessage,
+    .ui-autocomplete-empty-message {
       border: $inputListItemBorder;
       margin: $inputListItemMargin;
       padding: $inputListItemPadding;

@@ -74,7 +74,7 @@
             <artifactId>artifactId</artifactId>
             <version>4.1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/omega-theme-4.1.0.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/omega-theme-5.0.0.jar</systemPath>
         </dependency>
         <dependency>
         <groupId>org.apache.tomcat.embed</groupId>

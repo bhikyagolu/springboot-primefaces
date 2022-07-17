@@ -1,8 +1,6 @@
 /* Login */
 .login-body {
     height: 100vh;
-    font-family: "latoregular", "Trebuchet MS", Arial, Helvetica, sans-serif; 
-    font-size: 16px; 
     margin: 0;
     padding: 100px 0 0 0;
     background-image: linear-gradient(to top, #6b77a1, #737ea5 3%, #9599b3 15%, #b1b0bf 28%, #c7c1c8 41%, #d6cdcf 57%, #dfd5d3 74%, #e2d7d4);
@@ -55,31 +53,8 @@
             vertical-align: middle;
             font-size: 16px;
         }
-                
-        input {
-            &.ui-inputtext {
-                font-size: 1em;
-                color: #4f575b;
-                margin: 0;
-                outline: medium none;
-                padding: .25em;
-                background: #ffffff;
-                font-weight: normal;
-                border: 1px solid #d6d6d6;
-                border-radius: 3px;
 
-                &:hover {
-                    border-color: #c0c0c0;
-                }
-
-                &:focus {
-                    outline: 0 none;
-                    box-shadow: 0 0 5px #1f89ce;
-                }
-            }
-        }
-
-        .p-col-12, .p-col-6 {
+        .col-12, .col-6 {
             padding: .8em;
         }
         

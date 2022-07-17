@@ -21,7 +21,7 @@
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     <p:commandButton id="new" type="button" value="#{msg['menu.new']}"
                                                      onclick="PF('dialogNew').show()" icon="pi pi-plus"/>
-                                    <div class="customers-table-header">
+                                    <div class="customers-table-header" style="float: right">
                                         <span class="ui-input-icon-left filter-container">
                                             <i class="pi pi-search"/>
                                             <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
@@ -71,20 +71,22 @@
                                 </p:menuButton>
                             </p:column>
                             <f:facet name="footer">
-                                 <span style="font-weight: bold">
-                                        <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
-                                            <p:dataExporter type="xls" target="dataTable" fileName="exort"/>
-                                        </p:commandButton>
+                                <div class="p-d-flex p-jc-between">
+                                    <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2"
+                                                     style="margin: 2px">
+                                        <p:dataExporter type="xls" target="dataTable" fileName="exort"/>
+                                    </p:commandButton>
 
-                                        <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2">
-                                            <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
-                                        </p:commandButton>
+                                    <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2"
+                                                     style="margin: 2px">
+                                        <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
+                                    </p:commandButton>
 
-                                        <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2">
-                                            <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
-                                        </p:commandButton>
+                                    <p:commandButton icon="pi pi-file" styleClass="p-mr-2 p-mb-2" style="margin: 2px">
+                                        <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
+                                    </p:commandButton>
+                                </div>
 
-                                 </span>
                             </f:facet>
                         </p:dataTable>
                     </div>

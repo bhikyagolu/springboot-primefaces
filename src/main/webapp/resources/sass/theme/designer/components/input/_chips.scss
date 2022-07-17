@@ -5,7 +5,7 @@ body {
 
       .ui-chips-token {
         padding: 1px 0;
-        margin: 0 $inlineSpacing 0 0;
+        margin: math.div($inlineSpacing, 4);
         background: $chipBg;
         color: $chipTextColor;
         border-radius: $borderRadius;

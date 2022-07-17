@@ -80,6 +80,10 @@ body {
           background: $highlightBg;
         }
       }
+
+      .ui-treenode-outline {
+        @include focused-listitem();
+      }
     }
 
     &.ui-tree-horizontal {
@@ -135,6 +139,10 @@ body {
           }
         }
       }
+
+      .ui-treenode:before {
+        background-color: $panelContentBg;
+      } 
     }
 
     .ui-tree-filter-container {

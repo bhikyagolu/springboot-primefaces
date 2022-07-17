@@ -36,61 +36,62 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="dashboard p-grid ui-fluid">
-        <div class="p-col-12 p-md-4">
-            <div class="card summary p-d-flex p-jc-between">
-                <div>
-                    <span class="title">Users</span>
-                    <span class="detail">Number of visitors</span>
-                </div>
-                <div class="p-d-flex p-ai-center">
-                    <span class="count visitors p-p-2">12</span>
-                </div>
-            </div>
-        </div>
-        <div class="p-col-12 p-md-4">
-            <div class="card summary p-d-flex p-jc-between">
-                <div>
-                    <span class="title">Sales</span>
-                    <span class="detail">Number of purchases</span>
-                </div>
-                <div class="p-d-flex p-ai-center">
-                    <span class="count purchases p-p-2">534</span>
-                </div>
-            </div>
-        </div>
-        <div class="p-col-12 p-md-4">
-            <div class="card summary p-d-flex p-jc-between">
-                <div>
-                    <span class="title">Revenue</span>
-                    <span class="detail">Income for today</span>
-                </div>
-                <div class="p-d-flex p-ai-center">
-                    <span class="count revenue p-p-2">$3,200</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="p-col-12 p-md-6 p-lg-3">
-            <div class="card overview-box paypal">
-                <div class="p-d-flex p-jc-between">
-                    <i class="logo pi pi-key p-mb-3"/>
-                    <p:commandButton id="paypal-button" type="button" icon="pi pi-ellipsis-v"
-                                     styleClass="rounded-button ui-button-flat ui-button-plain"/>
-                    <p:menu overlay="true" trigger="paypal-button" my="left top" at="left bottom">
-                        <p:menuitem value="Display More" icon="pi pi pi-chart-bar" url="#"/>
-                        <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
-                    </p:menu>
+        <div class="dashboard grid ui-fluid">
+            <div class="col-12 md:col-4">
+                <div class="card summary flex justify-content-between">
+                    <div>
+                        <span class="title">Users</span>
+                        <span class="detail">Number of visitors</span>
+                    </div>
+                    <div class="flex align-items-center">
+                        <span class="count visitors p-2">12</span>
+                    </div>
                 </div>
-                <h5 class="p-mb-3">#{msg['dashboard.register']}</h5>
-                <p class="p-mb-3"><strong>421</strong></p>
-
             </div>
-        </div>
-            <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="col-12 md:col-4">
+                <div class="card summary flex justify-content-between">
+                    <div>
+                        <span class="title">Sales</span>
+                        <span class="detail">Number of purchases</span>
+                    </div>
+                    <div class="flex align-items-center">
+                        <span class="count purchases p-2">534</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-4">
+                <div class="card summary flex justify-content-between">
+                    <div>
+                        <span class="title">Revenue</span>
+                        <span class="detail">Income for today</span>
+                    </div>
+                    <div class="flex align-items-center">
+                        <span class="count revenue p-2">$3,200</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="card overview-box paypal">
+                    <div class="flex justify-content-between">
+                        <i class="logo pi pi-paypal mb-3"/>
+                        <p:commandButton id="paypal-button" type="button" icon="pi pi-ellipsis-v"
+                                         styleClass="rounded-button ui-button-flat ui-button-plain"/>
+                        <p:menu overlay="true" trigger="paypal-button" my="left top" at="left bottom">
+                            <p:menuitem value="Display More" icon="pi pi pi-chart-bar" url="#"/>
+                            <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
+                        </p:menu>
+                    </div>
+                    <h5 class="mb-3">#{msg['dashboard.register']}</h5>
+                    <p class="mb-1"><strong>$6752</strong> </p>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-3">
                 <div class="card overview-box amazon">
-                    <div class="p-d-flex p-jc-between">
-                        <i class="logo pi pi-eye p-mb-3"/>
+                    <div class="flex justify-content-between">
+                        <i class="logo pi pi-amazon mb-3"/>
                         <p:commandButton id="amazon-button" type="button" icon="pi pi-ellipsis-v"
                                          styleClass="rounded-button ui-button-flat ui-button-plain"/>
                         <p:menu overlay="true" trigger="amazon-button" my="left top" at="left bottom">
@@ -98,16 +99,16 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">#{msg['dashboard.view']}</h5>
-                    <p class="p-mb-3"><strong>824</strong></p>
+                    <h5 class="mb-3">#{msg['dashboard.view']}</h5>
+                    <p class="mb-1"><strong>$6752</strong> </p>
 
                 </div>
             </div>
 
-            <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="col-12 md:col-6 lg:col-3">
                 <div class="card overview-box youtube">
-                    <div class="p-d-flex p-jc-between">
-                        <i class="logo pi pi-android p-mb-3"/>
+                    <div class="flex justify-content-between">
+                        <i class="logo pi pi-android mb-3"/>
                         <p:commandButton id="youtube-button" type="button" icon="pi pi-ellipsis-v"
                                          styleClass="rounded-button ui-button-flat ui-button-plain"/>
                         <p:menu overlay="true" trigger="youtube-button" my="left top" at="left bottom">
@@ -115,16 +116,16 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">#{msg['dashboard.android']}</h5>
-                    <p class="p-mb-1"><strong>$1132</strong> / $6987</p>
+                    <h5 class="mb-3">#{msg['dashboard.android']}</h5>
+                    <p class="mb-1"><strong>$1132</strong> / $6987</p>
                     <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
 
-            <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="col-12 md:col-6 lg:col-3">
                 <div class="card overview-box apple">
-                    <div class="p-d-flex p-jc-between">
-                        <i class="logo pi pi-apple p-mb-3"/>
+                    <div class="flex justify-content-between">
+                        <i class="logo pi pi-apple mb-3"/>
                         <p:commandButton id="apple-button" type="button" icon="pi pi-ellipsis-v"
                                          styleClass="rounded-button ui-button-flat ui-button-plain"/>
                         <p:menu overlay="true" trigger="apple-button" my="left top" at="left bottom">
@@ -132,22 +133,24 @@
                             <p:menuitem value="Settings" icon="pi pi-cog" url="#"/>
                         </p:menu>
                     </div>
-                    <h5 class="p-mb-3">#{msg['dashboard.apple']}</h5>
-                    <p class="p-mb-1"><strong>$58990</strong> / $65650</p>
+                    <h5 class="mb-3">#{msg['dashboard.apple']}</h5>
+                    <p class="mb-1"><strong>$58990</strong> / $65650</p>
                     <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
-            <div class="p-col-12 p-md-6 p-lg-4">
+
+            <div class="col-12 md:col-4">
                 <p:panel header="#{msg['dashboard.recent.sales']}" style="height:100%">
 
                 </p:panel>
             </div>
-            <div class="p-col-12 p-md-6 p-lg-8">
+            <div class="col-12 md:col-8">
                 <p:panel header="#{msg['dashboard.sales.chart']}" style="height:100%">
-
+                    <canvas id="sales-chart"/>
                 </p:panel>
             </div>
         </div>
+
     </ui:define>
 
 </ui:composition>
