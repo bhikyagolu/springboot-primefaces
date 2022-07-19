@@ -32,9 +32,9 @@
         <ui:include src="sidebar.xhtml"/>
 
         <div class="main">
-            <p:messages id="messages" showDetail="true" closable="true">
-                <p:autoUpdate/>
-            </p:messages>
+            <h:form id="formMessage">
+                <p:messages id="messagesPanel" showDetail="true" closable="true"/>
+            </h:form>
             <ui:insert name="content"/>
         </div>
 

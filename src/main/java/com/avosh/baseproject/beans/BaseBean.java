@@ -9,11 +9,15 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.BaseDto;
+import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
+
+import static com.sun.faces.util.MessageFactory.getMessage;
 
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
 
@@ -40,5 +44,43 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     }
     public void doEdit(){
 
+    }
+    protected void saveError(String clientId, String errorKey, Object messageArgs[]) {
+        FacesMessage message = getMessage(errorKey, messageArgs);
+        message.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.addMessage(clientId,message);
+
+    }
+
+    protected void saveInfo(String clientId, String errorKey, Object messageArgs[]) {
+        FacesMessage message = getMessage(errorKey, messageArgs);
+        message.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.addMessage(clientId,message);
+
+    }
+
+    protected void saveWarning(String clientId, String errorKey, Object messageArgs[]) {
+        FacesMessage message = getMessage(errorKey, messageArgs);
+        message.setSeverity(FacesMessage.SEVERITY_WARN);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.addMessage(clientId,message);
+    }
+
+    protected void saveError(BaseException e) {
+        saveError("messagesPanel", e.getClass().getName(), e.getMessageArgs());
+    }
+
+    protected void saveWarning(BaseException e) {
+        saveWarning("messagesPanel", e.getClass().getName(), e.getMessageArgs());
+    }
+
+    protected void saveInfo(BaseException e) {
+        saveInfo("messagesPanel", e.getClass().getName(), e.getMessageArgs());
+    }
+    protected void showMessage(String title,String detail){
+        FacesMessage msg = new FacesMessage(title, detail);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }

@@ -12,16 +12,21 @@ import java.util.Date;
 
 public class NewsDto extends BaseDto{
     private Long id;
+    private String title;
     private String brief;
     private String news;
     private Date createDateTime;
     private UserDto user;
+    private boolean hasSchedulerTile;
 
+    public NewsDto() {
+    }
 
-    public NewsDto(Long id, String brief, String news, Date createDateTime, UserDto user) {
+    public NewsDto(Long id, String brief, String news, String title, Date createDateTime, UserDto user) {
         this.id = id;
         this.brief = brief;
         this.news = news;
+        this.title = title;
         this.createDateTime = createDateTime;
         this.user = user;
     }
@@ -34,7 +39,13 @@ public class NewsDto extends BaseDto{
         this.id = id;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getBrief() {
         return brief;
@@ -66,5 +77,13 @@ public class NewsDto extends BaseDto{
 
     public void setUser(UserDto user) {
         this.user = user;
+    }
+
+    public boolean isHasSchedulerTile() {
+        return hasSchedulerTile;
+    }
+
+    public void setHasSchedulerTile(boolean hasSchedulerTile) {
+        this.hasSchedulerTile = hasSchedulerTile;
     }
 }

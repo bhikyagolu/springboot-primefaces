@@ -10,22 +10,25 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.services.MessageService;
+import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Component
 @Scope("request")
-public class NewsBean extends BaseBean<NewsService,NewsDto>{
+public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
     private NewsDto newsDto;
     private List<NewsDto> newsDtoList;
+    private boolean isEditMode;
 
 
     @Autowired
@@ -34,10 +37,11 @@ public class NewsBean extends BaseBean<NewsService,NewsDto>{
     }
 
     public NewsBean() {
+        init();
         UserDto userDto = new UserDto();
         userDto.setName("gholi");
         userDto.setFamily("gholipor");
-        NewsDto dto = new NewsDto(1l,"brif","news",new Date(),userDto);
+        NewsDto dto = new NewsDto(1l, "brif", "news", "title", new Date(), userDto);
         newsDtoList = new ArrayList<>();
         newsDtoList.add(dto);
 
@@ -55,7 +59,25 @@ public class NewsBean extends BaseBean<NewsService,NewsDto>{
         return newsDtoList;
     }
 
-    public void init(){
+    public boolean isEditMode() {
+        return isEditMode;
+    }
 
+    public void init() {
+        isEditMode = false;
+        newsDto = new NewsDto();
+        newsDtoList = new ArrayList<>();
+    }
+
+    public void insertRecord() {
+
+    }
+
+    public void deleteRecord() {
+        showMessage("title","hahaaaaaa "+newsDto.getBrief());
+    }
+
+    public void editRecord() {
+        isEditMode = true;
     }
 }
