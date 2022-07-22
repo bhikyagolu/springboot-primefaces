@@ -12,6 +12,28 @@
             <div class="grid">
                 <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
+                        <h5>#{msg['profile.personal.picture']}</h5>
+                        <div class="formgrid grid">
+                            <div class="field col-3">
+                                <p:avatar styleClass="mr-2" size="xlarge" shape="circle">
+                                    <p:graphicImage name="images/profile.png" library="omega-layout"/>
+                                </p:avatar>
+                            </div>
+
+                            <div class="field col">
+                                <p>Your avatar will show to other peaple, choose your avatar and then click save ,your avatar must be under 100kb</p>
+                            </div>
+                        </div>
+                        <p:fileUpload mode="simple" skinSimple="true" style="float: right;"
+                                      sizeLimit="102400" allowTypes="/(\.|\/)(jpe?g)$/"
+                                      invalidSizeMessage="Maximum file size allowed is 100 KB"
+                                      invalidFileMessage="only jpg | jpeg is allowed"
+                                      update=":messagesPanel"
+                                      listener="#{UserBean.handleFileUpload}"/>
+                        <p:commandButton type="button" value="Save"
+                                         style="display:inline-block;margin-top:5px; width: auto"/>
+                    </div>
+                    <div class="card ui-fluid">
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
@@ -34,16 +56,20 @@
                             <p:inputText id="bio"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
+                            <p:commandButton type="button" value="Save"
+                                             style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
 
+
+                </div>
+                <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
                         <h5>#{msg['profile.change.password']}</h5>
                         <div class="formgrid grid">
                             <div class="field col">
                                 <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
-                                <p:password id="oldPassword" />
+                                <p:password id="oldPassword"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
@@ -51,19 +77,17 @@
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
-                                <p:password id="reNewPassword" />
+                                <p:password id="reNewPassword"/>
                             </div>
                         </div>
-                        <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
+                        <p:commandButton type="button" value="Save"
+                                         style="display:inline-block;margin-top:5px; width: auto"/>
                     </div>
-                </div>
-                <div class="col-12 md:col-6">
-
                     <div class="card ui-fluid">
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
-                            <p:inputText id="cellphone"/>
+                            <p:inputText id="cellphone" disabled="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
@@ -71,14 +95,15 @@
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
-                            <p:inputText id="email"/>
+                            <p:inputText id="email" disabled="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
                             <p:inputText id="address"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
+                            <p:commandButton type="button" value="Save"
+                                             style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
 

@@ -11,12 +11,19 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.services.NewsService;
 import com.avosh.baseproject.services.UserService;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.CroppedImage;
+import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.Date;
 
 public class UserBean extends BaseBean<UserService, UserDto> {
+    private UploadedFile originalImageFile;
+    private CroppedImage croppedImage;
     private String name ;
     private String family ;
     private Integer gender ;
@@ -36,6 +43,29 @@ public class UserBean extends BaseBean<UserService, UserDto> {
     @PostConstruct
     private void init(){
         service.retrieveAll();
+    }
+
+    public void handleFileUpload(FileUploadEvent event) {
+        this.originalImageFile = null;
+        this.croppedImage = null;
+        UploadedFile file = event.getFile();
+        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
+            this.originalImageFile = file;
+            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public UploadedFile getOriginalImageFile() {
+        return originalImageFile;
+    }
+
+    public CroppedImage getCroppedImage() {
+        return croppedImage;
+    }
+
+    public void setCroppedImage(CroppedImage croppedImage) {
+        this.croppedImage = croppedImage;
     }
 
     public String getName() {
