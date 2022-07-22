@@ -12,72 +12,79 @@
             <div class="grid">
                 <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
-                        <h5>Vertical</h5>
+                        <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
-                            <p:outputLabel for="name1">Name</p:outputLabel>
-                            <p:inputText id="name1"/>
+                            <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
+                            <p:inputText id="name"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="email1">Email</p:outputLabel>
-                            <p:inputText id="email1"/>
+                            <p:outputLabel for="family">#{msg['profile.family']}</p:outputLabel>
+                            <p:inputText id="family"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="age1">Age</p:outputLabel>
-                            <p:inputText id="age1"/>
+                            <p:outputLabel for="gender">#{msg['profile.gender']}</p:outputLabel>
+                            <p:inputText id="gender"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
+                            <p:inputText id="nationalcode"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
+                            <p:inputText id="bio"/>
+                        </div>
+                        <div class="field">
+                            <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
 
                     <div class="card ui-fluid">
-                        <h5>Vertical Grid</h5>
+                        <h5>#{msg['profile.change.password']}</h5>
                         <div class="formgrid grid">
                             <div class="field col">
-                                <p:outputLabel for="name2">Name</p:outputLabel>
-                                <p:inputText id="name2" type="text"/>
+                                <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
+                                <p:password id="oldPassword" />
                             </div>
                             <div class="field col">
-                                <p:outputLabel for="email2">Email</p:outputLabel>
-                                <p:inputText id="email2" type="text"/>
+                                <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
+                                <p:password id="newPassword" feedback="true" inline="true" match="reNewPassword"/>
+                            </div>
+                            <div class="field col">
+                                <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
+                                <p:password id="reNewPassword" />
                             </div>
                         </div>
+                        <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
                     </div>
                 </div>
                 <div class="col-12 md:col-6">
+
                     <div class="card ui-fluid">
-                        <h5>Horizontal</h5>
-                        <div class="field grid">
-                            <p:outputLabel for="name3" styleClass="col-12 mb-2 md:col-2 mb-md-0">Name</p:outputLabel>
-                            <div class="col-12 md:col-10">
-                                <p:inputText id="name3"/>
-                            </div>
+                        <h5>#{msg['profile.personal.contact']}</h5>
+                        <div class="field">
+                            <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
+                            <p:inputText id="cellphone"/>
                         </div>
-                        <div class="field grid">
-                            <p:outputLabel for="email3" styleClass="col-12 mb-2 md:col-2 mb-md-0">Email</p:outputLabel>
-                            <div class="col-12 md:col-10">
-                                <p:inputText id="email3"/>
-                            </div>
+                        <div class="field">
+                            <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
+                            <p:inputText id="phone"/>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <h5>Inline</h5>
-                        <div class="formgroup-inline">
-                            <div class="field">
-                                <p:inputText id="firstname1" type="text" placeholder="Firstname"/>
-                            </div>
-                            <div class="field">
-                                <p:inputText id="lastname1" type="text" placeholder="Lastname"/>
-                            </div>
-                            <p:commandButton type="button" value="Submit"/>
+                        <div class="field">
+                            <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
+                            <p:inputText id="email"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
+                            <p:inputText id="address"/>
+                        </div>
+                        <div class="field">
+                            <p:commandButton type="button" value="Save" style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
 
                     <div class="card">
-                        <h5>Help Text</h5>
-                        <div class="field ui-fluid">
-                            <p:outputLabel for="username" value="Username"/>
-                            <p:inputText id="username"/>
-                            <small>Enter your username to reset your password.</small>
-                        </div>
+                        <h5>#{msg['profile.activity']}</h5>
+
                     </div>
                 </div>
             </div>
