@@ -8,12 +8,12 @@
 
 package com.avosh.baseproject.services;
 
-import com.avosh.baseproject.dto.NewsDto;
+import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.News;
+import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.NewsRepository;
+import com.avosh.baseproject.repository.UserRepository;
 
-public interface NewsService  extends BaseService<NewsRepository,News, NewsDto>{
-    public void deleteById(Long id);
-//    Iterable<News> retrieveAll();
+public interface UserService extends BaseService<UserRepository, SecUser, UserDto>{
 
 }

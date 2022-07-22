@@ -9,8 +9,8 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
-import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.dto.NewsDto;
+import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.News;
 
 import com.avosh.baseproject.entity.SecUser;
@@ -19,14 +19,14 @@ import com.avosh.baseproject.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class NewsServiceImpl implements NewsService {
     @Autowired
     NewsRepository newRepository;
-    @Autowired
-    private org.springframework.core.env.Environment environment;
 
     @Override
     public void deleteById(Long id) {
@@ -34,13 +34,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public Iterable<News> retrieveAll() {
-        return newRepository.findAll();
-    }
-
-    @Transactional
-    @Override
-    public void save(BaseDto dto) {
+    public void save(NewsDto dto) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         News news = new News();
         news.setNews(((NewsDto)dto).getNews());
@@ -50,4 +44,23 @@ public class NewsServiceImpl implements NewsService {
         news.setCreateDate(((NewsDto)dto).getCreateDateTime());
         newRepository.save(news);
     }
+
+    @Override
+    public List<NewsDto> retrieveAll() {
+        List<NewsDto> newsDtoList = new ArrayList<>();
+        Iterable<News> itr = newRepository.findAll();
+        for (News news : itr) {
+            UserDto userDto = new UserDto();
+            userDto.setId(news.getId());
+            userDto.setFamily(news.getSecUser().getFamily());
+            userDto.setName(news.getSecUser().getName());
+            NewsDto newsDto = new NewsDto(news.getId(), news.getBrif(),
+                    news.getNews(), news.getTitle(), news.getCreateDate(), userDto);
+            newsDtoList.add(newsDto);
+
+        }
+        return newsDtoList;
+    }
+
+
 }

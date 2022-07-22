@@ -51,16 +51,8 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
         isEditMode = false;
         newsDto = new NewsDto();
         newsDtoList = new ArrayList<>();
-        Iterable<News>  itr = service.retrieveAll();
-        for (News news: itr) {
-            UserDto userDto = new UserDto();
-            userDto.setId(news.getId());
-            userDto.setFamily(news.getSecUser().getFamily());
-            userDto.setName(news.getSecUser().getName());
-            NewsDto newsDto = new NewsDto(news.getId(), news.getBrif(),
-                    news.getNews(),news.getTitle(),news.getCreateDate(),userDto);
-            newsDtoList.add(newsDto);
-        }
+        newsDtoList = service.retrieveAll();
+
     }
 
     public NewsDto getNewsDto() {

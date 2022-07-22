@@ -8,24 +8,29 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.BaseDto;
-import com.avosh.baseproject.dto.MessageDto;
-import com.avosh.baseproject.services.MessageService;
-import org.springframework.stereotype.Service;
+import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.entity.SecUser;
+import com.avosh.baseproject.repository.UserRepository;
+import com.avosh.baseproject.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Service
-public class MessageServiceImpl implements MessageService {
+public class UserServiceImpl implements UserService {
+    @Autowired
+    UserRepository userRepository;
+
 
 
     @Override
-    public void save(BaseDto dto) {
-
+    public void save(UserDto dto) {
+        SecUser user = new SecUser();
+        userRepository.save(user);
     }
 
     @Override
-    public List<MessageDto> retrieveAll() {
+    public List<UserDto> retrieveAll() {
+//        return userRepository.findAll();
         return null;
     }
 }
