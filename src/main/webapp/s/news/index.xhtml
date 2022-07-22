@@ -14,14 +14,13 @@
                 <div class="col-12">
                     <div class="card">
                         <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{newsBean.newsDtoList}"
-                                     reflow="true" style="min-height: 500px" resizableColumns="true" selectionMode="single"
-                                     selection="#{newsBean.newsDto}" rowKey="#{data.id}" rowIndexVar="row"
+                                     reflow="true" style="min-height: 500px" resizableColumns="true"
+                                     rowKey="#{data.id}" rowIndexVar="row"
                                      paginator="true" rows="10" paginatorPosition="bottom" >
-                            <p:ajax event="rowSelect" listener="#{newsBean.deleteRecord()}" update=":formMessage:messagesPanel"/>
                             <f:facet name="header">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     <p:commandButton id="new" type="button" value="#{msg['menu.new']}"
-                                                     onclick="PF('dlg').show()" icon="pi pi-plus"/>
+                                                   update="form"  onclick="PF('dlg').show()" icon="pi pi-plus"/>
                                     <div class="customers-table-header" style="float: right">
                                         <span class="ui-input-icon-left filter-container">
                                             <i class="pi pi-search"/>
@@ -41,7 +40,7 @@
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.user.name}"
-                                      filterBy="#{data.user.name}">
+                                      filterBy="#{data.user.name}" responsivePriority="4">
                                 <h:outputText value="#{data.user.name} #{data.user.family}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.title']}" sortBy="#{data.title}"
@@ -65,13 +64,21 @@
                                    exportable="false"   style="text-align: center;" responsivePriority="2">
                                 <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary"
                                               buttonStyle="box-shadow: 0 0 10px">
-                                    <p:menuitem value="#{msg['menu.view']}" update="form:messagesPanel" icon="pi pi-times"/>
-                                    <p:menuitem value="#{msg['menu.edit']}" update="form:messagesPanel" icon="pi pi-times"/>
-                                    <p:menuitem value="#{msg['menu.delete']}"  action="#{newsBean.deleteRecord}" update="form:messagesPanel" icon="pi pi-times"/>
-                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="350">
-                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times" />
-                                    </p:confirmDialog>
+                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
+                                        <f:setPropertyActionListener value="#{data}"
+                                                                     target="#{newsBean.newsDto}"/>
+                                    </p:menuitem>
+                                    <p:menuitem value="#{msg['menu.edit']}" update=":messagesPanel form" icon="pi pi-pencil"  oncomplete="PF('dlg').show()">
+                                        <f:setPropertyActionListener value="#{data}"
+                                                                     target="#{newsBean.newsDto}"/>
+                                    </p:menuitem>
+                                    <p:separator />
+                                    <p:menuitem value="#{msg['menu.delete']}"  action="#{newsBean.deleteRecord}" update=":messagesPanel form" icon="pi pi-times">
+                                        #{msg['menu.delete']}
+                                        <p:confirm header="#{msg['menu.confirmation']}" message="#{msg['menu.confirmation.message']}" icon="pi pi-info-circle"/>
+                                        <f:setPropertyActionListener value="#{data}"
+                                                                     target="#{newsBean.newsDto}"/>
+                                    </p:menuitem>
                                 </p:menuButton>
                             </p:column>
                             <f:facet name="footer">
@@ -93,6 +100,10 @@
 
                             </f:facet>
                         </p:dataTable>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="350">
+                            <p:commandButton value="#{msg['menu.confirmation.yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="#{msg['menu.confirmation.no']}" type="button" styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times" />
+                        </p:confirmDialog>
                     </div>
                 </div>
             </div>
@@ -109,10 +120,10 @@
                                 <p:inputText id="title" value="#{newsBean.newsDto.title}" disabled="#{newsBean.editMode}"/>
                             </div>
                             <div class="empty-table"/>
-                            <div class="field col-6 md:col-3">
+                            <div class="field col-12 md:col-6">
                                 <p:outputLabel for="time" value="#{msg['table.header.scheduler.time']}" />
                                 <p:datePicker id="time" value="#{newsBean.newsDto.createDateTime}"  disabled="#{newsBean.editMode}"
-                                              timeOnly="false" pattern="yyyy/MM/dd HH:mm"/>
+                                              timeOnly="false" pattern="yyyy/MM/dd HH:mm"  showIcon="true"/>
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="brief" value="#{msg['table.header.brief']}" />
@@ -128,8 +139,8 @@
                 <f:facet name="footer">
                     <p:commandButton value="Dismiss" type="button" styleClass="ui-button-secondary" onclick="PF('dlg').hide()" />
                     <p:commandButton value="Delete"
-                                     styleClass="ui-button-secondary" actionListener="#{newsBean.deleteRecord()}"
-                                     update="form:messagesPanel" onclick="PF('dlg').hide()"  icon="pi pi-check"/>
+                                     styleClass="ui-button-secondary" actionListener="#{newsBean.insertRecord()}"
+                                     update=":messagesPanel" onclick="PF('dlg').hide()"  icon="pi pi-check"/>
                 </f:facet>
             </p:dialog>
         </h:form>

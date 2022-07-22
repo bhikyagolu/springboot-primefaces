@@ -8,14 +8,16 @@
 
 package com.avosh.baseproject.services.impl;
 
+import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.services.MessageService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageServiceImpl extends CrudService implements MessageService {
+public class MessageServiceImpl implements MessageService {
+
 
     @Override
-    public void doAdd() {
+    public void save(BaseDto dto) {
 
     }
 }

@@ -32,9 +32,8 @@
         <ui:include src="sidebar.xhtml"/>
 
         <div class="main">
-            <h:form id="formMessage">
                 <p:messages id="messagesPanel" showDetail="true" closable="true"/>
-            </h:form>
+                <p:growl id="growlPanel" showDetail="true" />
             <ui:insert name="content"/>
         </div>
 

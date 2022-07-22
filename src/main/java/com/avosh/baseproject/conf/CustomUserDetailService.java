@@ -3,8 +3,8 @@ package com.avosh.baseproject.conf;
 
 
 import com.avosh.baseproject.dto.SecUserDto;
-import com.avosh.baseproject.entity.SecUser;
 
+import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.entity.SecUserRole;
 import com.avosh.baseproject.repository.RoleRepository;
 import com.avosh.baseproject.repository.UserRepository;
@@ -29,7 +29,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
         SecUserDto userDto = new SecUserDto(secUser.getId(),secUser.getName(),secUser.getFamily(),secUser.getGender()
         ,secUser.getCellphone(),secUser.getPhone(),secUser.getEmail(),secUser.getAddress(),secUser.getPassword()
-        ,secUser.getNationalcode(),secUser.getLogin(),secUser.getEnable(),secUser.getLastLogin(),secUser.getCreateDate()
+        ,secUser.getNationalcode(),secUser.getIsLogin(),secUser.getIsEnable(),secUser.getLastLogin(),secUser.getCreateDate()
         ,secUser.getUpdateDate(),secUser.getToken());
         CustomUserDetail userDetail = new CustomUserDetail(userDto);
         return userDetail;

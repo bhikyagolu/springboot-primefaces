@@ -8,5 +8,11 @@
 
 package com.avosh.baseproject.services;
 
-public interface NewsService extends BaseService {
+import com.avosh.baseproject.entity.News;
+import com.avosh.baseproject.repository.NewsRepository;
+
+public interface NewsService  extends BaseService<NewsRepository,News>{
+    public void deleteById(Long id);
+    Iterable<News> retrieveAll();
+
 }

@@ -8,11 +8,15 @@
 
 package com.avosh.baseproject.services;
 
+
+import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.entity.BaseEntity;
+import com.avosh.baseproject.repository.BaseRepository;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
-import org.springframework.data.repository.Repository;
+
 
 @Service
-public interface BaseService {
-    public void doAdd();
+public interface BaseService<R extends BaseRepository, M extends BaseEntity> {
+    public void save(BaseDto dto);
 }

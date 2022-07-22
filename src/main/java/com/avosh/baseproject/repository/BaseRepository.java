@@ -20,6 +20,5 @@ import java.io.Serializable;
 public interface BaseRepository <T extends BaseEntity , PK extends Serializable>
         extends CrudRepository<T, PK> {
 
-    Iterable<T> findAll(Sort sort);
-    Page<T> findAll(Pageable pageable);
+
 }

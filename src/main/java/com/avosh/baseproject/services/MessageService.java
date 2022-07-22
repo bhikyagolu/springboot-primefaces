@@ -8,8 +8,5 @@
 
 package com.avosh.baseproject.services;
 
-import com.avosh.baseproject.entity.Message;
-import com.avosh.baseproject.repository.MessageRepository;
-
 public interface MessageService extends BaseService {
 }

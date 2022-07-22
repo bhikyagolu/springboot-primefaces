@@ -6,12 +6,12 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services.impl;
+package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.entity.BaseEntity;
-import com.avosh.baseproject.repository.BaseRepository;
-import com.avosh.baseproject.services.BaseService;
+import com.avosh.baseproject.entity.Message;
+import com.avosh.baseproject.entity.News;
+import org.springframework.stereotype.Repository;
 
-public abstract class CrudService<R extends BaseRepository, M extends BaseEntity> implements BaseService {
-
+@Repository
+public interface NewsRepository extends BaseRepository<News, Long> {
 }

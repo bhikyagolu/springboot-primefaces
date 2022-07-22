@@ -8,14 +8,18 @@
 
 package com.avosh.baseproject.beans;
 
+import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.NewsService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ import java.util.List;
 @Component
 @Scope("request")
 public class NewsBean extends BaseBean<NewsService, NewsDto> {
+    private static final Logger log = Logger.getLogger(NewsBean.class);
 
     private NewsDto newsDto;
     private List<NewsDto> newsDtoList;
@@ -37,14 +42,25 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
     }
 
     public NewsBean() {
-        init();
-        UserDto userDto = new UserDto();
-        userDto.setName("gholi");
-        userDto.setFamily("gholipor");
-        NewsDto dto = new NewsDto(1l, "brif", "news", "title", new Date(), userDto);
-        newsDtoList = new ArrayList<>();
-        newsDtoList.add(dto);
+        NewsDto newsDto = new NewsDto();
+    }
 
+
+    @PostConstruct
+    public void init() {
+        isEditMode = false;
+        newsDto = new NewsDto();
+        newsDtoList = new ArrayList<>();
+        Iterable<News>  itr = service.retrieveAll();
+        for (News news: itr) {
+            UserDto userDto = new UserDto();
+            userDto.setId(news.getId());
+            userDto.setFamily(news.getSecUser().getFamily());
+            userDto.setName(news.getSecUser().getName());
+            NewsDto newsDto = new NewsDto(news.getId(), news.getBrif(),
+                    news.getNews(),news.getTitle(),news.getCreateDate(),userDto);
+            newsDtoList.add(newsDto);
+        }
     }
 
     public NewsDto getNewsDto() {
@@ -63,18 +79,20 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
         return isEditMode;
     }
 
-    public void init() {
-        isEditMode = false;
-        newsDto = new NewsDto();
-        newsDtoList = new ArrayList<>();
-    }
-
     public void insertRecord() {
-
+        service.save(newsDto);
     }
 
     public void deleteRecord() {
-        showMessage("title","hahaaaaaa "+newsDto.getBrief());
+        try {
+            service.deleteById(newsDto.getId());
+            init();
+            showMessage("Done!");
+        } catch (Exception e) {
+            log.error(e);
+            showMessage("Error!");
+        }
+
     }
 
     public void editRecord() {

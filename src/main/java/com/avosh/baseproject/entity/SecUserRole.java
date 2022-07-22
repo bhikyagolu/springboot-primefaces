@@ -1,5 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.avosh.baseproject.entity;
-
 
 import java.io.Serializable;
 import java.util.Date;
@@ -35,12 +39,12 @@ public class SecUserRole implements BaseEntity {
     @Column(name = "update_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SecUser secUser;
     @JoinColumn(name = "sec_role_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private SecRole secRole;
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private SecUser secUser;
 
     public SecUserRole() {
     }
@@ -77,20 +81,20 @@ public class SecUserRole implements BaseEntity {
         this.updateDate = updateDate;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
-    }
-
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
-    }
-
     public SecRole getSecRole() {
         return secRole;
     }
 
     public void setSecRole(SecRole secRole) {
         this.secRole = secRole;
+    }
+
+    public SecUser getSecUser() {
+        return secUser;
+    }
+
+    public void setSecUser(SecUser secUser) {
+        this.secUser = secUser;
     }
 
     @Override

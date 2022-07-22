@@ -11,7 +11,7 @@ package com.avosh.baseproject.dto;
 import java.util.Date;
 
 public class UserDto extends BaseDto{
-    private long id;
+
     private String name;
     private String family;
     private Boolean gender;
@@ -28,9 +28,7 @@ public class UserDto extends BaseDto{
     private Date updateDate;
     private String token;
 
-    public long getId() {
-        return id;
-    }
+
 
     public void setId(long id) {
         this.id = id;
