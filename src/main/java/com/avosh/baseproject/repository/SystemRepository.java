@@ -6,10 +6,9 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.beans;
+package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.dto.SystemDto;
-import com.avosh.baseproject.services.SystemService;
+import com.avosh.baseproject.entity.System;
 
-public class SystemBean extends BaseBean<SystemService, SystemDto> {
+public interface SystemRepository  extends BaseRepository<System, Long> {
 }

@@ -5,12 +5,11 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  *
@@ -67,7 +66,7 @@ public class SecUser implements BaseEntity {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "secUser")
     private Collection<Notification> notificationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
-    private Collection<SystemStatus> systemStatusCollection;
+    private Collection<System> systemCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
     private Collection<Message> messageCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser1")
@@ -229,12 +228,12 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<SystemStatus> getSystemStatusCollection() {
-        return systemStatusCollection;
+    public Collection<System> getSystemCollection() {
+        return systemCollection;
     }
 
-    public void setSystemStatusCollection(Collection<SystemStatus> systemStatusCollection) {
-        this.systemStatusCollection = systemStatusCollection;
+    public void setSystemStatusCollection(Collection<System> systemCollection) {
+        this.systemCollection = systemCollection;
     }
 
     @XmlTransient

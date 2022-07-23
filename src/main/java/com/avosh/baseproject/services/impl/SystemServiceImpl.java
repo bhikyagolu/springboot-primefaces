@@ -6,10 +6,21 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.beans;
+package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.dto.SystemDto;
 import com.avosh.baseproject.services.SystemService;
 
-public class SystemBean extends BaseBean<SystemService, SystemDto> {
+import java.util.List;
+
+public class SystemServiceImpl implements SystemService {
+    @Override
+    public void save(SystemDto dto) {
+
+    }
+
+    @Override
+    public List<SystemDto> retrieveAll() {
+        return null;
+    }
 }
