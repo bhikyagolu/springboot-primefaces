@@ -6,12 +6,25 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.beans;
+package com.avosh.baseproject.services.impl;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import com.avosh.baseproject.dto.BaseDto;
+import com.avosh.baseproject.dto.PostDto;
+import com.avosh.baseproject.services.PostService;
+import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Component
-@Scope("request")
-public class BlogBean extends BaseBean{
+@Service
+public class PostServiceImpl implements PostService {
+
+
+    @Override
+    public void save(PostDto dto) {
+
+    }
+
+    @Override
+    public List<PostDto> retrieveAll() {
+        return null;
+    }
 }

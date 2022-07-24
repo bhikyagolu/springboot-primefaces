@@ -11,24 +11,21 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
-
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
-import static com.sun.faces.util.MessageFactory.getMessage;
 
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
 
-    public SRV service;
-    public BaseDto dto;
+    protected SRV service;
+    protected D dto;
 
-    public BaseDto getDto() {
+    public D getDto() {
         return dto;
     }
 
-    public void setDto(BaseDto dto) {
+    public void setDto(D dto) {
         this.dto = dto;
     }
 

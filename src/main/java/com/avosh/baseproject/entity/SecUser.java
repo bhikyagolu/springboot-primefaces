@@ -46,6 +46,8 @@ public class SecUser implements BaseEntity {
     private String password;
     @Column(name = "nationalcode")
     private String nationalcode;
+    @Column(name = "about")
+    private String about;
     @Column(name = "is_login")
     private Boolean isLogin;
     @Column(name = "is_enable")
@@ -61,12 +63,14 @@ public class SecUser implements BaseEntity {
     private Date updateDate;
     @Column(name = "token")
     private String token;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
     private Collection<News> newsCollection;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
     private Collection<Notification> notificationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
     private Collection<System> systemCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    private Collection<Post> postCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
     private Collection<Message> messageCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser1")
@@ -161,7 +165,15 @@ public class SecUser implements BaseEntity {
         this.nationalcode = nationalcode;
     }
 
-    public Boolean getIsLogin() {
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public Boolean getLogin() {
         return isLogin;
     }
 
@@ -169,7 +181,7 @@ public class SecUser implements BaseEntity {
         this.isLogin = isLogin;
     }
 
-    public Boolean getIsEnable() {
+    public Boolean getEnable() {
         return isEnable;
     }
 
@@ -232,8 +244,17 @@ public class SecUser implements BaseEntity {
         return systemCollection;
     }
 
-    public void setSystemStatusCollection(Collection<System> systemCollection) {
+    public void setSystemCollection(Collection<System> systemCollection) {
         this.systemCollection = systemCollection;
+    }
+
+    @XmlTransient
+    public Collection<Post> getPostCollection() {
+        return postCollection;
+    }
+
+    public void setPostCollection(Collection<Post> postCollection) {
+        this.postCollection = postCollection;
     }
 
     @XmlTransient
@@ -287,5 +308,5 @@ public class SecUser implements BaseEntity {
     public String toString() {
         return "javaapplication1.SecUser[ id=" + id + " ]";
     }
-    
+
 }

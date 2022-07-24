@@ -8,65 +8,49 @@
 
 package com.avosh.baseproject.beans;
 
-import com.avosh.baseproject.dto.BaseDto;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.PostDto;
-import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
-import com.avosh.baseproject.excptions.BaseException;
-import com.avosh.baseproject.services.NewsService;
+import com.avosh.baseproject.services.PostService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
 @Scope("request")
-public class NewsBean extends BaseBean<NewsService, NewsDto> {
-    private static final Logger log = Logger.getLogger(NewsBean.class);
-
-    private NewsDto newsDto;
-    private List<NewsDto> newsDtoList;
+public class PostBean extends BaseBean<PostService, PostDto>{
+    private static final Logger log = Logger.getLogger(PostBean.class);
+    private PostDto postDto;
+    private List<PostDto> postDtoList;
     private boolean isEditMode;
 
-
     @Autowired
-    public void setService(NewsService service) {
+    public void setService(PostService service) {
         this.service = service;
     }
-
-    public NewsBean() {
-        newsDto = new NewsDto();
-    }
-
 
     @PostConstruct
     public void init() {
         isEditMode = false;
-        dto = new NewsDto();
-        newsDto = new NewsDto();
-        newsDtoList = new ArrayList<>();
-        newsDtoList = service.retrieveAll();
+        dto = new PostDto();
+        postDtoList = new ArrayList<>();
+        postDtoList = service.retrieveAll();
 
     }
 
-    public NewsDto getNewsDto() {
-        return newsDto;
+    public PostDto getPostDto() {
+        return postDto;
     }
 
-    public void setNewsDto(NewsDto newsDto) {
-        this.newsDto = newsDto;
+    public void setPostDto(PostDto postDto) {
+        this.postDto = postDto;
     }
 
-    public List<NewsDto> getNewsDtoList() {
-        return newsDtoList;
+    public List<PostDto> getPostDtoList() {
+        return postDtoList;
     }
 
     public boolean isEditMode() {
@@ -79,7 +63,7 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
     public void deleteRecord() {
         try {
-            service.deleteById(getDto().getId());
+           // service.deleteById(newsDto.getId());
             init();
             showMessage("Done!");
         } catch (Exception e) {

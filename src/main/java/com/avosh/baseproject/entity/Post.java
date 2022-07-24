@@ -16,27 +16,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author amirk
  */
 @Entity
-@Table(name = "system")
+@Table(name = "post")
 @XmlRootElement
-public class System implements BaseEntity {
+public class Post implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private long id;
+    private int id;
     @Basic(optional = false)
     @Column(name = "sec_user_id")
     private long secUserId;
-    @Column(name = "description")
-    private String description;
-    @Column(name = "enable")
-    private Short enable;
-    @Column(name = "version")
-    private Integer version;
-    @Column(name = "min_version")
-    private Integer minVersion;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "brief")
+    private String brief;
+    @Column(name = "post")
+    private String post;
+    @Column(name = "photo")
+    private String photo;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
@@ -44,14 +44,14 @@ public class System implements BaseEntity {
     @ManyToOne(optional = false)
     private SecUser secUser;
 
-    public System() {
+    public Post() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,36 +63,36 @@ public class System implements BaseEntity {
         this.secUserId = secUserId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Short getEnable() {
-        return enable;
+    public String getBrief() {
+        return brief;
     }
 
-    public void setEnable(Short enable) {
-        this.enable = enable;
+    public void setBrief(String brief) {
+        this.brief = brief;
     }
 
-    public Integer getVersion() {
-        return version;
+    public String getPost() {
+        return post;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setPost(String post) {
+        this.post = post;
     }
 
-    public Integer getMinVersion() {
-        return minVersion;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setMinVersion(Integer minVersion) {
-        this.minVersion = minVersion;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Date getCreateDatetime() {
@@ -114,25 +114,25 @@ public class System implements BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof System)) return false;
-        System system = (System) o;
-        return getId() == system.getId() && getSecUserId() == system.getSecUserId() && Objects.equals(getDescription(), system.getDescription()) && Objects.equals(getEnable(), system.getEnable()) && Objects.equals(getVersion(), system.getVersion()) && Objects.equals(getMinVersion(), system.getMinVersion()) && Objects.equals(getCreateDatetime(), system.getCreateDatetime()) && Objects.equals(getSecUser(), system.getSecUser());
+        if (!(o instanceof Post)) return false;
+        Post post1 = (Post) o;
+        return getId() == post1.getId() && getSecUserId() == post1.getSecUserId() && Objects.equals(getTitle(), post1.getTitle()) && Objects.equals(getBrief(), post1.getBrief()) && Objects.equals(getPost(), post1.getPost()) && Objects.equals(getPhoto(), post1.getPhoto()) && Objects.equals(getCreateDatetime(), post1.getCreateDatetime()) && Objects.equals(getSecUser(), post1.getSecUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSecUserId(), getDescription(), getEnable(), getVersion(), getMinVersion(), getCreateDatetime(), getSecUser());
+        return Objects.hash(getId(), getSecUserId(), getTitle(), getBrief(), getPost(), getPhoto(), getCreateDatetime(), getSecUser());
     }
 
     @Override
     public String toString() {
-        return "System{" +
+        return "Post{" +
                 "id=" + id +
                 ", secUserId=" + secUserId +
-                ", description='" + description + '\'' +
-                ", enable=" + enable +
-                ", version=" + version +
-                ", minVersion=" + minVersion +
+                ", title='" + title + '\'' +
+                ", brief='" + brief + '\'' +
+                ", post='" + post + '\'' +
+                ", photo='" + photo + '\'' +
                 ", createDatetime=" + createDatetime +
                 ", secUser=" + secUser +
                 '}';

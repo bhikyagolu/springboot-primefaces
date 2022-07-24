@@ -117,28 +117,28 @@
                         <div class="ui-fluid formgrid grid">
                             <div class="field col-12 md:col-6">
                                 <p:outputLabel for="title" value="#{msg['table.header.title']}" />
-                                <p:inputText id="title" value="#{newsBean.newsDto.title}" disabled="#{newsBean.editMode}"/>
+                                <p:inputText id="title" value="#{newsBean.getDto().title}" disabled="#{newsBean.editMode}"/>
                             </div>
                             <div class="empty-table"/>
                             <div class="field col-12 md:col-6">
                                 <p:outputLabel for="time" value="#{msg['table.header.scheduler.time']}" />
-                                <p:datePicker id="time" value="#{newsBean.newsDto.createDateTime}"  disabled="#{newsBean.editMode}"
+                                <p:datePicker id="time" value="#{newsBean.getDto().createDateTime}"  disabled="#{newsBean.editMode}"
                                               timeOnly="false" pattern="yyyy/MM/dd HH:mm"  showIcon="true"/>
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="brief" value="#{msg['table.header.brief']}" />
-                                <p:inputText id="brief" value="#{newsBean.newsDto.brief}" disabled="#{newsBean.editMode}"/>
+                                <p:inputText id="brief" value="#{newsBean.getDto().brief}" disabled="#{newsBean.editMode}"/>
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="content" value="#{msg['table.header.news']}" />
-                                <p:inputTextarea id="content" rows="4"  value="#{newsBean.newsDto.news}" disabled="#{newsBean.editMode}"/>
+                                <p:inputTextarea id="content" rows="4"  value="#{newsBean.getDto().news}" disabled="#{newsBean.editMode}"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <f:facet name="footer">
-                    <p:commandButton value="Dismiss" type="button" styleClass="ui-button-secondary" onclick="PF('dlg').hide()" />
-                    <p:commandButton value="Delete"
+                    <p:commandButton value="#{msg['dialog.dismiss']}" type="button" styleClass="ui-button-secondary" onclick="PF('dlg').hide()" />
+                    <p:commandButton value="#{msg['dialog.save']}"
                                      styleClass="ui-button-secondary" actionListener="#{newsBean.insertRecord()}"
                                      update=":messagesPanel" onclick="PF('dlg').hide()"  icon="pi pi-check"/>
                 </f:facet>
