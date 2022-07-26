@@ -19,6 +19,9 @@ public class MessageDto extends BaseDto{
     private String Sender;
     private Long senderID;
 
+    public MessageDto() {
+    }
+
     public MessageDto(Long id, String title, String message, Date createDateTime, Boolean isRead, String sender, Long senderID) {
         this.id = id;
         this.title = title;

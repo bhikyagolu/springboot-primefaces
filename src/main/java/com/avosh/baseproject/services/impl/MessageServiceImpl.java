@@ -8,19 +8,21 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.dto.MessageDto;
+import com.avosh.baseproject.repository.MessageRepository;
 import com.avosh.baseproject.services.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService {
-
+    @Autowired
+    MessageRepository repository;
 
     @Override
-    public void save(BaseDto dto) {
+    public void save(MessageDto dto) {
 
     }
 

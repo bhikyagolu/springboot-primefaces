@@ -30,7 +30,9 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     }
 
 
-
+    public SRV getService() {
+        return service;
+    }
 
     public void doFind(){
 

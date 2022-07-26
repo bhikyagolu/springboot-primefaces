@@ -12,5 +12,5 @@ import com.avosh.baseproject.entity.Message;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MessageRepository extends BaseRepository<Message, Integer> {
+public interface MessageRepository extends BaseRepository<Message, Long> {
 }

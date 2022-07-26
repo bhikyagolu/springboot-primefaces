@@ -13,7 +13,7 @@ import com.avosh.baseproject.entity.SecUserRole;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends BaseRepository<SecUserRole, Integer> {
+public interface RoleRepository extends BaseRepository<SecUserRole, Long> {
     SecUserRole findBySecUserId(Long Integer);
 
 }

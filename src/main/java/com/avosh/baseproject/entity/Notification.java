@@ -7,16 +7,8 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.Objects;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,8 +23,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Notification implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected NotificationPK notificationPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private long id;
+    @Basic(optional = false)
+    @Column(name = "sec_user_id")
+    private long secUserId;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
@@ -56,20 +54,20 @@ public class Notification implements BaseEntity {
     public Notification() {
     }
 
-    public Notification(NotificationPK notificationPK) {
-        this.notificationPK = notificationPK;
+    public long getId() {
+        return id;
     }
 
-    public Notification(long id, long secUserId) {
-        this.notificationPK = new NotificationPK(id, secUserId);
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public NotificationPK getNotificationPK() {
-        return notificationPK;
+    public long getSecUserId() {
+        return secUserId;
     }
 
-    public void setNotificationPK(NotificationPK notificationPK) {
-        this.notificationPK = notificationPK;
+    public void setSecUserId(long secUserId) {
+        this.secUserId = secUserId;
     }
 
     public String getTitle() {
@@ -129,28 +127,30 @@ public class Notification implements BaseEntity {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (notificationPK != null ? notificationPK.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notification that = (Notification) o;
+        return id == that.id && secUserId == that.secUserId && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(secUser, that.secUser);
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Notification)) {
-            return false;
-        }
-        Notification other = (Notification) object;
-        if ((this.notificationPK == null && other.notificationPK != null) || (this.notificationPK != null && !this.notificationPK.equals(other.notificationPK))) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return Objects.hash(id, secUserId, title, description, createDate, updateDate, startDate, endDate, secUser);
     }
 
     @Override
     public String toString() {
-        return "javaapplication1.Notification[ notificationPK=" + notificationPK + " ]";
+        return "Notification{" +
+                "id=" + id +
+                ", secUserId=" + secUserId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", secUser=" + secUser +
+                '}';
     }
-    
 }
