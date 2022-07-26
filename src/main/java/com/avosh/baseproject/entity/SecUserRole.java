@@ -7,16 +7,8 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.Objects;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,8 +23,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class SecUserRole implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected SecUserRolePK secUserRolePK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private long id;
+    @Basic(optional = false)
+    @Column(name = "sec_user_id")
+    private long secUserId;
+    @Basic(optional = false)
+    @Column(name = "sec_role_id")
+    private long secRoleId;
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -49,20 +50,28 @@ public class SecUserRole implements BaseEntity {
     public SecUserRole() {
     }
 
-    public SecUserRole(SecUserRolePK secUserRolePK) {
-        this.secUserRolePK = secUserRolePK;
+    public long getId() {
+        return id;
     }
 
-    public SecUserRole(long id, long secUserId, long secRoleId) {
-        this.secUserRolePK = new SecUserRolePK(id, secUserId, secRoleId);
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public SecUserRolePK getSecUserRolePK() {
-        return secUserRolePK;
+    public long getSecUserId() {
+        return secUserId;
     }
 
-    public void setSecUserRolePK(SecUserRolePK secUserRolePK) {
-        this.secUserRolePK = secUserRolePK;
+    public void setSecUserId(long secUserId) {
+        this.secUserId = secUserId;
+    }
+
+    public long getSecRoleId() {
+        return secRoleId;
+    }
+
+    public void setSecRoleId(long secRoleId) {
+        this.secRoleId = secRoleId;
     }
 
     public Date getCreateDate() {
@@ -98,28 +107,28 @@ public class SecUserRole implements BaseEntity {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (secUserRolePK != null ? secUserRolePK.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SecUserRole that = (SecUserRole) o;
+        return id == that.id && secUserId == that.secUserId && secRoleId == that.secRoleId && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(secRole, that.secRole) && Objects.equals(secUser, that.secUser);
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SecUserRole)) {
-            return false;
-        }
-        SecUserRole other = (SecUserRole) object;
-        if ((this.secUserRolePK == null && other.secUserRolePK != null) || (this.secUserRolePK != null && !this.secUserRolePK.equals(other.secUserRolePK))) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return Objects.hash(id, secUserId, secRoleId, createDate, updateDate, secRole, secUser);
     }
 
     @Override
     public String toString() {
-        return "javaapplication1.SecUserRole[ secUserRolePK=" + secUserRolePK + " ]";
+        return "SecUserRole{" +
+                "id=" + id +
+                ", secUserId=" + secUserId +
+                ", secRoleId=" + secRoleId +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                ", secRole=" + secRole +
+                ", secUser=" + secUser +
+                '}';
     }
-    
 }
