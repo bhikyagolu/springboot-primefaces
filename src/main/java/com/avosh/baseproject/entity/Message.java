@@ -7,16 +7,8 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.Objects;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,8 +23,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Message implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MessagePK messagePK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private long id;
+    @Basic(optional = false)
+    @Column(name = "sec_user_id")
+    private long secUserId;
+    @Basic(optional = false)
+    @Column(name = "sec_user_id1")
+    private long secUserId1;
     @Column(name = "title")
     private String title;
     @Column(name = "message")
@@ -52,20 +53,28 @@ public class Message implements BaseEntity {
     public Message() {
     }
 
-    public Message(MessagePK messagePK) {
-        this.messagePK = messagePK;
+    public long getId() {
+        return id;
     }
 
-    public Message(long id, long secUserId, long secUserId1) {
-        this.messagePK = new MessagePK(id, secUserId, secUserId1);
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public MessagePK getMessagePK() {
-        return messagePK;
+    public long getSecUserId() {
+        return secUserId;
     }
 
-    public void setMessagePK(MessagePK messagePK) {
-        this.messagePK = messagePK;
+    public void setSecUserId(long secUserId) {
+        this.secUserId = secUserId;
+    }
+
+    public long getSecUserId1() {
+        return secUserId1;
+    }
+
+    public void setSecUserId1(long secUserId1) {
+        this.secUserId1 = secUserId1;
     }
 
     public String getTitle() {
@@ -117,28 +126,30 @@ public class Message implements BaseEntity {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (messagePK != null ? messagePK.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message1 = (Message) o;
+        return id == message1.id && secUserId == message1.secUserId && secUserId1 == message1.secUserId1 && Objects.equals(title, message1.title) && Objects.equals(message, message1.message) && Objects.equals(isRead, message1.isRead) && Objects.equals(createDate, message1.createDate) && Objects.equals(secUser, message1.secUser) && Objects.equals(secUser1, message1.secUser1);
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Message)) {
-            return false;
-        }
-        Message other = (Message) object;
-        if ((this.messagePK == null && other.messagePK != null) || (this.messagePK != null && !this.messagePK.equals(other.messagePK))) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return Objects.hash(id, secUserId, secUserId1, title, message, isRead, createDate, secUser, secUser1);
     }
 
     @Override
     public String toString() {
-        return "javaapplication1.Message[ messagePK=" + messagePK + " ]";
+        return "Message{" +
+                "id=" + id +
+                ", secUserId=" + secUserId +
+                ", secUserId1=" + secUserId1 +
+                ", title='" + title + '\'' +
+                ", message='" + message + '\'' +
+                ", isRead=" + isRead +
+                ", createDate=" + createDate +
+                ", secUser=" + secUser +
+                ", secUser1=" + secUser1 +
+                '}';
     }
-    
 }
