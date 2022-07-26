@@ -9,4 +9,13 @@
 package com.avosh.baseproject.beans;
 
 public class HelpBean extends BaseBean{
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

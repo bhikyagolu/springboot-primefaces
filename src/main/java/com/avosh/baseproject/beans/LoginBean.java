@@ -9,4 +9,13 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class LoginBean extends BaseBean{
 
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

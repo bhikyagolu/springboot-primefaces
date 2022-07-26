@@ -58,4 +58,14 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
     public void setMessageDtoList(List<MessageDto> messageDtoList) {
         this.messageDtoList = messageDtoList;
     }
+
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

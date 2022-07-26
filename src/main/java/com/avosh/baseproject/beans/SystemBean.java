@@ -12,4 +12,13 @@ import com.avosh.baseproject.dto.SystemDto;
 import com.avosh.baseproject.services.SystemService;
 
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

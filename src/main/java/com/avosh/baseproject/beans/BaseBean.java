@@ -40,6 +40,12 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public void doEdit(){
 
     }
+
+    public abstract void insertRecord();
+
+    public abstract void deleteRecord();
+
+
     protected void saveError(String clientId, String errorKey) {
         FacesMessage message = new FacesMessage(errorKey);
         message.setSeverity(FacesMessage.SEVERITY_ERROR);

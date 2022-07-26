@@ -3,12 +3,16 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Component
+@Scope("request")
 public class UserBean extends BaseBean<UserService, UserDto> {
-    List<UserDto> userDtoList;
+    private boolean isEditMode;
+    List<UserDto> dtoList;
     UserDto userDto;
 
     @Autowired
@@ -18,15 +22,16 @@ public class UserBean extends BaseBean<UserService, UserDto> {
 
     @PostConstruct
     private void init(){
-        service.retrieveAll();
+        dtoList = service.retrieveAll();
+        userDto = new UserDto();
     }
 
-    public List<UserDto> getUserDtoList() {
-        return userDtoList;
+    public List<UserDto> getDtoList() {
+        return dtoList;
     }
 
-    public void setUserDtoList(List<UserDto> userDtoList) {
-        this.userDtoList = userDtoList;
+    public void setDtoList(List<UserDto> dtoList) {
+        this.dtoList = dtoList;
     }
 
     public UserDto getUserDto() {
@@ -35,5 +40,18 @@ public class UserBean extends BaseBean<UserService, UserDto> {
 
     public void setUserDto(UserDto userDto) {
         this.userDto = userDto;
+    }
+
+    public boolean isEditMode() {
+        return isEditMode;
+    }
+
+    @Override
+    public void insertRecord() {
+
+    }
+
+    public void deleteRecord() {
+
     }
 }

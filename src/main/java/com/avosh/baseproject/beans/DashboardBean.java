@@ -32,4 +32,13 @@ public class DashboardBean extends BaseBean{
         return customUserDetail.getSecUser().getFamily();
     }
 
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

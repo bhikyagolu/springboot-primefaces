@@ -21,7 +21,7 @@ import java.util.List;
 
 @Component
 @Scope("request")
-public class PostBean extends BaseBean<PostService, PostDto>{
+public class PostBean extends BaseBean<PostService, PostDto> {
     private static final Logger log = Logger.getLogger(PostBean.class);
     private PostDto postDto;
     private List<PostDto> postDtoList;
@@ -57,13 +57,15 @@ public class PostBean extends BaseBean<PostService, PostDto>{
         return isEditMode;
     }
 
+    @Override
     public void insertRecord() {
         service.save(getDto());
     }
 
+    @Override
     public void deleteRecord() {
         try {
-           // service.deleteById(newsDto.getId());
+            // service.deleteById(newsDto.getId());
             init();
             showMessage("Done!");
         } catch (Exception e) {

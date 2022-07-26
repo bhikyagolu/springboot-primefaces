@@ -72,11 +72,12 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
     public boolean isEditMode() {
         return isEditMode;
     }
-
+    @Override
     public void insertRecord() {
         service.save(getDto());
     }
 
+    @Override
     public void deleteRecord() {
         try {
             service.deleteById(getDto().getId());

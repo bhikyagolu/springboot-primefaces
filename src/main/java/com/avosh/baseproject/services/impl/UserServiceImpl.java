@@ -8,29 +8,51 @@
 
 package com.avosh.baseproject.services.impl;
 
+import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserRepository userRepository;
+    UserRepository repository;
 
 
 
     @Override
     public void save(UserDto dto) {
         SecUser user = new SecUser();
-        userRepository.save(user);
+        repository.save(user);
     }
 
     @Override
     public List<UserDto> retrieveAll() {
-//        return userRepository.findAll();
-        return null;
+        List<UserDto> list = new ArrayList<>();
+        Iterable<SecUser> itr = repository.findAll();
+        for (SecUser user : itr) {
+            UserDto userDto = new UserDto();
+            userDto.setId(user.getId());
+            userDto.setName(user.getName());
+            userDto.setFamily(user.getFamily());
+            userDto.setAddress(user.getAddress());
+            userDto.setCellphone(user.getCellphone());
+            userDto.setCreateDate(user.getCreateDate());
+            userDto.setEmail(user.getEmail());
+            userDto.setGender(user.getGender());
+            userDto.setEnable(user.getEnable());
+            userDto.setLastLogin(user.getLastLogin());
+            userDto.setNationalcode(user.getNationalcode());
+            userDto.setPhone(user.getPhone());
+            list.add(userDto);
+        }
+        return list;
     }
 }

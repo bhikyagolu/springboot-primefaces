@@ -9,4 +9,13 @@
 package com.avosh.baseproject.beans;
 
 public class PackageBean extends BaseBean{
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

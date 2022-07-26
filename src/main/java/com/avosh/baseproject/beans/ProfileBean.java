@@ -146,4 +146,14 @@ public class ProfileBean extends BaseBean<UserService, UserDto> {
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    @Override
+    public void insertRecord() {
+
+    }
+
+    @Override
+    public void deleteRecord() {
+
+    }
 }

@@ -28,7 +28,26 @@ public class UserDto extends BaseDto{
     private Date updateDate;
     private String token;
 
+    public UserDto() {
+    }
 
+    public UserDto(String name, String family, Boolean gender, String cellphone, String phone, String email, String address, String password, String nationalcode, Boolean isLogin, Boolean isEnable, Date lastLogin, Date createDate, Date updateDate, String token) {
+        this.name = name;
+        this.family = family;
+        this.gender = gender;
+        this.cellphone = cellphone;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.nationalcode = nationalcode;
+        this.isLogin = isLogin;
+        this.isEnable = isEnable;
+        this.lastLogin = lastLogin;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.token = token;
+    }
 
     public void setId(long id) {
         this.id = id;
