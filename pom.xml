@@ -141,6 +141,17 @@
             <artifactId>core</artifactId>
             <version>3.2.1</version>
         </dependency>
+        <!-- to send email using java Mail and spring framework's JavaMailSender -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!-- to create email templates using Thymeleaf server-side Java template engine -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
