@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,61 +31,61 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author amirk
  */
 @Entity
-@Table(name = "redeem_user")
+@Table(name = "session")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RedeemUser.findAll", query = "SELECT r FROM RedeemUser r")
-    , @NamedQuery(name = "RedeemUser.findById", query = "SELECT r FROM RedeemUser r WHERE r.id = :id")
-    , @NamedQuery(name = "RedeemUser.findByCreateDate", query = "SELECT r FROM RedeemUser r WHERE r.createDate = :createDate")})
-public class RedeemUser implements BaseEntity {
+    @NamedQuery(name = "Session.findAll", query = "SELECT s FROM Session s")
+    , @NamedQuery(name = "Session.findById", query = "SELECT s FROM Session s WHERE s.id = :id")
+    , @NamedQuery(name = "Session.findByDateTime", query = "SELECT s FROM Session s WHERE s.dateTime = :dateTime")})
+public class Session implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
-    @Column(name = "create_date")
+    private Long id;
+    @Column(name = "date_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @JoinColumn(name = "redeem_id", referencedColumnName = "id")
+    private Date dateTime;
+    @JoinColumn(name = "sub_lesson_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Redeem redeemId;
+    private SubLesson subLessonId;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
-    @OneToMany(mappedBy = "redeemUserId")
-    private Collection<Finance> financeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sessionId")
+    private Collection<SessionQuestion> sessionQuestionCollection;
 
-    public RedeemUser() {
+    public Session() {
     }
 
-    public RedeemUser(Integer id) {
+    public Session(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public Redeem getRedeemId() {
-        return redeemId;
+    public SubLesson getSubLessonId() {
+        return subLessonId;
     }
 
-    public void setRedeemId(Redeem redeemId) {
-        this.redeemId = redeemId;
+    public void setSubLessonId(SubLesson subLessonId) {
+        this.subLessonId = subLessonId;
     }
 
     public SecUser getSecUserId() {
@@ -96,12 +97,12 @@ public class RedeemUser implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Finance> getFinanceCollection() {
-        return financeCollection;
+    public Collection<SessionQuestion> getSessionQuestionCollection() {
+        return sessionQuestionCollection;
     }
 
-    public void setFinanceCollection(Collection<Finance> financeCollection) {
-        this.financeCollection = financeCollection;
+    public void setSessionQuestionCollection(Collection<SessionQuestion> sessionQuestionCollection) {
+        this.sessionQuestionCollection = sessionQuestionCollection;
     }
 
     @Override
@@ -114,10 +115,10 @@ public class RedeemUser implements BaseEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RedeemUser)) {
+        if (!(object instanceof Session)) {
             return false;
         }
-        RedeemUser other = (RedeemUser) object;
+        Session other = (Session) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +127,7 @@ public class RedeemUser implements BaseEntity {
 
     @Override
     public String toString() {
-        return "javaapplication1.RedeemUser[ id=" + id + " ]";
+        return "javaapplication1.Session[ id=" + id + " ]";
     }
     
 }

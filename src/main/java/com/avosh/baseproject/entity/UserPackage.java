@@ -6,8 +6,6 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,73 +16,55 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author amirk
  */
 @Entity
-@Table(name = "redeem_user")
+@Table(name = "user_package")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RedeemUser.findAll", query = "SELECT r FROM RedeemUser r")
-    , @NamedQuery(name = "RedeemUser.findById", query = "SELECT r FROM RedeemUser r WHERE r.id = :id")
-    , @NamedQuery(name = "RedeemUser.findByCreateDate", query = "SELECT r FROM RedeemUser r WHERE r.createDate = :createDate")})
-public class RedeemUser implements BaseEntity {
+    @NamedQuery(name = "UserPackage.findAll", query = "SELECT u FROM UserPackage u")
+    , @NamedQuery(name = "UserPackage.findById", query = "SELECT u FROM UserPackage u WHERE u.id = :id")})
+public class UserPackage implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
-    @Column(name = "create_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @JoinColumn(name = "redeem_id", referencedColumnName = "id")
+    private Long id;
+    @JoinColumn(name = "package_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Redeem redeemId;
+    private Package packageId;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
-    @OneToMany(mappedBy = "redeemUserId")
-    private Collection<Finance> financeCollection;
 
-    public RedeemUser() {
+    public UserPackage() {
     }
 
-    public RedeemUser(Integer id) {
+    public UserPackage(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Package getPackageId() {
+        return packageId;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Redeem getRedeemId() {
-        return redeemId;
-    }
-
-    public void setRedeemId(Redeem redeemId) {
-        this.redeemId = redeemId;
+    public void setPackageId(Package packageId) {
+        this.packageId = packageId;
     }
 
     public SecUser getSecUserId() {
@@ -93,15 +73,6 @@ public class RedeemUser implements BaseEntity {
 
     public void setSecUserId(SecUser secUserId) {
         this.secUserId = secUserId;
-    }
-
-    @XmlTransient
-    public Collection<Finance> getFinanceCollection() {
-        return financeCollection;
-    }
-
-    public void setFinanceCollection(Collection<Finance> financeCollection) {
-        this.financeCollection = financeCollection;
     }
 
     @Override
@@ -114,10 +85,10 @@ public class RedeemUser implements BaseEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RedeemUser)) {
+        if (!(object instanceof UserPackage)) {
             return false;
         }
-        RedeemUser other = (RedeemUser) object;
+        UserPackage other = (UserPackage) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +97,7 @@ public class RedeemUser implements BaseEntity {
 
     @Override
     public String toString() {
-        return "javaapplication1.RedeemUser[ id=" + id + " ]";
+        return "javaapplication1.UserPackage[ id=" + id + " ]";
     }
     
 }

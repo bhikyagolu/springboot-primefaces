@@ -5,11 +5,23 @@
  */
 package com.avosh.baseproject.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.Collection;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -18,7 +30,35 @@ import java.util.Date;
 @Entity
 @Table(name = "sec_user")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "SecUser.findAll", query = "SELECT s FROM SecUser s")
+    , @NamedQuery(name = "SecUser.findById", query = "SELECT s FROM SecUser s WHERE s.id = :id")
+    , @NamedQuery(name = "SecUser.findByName", query = "SELECT s FROM SecUser s WHERE s.name = :name")
+    , @NamedQuery(name = "SecUser.findByFamily", query = "SELECT s FROM SecUser s WHERE s.family = :family")
+    , @NamedQuery(name = "SecUser.findByGender", query = "SELECT s FROM SecUser s WHERE s.gender = :gender")
+    , @NamedQuery(name = "SecUser.findByCellphone", query = "SELECT s FROM SecUser s WHERE s.cellphone = :cellphone")
+    , @NamedQuery(name = "SecUser.findByPhone", query = "SELECT s FROM SecUser s WHERE s.phone = :phone")
+    , @NamedQuery(name = "SecUser.findByEmail", query = "SELECT s FROM SecUser s WHERE s.email = :email")
+    , @NamedQuery(name = "SecUser.findByAddress", query = "SELECT s FROM SecUser s WHERE s.address = :address")
+    , @NamedQuery(name = "SecUser.findByPassword", query = "SELECT s FROM SecUser s WHERE s.password = :password")
+    , @NamedQuery(name = "SecUser.findByNationalcode", query = "SELECT s FROM SecUser s WHERE s.nationalcode = :nationalcode")
+    , @NamedQuery(name = "SecUser.findByAbout", query = "SELECT s FROM SecUser s WHERE s.about = :about")
+    , @NamedQuery(name = "SecUser.findByIsLogin", query = "SELECT s FROM SecUser s WHERE s.isLogin = :isLogin")
+    , @NamedQuery(name = "SecUser.findByIsEnable", query = "SELECT s FROM SecUser s WHERE s.isEnable = :isEnable")
+    , @NamedQuery(name = "SecUser.findByLastLogin", query = "SELECT s FROM SecUser s WHERE s.lastLogin = :lastLogin")
+    , @NamedQuery(name = "SecUser.findByCreateDate", query = "SELECT s FROM SecUser s WHERE s.createDate = :createDate")
+    , @NamedQuery(name = "SecUser.findByUpdateDate", query = "SELECT s FROM SecUser s WHERE s.updateDate = :updateDate")
+    , @NamedQuery(name = "SecUser.findByToken", query = "SELECT s FROM SecUser s WHERE s.token = :token")})
 public class SecUser implements BaseEntity {
+
+    @Column(name = "iban")
+    private String iban;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<Session> sessionCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<UserPackage> userPackageCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<SubLesson> subLessonCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -177,7 +217,7 @@ public class SecUser implements BaseEntity {
         this.about = about;
     }
 
-    public Boolean getLogin() {
+    public Boolean getIsLogin() {
         return isLogin;
     }
 
@@ -338,6 +378,41 @@ public class SecUser implements BaseEntity {
     @Override
     public String toString() {
         return "javaapplication1.SecUser[ id=" + id + " ]";
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    @XmlTransient
+    public Collection<Session> getSessionCollection() {
+        return sessionCollection;
+    }
+
+    public void setSessionCollection(Collection<Session> sessionCollection) {
+        this.sessionCollection = sessionCollection;
+    }
+
+    @XmlTransient
+    public Collection<UserPackage> getUserPackageCollection() {
+        return userPackageCollection;
+    }
+
+    public void setUserPackageCollection(Collection<UserPackage> userPackageCollection) {
+        this.userPackageCollection = userPackageCollection;
+    }
+
+    @XmlTransient
+    public Collection<SubLesson> getSubLessonCollection() {
+        return subLessonCollection;
+    }
+
+    public void setSubLessonCollection(Collection<SubLesson> subLessonCollection) {
+        this.subLessonCollection = subLessonCollection;
     }
     
 }

@@ -5,10 +5,23 @@
  */
 package com.avosh.baseproject.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,6 +37,13 @@ import java.util.Date;
     , @NamedQuery(name = "Finance.findByAmount", query = "SELECT f FROM Finance f WHERE f.amount = :amount")})
 public class Finance implements BaseEntity {
 
+    @Column(name = "create_datetime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDatetime;
+    @JoinColumn(name = "bank_id", referencedColumnName = "id")
+    @ManyToOne
+    private Bank bankId;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +54,6 @@ public class Finance implements BaseEntity {
     private String desc;
     @Column(name = "amount")
     private BigInteger amount;
-    @Column(name = "create_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDateTime;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
@@ -73,14 +90,6 @@ public class Finance implements BaseEntity {
 
     public void setAmount(BigInteger amount) {
         this.amount = amount;
-    }
-
-    public Date getCreateDateTime() {
-        return createDateTime;
-    }
-
-    public void setCreateDateTime(Date createDateTime) {
-        this.createDateTime = createDateTime;
     }
 
     public SecUser getSecUserId() {
@@ -122,6 +131,22 @@ public class Finance implements BaseEntity {
     @Override
     public String toString() {
         return "javaapplication1.Finance[ id=" + id + " ]";
+    }
+
+    public Date getCreateDatetime() {
+        return createDatetime;
+    }
+
+    public void setCreateDatetime(Date createDatetime) {
+        this.createDatetime = createDatetime;
+    }
+
+    public Bank getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(Bank bankId) {
+        this.bankId = bankId;
     }
     
 }

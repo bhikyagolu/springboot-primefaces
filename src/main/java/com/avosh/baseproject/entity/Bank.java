@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,69 +28,80 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author amirk
  */
 @Entity
-@Table(name = "redeem_user")
+@Table(name = "bank")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RedeemUser.findAll", query = "SELECT r FROM RedeemUser r")
-    , @NamedQuery(name = "RedeemUser.findById", query = "SELECT r FROM RedeemUser r WHERE r.id = :id")
-    , @NamedQuery(name = "RedeemUser.findByCreateDate", query = "SELECT r FROM RedeemUser r WHERE r.createDate = :createDate")})
-public class RedeemUser implements BaseEntity {
+    @NamedQuery(name = "Bank.findAll", query = "SELECT b FROM Bank b")
+    , @NamedQuery(name = "Bank.findById", query = "SELECT b FROM Bank b WHERE b.id = :id")
+    , @NamedQuery(name = "Bank.findByToken", query = "SELECT b FROM Bank b WHERE b.token = :token")
+    , @NamedQuery(name = "Bank.findByDateTime", query = "SELECT b FROM Bank b WHERE b.dateTime = :dateTime")
+    , @NamedQuery(name = "Bank.findByAmount", query = "SELECT b FROM Bank b WHERE b.amount = :amount")
+    , @NamedQuery(name = "Bank.findByStatus", query = "SELECT b FROM Bank b WHERE b.status = :status")})
+public class Bank implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
-    @Column(name = "create_date")
+    private Long id;
+    @Column(name = "token")
+    private String token;
+    @Column(name = "date_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @JoinColumn(name = "redeem_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Redeem redeemId;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private SecUser secUserId;
-    @OneToMany(mappedBy = "redeemUserId")
+    private Date dateTime;
+    @Column(name = "amount")
+    private String amount;
+    @Column(name = "status")
+    private Short status;
+    @OneToMany(mappedBy = "bankId")
     private Collection<Finance> financeCollection;
 
-    public RedeemUser() {
+    public Bank() {
     }
 
-    public RedeemUser(Integer id) {
+    public Bank(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public String getToken() {
+        return token;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public Redeem getRedeemId() {
-        return redeemId;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setRedeemId(Redeem redeemId) {
-        this.redeemId = redeemId;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public SecUser getSecUserId() {
-        return secUserId;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setSecUserId(SecUser secUserId) {
-        this.secUserId = secUserId;
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
     }
 
     @XmlTransient
@@ -114,10 +123,10 @@ public class RedeemUser implements BaseEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RedeemUser)) {
+        if (!(object instanceof Bank)) {
             return false;
         }
-        RedeemUser other = (RedeemUser) object;
+        Bank other = (Bank) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +135,7 @@ public class RedeemUser implements BaseEntity {
 
     @Override
     public String toString() {
-        return "javaapplication1.RedeemUser[ id=" + id + " ]";
+        return "javaapplication1.Bank[ id=" + id + " ]";
     }
     
 }

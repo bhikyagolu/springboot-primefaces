@@ -5,10 +5,23 @@
  */
 package com.avosh.baseproject.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -51,12 +64,28 @@ public class SecUserRole implements BaseEntity {
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getSecUserId() {
+        return secUserId;
+    }
+
+    public void setSecUserId(long secUserId) {
+        this.secUserId = secUserId;
+    }
+
+    public long getSecRoleId() {
+        return secRoleId;
+    }
+
+    public void setSecRoleId(long secRoleId) {
+        this.secRoleId = secRoleId;
     }
 
     public Date getCreateDate() {
@@ -94,14 +123,14 @@ public class SecUserRole implements BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SecUserRole)) return false;
         SecUserRole that = (SecUserRole) o;
-        return id == that.id && secUserId == that.secUserId && secRoleId == that.secRoleId && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(secRole, that.secRole) && Objects.equals(secUser, that.secUser);
+        return getId() == that.getId() && getSecUserId() == that.getSecUserId() && getSecRoleId() == that.getSecRoleId() && Objects.equals(getCreateDate(), that.getCreateDate()) && Objects.equals(getUpdateDate(), that.getUpdateDate()) && Objects.equals(getSecRole(), that.getSecRole()) && Objects.equals(getSecUser(), that.getSecUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, secUserId, secRoleId, createDate, updateDate, secRole, secUser);
+        return Objects.hash(getId(), getSecUserId(), getSecRoleId(), getCreateDate(), getUpdateDate(), getSecRole(), getSecUser());
     }
 
     @Override
@@ -116,5 +145,4 @@ public class SecUserRole implements BaseEntity {
                 ", secUser=" + secUser +
                 '}';
     }
-    
 }
