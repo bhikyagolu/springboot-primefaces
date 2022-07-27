@@ -11,6 +11,7 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;

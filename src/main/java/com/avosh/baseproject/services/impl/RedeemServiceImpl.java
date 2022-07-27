@@ -8,23 +8,29 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.SystemDto;
-import com.avosh.baseproject.services.SystemService;
+import com.avosh.baseproject.dto.RedeemDto;
+import com.avosh.baseproject.repository.RedeemRepository;
+import com.avosh.baseproject.services.RedeemService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class SystemServiceImpl implements SystemService {
-    private static final Logger log = Logger.getLogger(SystemServiceImpl.class);
+public class RedeemServiceImpl implements RedeemService {
+    private static final Logger log = Logger.getLogger(RedeemServiceImpl.class);
+
+    @Autowired
+    private RedeemRepository repository;
 
     @Override
-    public void save(SystemDto dto) {
+    public void save(RedeemDto dto) {
 
     }
 
     @Override
-    public List<SystemDto> retrieveAll() {
+    public List<RedeemDto> retrieveAll() {
         return null;
     }
 }

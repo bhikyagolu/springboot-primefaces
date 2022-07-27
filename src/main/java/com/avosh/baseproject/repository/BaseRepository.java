@@ -9,9 +9,6 @@
 package com.avosh.baseproject.repository;
 
 import com.avosh.baseproject.entity.BaseEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

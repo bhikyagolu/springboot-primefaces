@@ -8,15 +8,20 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.dto.PostDto;
+import com.avosh.baseproject.repository.PostRepository;
 import com.avosh.baseproject.services.PostService;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
-
+    private static final Logger log = Logger.getLogger(PostServiceImpl.class);
+    @Autowired
+    PostRepository repository;
 
     @Override
     public void save(PostDto dto) {

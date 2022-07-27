@@ -8,12 +8,11 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +21,8 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger log = Logger.getLogger(UserServiceImpl.class);
+
     @Autowired
     UserRepository repository;
 

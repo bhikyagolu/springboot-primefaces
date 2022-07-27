@@ -8,7 +8,6 @@
 
 package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.entity.Message;
 import com.avosh.baseproject.entity.News;
 import org.springframework.stereotype.Repository;
 

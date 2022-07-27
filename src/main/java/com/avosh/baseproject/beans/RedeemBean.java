@@ -8,7 +8,14 @@
 
 package com.avosh.baseproject.beans;
 
-public class RedeemBean extends BaseBean{
+import com.avosh.baseproject.dto.RedeemDto;
+import com.avosh.baseproject.services.RedeemService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("request")
+public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     @Override
     public void insertRecord() {
 

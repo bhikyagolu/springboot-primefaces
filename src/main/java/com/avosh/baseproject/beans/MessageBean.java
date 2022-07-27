@@ -9,9 +9,7 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.MessageDto;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.services.MessageService;
-import com.avosh.baseproject.services.NewsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

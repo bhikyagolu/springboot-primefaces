@@ -8,12 +8,7 @@
 
 package com.avosh.baseproject.beans;
 
-import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.dto.NewsDto;
-import com.avosh.baseproject.dto.PostDto;
-import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
-import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.NewsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component

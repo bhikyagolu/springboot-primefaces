@@ -6,25 +6,11 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services.impl;
+package com.avosh.baseproject.services;
 
-import com.avosh.baseproject.dto.SystemDto;
-import com.avosh.baseproject.services.SystemService;
-import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
+import com.avosh.baseproject.dto.FinanceDto;
+import com.avosh.baseproject.entity.Finance;
+import com.avosh.baseproject.repository.FinanceRepository;
 
-import java.util.List;
-@Service
-public class SystemServiceImpl implements SystemService {
-    private static final Logger log = Logger.getLogger(SystemServiceImpl.class);
-
-    @Override
-    public void save(SystemDto dto) {
-
-    }
-
-    @Override
-    public List<SystemDto> retrieveAll() {
-        return null;
-    }
+public interface FinanceService extends BaseService<FinanceRepository, Finance, FinanceDto>{
 }

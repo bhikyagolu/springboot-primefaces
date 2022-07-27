@@ -8,11 +8,6 @@
 
 package com.avosh.baseproject.dto;
 
-import com.avosh.baseproject.entity.SecUser;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.time.Instant;
 
 public class SystemDto extends BaseDto{

@@ -14,12 +14,16 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.Date;
 
+@Component
+@Scope("request")
 public class ProfileBean extends BaseBean<UserService, UserDto> {
     private UploadedFile originalImageFile;
     private CroppedImage croppedImage;

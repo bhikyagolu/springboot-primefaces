@@ -11,6 +11,7 @@ package com.avosh.baseproject.services.impl;
 import com.avosh.baseproject.dto.MessageDto;
 import com.avosh.baseproject.repository.MessageRepository;
 import com.avosh.baseproject.services.MessageService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService {
+    private static final Logger log = Logger.getLogger(MessageServiceImpl.class);
+
     @Autowired
     MessageRepository repository;
 

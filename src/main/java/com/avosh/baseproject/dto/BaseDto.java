@@ -10,7 +10,7 @@ package com.avosh.baseproject.dto;
 
 import java.io.Serializable;
 
-public class BaseDto implements Serializable {
+public class BaseDto implements Serializable ,Comparable {
     protected Long id;
 
     public Long getId() {
@@ -19,5 +19,10 @@ public class BaseDto implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

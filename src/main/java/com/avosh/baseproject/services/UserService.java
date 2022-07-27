@@ -9,9 +9,7 @@
 package com.avosh.baseproject.services;
 
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.SecUser;
-import com.avosh.baseproject.repository.NewsRepository;
 import com.avosh.baseproject.repository.UserRepository;
 
 public interface UserService extends BaseService<UserRepository, SecUser, UserDto>{

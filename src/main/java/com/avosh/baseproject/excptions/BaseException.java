@@ -3,8 +3,6 @@ package com.avosh.baseproject.excptions;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -6,25 +6,11 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services.impl;
+package com.avosh.baseproject.services;
 
-import com.avosh.baseproject.dto.SystemDto;
-import com.avosh.baseproject.services.SystemService;
-import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
+import com.avosh.baseproject.dto.RedeemDto;
+import com.avosh.baseproject.entity.Redeem;
+import com.avosh.baseproject.repository.RedeemRepository;
 
-import java.util.List;
-@Service
-public class SystemServiceImpl implements SystemService {
-    private static final Logger log = Logger.getLogger(SystemServiceImpl.class);
-
-    @Override
-    public void save(SystemDto dto) {
-
-    }
-
-    @Override
-    public List<SystemDto> retrieveAll() {
-        return null;
-    }
+public interface RedeemService extends BaseService<RedeemRepository, Redeem, RedeemDto>{
 }

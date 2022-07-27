@@ -8,7 +8,14 @@
 
 package com.avosh.baseproject.beans;
 
-public class TransactionBean extends BaseBean {
+import com.avosh.baseproject.dto.FinanceDto;
+import com.avosh.baseproject.services.FinanceService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("request")
+public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
     @Override
     public void insertRecord() {
 

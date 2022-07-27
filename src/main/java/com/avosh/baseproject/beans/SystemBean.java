@@ -10,7 +10,11 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.SystemDto;
 import com.avosh.baseproject.services.SystemService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("request")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
     @Override
     public void insertRecord() {

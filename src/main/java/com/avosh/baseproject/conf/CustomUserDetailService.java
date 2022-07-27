@@ -1,9 +1,7 @@
 package com.avosh.baseproject.conf;
 
 
-
 import com.avosh.baseproject.dto.SecUserDto;
-
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.entity.SecUserRole;
 import com.avosh.baseproject.repository.RoleRepository;

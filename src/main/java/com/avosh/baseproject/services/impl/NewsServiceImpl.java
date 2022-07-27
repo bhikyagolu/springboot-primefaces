@@ -12,10 +12,10 @@ import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.News;
-
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.NewsRepository;
 import com.avosh.baseproject.services.NewsService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -25,6 +25,8 @@ import java.util.List;
 
 @Service
 public class NewsServiceImpl implements NewsService {
+    private static final Logger log = Logger.getLogger(NewsServiceImpl.class);
+
     @Autowired
     NewsRepository newRepository;
 

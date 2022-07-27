@@ -8,23 +8,28 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.SystemDto;
-import com.avosh.baseproject.services.SystemService;
+import com.avosh.baseproject.dto.FinanceDto;
+import com.avosh.baseproject.repository.FinanceRepository;
+import com.avosh.baseproject.services.FinanceService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class SystemServiceImpl implements SystemService {
-    private static final Logger log = Logger.getLogger(SystemServiceImpl.class);
+public class FinanceServiceImpl implements FinanceService {
+    private static final Logger log = Logger.getLogger(FinanceServiceImpl.class);
+    @Autowired
+    FinanceRepository repository;
 
     @Override
-    public void save(SystemDto dto) {
+    public void save(FinanceDto dto) {
 
     }
 
     @Override
-    public List<SystemDto> retrieveAll() {
+    public List<FinanceDto> retrieveAll() {
         return null;
     }
 }
