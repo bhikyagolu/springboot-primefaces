@@ -7,8 +7,19 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -19,7 +30,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "message")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m")})
+    @NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m")
+    , @NamedQuery(name = "Message.findById", query = "SELECT m FROM Message m WHERE m.id = :id")
+    , @NamedQuery(name = "Message.findByTitle", query = "SELECT m FROM Message m WHERE m.title = :title")
+    , @NamedQuery(name = "Message.findByMessage", query = "SELECT m FROM Message m WHERE m.message = :message")
+    , @NamedQuery(name = "Message.findByIsRead", query = "SELECT m FROM Message m WHERE m.isRead = :isRead")
+    , @NamedQuery(name = "Message.findByCreateDate", query = "SELECT m FROM Message m WHERE m.createDate = :createDate")
+    , @NamedQuery(name = "Message.findByType", query = "SELECT m FROM Message m WHERE m.type = :type")})
 public class Message implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -27,13 +44,7 @@ public class Message implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private long id;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id")
-    private long secUserId;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id1")
-    private long secUserId1;
+    private Long id;
     @Column(name = "title")
     private String title;
     @Column(name = "message")
@@ -43,38 +54,28 @@ public class Message implements BaseEntity {
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @Column(name = "type")
+    private Integer type;
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SecUser secUser;
-    @JoinColumn(name = "sec_user_id1", referencedColumnName = "id", insertable = false, updatable = false)
+    private SecUser secUserId;
+    @JoinColumn(name = "sec_user_id1", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SecUser secUser1;
+    private SecUser secUserId1;
 
     public Message() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public Message(Long id) {
         this.id = id;
     }
 
-    public long getSecUserId() {
-        return secUserId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
-    }
-
-    public long getSecUserId1() {
-        return secUserId1;
-    }
-
-    public void setSecUserId1(long secUserId1) {
-        this.secUserId1 = secUserId1;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -109,47 +110,53 @@ public class Message implements BaseEntity {
         this.createDate = createDate;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
+    public Integer getType() {
+        return type;
     }
 
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public SecUser getSecUser1() {
-        return secUser1;
+    public SecUser getSecUserId() {
+        return secUserId;
     }
 
-    public void setSecUser1(SecUser secUser1) {
-        this.secUser1 = secUser1;
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Message message1 = (Message) o;
-        return id == message1.id && secUserId == message1.secUserId && secUserId1 == message1.secUserId1 && Objects.equals(title, message1.title) && Objects.equals(message, message1.message) && Objects.equals(isRead, message1.isRead) && Objects.equals(createDate, message1.createDate) && Objects.equals(secUser, message1.secUser) && Objects.equals(secUser1, message1.secUser1);
+    public SecUser getSecUserId1() {
+        return secUserId1;
+    }
+
+    public void setSecUserId1(SecUser secUserId1) {
+        this.secUserId1 = secUserId1;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, secUserId, secUserId1, title, message, isRead, createDate, secUser, secUser1);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Message)) {
+            return false;
+        }
+        Message other = (Message) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", secUserId=" + secUserId +
-                ", secUserId1=" + secUserId1 +
-                ", title='" + title + '\'' +
-                ", message='" + message + '\'' +
-                ", isRead=" + isRead +
-                ", createDate=" + createDate +
-                ", secUser=" + secUser +
-                ", secUser1=" + secUser1 +
-                '}';
+        return "javaapplication1.Message[ id=" + id + " ]";
     }
+    
 }

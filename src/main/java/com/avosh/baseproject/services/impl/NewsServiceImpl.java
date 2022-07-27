@@ -38,7 +38,7 @@ public class NewsServiceImpl implements NewsService {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         News news = new News();
         news.setNews(((NewsDto)dto).getNews());
-        news.setSecUser(new SecUser(auth.getSecUser().getId()));
+        news.setSecUserId(new SecUser(auth.getSecUser().getId()));
         news.setBrif(((NewsDto)dto).getBrief());
         news.setTitle(((NewsDto)dto).getTitle());
         news.setCreateDate(((NewsDto)dto).getCreateDateTime());
@@ -52,8 +52,8 @@ public class NewsServiceImpl implements NewsService {
         for (News news : itr) {
             UserDto userDto = new UserDto();
             userDto.setId(news.getId());
-            userDto.setFamily(news.getSecUser().getFamily());
-            userDto.setName(news.getSecUser().getName());
+            userDto.setFamily(news.getSecUserId().getFamily());
+            userDto.setName(news.getSecUserId().getName());
             NewsDto newsDto = new NewsDto(news.getId(), news.getBrif(),
                     news.getNews(), news.getTitle(), news.getCreateDate(), userDto);
             newsDtoList.add(newsDto);

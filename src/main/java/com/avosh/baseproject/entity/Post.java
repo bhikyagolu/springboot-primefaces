@@ -7,8 +7,19 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,6 +29,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "post")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p")
+    , @NamedQuery(name = "Post.findById", query = "SELECT p FROM Post p WHERE p.id = :id")
+    , @NamedQuery(name = "Post.findByTitle", query = "SELECT p FROM Post p WHERE p.title = :title")
+    , @NamedQuery(name = "Post.findByBrief", query = "SELECT p FROM Post p WHERE p.brief = :brief")
+    , @NamedQuery(name = "Post.findByPost", query = "SELECT p FROM Post p WHERE p.post = :post")
+    , @NamedQuery(name = "Post.findByPhoto", query = "SELECT p FROM Post p WHERE p.photo = :photo")
+    , @NamedQuery(name = "Post.findByCreateDatetime", query = "SELECT p FROM Post p WHERE p.createDatetime = :createDatetime")
+    , @NamedQuery(name = "Post.findByType", query = "SELECT p FROM Post p WHERE p.type = :type")})
 public class Post implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -25,10 +45,7 @@ public class Post implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private int id;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id")
-    private long secUserId;
+    private Integer id;
     @Column(name = "title")
     private String title;
     @Column(name = "brief")
@@ -40,27 +57,25 @@ public class Post implements BaseEntity {
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @Column(name = "type")
+    private Integer type;
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SecUser secUser;
+    private SecUser secUserId;
 
     public Post() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public Post(Integer id) {
         this.id = id;
     }
 
-    public long getSecUserId() {
-        return secUserId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -103,38 +118,45 @@ public class Post implements BaseEntity {
         this.createDatetime = createDatetime;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
+    public Integer getType() {
+        return type;
     }
 
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Post)) return false;
-        Post post1 = (Post) o;
-        return getId() == post1.getId() && getSecUserId() == post1.getSecUserId() && Objects.equals(getTitle(), post1.getTitle()) && Objects.equals(getBrief(), post1.getBrief()) && Objects.equals(getPost(), post1.getPost()) && Objects.equals(getPhoto(), post1.getPhoto()) && Objects.equals(getCreateDatetime(), post1.getCreateDatetime()) && Objects.equals(getSecUser(), post1.getSecUser());
+    public SecUser getSecUserId() {
+        return secUserId;
+    }
+
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSecUserId(), getTitle(), getBrief(), getPost(), getPhoto(), getCreateDatetime(), getSecUser());
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Post)) {
+            return false;
+        }
+        Post other = (Post) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", secUserId=" + secUserId +
-                ", title='" + title + '\'' +
-                ", brief='" + brief + '\'' +
-                ", post='" + post + '\'' +
-                ", photo='" + photo + '\'' +
-                ", createDatetime=" + createDatetime +
-                ", secUser=" + secUser +
-                '}';
+        return "javaapplication1.Post[ id=" + id + " ]";
     }
+    
 }

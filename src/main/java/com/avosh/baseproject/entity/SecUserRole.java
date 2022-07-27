@@ -8,7 +8,19 @@ package com.avosh.baseproject.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,8 +30,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "sec_user_role")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SecUserRole.findAll", query = "SELECT s FROM SecUserRole s")})
 public class SecUserRole implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -50,28 +60,16 @@ public class SecUserRole implements BaseEntity {
     public SecUserRole() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public SecUserRole(Long id) {
         this.id = id;
     }
 
-    public long getSecUserId() {
-        return secUserId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
-    }
-
-    public long getSecRoleId() {
-        return secRoleId;
-    }
-
-    public void setSecRoleId(long secRoleId) {
-        this.secRoleId = secRoleId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getCreateDate() {
@@ -131,4 +129,5 @@ public class SecUserRole implements BaseEntity {
                 ", secUser=" + secUser +
                 '}';
     }
+    
 }

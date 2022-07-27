@@ -7,8 +7,19 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -19,7 +30,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "notification")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n")})
+    @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n")
+    , @NamedQuery(name = "Notification.findById", query = "SELECT n FROM Notification n WHERE n.id = :id")
+    , @NamedQuery(name = "Notification.findByTitle", query = "SELECT n FROM Notification n WHERE n.title = :title")
+    , @NamedQuery(name = "Notification.findByDescription", query = "SELECT n FROM Notification n WHERE n.description = :description")
+    , @NamedQuery(name = "Notification.findByCreateDate", query = "SELECT n FROM Notification n WHERE n.createDate = :createDate")
+    , @NamedQuery(name = "Notification.findByUpdateDate", query = "SELECT n FROM Notification n WHERE n.updateDate = :updateDate")
+    , @NamedQuery(name = "Notification.findByStartDate", query = "SELECT n FROM Notification n WHERE n.startDate = :startDate")
+    , @NamedQuery(name = "Notification.findByEndDate", query = "SELECT n FROM Notification n WHERE n.endDate = :endDate")})
 public class Notification implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -27,10 +45,7 @@ public class Notification implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private long id;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id")
-    private long secUserId;
+    private Long id;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
@@ -47,27 +62,23 @@ public class Notification implements BaseEntity {
     @Column(name = "end_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SecUser secUser;
+    private SecUser secUserId;
 
     public Notification() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public Notification(Long id) {
         this.id = id;
     }
 
-    public long getSecUserId() {
-        return secUserId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -118,39 +129,37 @@ public class Notification implements BaseEntity {
         this.endDate = endDate;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
+    public SecUser getSecUserId() {
+        return secUserId;
     }
 
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Notification that = (Notification) o;
-        return id == that.id && secUserId == that.secUserId && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(createDate, that.createDate) && Objects.equals(updateDate, that.updateDate) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(secUser, that.secUser);
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, secUserId, title, description, createDate, updateDate, startDate, endDate, secUser);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Notification)) {
+            return false;
+        }
+        Notification other = (Notification) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Notification{" +
-                "id=" + id +
-                ", secUserId=" + secUserId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", createDate=" + createDate +
-                ", updateDate=" + updateDate +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", secUser=" + secUser +
-                '}';
+        return "javaapplication1.Notification[ id=" + id + " ]";
     }
+    
 }

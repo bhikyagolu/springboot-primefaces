@@ -7,8 +7,19 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,6 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "system")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "System.findAll", query = "SELECT s FROM System s")
+    , @NamedQuery(name = "System.findById", query = "SELECT s FROM System s WHERE s.id = :id")
+    , @NamedQuery(name = "System.findByDescription", query = "SELECT s FROM System s WHERE s.description = :description")
+    , @NamedQuery(name = "System.findByEnable", query = "SELECT s FROM System s WHERE s.enable = :enable")
+    , @NamedQuery(name = "System.findByVersion", query = "SELECT s FROM System s WHERE s.version = :version")
+    , @NamedQuery(name = "System.findByMinVersion", query = "SELECT s FROM System s WHERE s.minVersion = :minVersion")
+    , @NamedQuery(name = "System.findByCreateDatetime", query = "SELECT s FROM System s WHERE s.createDatetime = :createDatetime")})
 public class System implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -25,10 +44,7 @@ public class System implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private long id;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id")
-    private long secUserId;
+    private Long id;
     @Column(name = "description")
     private String description;
     @Column(name = "enable")
@@ -40,27 +56,23 @@ public class System implements BaseEntity {
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SecUser secUser;
+    private SecUser secUserId;
 
     public System() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public System(Long id) {
         this.id = id;
     }
 
-    public long getSecUserId() {
-        return secUserId;
+    public Long getId() {
+        return id;
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -103,38 +115,37 @@ public class System implements BaseEntity {
         this.createDatetime = createDatetime;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
+    public SecUser getSecUserId() {
+        return secUserId;
     }
 
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof System)) return false;
-        System system = (System) o;
-        return getId() == system.getId() && getSecUserId() == system.getSecUserId() && Objects.equals(getDescription(), system.getDescription()) && Objects.equals(getEnable(), system.getEnable()) && Objects.equals(getVersion(), system.getVersion()) && Objects.equals(getMinVersion(), system.getMinVersion()) && Objects.equals(getCreateDatetime(), system.getCreateDatetime()) && Objects.equals(getSecUser(), system.getSecUser());
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSecUserId(), getDescription(), getEnable(), getVersion(), getMinVersion(), getCreateDatetime(), getSecUser());
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof System)) {
+            return false;
+        }
+        System other = (System) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "System{" +
-                "id=" + id +
-                ", secUserId=" + secUserId +
-                ", description='" + description + '\'' +
-                ", enable=" + enable +
-                ", version=" + version +
-                ", minVersion=" + minVersion +
-                ", createDatetime=" + createDatetime +
-                ", secUser=" + secUser +
-                '}';
+        return "javaapplication1.System[ id=" + id + " ]";
     }
+    
 }

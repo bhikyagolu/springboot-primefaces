@@ -6,12 +6,21 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -21,17 +30,21 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "news")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n")})
+    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n")
+    , @NamedQuery(name = "News.findById", query = "SELECT n FROM News n WHERE n.id = :id")
+    , @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title")
+    , @NamedQuery(name = "News.findByBrif", query = "SELECT n FROM News n WHERE n.brif = :brif")
+    , @NamedQuery(name = "News.findByNews", query = "SELECT n FROM News n WHERE n.news = :news")
+    , @NamedQuery(name = "News.findByCreateDate", query = "SELECT n FROM News n WHERE n.createDate = :createDate")
+    , @NamedQuery(name = "News.findByType", query = "SELECT n FROM News n WHERE n.type = :type")})
 public class News implements BaseEntity {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Basic(optional = false)
-    @Column(name = "sec_user_id")
-    private long secUserId;
     @Column(name = "title")
     private String title;
     @Column(name = "brif")
@@ -41,15 +54,17 @@ public class News implements BaseEntity {
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-    @Column(name = "update_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateDate;
-    @JoinColumn(name = "sec_user_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = true)
-    private SecUser secUser;
-
+    @Column(name = "type")
+    private Integer type;
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SecUser secUserId;
 
     public News() {
+    }
+
+    public News(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -58,14 +73,6 @@ public class News implements BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public long getSecUserId() {
-        return secUserId;
-    }
-
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
     }
 
     public String getTitle() {
@@ -100,34 +107,40 @@ public class News implements BaseEntity {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public Integer getType() {
+        return type;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public SecUser getSecUser() {
-        return secUser;
+    public SecUser getSecUserId() {
+        return secUserId;
     }
 
-    public void setSecUser(SecUser secUser) {
-        this.secUser = secUser;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof News)) return false;
-        News news1 = (News) o;
-        return getSecUserId() == news1.getSecUserId() && Objects.equals(getId(), news1.getId()) && Objects.equals(getTitle(), news1.getTitle()) && Objects.equals(getBrif(), news1.getBrif()) && Objects.equals(getNews(), news1.getNews()) && Objects.equals(getCreateDate(), news1.getCreateDate()) && Objects.equals(getUpdateDate(), news1.getUpdateDate()) && Objects.equals(getSecUser(), news1.getSecUser());
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSecUserId(), getTitle(), getBrif(), getNews(), getCreateDate(), getUpdateDate(), getSecUser());
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof News)) {
+            return false;
+        }
+        News other = (News) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override

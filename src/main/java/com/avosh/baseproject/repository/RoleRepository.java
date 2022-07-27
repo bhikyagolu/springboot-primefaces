@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RoleRepository extends BaseRepository<SecUserRole, Long> {
-    SecUserRole findBySecUserId(Long Integer);
+    SecUserRole findBySecUserId(Long id);
 
 }

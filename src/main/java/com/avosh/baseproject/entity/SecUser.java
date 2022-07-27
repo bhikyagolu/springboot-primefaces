@@ -5,11 +5,23 @@
  */
 package com.avosh.baseproject.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.Collection;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -18,8 +30,6 @@ import java.util.Date;
 @Entity
 @Table(name = "sec_user")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SecUser.findAll", query = "SELECT s FROM SecUser s")})
 public class SecUser implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -63,20 +73,26 @@ public class SecUser implements BaseEntity {
     private Date updateDate;
     @Column(name = "token")
     private String token;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<News> newsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<Notification> notificationCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<System> systemCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<Post> postCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<RedeemUser> redeemUserCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<Redeem> redeemCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<Message> messageCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId1")
     private Collection<Message> messageCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private Collection<SecUserRole> secUserRoleCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private Collection<Finance> financeCollection;
 
     public SecUser() {
     }
@@ -181,7 +197,7 @@ public class SecUser implements BaseEntity {
         this.isLogin = isLogin;
     }
 
-    public Boolean getEnable() {
+    public Boolean getIsEnable() {
         return isEnable;
     }
 
@@ -258,6 +274,24 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
+    public Collection<RedeemUser> getRedeemUserCollection() {
+        return redeemUserCollection;
+    }
+
+    public void setRedeemUserCollection(Collection<RedeemUser> redeemUserCollection) {
+        this.redeemUserCollection = redeemUserCollection;
+    }
+
+    @XmlTransient
+    public Collection<Redeem> getRedeemCollection() {
+        return redeemCollection;
+    }
+
+    public void setRedeemCollection(Collection<Redeem> redeemCollection) {
+        this.redeemCollection = redeemCollection;
+    }
+
+    @XmlTransient
     public Collection<Message> getMessageCollection() {
         return messageCollection;
     }
@@ -284,6 +318,15 @@ public class SecUser implements BaseEntity {
         this.secUserRoleCollection = secUserRoleCollection;
     }
 
+    @XmlTransient
+    public Collection<Finance> getFinanceCollection() {
+        return financeCollection;
+    }
+
+    public void setFinanceCollection(Collection<Finance> financeCollection) {
+        this.financeCollection = financeCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -308,5 +351,5 @@ public class SecUser implements BaseEntity {
     public String toString() {
         return "javaapplication1.SecUser[ id=" + id + " ]";
     }
-
+    
 }

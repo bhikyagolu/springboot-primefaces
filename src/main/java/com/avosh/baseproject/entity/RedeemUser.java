@@ -9,12 +9,13 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,61 +30,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author amirk
  */
 @Entity
-@Table(name = "sec_role")
+@Table(name = "redeem_user")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SecRole.findAll", query = "SELECT s FROM SecRole s")
-    , @NamedQuery(name = "SecRole.findById", query = "SELECT s FROM SecRole s WHERE s.id = :id")
-    , @NamedQuery(name = "SecRole.findByRole", query = "SELECT s FROM SecRole s WHERE s.role = :role")
-    , @NamedQuery(name = "SecRole.findByTitle", query = "SELECT s FROM SecRole s WHERE s.title = :title")
-    , @NamedQuery(name = "SecRole.findByCreateDate", query = "SELECT s FROM SecRole s WHERE s.createDate = :createDate")})
-public class SecRole implements BaseEntity {
+    @NamedQuery(name = "RedeemUser.findAll", query = "SELECT r FROM RedeemUser r")
+    , @NamedQuery(name = "RedeemUser.findById", query = "SELECT r FROM RedeemUser r WHERE r.id = :id")
+    , @NamedQuery(name = "RedeemUser.findByCreateDate", query = "SELECT r FROM RedeemUser r WHERE r.createDate = :createDate")})
+public class RedeemUser implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
-    @Column(name = "role")
-    private String role;
-    @Column(name = "title")
-    private String title;
+    private Integer id;
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secRoleId")
-    private Collection<SecUserRole> secUserRoleCollection;
+    @JoinColumn(name = "redeem_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Redeem redeemId;
+    @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SecUser secUserId;
+    @OneToMany(mappedBy = "redeemUserId")
+    private Collection<Finance> financeCollection;
 
-    public SecRole() {
+    public RedeemUser() {
     }
 
-    public SecRole(Long id) {
+    public RedeemUser(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Date getCreateDate() {
@@ -94,13 +79,29 @@ public class SecRole implements BaseEntity {
         this.createDate = createDate;
     }
 
-    @XmlTransient
-    public Collection<SecUserRole> getSecUserRoleCollection() {
-        return secUserRoleCollection;
+    public Redeem getRedeemId() {
+        return redeemId;
     }
 
-    public void setSecUserRoleCollection(Collection<SecUserRole> secUserRoleCollection) {
-        this.secUserRoleCollection = secUserRoleCollection;
+    public void setRedeemId(Redeem redeemId) {
+        this.redeemId = redeemId;
+    }
+
+    public SecUser getSecUserId() {
+        return secUserId;
+    }
+
+    public void setSecUserId(SecUser secUserId) {
+        this.secUserId = secUserId;
+    }
+
+    @XmlTransient
+    public Collection<Finance> getFinanceCollection() {
+        return financeCollection;
+    }
+
+    public void setFinanceCollection(Collection<Finance> financeCollection) {
+        this.financeCollection = financeCollection;
     }
 
     @Override
@@ -113,10 +114,10 @@ public class SecRole implements BaseEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SecRole)) {
+        if (!(object instanceof RedeemUser)) {
             return false;
         }
-        SecRole other = (SecRole) object;
+        RedeemUser other = (RedeemUser) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -125,7 +126,7 @@ public class SecRole implements BaseEntity {
 
     @Override
     public String toString() {
-        return "javaapplication1.SecRole[ id=" + id + " ]";
+        return "javaapplication1.RedeemUser[ id=" + id + " ]";
     }
     
 }
