@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,13 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "bank")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Bank.findAll", query = "SELECT b FROM Bank b")
-    , @NamedQuery(name = "Bank.findById", query = "SELECT b FROM Bank b WHERE b.id = :id")
-    , @NamedQuery(name = "Bank.findByToken", query = "SELECT b FROM Bank b WHERE b.token = :token")
-    , @NamedQuery(name = "Bank.findByDateTime", query = "SELECT b FROM Bank b WHERE b.dateTime = :dateTime")
-    , @NamedQuery(name = "Bank.findByAmount", query = "SELECT b FROM Bank b WHERE b.amount = :amount")
-    , @NamedQuery(name = "Bank.findByStatus", query = "SELECT b FROM Bank b WHERE b.status = :status")})
 public class Bank implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -55,7 +48,7 @@ public class Bank implements BaseEntity {
     @Column(name = "status")
     private Short status;
     @OneToMany(mappedBy = "bankId")
-    private Collection<Finance> financeCollection;
+    private List<Finance> financeList;
 
     public Bank() {
     }
@@ -105,12 +98,12 @@ public class Bank implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Finance> getFinanceCollection() {
-        return financeCollection;
+    public List<Finance> getFinanceList() {
+        return financeList;
     }
 
-    public void setFinanceCollection(Collection<Finance> financeCollection) {
-        this.financeCollection = financeCollection;
+    public void setFinanceList(List<Finance> financeList) {
+        this.financeList = financeList;
     }
 
     @Override

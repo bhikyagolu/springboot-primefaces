@@ -26,9 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "user_package")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "UserPackage.findAll", query = "SELECT u FROM UserPackage u")
-    , @NamedQuery(name = "UserPackage.findById", query = "SELECT u FROM UserPackage u WHERE u.id = :id")})
 public class UserPackage implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,10 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "session")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Session.findAll", query = "SELECT s FROM Session s")
-    , @NamedQuery(name = "Session.findById", query = "SELECT s FROM Session s WHERE s.id = :id")
-    , @NamedQuery(name = "Session.findByDateTime", query = "SELECT s FROM Session s WHERE s.dateTime = :dateTime")})
 public class Session implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -55,7 +51,7 @@ public class Session implements BaseEntity {
     @ManyToOne(optional = false)
     private SecUser secUserId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sessionId")
-    private Collection<SessionQuestion> sessionQuestionCollection;
+    private List<SessionQuestion> sessionQuestionList;
 
     public Session() {
     }
@@ -97,12 +93,12 @@ public class Session implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<SessionQuestion> getSessionQuestionCollection() {
-        return sessionQuestionCollection;
+    public List<SessionQuestion> getSessionQuestionList() {
+        return sessionQuestionList;
     }
 
-    public void setSessionQuestionCollection(Collection<SessionQuestion> sessionQuestionCollection) {
-        this.sessionQuestionCollection = sessionQuestionCollection;
+    public void setSessionQuestionList(List<SessionQuestion> sessionQuestionList) {
+        this.sessionQuestionList = sessionQuestionList;
     }
 
     @Override

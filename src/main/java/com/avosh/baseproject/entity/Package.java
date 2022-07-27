@@ -7,7 +7,7 @@ package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -34,15 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "package")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Package.findAll", query = "SELECT p FROM Package p")
-    , @NamedQuery(name = "Package.findById", query = "SELECT p FROM Package p WHERE p.id = :id")
-    , @NamedQuery(name = "Package.findByTitle", query = "SELECT p FROM Package p WHERE p.title = :title")
-    , @NamedQuery(name = "Package.findByDesc", query = "SELECT p FROM Package p WHERE p.desc = :desc")
-    , @NamedQuery(name = "Package.findByFee", query = "SELECT p FROM Package p WHERE p.fee = :fee")
-    , @NamedQuery(name = "Package.findByDiscount", query = "SELECT p FROM Package p WHERE p.discount = :discount")
-    , @NamedQuery(name = "Package.findByEndDiscount", query = "SELECT p FROM Package p WHERE p.endDiscount = :endDiscount")
-    , @NamedQuery(name = "Package.findByPicture", query = "SELECT p FROM Package p WHERE p.picture = :picture")})
 public class Package implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -68,7 +59,7 @@ public class Package implements BaseEntity {
     @ManyToOne(optional = false)
     private SubLesson subLessonId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "packageId")
-    private Collection<UserPackage> userPackageCollection;
+    private List<UserPackage> userPackageList;
 
     public Package() {
     }
@@ -142,12 +133,12 @@ public class Package implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<UserPackage> getUserPackageCollection() {
-        return userPackageCollection;
+    public List<UserPackage> getUserPackageList() {
+        return userPackageList;
     }
 
-    public void setUserPackageCollection(Collection<UserPackage> userPackageCollection) {
-        this.userPackageCollection = userPackageCollection;
+    public void setUserPackageList(List<UserPackage> userPackageList) {
+        this.userPackageList = userPackageList;
     }
 
     @Override

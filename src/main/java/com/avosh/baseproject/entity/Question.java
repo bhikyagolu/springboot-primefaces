@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,14 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "question")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q")
-    , @NamedQuery(name = "Question.findById", query = "SELECT q FROM Question q WHERE q.id = :id")
-    , @NamedQuery(name = "Question.findByQuestion", query = "SELECT q FROM Question q WHERE q.question = :question")
-    , @NamedQuery(name = "Question.findByHasVoice", query = "SELECT q FROM Question q WHERE q.hasVoice = :hasVoice")
-    , @NamedQuery(name = "Question.findByHasVideo", query = "SELECT q FROM Question q WHERE q.hasVideo = :hasVideo")
-    , @NamedQuery(name = "Question.findByPicture", query = "SELECT q FROM Question q WHERE q.picture = :picture")
-    , @NamedQuery(name = "Question.findByCreateDate", query = "SELECT q FROM Question q WHERE q.createDate = :createDate")})
 public class Question implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -65,9 +57,9 @@ public class Question implements BaseEntity {
     @ManyToOne(optional = false)
     private SubLesson subLessonId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private Collection<Answer> answerCollection;
+    private List<Answer> answerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private Collection<SessionQuestion> sessionQuestionCollection;
+    private List<SessionQuestion> sessionQuestionList;
 
     public Question() {
     }
@@ -138,21 +130,21 @@ public class Question implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Answer> getAnswerCollection() {
-        return answerCollection;
+    public List<Answer> getAnswerList() {
+        return answerList;
     }
 
-    public void setAnswerCollection(Collection<Answer> answerCollection) {
-        this.answerCollection = answerCollection;
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
     }
 
     @XmlTransient
-    public Collection<SessionQuestion> getSessionQuestionCollection() {
-        return sessionQuestionCollection;
+    public List<SessionQuestion> getSessionQuestionList() {
+        return sessionQuestionList;
     }
 
-    public void setSessionQuestionCollection(Collection<SessionQuestion> sessionQuestionCollection) {
-        this.sessionQuestionCollection = sessionQuestionCollection;
+    public void setSessionQuestionList(List<SessionQuestion> sessionQuestionList) {
+        this.sessionQuestionList = sessionQuestionList;
     }
 
     @Override

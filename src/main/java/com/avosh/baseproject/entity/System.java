@@ -29,14 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "system")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "System.findAll", query = "SELECT s FROM System s")
-    , @NamedQuery(name = "System.findById", query = "SELECT s FROM System s WHERE s.id = :id")
-    , @NamedQuery(name = "System.findByDescription", query = "SELECT s FROM System s WHERE s.description = :description")
-    , @NamedQuery(name = "System.findByEnable", query = "SELECT s FROM System s WHERE s.enable = :enable")
-    , @NamedQuery(name = "System.findByVersion", query = "SELECT s FROM System s WHERE s.version = :version")
-    , @NamedQuery(name = "System.findByMinVersion", query = "SELECT s FROM System s WHERE s.minVersion = :minVersion")
-    , @NamedQuery(name = "System.findByCreateDatetime", query = "SELECT s FROM System s WHERE s.createDatetime = :createDatetime")})
 public class System implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

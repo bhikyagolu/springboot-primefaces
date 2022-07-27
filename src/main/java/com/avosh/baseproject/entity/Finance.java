@@ -30,11 +30,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "finance")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Finance.findAll", query = "SELECT f FROM Finance f")
-    , @NamedQuery(name = "Finance.findById", query = "SELECT f FROM Finance f WHERE f.id = :id")
-    , @NamedQuery(name = "Finance.findByDesc", query = "SELECT f FROM Finance f WHERE f.desc = :desc")
-    , @NamedQuery(name = "Finance.findByAmount", query = "SELECT f FROM Finance f WHERE f.amount = :amount")})
 public class Finance implements BaseEntity {
 
     @Column(name = "create_datetime")

@@ -26,11 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "answer")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a")
-    , @NamedQuery(name = "Answer.findById", query = "SELECT a FROM Answer a WHERE a.id = :id")
-    , @NamedQuery(name = "Answer.findByAnswer", query = "SELECT a FROM Answer a WHERE a.answer = :answer")
-    , @NamedQuery(name = "Answer.findByIsTrue", query = "SELECT a FROM Answer a WHERE a.isTrue = :isTrue")})
 public class Answer implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

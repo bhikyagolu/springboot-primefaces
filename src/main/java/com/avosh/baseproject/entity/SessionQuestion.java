@@ -26,10 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "session_question")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SessionQuestion.findAll", query = "SELECT s FROM SessionQuestion s")
-    , @NamedQuery(name = "SessionQuestion.findById", query = "SELECT s FROM SessionQuestion s WHERE s.id = :id")
-    , @NamedQuery(name = "SessionQuestion.findByCorrect", query = "SELECT s FROM SessionQuestion s WHERE s.correct = :correct")})
 public class SessionQuestion implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

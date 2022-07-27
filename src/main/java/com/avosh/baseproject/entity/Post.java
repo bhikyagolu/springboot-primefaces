@@ -29,15 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "post")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p")
-    , @NamedQuery(name = "Post.findById", query = "SELECT p FROM Post p WHERE p.id = :id")
-    , @NamedQuery(name = "Post.findByTitle", query = "SELECT p FROM Post p WHERE p.title = :title")
-    , @NamedQuery(name = "Post.findByBrief", query = "SELECT p FROM Post p WHERE p.brief = :brief")
-    , @NamedQuery(name = "Post.findByPost", query = "SELECT p FROM Post p WHERE p.post = :post")
-    , @NamedQuery(name = "Post.findByPhoto", query = "SELECT p FROM Post p WHERE p.photo = :photo")
-    , @NamedQuery(name = "Post.findByCreateDatetime", query = "SELECT p FROM Post p WHERE p.createDatetime = :createDatetime")
-    , @NamedQuery(name = "Post.findByType", query = "SELECT p FROM Post p WHERE p.type = :type")})
 public class Post implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

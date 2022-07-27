@@ -29,14 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "message")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m")
-    , @NamedQuery(name = "Message.findById", query = "SELECT m FROM Message m WHERE m.id = :id")
-    , @NamedQuery(name = "Message.findByTitle", query = "SELECT m FROM Message m WHERE m.title = :title")
-    , @NamedQuery(name = "Message.findByMessage", query = "SELECT m FROM Message m WHERE m.message = :message")
-    , @NamedQuery(name = "Message.findByIsRead", query = "SELECT m FROM Message m WHERE m.isRead = :isRead")
-    , @NamedQuery(name = "Message.findByCreateDate", query = "SELECT m FROM Message m WHERE m.createDate = :createDate")
-    , @NamedQuery(name = "Message.findByType", query = "SELECT m FROM Message m WHERE m.type = :type")})
 public class Message implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

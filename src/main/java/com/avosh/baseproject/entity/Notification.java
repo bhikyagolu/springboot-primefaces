@@ -29,15 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "notification")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n")
-    , @NamedQuery(name = "Notification.findById", query = "SELECT n FROM Notification n WHERE n.id = :id")
-    , @NamedQuery(name = "Notification.findByTitle", query = "SELECT n FROM Notification n WHERE n.title = :title")
-    , @NamedQuery(name = "Notification.findByDescription", query = "SELECT n FROM Notification n WHERE n.description = :description")
-    , @NamedQuery(name = "Notification.findByCreateDate", query = "SELECT n FROM Notification n WHERE n.createDate = :createDate")
-    , @NamedQuery(name = "Notification.findByUpdateDate", query = "SELECT n FROM Notification n WHERE n.updateDate = :updateDate")
-    , @NamedQuery(name = "Notification.findByStartDate", query = "SELECT n FROM Notification n WHERE n.startDate = :startDate")
-    , @NamedQuery(name = "Notification.findByEndDate", query = "SELECT n FROM Notification n WHERE n.endDate = :endDate")})
 public class Notification implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

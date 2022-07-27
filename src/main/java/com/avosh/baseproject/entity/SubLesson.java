@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,13 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "sub_lesson")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SubLesson.findAll", query = "SELECT s FROM SubLesson s")
-    , @NamedQuery(name = "SubLesson.findById", query = "SELECT s FROM SubLesson s WHERE s.id = :id")
-    , @NamedQuery(name = "SubLesson.findByTitle", query = "SELECT s FROM SubLesson s WHERE s.title = :title")
-    , @NamedQuery(name = "SubLesson.findByDesc", query = "SELECT s FROM SubLesson s WHERE s.desc = :desc")
-    , @NamedQuery(name = "SubLesson.findByLevel", query = "SELECT s FROM SubLesson s WHERE s.level = :level")
-    , @NamedQuery(name = "SubLesson.findByCreateDateTime", query = "SELECT s FROM SubLesson s WHERE s.createDateTime = :createDateTime")})
 public class SubLesson implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -58,16 +51,16 @@ public class SubLesson implements BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDateTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subLessonId")
-    private Collection<Package> packageCollection;
+    private List<Package> packageList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subLessonId")
-    private Collection<Question> questionCollection;
+    private List<Question> questionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subLessonId")
-    private Collection<Session> sessionCollection;
+    private List<Session> sessionList;
     @JoinColumn(name = "lesson_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Lesson lessonId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subLessonId")
-    private Collection<SubLesson> subLessonCollection;
+    private List<SubLesson> subLessonList;
     @JoinColumn(name = "sub_lesson_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SubLesson subLessonId;
@@ -75,7 +68,7 @@ public class SubLesson implements BaseEntity {
     @ManyToOne(optional = false)
     private SecUser secUserId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "subLessonId")
-    private Collection<Library> libraryCollection;
+    private List<Library> libraryList;
 
     public SubLesson() {
     }
@@ -125,30 +118,30 @@ public class SubLesson implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Package> getPackageCollection() {
-        return packageCollection;
+    public List<Package> getPackageList() {
+        return packageList;
     }
 
-    public void setPackageCollection(Collection<Package> packageCollection) {
-        this.packageCollection = packageCollection;
-    }
-
-    @XmlTransient
-    public Collection<Question> getQuestionCollection() {
-        return questionCollection;
-    }
-
-    public void setQuestionCollection(Collection<Question> questionCollection) {
-        this.questionCollection = questionCollection;
+    public void setPackageList(List<Package> packageList) {
+        this.packageList = packageList;
     }
 
     @XmlTransient
-    public Collection<Session> getSessionCollection() {
-        return sessionCollection;
+    public List<Question> getQuestionList() {
+        return questionList;
     }
 
-    public void setSessionCollection(Collection<Session> sessionCollection) {
-        this.sessionCollection = sessionCollection;
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
+    @XmlTransient
+    public List<Session> getSessionList() {
+        return sessionList;
+    }
+
+    public void setSessionList(List<Session> sessionList) {
+        this.sessionList = sessionList;
     }
 
     public Lesson getLessonId() {
@@ -160,12 +153,12 @@ public class SubLesson implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<SubLesson> getSubLessonCollection() {
-        return subLessonCollection;
+    public List<SubLesson> getSubLessonList() {
+        return subLessonList;
     }
 
-    public void setSubLessonCollection(Collection<SubLesson> subLessonCollection) {
-        this.subLessonCollection = subLessonCollection;
+    public void setSubLessonList(List<SubLesson> subLessonList) {
+        this.subLessonList = subLessonList;
     }
 
     public SubLesson getSubLessonId() {
@@ -185,12 +178,12 @@ public class SubLesson implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Library> getLibraryCollection() {
-        return libraryCollection;
+    public List<Library> getLibraryList() {
+        return libraryList;
     }
 
-    public void setLibraryCollection(Collection<Library> libraryCollection) {
-        this.libraryCollection = libraryCollection;
+    public void setLibraryList(List<Library> libraryList) {
+        this.libraryList = libraryList;
     }
 
     @Override

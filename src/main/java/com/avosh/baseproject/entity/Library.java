@@ -26,11 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "library")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Library.findAll", query = "SELECT l FROM Library l")
-    , @NamedQuery(name = "Library.findById", query = "SELECT l FROM Library l WHERE l.id = :id")
-    , @NamedQuery(name = "Library.findByType", query = "SELECT l FROM Library l WHERE l.type = :type")
-    , @NamedQuery(name = "Library.findByName", query = "SELECT l FROM Library l WHERE l.name = :name")})
 public class Library implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

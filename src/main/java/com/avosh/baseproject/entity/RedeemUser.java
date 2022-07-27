@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,10 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "redeem_user")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RedeemUser.findAll", query = "SELECT r FROM RedeemUser r")
-    , @NamedQuery(name = "RedeemUser.findById", query = "SELECT r FROM RedeemUser r WHERE r.id = :id")
-    , @NamedQuery(name = "RedeemUser.findByCreateDate", query = "SELECT r FROM RedeemUser r WHERE r.createDate = :createDate")})
 public class RedeemUser implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -54,7 +50,7 @@ public class RedeemUser implements BaseEntity {
     @ManyToOne(optional = false)
     private SecUser secUserId;
     @OneToMany(mappedBy = "redeemUserId")
-    private Collection<Finance> financeCollection;
+    private List<Finance> financeList;
 
     public RedeemUser() {
     }
@@ -96,12 +92,12 @@ public class RedeemUser implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Finance> getFinanceCollection() {
-        return financeCollection;
+    public List<Finance> getFinanceList() {
+        return financeList;
     }
 
-    public void setFinanceCollection(Collection<Finance> financeCollection) {
-        this.financeCollection = financeCollection;
+    public void setFinanceList(List<Finance> financeList) {
+        this.financeList = financeList;
     }
 
     @Override

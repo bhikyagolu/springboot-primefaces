@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,17 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "redeem")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Redeem.findAll", query = "SELECT r FROM Redeem r")
-    , @NamedQuery(name = "Redeem.findById", query = "SELECT r FROM Redeem r WHERE r.id = :id")
-    , @NamedQuery(name = "Redeem.findByTitle", query = "SELECT r FROM Redeem r WHERE r.title = :title")
-    , @NamedQuery(name = "Redeem.findByDesc", query = "SELECT r FROM Redeem r WHERE r.desc = :desc")
-    , @NamedQuery(name = "Redeem.findByCode", query = "SELECT r FROM Redeem r WHERE r.code = :code")
-    , @NamedQuery(name = "Redeem.findByExpireDate", query = "SELECT r FROM Redeem r WHERE r.expireDate = :expireDate")
-    , @NamedQuery(name = "Redeem.findByStartDate", query = "SELECT r FROM Redeem r WHERE r.startDate = :startDate")
-    , @NamedQuery(name = "Redeem.findByMultiple", query = "SELECT r FROM Redeem r WHERE r.multiple = :multiple")
-    , @NamedQuery(name = "Redeem.findByCount", query = "SELECT r FROM Redeem r WHERE r.count = :count")
-    , @NamedQuery(name = "Redeem.findByCreateDate", query = "SELECT r FROM Redeem r WHERE r.createDate = :createDate")})
 public class Redeem implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -72,7 +61,7 @@ public class Redeem implements BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "redeemId")
-    private Collection<RedeemUser> redeemUserCollection;
+    private List<RedeemUser> redeemUserList;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
@@ -157,12 +146,12 @@ public class Redeem implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<RedeemUser> getRedeemUserCollection() {
-        return redeemUserCollection;
+    public List<RedeemUser> getRedeemUserList() {
+        return redeemUserList;
     }
 
-    public void setRedeemUserCollection(Collection<RedeemUser> redeemUserCollection) {
-        this.redeemUserCollection = redeemUserCollection;
+    public void setRedeemUserList(List<RedeemUser> redeemUserList) {
+        this.redeemUserList = redeemUserList;
     }
 
     public SecUser getSecUserId() {

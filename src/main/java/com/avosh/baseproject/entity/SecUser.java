@@ -5,7 +5,7 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -30,35 +30,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "sec_user")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SecUser.findAll", query = "SELECT s FROM SecUser s")
-    , @NamedQuery(name = "SecUser.findById", query = "SELECT s FROM SecUser s WHERE s.id = :id")
-    , @NamedQuery(name = "SecUser.findByName", query = "SELECT s FROM SecUser s WHERE s.name = :name")
-    , @NamedQuery(name = "SecUser.findByFamily", query = "SELECT s FROM SecUser s WHERE s.family = :family")
-    , @NamedQuery(name = "SecUser.findByGender", query = "SELECT s FROM SecUser s WHERE s.gender = :gender")
-    , @NamedQuery(name = "SecUser.findByCellphone", query = "SELECT s FROM SecUser s WHERE s.cellphone = :cellphone")
-    , @NamedQuery(name = "SecUser.findByPhone", query = "SELECT s FROM SecUser s WHERE s.phone = :phone")
-    , @NamedQuery(name = "SecUser.findByEmail", query = "SELECT s FROM SecUser s WHERE s.email = :email")
-    , @NamedQuery(name = "SecUser.findByAddress", query = "SELECT s FROM SecUser s WHERE s.address = :address")
-    , @NamedQuery(name = "SecUser.findByPassword", query = "SELECT s FROM SecUser s WHERE s.password = :password")
-    , @NamedQuery(name = "SecUser.findByNationalcode", query = "SELECT s FROM SecUser s WHERE s.nationalcode = :nationalcode")
-    , @NamedQuery(name = "SecUser.findByAbout", query = "SELECT s FROM SecUser s WHERE s.about = :about")
-    , @NamedQuery(name = "SecUser.findByIsLogin", query = "SELECT s FROM SecUser s WHERE s.isLogin = :isLogin")
-    , @NamedQuery(name = "SecUser.findByIsEnable", query = "SELECT s FROM SecUser s WHERE s.isEnable = :isEnable")
-    , @NamedQuery(name = "SecUser.findByLastLogin", query = "SELECT s FROM SecUser s WHERE s.lastLogin = :lastLogin")
-    , @NamedQuery(name = "SecUser.findByCreateDate", query = "SELECT s FROM SecUser s WHERE s.createDate = :createDate")
-    , @NamedQuery(name = "SecUser.findByUpdateDate", query = "SELECT s FROM SecUser s WHERE s.updateDate = :updateDate")
-    , @NamedQuery(name = "SecUser.findByToken", query = "SELECT s FROM SecUser s WHERE s.token = :token")})
 public class SecUser implements BaseEntity {
 
     @Column(name = "iban")
     private String iban;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Session> sessionCollection;
+    private List<Session> sessionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<UserPackage> userPackageCollection;
+    private List<UserPackage> userPackageList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<SubLesson> subLessonCollection;
+    private List<SubLesson> subLessonList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,25 +83,25 @@ public class SecUser implements BaseEntity {
     @Column(name = "token")
     private String token;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<News> newsCollection;
+    private List<News> newsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Notification> notificationCollection;
+    private List<Notification> notificationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<System> systemCollection;
+    private List<System> systemList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Post> postCollection;
+    private List<Post> postList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<RedeemUser> redeemUserCollection;
+    private List<RedeemUser> redeemUserList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Redeem> redeemCollection;
+    private List<Redeem> redeemList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Message> messageCollection;
+    private List<Message> messageList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId1")
-    private Collection<Message> messageCollection1;
+    private List<Message> messageList1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<SecUserRole> secUserRoleCollection;
+    private List<SecUserRole> secUserRoleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private Collection<Finance> financeCollection;
+    private List<Finance> financeList;
 
     public SecUser() {
     }
@@ -266,93 +247,93 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<News> getNewsCollection() {
-        return newsCollection;
+    public List<News> getNewsList() {
+        return newsList;
     }
 
-    public void setNewsCollection(Collection<News> newsCollection) {
-        this.newsCollection = newsCollection;
-    }
-
-    @XmlTransient
-    public Collection<Notification> getNotificationCollection() {
-        return notificationCollection;
-    }
-
-    public void setNotificationCollection(Collection<Notification> notificationCollection) {
-        this.notificationCollection = notificationCollection;
+    public void setNewsList(List<News> newsList) {
+        this.newsList = newsList;
     }
 
     @XmlTransient
-    public Collection<System> getSystemCollection() {
-        return systemCollection;
+    public List<Notification> getNotificationList() {
+        return notificationList;
     }
 
-    public void setSystemCollection(Collection<System> systemCollection) {
-        this.systemCollection = systemCollection;
-    }
-
-    @XmlTransient
-    public Collection<Post> getPostCollection() {
-        return postCollection;
-    }
-
-    public void setPostCollection(Collection<Post> postCollection) {
-        this.postCollection = postCollection;
+    public void setNotificationList(List<Notification> notificationList) {
+        this.notificationList = notificationList;
     }
 
     @XmlTransient
-    public Collection<RedeemUser> getRedeemUserCollection() {
-        return redeemUserCollection;
+    public List<System> getSystemList() {
+        return systemList;
     }
 
-    public void setRedeemUserCollection(Collection<RedeemUser> redeemUserCollection) {
-        this.redeemUserCollection = redeemUserCollection;
-    }
-
-    @XmlTransient
-    public Collection<Redeem> getRedeemCollection() {
-        return redeemCollection;
-    }
-
-    public void setRedeemCollection(Collection<Redeem> redeemCollection) {
-        this.redeemCollection = redeemCollection;
+    public void setSystemList(List<System> systemList) {
+        this.systemList = systemList;
     }
 
     @XmlTransient
-    public Collection<Message> getMessageCollection() {
-        return messageCollection;
+    public List<Post> getPostList() {
+        return postList;
     }
 
-    public void setMessageCollection(Collection<Message> messageCollection) {
-        this.messageCollection = messageCollection;
-    }
-
-    @XmlTransient
-    public Collection<Message> getMessageCollection1() {
-        return messageCollection1;
-    }
-
-    public void setMessageCollection1(Collection<Message> messageCollection1) {
-        this.messageCollection1 = messageCollection1;
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
     }
 
     @XmlTransient
-    public Collection<SecUserRole> getSecUserRoleCollection() {
-        return secUserRoleCollection;
+    public List<RedeemUser> getRedeemUserList() {
+        return redeemUserList;
     }
 
-    public void setSecUserRoleCollection(Collection<SecUserRole> secUserRoleCollection) {
-        this.secUserRoleCollection = secUserRoleCollection;
+    public void setRedeemUserList(List<RedeemUser> redeemUserList) {
+        this.redeemUserList = redeemUserList;
     }
 
     @XmlTransient
-    public Collection<Finance> getFinanceCollection() {
-        return financeCollection;
+    public List<Redeem> getRedeemList() {
+        return redeemList;
     }
 
-    public void setFinanceCollection(Collection<Finance> financeCollection) {
-        this.financeCollection = financeCollection;
+    public void setRedeemList(List<Redeem> redeemList) {
+        this.redeemList = redeemList;
+    }
+
+    @XmlTransient
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    @XmlTransient
+    public List<Message> getMessageList1() {
+        return messageList1;
+    }
+
+    public void setMessageList1(List<Message> messageList1) {
+        this.messageList1 = messageList1;
+    }
+
+    @XmlTransient
+    public List<SecUserRole> getSecUserRoleList() {
+        return secUserRoleList;
+    }
+
+    public void setSecUserRoleList(List<SecUserRole> secUserRoleList) {
+        this.secUserRoleList = secUserRoleList;
+    }
+
+    @XmlTransient
+    public List<Finance> getFinanceList() {
+        return financeList;
+    }
+
+    public void setFinanceList(List<Finance> financeList) {
+        this.financeList = financeList;
     }
 
     @Override
@@ -389,30 +370,30 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<Session> getSessionCollection() {
-        return sessionCollection;
+    public List<Session> getSessionList() {
+        return sessionList;
     }
 
-    public void setSessionCollection(Collection<Session> sessionCollection) {
-        this.sessionCollection = sessionCollection;
-    }
-
-    @XmlTransient
-    public Collection<UserPackage> getUserPackageCollection() {
-        return userPackageCollection;
-    }
-
-    public void setUserPackageCollection(Collection<UserPackage> userPackageCollection) {
-        this.userPackageCollection = userPackageCollection;
+    public void setSessionList(List<Session> sessionList) {
+        this.sessionList = sessionList;
     }
 
     @XmlTransient
-    public Collection<SubLesson> getSubLessonCollection() {
-        return subLessonCollection;
+    public List<UserPackage> getUserPackageList() {
+        return userPackageList;
     }
 
-    public void setSubLessonCollection(Collection<SubLesson> subLessonCollection) {
-        this.subLessonCollection = subLessonCollection;
+    public void setUserPackageList(List<UserPackage> userPackageList) {
+        this.userPackageList = userPackageList;
+    }
+
+    @XmlTransient
+    public List<SubLesson> getSubLessonList() {
+        return subLessonList;
+    }
+
+    public void setSubLessonList(List<SubLesson> subLessonList) {
+        this.subLessonList = subLessonList;
     }
     
 }

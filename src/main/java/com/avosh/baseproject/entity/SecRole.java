@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -31,12 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "sec_role")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SecRole.findAll", query = "SELECT s FROM SecRole s")
-    , @NamedQuery(name = "SecRole.findById", query = "SELECT s FROM SecRole s WHERE s.id = :id")
-    , @NamedQuery(name = "SecRole.findByRole", query = "SELECT s FROM SecRole s WHERE s.role = :role")
-    , @NamedQuery(name = "SecRole.findByTitle", query = "SELECT s FROM SecRole s WHERE s.title = :title")
-    , @NamedQuery(name = "SecRole.findByCreateDate", query = "SELECT s FROM SecRole s WHERE s.createDate = :createDate")})
 public class SecRole implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -53,7 +47,7 @@ public class SecRole implements BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secRoleId")
-    private Collection<SecUserRole> secUserRoleCollection;
+    private List<SecUserRole> secUserRoleList;
 
     public SecRole() {
     }
@@ -95,12 +89,12 @@ public class SecRole implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<SecUserRole> getSecUserRoleCollection() {
-        return secUserRoleCollection;
+    public List<SecUserRole> getSecUserRoleList() {
+        return secUserRoleList;
     }
 
-    public void setSecUserRoleCollection(Collection<SecUserRole> secUserRoleCollection) {
-        this.secUserRoleCollection = secUserRoleCollection;
+    public void setSecUserRoleList(List<SecUserRole> secUserRoleList) {
+        this.secUserRoleList = secUserRoleList;
     }
 
     @Override

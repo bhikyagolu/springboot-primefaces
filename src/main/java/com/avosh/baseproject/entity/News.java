@@ -29,14 +29,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "news")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n")
-    , @NamedQuery(name = "News.findById", query = "SELECT n FROM News n WHERE n.id = :id")
-    , @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title")
-    , @NamedQuery(name = "News.findByBrif", query = "SELECT n FROM News n WHERE n.brif = :brif")
-    , @NamedQuery(name = "News.findByNews", query = "SELECT n FROM News n WHERE n.news = :news")
-    , @NamedQuery(name = "News.findByCreateDate", query = "SELECT n FROM News n WHERE n.createDate = :createDate")
-    , @NamedQuery(name = "News.findByType", query = "SELECT n FROM News n WHERE n.type = :type")})
 public class News implements BaseEntity {
 
     private static final long serialVersionUID = 1L;

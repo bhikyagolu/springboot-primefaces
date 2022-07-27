@@ -6,7 +6,7 @@
 package com.avosh.baseproject.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,10 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "lesson")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Lesson.findAll", query = "SELECT l FROM Lesson l")
-    , @NamedQuery(name = "Lesson.findById", query = "SELECT l FROM Lesson l WHERE l.id = :id")
-    , @NamedQuery(name = "Lesson.findByTitle", query = "SELECT l FROM Lesson l WHERE l.title = :title")})
 public class Lesson implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +39,7 @@ public class Lesson implements BaseEntity {
     @Column(name = "title")
     private String title;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lessonId")
-    private Collection<SubLesson> subLessonCollection;
+    private List<SubLesson> subLessonList;
 
     public Lesson() {
     }
@@ -69,12 +65,12 @@ public class Lesson implements BaseEntity {
     }
 
     @XmlTransient
-    public Collection<SubLesson> getSubLessonCollection() {
-        return subLessonCollection;
+    public List<SubLesson> getSubLessonList() {
+        return subLessonList;
     }
 
-    public void setSubLessonCollection(Collection<SubLesson> subLessonCollection) {
-        this.subLessonCollection = subLessonCollection;
+    public void setSubLessonList(List<SubLesson> subLessonList) {
+        this.subLessonList = subLessonList;
     }
 
     @Override
