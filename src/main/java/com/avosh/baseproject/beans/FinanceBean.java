@@ -9,13 +9,20 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.FinanceDto;
+import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.services.FinanceService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Scope("request")
 public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
+    private FinanceDto financeDto;
+    private List<FinanceDto> dtoList;
+    private boolean isEditMode;
+
     @Override
     public void insertRecord() {
 
@@ -24,5 +31,21 @@ public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
     @Override
     public void deleteRecord() {
 
+    }
+
+    public FinanceDto getFinanceDto() {
+        return financeDto;
+    }
+
+    public void setFinanceDto(FinanceDto financeDto) {
+        this.financeDto = financeDto;
+    }
+
+    public List<FinanceDto> getDtoList() {
+        return dtoList;
+    }
+
+    public boolean isEditMode() {
+        return isEditMode;
     }
 }

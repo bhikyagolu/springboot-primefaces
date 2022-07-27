@@ -8,9 +8,12 @@
 
 package com.avosh.baseproject.dto;
 
+import java.util.Date;
+
 public class FinanceDto extends BaseDto{
     private String desc;
     private Long amount;
+    private Date createDateTime;
     private UserDto secUserId;
     private RedeemDto redeemUserId;
 
@@ -28,6 +31,14 @@ public class FinanceDto extends BaseDto{
 
     public void setAmount(Long amount) {
         this.amount = amount;
+    }
+
+    public Date getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(Date createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
     public UserDto getSecUserId() {

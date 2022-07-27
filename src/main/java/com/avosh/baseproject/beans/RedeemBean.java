@@ -13,9 +13,14 @@ import com.avosh.baseproject.services.RedeemService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Scope("request")
 public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
+    private RedeemDto redeemDto;
+    private List<RedeemDto> dtoList;
+    private boolean isEditMode;
     @Override
     public void insertRecord() {
 
@@ -24,5 +29,21 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     @Override
     public void deleteRecord() {
 
+    }
+
+    public boolean isEditMode() {
+        return isEditMode;
+    }
+
+    public void setEditMode(boolean editMode) {
+        isEditMode = editMode;
+    }
+
+    public RedeemDto getRedeemDto() {
+        return redeemDto;
+    }
+
+    public List<RedeemDto> getDtoList() {
+        return dtoList;
     }
 }

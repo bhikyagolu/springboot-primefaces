@@ -8,6 +8,7 @@ package com.avosh.baseproject.entity;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigInteger;
+import java.util.Date;
 
 /**
  *
@@ -33,6 +34,9 @@ public class Finance implements BaseEntity {
     private String desc;
     @Column(name = "amount")
     private BigInteger amount;
+    @Column(name = "create_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDateTime;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
@@ -69,6 +73,14 @@ public class Finance implements BaseEntity {
 
     public void setAmount(BigInteger amount) {
         this.amount = amount;
+    }
+
+    public Date getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(Date createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
     public SecUser getSecUserId() {

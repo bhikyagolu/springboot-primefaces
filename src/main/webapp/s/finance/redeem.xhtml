@@ -12,7 +12,7 @@
             <div class="grid crud-demo">
                 <div class="col-12">
                     <div class="card">
-                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{financeBean.dtoList}"
+                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{redeemBean.dtoList}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      rowKey="#{data.id}" rowIndexVar="row"
                                      paginator="true" rows="10" paginatorPosition="bottom" >
@@ -38,25 +38,23 @@
                                       style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.us.family}"
-                                      filterBy="#{data.secUserId.family}" responsivePriority="4">
-                                <h:outputText value="#{data.secUserId.name} #{data.secUserId.family}"/>
+                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.userDto.family}"
+                                      filterBy="#{data.userDto.family}" responsivePriority="4">
+                                <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.title']}" sortBy="#{data.amount}"
-                                      filterBy="#{data.amount}"
+                            <p:column headerText="#{msg['table.header.title']}" sortBy="#{data.title}"
+                                      filterBy="#{data.title}"
                                       responsivePriority="3">
-                                <h:outputText value="#{data.amount}"/>
+                                <h:outputText value="#{data.title}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.brief']}" sortBy="#{data.desc}"
                                       filterBy="#{data.desc}"
                                       responsivePriority="4">
                                 <h:outputText value="#{data.desc}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.createDateTime}"
-                                      filterBy="#{data.createDateTime}" responsivePriority="5">
-                                <h:outputText value="#{data.createDateTime}">
-                                    <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
-                                </h:outputText>
+                            <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.count}"
+                                      filterBy="#{data.count}" responsivePriority="5">
+                                <h:outputText value="#{data.count}"/>
                             </p:column>
 
                             <p:column headerText="#{msg['table.header.operation']}" width="10%"
@@ -65,18 +63,18 @@
                                               buttonStyle="box-shadow: 0 0 10px">
                                     <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
                                         <f:setPropertyActionListener value="#{data}"
-                                                                     target="#{financeBean.financeDto}"/>
+                                                                     target="#{redeemBean.redeemDto}"/>
                                     </p:menuitem>
                                     <p:menuitem value="#{msg['menu.edit']}" update=":messagesPanel form" icon="pi pi-pencil"  oncomplete="PF('dlg').show()">
                                         <f:setPropertyActionListener value="#{data}"
-                                                                     target="#{financeBean.financeDto}"/>
+                                                                     target="#{redeemBean.redeemDto}"/>
                                     </p:menuitem>
                                     <p:separator />
-                                    <p:menuitem value="#{msg['menu.delete']}"  action="#{financeBean.deleteRecord}" update=":messagesPanel form" icon="pi pi-times">
+                                    <p:menuitem value="#{msg['menu.delete']}"  action="#{redeemBean.deleteRecord}" update=":messagesPanel form" icon="pi pi-times">
                                         #{msg['menu.delete']}
                                         <p:confirm header="#{msg['menu.confirmation']}" message="#{msg['menu.confirmation.message']}" icon="pi pi-info-circle"/>
                                         <f:setPropertyActionListener value="#{data}"
-                                                                     target="#{financeBean.financeDto}"/>
+                                                                     target="#{redeemBean.redeemDto}"/>
                                     </p:menuitem>
                                 </p:menuButton>
                             </p:column>
@@ -116,7 +114,7 @@
                         <div class="ui-fluid formgrid grid">
                             <div class="field col-12 md:col-6">
                                 <p:outputLabel for="title" value="#{msg['table.header.title']}" />
-                                <p:inputText id="title" value="#{financeBean.getDto().desc}" disabled="#{financeBean.editMode}"/>
+                                <p:inputText id="title" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                             <div class="empty-table"/>
                             <div class="field col-12 md:col-6">
@@ -126,11 +124,11 @@
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="brief" value="#{msg['table.header.brief']}" />
-                                <p:inputText id="brief" value="#{financeBean.getDto().desc}" disabled="#{financeBean.editMode}"/>
+                                <p:inputText id="brief" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="content" value="#{msg['table.header.news']}" />
-                                <p:inputTextarea id="content" rows="4"  value="#{financeBean.getDto().desc}" disabled="#{financeBean.editMode}"/>
+                                <p:inputTextarea id="content" rows="4"  value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                         </div>
                     </div>
@@ -138,7 +136,7 @@
                 <f:facet name="footer">
                     <p:commandButton value="#{msg['dialog.dismiss']}" type="button" styleClass="ui-button-secondary" onclick="PF('dlg').hide()" />
                     <p:commandButton value="#{msg['dialog.save']}"
-                                     styleClass="ui-button-secondary" actionListener="#{financeBean.insertRecord()}"
+                                     styleClass="ui-button-secondary" actionListener="#{redeemBean.insertRecord()}"
                                      update=":messagesPanel" onclick="PF('dlg').hide()"  icon="pi pi-check"/>
                 </f:facet>
             </p:dialog>
