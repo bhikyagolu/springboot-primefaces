@@ -68,7 +68,7 @@
                                       exportable="false"   style="text-align: center;" responsivePriority="2">
                                 <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary"
                                               buttonStyle="box-shadow: 0 0 10px">
-                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
+                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form:dlg" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{userBean.userDto}"/>
                                     </p:menuitem>
@@ -113,7 +113,7 @@
             </div>
 
             <p:dialog header="#{msg['dialog.title.new']}"
-                      widgetVar="dlg" modal="true" showEffect="fade"
+                      widgetVar="dlg" id="dlg" modal="true" showEffect="fade"
                       hideEffect="fade"
                       resizable="false">
                 <div class="col-12">

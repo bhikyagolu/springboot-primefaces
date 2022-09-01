@@ -58,6 +58,11 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     }
 
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
         service.save(getDto());
     }

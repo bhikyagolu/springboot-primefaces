@@ -49,12 +49,23 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
     }
 
+    public void viewStatus(Boolean status){
+        isEditMode = status;
+        setDto(new NewsDto());
+    }
+
+    public void newStatus(){
+        isEditMode = true;
+        setDto(new NewsDto());
+    }
+
     public NewsDto getNewsDto() {
         return newsDto;
     }
 
     public void setNewsDto(NewsDto newsDto) {
         this.newsDto = newsDto;
+        setDto(newsDto);
     }
 
     public List<NewsDto> getNewsDtoList() {
@@ -64,6 +75,19 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
     public boolean isEditMode() {
         return isEditMode;
     }
+
+    @Override
+    public void DoSave() {
+        try {
+            service.save(getDto());
+            init();
+            showMessage("Done!");
+        } catch (Exception e) {
+            log.error(e);
+            showMessage("Error!");
+        }
+    }
+
     @Override
     public void insertRecord() {
         service.save(getDto());
@@ -82,7 +106,4 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
     }
 
-    public void editRecord() {
-        isEditMode = true;
-    }
 }

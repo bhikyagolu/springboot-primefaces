@@ -29,6 +29,11 @@ public class DashboardBean extends BaseBean{
     }
 
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
 
     }

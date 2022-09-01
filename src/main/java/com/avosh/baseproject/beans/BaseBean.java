@@ -38,9 +38,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public void doFind(){
 
     }
-    public void doEdit(){
-
-    }
+    public abstract void DoSave();
 
     public abstract void insertRecord();
 

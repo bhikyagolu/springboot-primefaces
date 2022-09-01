@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 public class LoginBean extends BaseBean{
 
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
 
     }

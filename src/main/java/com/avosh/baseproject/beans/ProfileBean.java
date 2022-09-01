@@ -152,6 +152,11 @@ public class ProfileBean extends BaseBean<UserService, UserDto> {
     }
 
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
 
     }

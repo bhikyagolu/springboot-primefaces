@@ -17,6 +17,11 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
 
     }

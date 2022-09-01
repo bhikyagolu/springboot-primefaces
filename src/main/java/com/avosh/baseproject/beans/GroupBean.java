@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class GroupBean extends BaseBean{
     @Override
+    public void DoSave() {
+
+    }
+
+    @Override
     public void insertRecord() {
 
     }

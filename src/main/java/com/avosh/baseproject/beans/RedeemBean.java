@@ -21,6 +21,12 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     private RedeemDto redeemDto;
     private List<RedeemDto> dtoList;
     private boolean isEditMode;
+
+    @Override
+    public void DoSave() {
+
+    }
+
     @Override
     public void insertRecord() {
 
