@@ -33,4 +33,9 @@ public class RedeemServiceImpl implements RedeemService {
     public List<RedeemDto> retrieveAll() {
         return null;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

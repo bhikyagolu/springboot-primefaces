@@ -11,6 +11,7 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.BaseDto;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
+import org.apache.log4j.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -18,7 +19,7 @@ import java.io.Serializable;
 
 
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
-
+    private static final Logger log = Logger.getLogger(BaseBean.class);
     protected SRV service;
     protected D dto;
 
@@ -38,11 +39,26 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public void doFind(){
 
     }
-    public abstract void DoSave();
+    public  void save(){
+        try {
+            service.save(getDto());
+            showMessage("Done!");
+        } catch (Exception e) {
+            log.error(e);
+            showMessage("Error!");
+        }
+    }
 
-    public abstract void insertRecord();
 
-    public abstract void deleteRecord();
+    public  void delete(){
+        try {
+            service.deleteById(dto.getId());
+            showMessage("Done!");
+        } catch (Exception e) {
+            log.error(e);
+            showMessage("Error!");
+        }
+    }
 
 
     protected void saveError(String clientId, String errorKey) {

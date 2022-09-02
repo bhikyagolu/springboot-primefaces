@@ -23,17 +23,13 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     private boolean isEditMode;
 
     @Override
-    public void DoSave() {
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
 
-    }
 
-    @Override
-    public void deleteRecord() {
+      public void deleteRecord() {
 
     }
 

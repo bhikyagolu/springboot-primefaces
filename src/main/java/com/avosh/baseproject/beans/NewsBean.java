@@ -76,33 +76,18 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
         return isEditMode;
     }
 
-    @Override
-    public void DoSave() {
-        try {
-            service.save(getDto());
-            init();
-            showMessage("Done!");
-        } catch (Exception e) {
-            log.error(e);
-            showMessage("Error!");
-        }
+
+    public void doSave() {
+        super.save();
+        init();
     }
 
-    @Override
-    public void insertRecord() {
-        service.save(getDto());
-    }
 
-    @Override
+
+
     public void deleteRecord() {
-        try {
-            service.deleteById(getDto().getId());
-            init();
-            showMessage("Done!");
-        } catch (Exception e) {
-            log.error(e);
-            showMessage("Error!");
-        }
+        super.delete();
+        init();
 
     }
 

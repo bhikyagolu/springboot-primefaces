@@ -90,19 +90,22 @@
                             </p:column>
                             <f:facet name="footer">
                                 <div class="p-d-flex p-jc-between">
-                                    <p:commandButton icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2"
+                                    <p:commandButton id="exportExcel" icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2"
                                                      style="margin: 2px">
                                         <p:dataExporter type="xls" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
+                                    <p:tooltip for="exportExcel" value="Excel" showEffect="clip" hideEffect="fold" />
 
-                                    <p:commandButton icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2"
+                                    <p:commandButton id="exportPdf" icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2"
                                                      style="margin: 2px">
                                         <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
+                                    <p:tooltip for="exportPdf" value="PDF" showEffect="clip" hideEffect="fold" />
 
-                                    <p:commandButton icon="pi pi-file" styleClass="p-mr-2 p-mb-2" style="margin: 2px">
+                                    <p:commandButton id="exportFile" icon="pi pi-file" styleClass="p-mr-2 p-mb-2" style="margin: 2px">
                                         <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
+                                    <p:tooltip for="exportFile" value="CSV" showEffect="clip" hideEffect="fold" />
                                 </div>
 
                             </f:facet>
@@ -152,7 +155,7 @@
                         <p:commandButton value="#{msg['dialog.dismiss']}" type="button" styleClass="ui-button-secondary"
                                          onclick="PF('dlg').hide()"/>
                         <p:commandButton value="#{msg['dialog.save']}"
-                                         styleClass="ui-button-secondary" rendered="#{!newsBean.editMode}" actionListener="#{newsBean.DoSave()}"
+                                         styleClass="ui-button-secondary" rendered="#{!newsBean.editMode}" actionListener="#{newsBean.doSave()}"
                                          update=":messagesPanel form:dataTable form:dlg" onclick="PF('dlg').hide()" icon="pi pi-check"/>
                     </f:facet>
             </p:dialog>

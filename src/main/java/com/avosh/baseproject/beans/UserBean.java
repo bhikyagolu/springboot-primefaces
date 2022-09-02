@@ -48,14 +48,11 @@ public class UserBean extends BaseBean<UserService, UserDto> {
     }
 
     @Override
-    public void DoSave() {
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
 
-    }
 
     public void deleteRecord() {
 

@@ -15,17 +15,13 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class LibraryBean extends BaseBean{
     @Override
-    public void DoSave() {
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
 
-    }
 
-    @Override
-    public void deleteRecord() {
+      public void deleteRecord() {
 
     }
 }

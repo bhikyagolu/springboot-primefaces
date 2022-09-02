@@ -24,17 +24,13 @@ public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
     private boolean isEditMode;
 
     @Override
-    public void DoSave() {
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
 
-    }
 
-    @Override
-    public void deleteRecord() {
+      public void deleteRecord() {
 
     }
 

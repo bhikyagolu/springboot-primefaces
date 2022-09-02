@@ -21,4 +21,5 @@ import java.util.List;
 public interface BaseService<R extends BaseRepository, M extends BaseEntity,D extends BaseDto> {
     public void save(D dto);
     List<D> retrieveAll();
+    void deleteById(Long id);
 }

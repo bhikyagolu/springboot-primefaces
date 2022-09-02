@@ -24,4 +24,9 @@ public class NotificationServiceImpl implements NotificationService {
     public List<NotificationDto> retrieveAll() {
         return null;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

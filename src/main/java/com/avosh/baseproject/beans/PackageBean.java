@@ -14,17 +14,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("request")
 public class PackageBean extends BaseBean{
-    @Override
-    public void DoSave() {
+
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
 
-    }
-
-    @Override
     public void deleteRecord() {
 
     }

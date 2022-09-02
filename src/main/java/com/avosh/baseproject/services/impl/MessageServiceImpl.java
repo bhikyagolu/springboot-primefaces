@@ -33,4 +33,9 @@ public class MessageServiceImpl implements MessageService {
     public List<MessageDto> retrieveAll() {
         return null;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

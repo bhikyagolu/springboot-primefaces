@@ -32,4 +32,9 @@ public class FinanceServiceImpl implements FinanceService {
     public List<FinanceDto> retrieveAll() {
         return null;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

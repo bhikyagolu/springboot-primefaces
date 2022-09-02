@@ -27,4 +27,9 @@ public class SystemServiceImpl implements SystemService {
     public List<SystemDto> retrieveAll() {
         return null;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

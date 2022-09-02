@@ -58,16 +58,10 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
     }
 
     @Override
-    public void DoSave() {
+    public void save() {
 
     }
 
-    @Override
-    public void insertRecord() {
-
-    }
-
-    @Override
     public void deleteRecord() {
 
     }

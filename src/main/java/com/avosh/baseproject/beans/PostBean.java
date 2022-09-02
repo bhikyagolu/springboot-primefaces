@@ -11,11 +11,15 @@ package com.avosh.baseproject.beans;
 import com.avosh.baseproject.dto.PostDto;
 import com.avosh.baseproject.services.PostService;
 import org.apache.log4j.Logger;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     private PostDto postDto;
     private List<PostDto> postDtoList;
     private boolean isEditMode;
+    private UploadedFile originalImageFile;
 
     @Autowired
     public void setService(PostService service) {
@@ -47,6 +52,7 @@ public class PostBean extends BaseBean<PostService, PostDto> {
 
     public void setPostDto(PostDto postDto) {
         this.postDto = postDto;
+        setDto(postDto);
     }
 
     public List<PostDto> getPostDtoList() {
@@ -57,30 +63,41 @@ public class PostBean extends BaseBean<PostService, PostDto> {
         return isEditMode;
     }
 
-    @Override
-    public void DoSave() {
 
+    public void doSave() {
+        super.save();
+        init();
     }
 
-    @Override
-    public void insertRecord() {
-        service.save(getDto());
-    }
 
-    @Override
+
     public void deleteRecord() {
-        try {
-            // service.deleteById(newsDto.getId());
-            init();
-            showMessage("Done!");
-        } catch (Exception e) {
-            log.error(e);
-            showMessage("Error!");
-        }
+        super.delete();
+        init();
 
     }
 
     public void editRecord() {
         isEditMode = true;
+    }
+
+    public void status(){
+        isEditMode = true;
+        setDto(new PostDto());
+    }
+
+    public void viewStatus(Boolean status){
+        isEditMode = status;
+        setDto(new PostDto());
+    }
+
+    public void handleFileUpload(FileUploadEvent event) {
+        this.originalImageFile = null;
+        UploadedFile file = event.getFile();
+        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
+            this.originalImageFile = file;
+            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
 }

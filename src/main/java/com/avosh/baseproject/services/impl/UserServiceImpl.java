@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
         }
         return list;
     }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

@@ -28,11 +28,11 @@ public class NewsServiceImpl implements NewsService {
     private static final Logger log = Logger.getLogger(NewsServiceImpl.class);
 
     @Autowired
-    NewsRepository newRepository;
+    NewsRepository repository;
 
     @Override
     public void deleteById(Long id) {
-        newRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     @Override
@@ -44,16 +44,16 @@ public class NewsServiceImpl implements NewsService {
         news.setBrif(((NewsDto)dto).getBrief());
         news.setTitle(((NewsDto)dto).getTitle());
         news.setCreateDate(((NewsDto)dto).getCreateDateTime());
-        newRepository.save(news);
+        repository.save(news);
     }
 
     @Override
     public List<NewsDto> retrieveAll() {
         List<NewsDto> newsDtoList = new ArrayList<>();
-        Iterable<News> itr = newRepository.findAll();
+        Iterable<News> itr = repository.findAll();
         for (News news : itr) {
             UserDto userDto = new UserDto();
-            userDto.setId(news.getId());
+            userDto.setId(news.getSecUserId().getId());
             userDto.setFamily(news.getSecUserId().getFamily());
             userDto.setName(news.getSecUserId().getName());
             NewsDto newsDto = new NewsDto(news.getId(), news.getBrif(),
