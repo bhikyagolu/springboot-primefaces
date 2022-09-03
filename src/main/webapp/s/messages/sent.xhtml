@@ -12,7 +12,7 @@
             <div class="grid crud-demo">
                 <div class="col-12">
                     <div class="card">
-                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{messageBean.messageDtoList}"
+                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{messageSentBean.messageDtoList}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      rowKey="#{data.id}" rowIndexVar="row"
                                      paginator="true" rows="10" paginatorPosition="bottom">
@@ -38,9 +38,9 @@
                                       style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.sender']}" sortBy="#{data.sender.name}"
-                                      filterBy="#{data.sender.name}" responsivePriority="4">
-                                <h:outputText value="#{data.sender.name} #{data.sender.family}"/>
+                            <p:column headerText="#{msg['table.header.receiver']}" sortBy="#{data.receiver.name}"
+                                      filterBy="#{data.receiver.name}" responsivePriority="4">
+                                <h:outputText value="#{data.receiver.name} #{data.receiver.family}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.subject']}" sortBy="#{data.title}"
                                       filterBy="#{data.title}"
@@ -114,9 +114,9 @@
                 <p:panelGrid style="padding: 0px;  width:100%" >
                     <p:row>
                         <p:column>
-                            <p:outputLabel value="#{messageBean.getDto().sender.name} #{messageBean.getDto().sender.family}"/>
+                            <p:outputLabel value="#{messageBean.getDto().sender.name} #{messageBean.getDto().sender.family}    "/>
                             <p:outputLabel value=" #{messageBean.getDto().createDateTime}">
-                                <f:convertDateTime pattern="    yyyy/MM/dd HH:mm"/>
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
                             </p:outputLabel>
                         </p:column>
                     </p:row>

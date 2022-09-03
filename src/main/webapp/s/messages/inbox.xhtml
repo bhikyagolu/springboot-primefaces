@@ -6,13 +6,12 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">#{msg['page.messages.inbox']}</ui:define>
-
     <ui:define name="content">
         <h:form id="form">
             <div class="grid crud-demo">
                 <div class="col-12">
                     <div class="card">
-                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{messageBean.messageDtoList}"
+                        <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{messageRecivedBean.messageDtoList}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      rowKey="#{data.id}" rowIndexVar="row"
                                      paginator="true" rows="10" paginatorPosition="bottom">
@@ -114,9 +113,9 @@
                 <p:panelGrid style="padding: 0px;  width:100%" >
                     <p:row>
                         <p:column>
-                            <p:outputLabel value="#{messageBean.getDto().sender.name} #{messageBean.getDto().sender.family}"/>
+                            <p:outputLabel value="#{messageBean.getDto().sender.name} #{messageBean.getDto().sender.family}    "/>
                             <p:outputLabel value=" #{messageBean.getDto().createDateTime}">
-                                <f:convertDateTime pattern="    yyyy/MM/dd HH:mm"/>
+                                <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
                             </p:outputLabel>
                         </p:column>
                     </p:row>

@@ -6,26 +6,28 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.enums;
+package com.avosh.baseproject.beans;
 
-public enum MessageType {
-    INSTANT_MESSAGE_SENT(1,"INSTANT_MESSAGE_SENT"),
-    INSTANT_MESSAGE_RECEIVED(2,"INSTANT_MESSAGE_RECEIVED"),
-    SMS(3,"SMS");
+import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-    private Integer type;
-    private String description;
+@Component
+@Scope("request")
+public class MessagePollBean extends MessageBean{
+    private static final Logger log = Logger.getLogger(MessagePollBean.class);
 
-    MessageType(Integer type, String description) {
-        this.type = type;
-        this.description = description;
+
+    private Long unreadMessageCount;
+
+
+    public Long getUnreadMessageCount() {
+        return unreadMessageCount;
     }
 
-    public Integer getType() {
-        return type;
+    public void updateMessageCounter(){
+        unreadMessageCount =  service.countUnreadMessage();
     }
 
-    public String getDescription() {
-        return description;
-    }
+
 }

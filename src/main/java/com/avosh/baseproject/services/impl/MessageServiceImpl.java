@@ -45,6 +45,29 @@ public class MessageServiceImpl implements MessageService {
         repository.save(message);
     }
 
+    public List<MessageDto> retrieveAllByType(Integer type) {
+        List<MessageDto> dtoList = new ArrayList<>();
+        Iterable<Message> itr = repository.findAllByType(type);
+        for (Message message : itr) {
+            UserDto senderUser = new UserDto();
+            senderUser.setId(message.getSecUserId().getId());
+            senderUser.setFamily(message.getSecUserId().getFamily());
+            senderUser.setName(message.getSecUserId().getName());
+
+            UserDto ReceiverUser = new UserDto();
+            ReceiverUser.setId(message.getSecUserId1().getId());
+            ReceiverUser.setFamily(message.getSecUserId1().getFamily());
+            ReceiverUser.setName(message.getSecUserId1().getName());
+            ReceiverUser.setCellphone(message.getSecUserId1().getCellphone());
+
+            MessageDto messageDto = new MessageDto(message.getId(),message.getTitle(),message.getMessage(),
+                    message.getCreateDate(),message.getRead(),senderUser,ReceiverUser,message.getType());
+            dtoList.add(messageDto);
+
+        }
+        return dtoList;
+    }
+
     @Override
     public List<MessageDto> retrieveAll() {
         List<MessageDto> dtoList = new ArrayList<>();
@@ -59,6 +82,7 @@ public class MessageServiceImpl implements MessageService {
             ReceiverUser.setId(message.getSecUserId1().getId());
             ReceiverUser.setFamily(message.getSecUserId1().getFamily());
             ReceiverUser.setName(message.getSecUserId1().getName());
+            ReceiverUser.setCellphone(message.getSecUserId1().getCellphone());
 
             MessageDto messageDto = new MessageDto(message.getId(),message.getTitle(),message.getMessage(),
                     message.getCreateDate(),message.getRead(),senderUser,ReceiverUser,message.getType());

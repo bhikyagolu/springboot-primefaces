@@ -30,18 +30,19 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
         this.service = service;
     }
 
-    private MessageDto messageDto;
-    private List<MessageDto> messageDtoList;
-    private Long unreadMessageCount = 0l;
+    protected MessageDto messageDto;
+    protected List<MessageDto> messageDtoList;
 
-    @PostConstruct
-    public void init() {
-        setDto(new MessageDto());
-        messageDto = new MessageDto();
-        messageDtoList = new ArrayList<>();
-        messageDtoList = service.retrieveAll();
 
-    }
+
+//    @PostConstruct
+//    public void init() {
+//        setDto(new MessageDto());
+//        messageDto = new MessageDto();
+//        messageDtoList = new ArrayList<>();
+//        messageDtoList = service.retrieveAll();
+//
+//    }
 
     public MessageDto getMessageDto() {
         return messageDto;
@@ -60,22 +61,8 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
         this.messageDtoList = messageDtoList;
     }
 
-    public Long getUnreadMessageCount() {
-        return unreadMessageCount;
-    }
-
-    @Override
-    public void save() {
-
-    }
-
-    public void deleteRecord() {
-        super.delete();
-        init();
-    }
-
-    public void updateMessageCounter(){
-        unreadMessageCount =  service.countUnreadMessage();
+    public void setMessageType(Integer messageType) {
+        messageDtoList = service.retrieveAllByType(messageType);
     }
 
 
