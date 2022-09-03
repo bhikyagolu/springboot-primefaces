@@ -6,20 +6,25 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  ******************************************************************************/
 
-package com.avosh.baseproject.services;
+package com.avosh.baseproject.enums;
 
+public enum PostType {
+    POST(1,"Post"),
+    ADS(2,"Advertisement");
 
-import com.avosh.baseproject.dto.BaseDto;
-import com.avosh.baseproject.entity.BaseEntity;
-import com.avosh.baseproject.repository.BaseRepository;
-import org.springframework.stereotype.Service;
+    private Integer type;
+    private String description;
 
-import java.util.List;
+    PostType(Integer type, String description) {
+        this.type = type;
+        this.description = description;
+    }
 
+    public Integer getType() {
+        return type;
+    }
 
-@Service
-public interface BaseService<R extends BaseRepository, M extends BaseEntity,D extends BaseDto> {
-    public void save(D dto);
-    List<D> retrieveAll() ;
-    void deleteById(Long id);
+    public String getDescription() {
+        return description;
+    }
 }

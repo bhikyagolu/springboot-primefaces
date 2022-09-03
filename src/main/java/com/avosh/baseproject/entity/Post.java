@@ -40,8 +40,8 @@ public class Post implements BaseEntity {
     private String brief;
     @Column(name = "post")
     private String post;
-    @Column(name = "photo")
-    private String photo;
+    @Column(name = "photo" , unique = false, nullable = false, length = 100000)
+    private byte[] photo;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
@@ -90,11 +90,11 @@ public class Post implements BaseEntity {
         this.post = post;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

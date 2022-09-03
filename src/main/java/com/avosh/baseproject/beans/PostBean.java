@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,6 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     private PostDto postDto;
     private List<PostDto> postDtoList;
     private boolean isEditMode;
-    private UploadedFile originalImageFile;
 
     @Autowired
     public void setService(PostService service) {
@@ -63,15 +63,14 @@ public class PostBean extends BaseBean<PostService, PostDto> {
         return isEditMode;
     }
 
-
-    public void doSave() {
+    public void doSave()  {
         super.save();
         init();
     }
 
 
 
-    public void deleteRecord() {
+    public void deleteRecord()  {
         super.delete();
         init();
 
@@ -92,12 +91,18 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     }
 
     public void handleFileUpload(FileUploadEvent event) {
-        this.originalImageFile = null;
-        UploadedFile file = event.getFile();
-        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
-            this.originalImageFile = file;
-            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+        try {
+            UploadedFile file = event.getFile();
+            if (file != null) {
+                FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
+            InputStream inputStream = file.getInputStream();
+            postDto.setPhoto(inputStream);
+            super.save();
+            init();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

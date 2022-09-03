@@ -92,20 +92,20 @@
                                 <div class="p-d-flex p-jc-between">
                                     <p:commandButton id="exportExcel" icon="pi pi-file-excel" styleClass="p-mr-2 p-mb-2"
                                                      style="margin: 2px">
-                                        <p:dataExporter type="xls" target="dataTable" fileName="exort"/>
+                                        <p:dataExporter type="xls" target="dataTable" fileName="#{msg['export.file.name']}"/>
                                     </p:commandButton>
-                                    <p:tooltip for="exportExcel" value="Excel" showEffect="clip" hideEffect="fold" />
+                                    <p:tooltip for="exportExcel" value="#{msg['export.file.excel']}" showEffect="clip" hideEffect="fold" />
 
                                     <p:commandButton id="exportPdf" icon="pi pi-file-pdf" styleClass="p-mr-2 p-mb-2"
                                                      style="margin: 2px">
-                                        <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
+                                        <p:dataExporter type="pdf" target="dataTable" fileName="#{msg['export.file.name']}"/>
                                     </p:commandButton>
-                                    <p:tooltip for="exportPdf" value="PDF" showEffect="clip" hideEffect="fold" />
+                                    <p:tooltip for="exportPdf" value="#{msg['export.file.pdf']}" showEffect="clip" hideEffect="fold" />
 
                                     <p:commandButton id="exportFile" icon="pi pi-file" styleClass="p-mr-2 p-mb-2" style="margin: 2px">
-                                        <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
+                                        <p:dataExporter type="csv" target="dataTable" fileName="#{msg['export.file.name']}"/>
                                     </p:commandButton>
-                                    <p:tooltip for="exportFile" value="CSV" showEffect="clip" hideEffect="fold" />
+                                    <p:tooltip for="exportFile" value="#{msg['export.file.csv']}" showEffect="clip" hideEffect="fold" />
                                 </div>
 
                             </f:facet>

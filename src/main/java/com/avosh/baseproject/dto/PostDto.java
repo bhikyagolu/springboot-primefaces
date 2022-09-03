@@ -8,13 +8,14 @@
 
 package com.avosh.baseproject.dto;
 
+import java.io.InputStream;
 import java.util.Date;
 
 public class PostDto extends BaseDto{
     private String title;
     private String brief;
     private String post;
-    private String photo;
+    private InputStream photo;
     private UserDto user;
     private Integer category;
     private Date createDateTime;
@@ -43,11 +44,11 @@ public class PostDto extends BaseDto{
         this.post = post;
     }
 
-    public String getPhoto() {
+    public InputStream getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(InputStream photo) {
         this.photo = photo;
     }
 

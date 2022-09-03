@@ -9,19 +9,21 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.PostDto;
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.Post;
 import com.avosh.baseproject.entity.SecUser;
+import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.repository.PostRepository;
 import com.avosh.baseproject.services.PostService;
+import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
+import org.primefaces.shaded.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +37,23 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void save(PostDto dto) {
-        CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Post post = new Post();
-        post.setPost(dto.getPost());
-        post.setSecUserId(new SecUser(auth.getSecUser().getId()));
-        post.setBrief(dto.getBrief());
-        post.setTitle(dto.getTitle());
-        post.setType(dto.getCategory());
-        post.setCreateDatetime(dto.getCreateDateTime());
-        repository.save(post);
+        try {
+            CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Post post = new Post();
+            post.setPost(dto.getPost());
+            post.setSecUserId(new SecUser(auth.getSecUser().getId()));
+            post.setBrief(dto.getBrief());
+            post.setTitle(dto.getTitle());
+            if(Empty.isNotEmpty(dto.getPhoto())){
+                byte[] img =IOUtils.toByteArray(dto.getPhoto());
+                post.setPhoto(img);
+            }
+            post.setType(dto.getCategory());
+            post.setCreateDatetime(dto.getCreateDateTime());
+            repository.save(post);
+        } catch (IOException e) {
+            throw new BaseException(e);
+        }
 
     }
 
@@ -57,7 +67,6 @@ public class PostServiceImpl implements PostService {
             postDto.setPost(post.getPost());
             postDto.setTitle(post.getTitle());
             postDto.setBrief(post.getBrief());
-            postDto.setPhoto(post.getPhoto());
             postDto.setCreateDateTime(post.getCreateDatetime());
             UserDto userDto = new UserDto();
             userDto.setId(post.getSecUserId().getId());
