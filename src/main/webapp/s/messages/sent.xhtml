@@ -5,7 +5,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="title">#{msg['page.messages.inbox']}</ui:define>
+    <ui:define name="title">#{msg['page.messages.sent']}</ui:define>
 
     <ui:define name="content">
         <h:form id="form">
@@ -64,6 +64,7 @@
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{messageBean.messageDto}"/>
                                     </p:menuitem>
+                                    <p:separator/>
                                     <p:menuitem value="#{msg['menu.delete']}" action="#{messageBean.deleteRecord}"
                                                 update=":messagesPanel form:dataTable" icon="pi pi-times">
                                         #{msg['menu.delete']}

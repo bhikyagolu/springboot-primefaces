@@ -13,4 +13,5 @@ import com.avosh.baseproject.entity.Message;
 import com.avosh.baseproject.repository.MessageRepository;
 
 public interface MessageService extends BaseService<MessageRepository, Message, MessageDto>{
+   Long countUnreadMessage();
 }

@@ -25,7 +25,7 @@
 </h:head>
 
 <h:body styleClass="#{guestPreferences.menuMode} #{guestPreferences.inputStyleClass}">
-
+    <p:poll interval="2" listener="#{messageBean.updateMessageCounter()}" />
     <div class="wrapper #{guestPreferences.menuColor eq 'light' ? 'layout-light' : ''}">
         <ui:include src="topbar.xhtml"/>
 

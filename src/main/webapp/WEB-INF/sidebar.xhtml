@@ -19,7 +19,7 @@
                     <i class="pi pi-fw pi-cog"/>
                 </a>
                 <ul>
-                    <li><a href="#"><i class="pi pi-fw pi-sliders-h"/><span>#{msg['sidebar.account']}</span></a></li>
+                    <li><a href="/s/account/index.xhtml"><i class="pi pi-fw pi-sliders-h"/><span>#{msg['sidebar.account']}</span></a></li>
                     <li><a href="#"><i class="pi pi-fw pi-bell"/><span>#{msg['sidebar.notifications']}</span><span class="menu-badge">2</span></a></li>
                     <li><a href="/logout"><i class="pi pi-fw pi-sign-out"/><span>#{msg['sidebar.logout']}</span></a></li>
                 </ul>
@@ -29,9 +29,9 @@
                     <p:menuitem id="om_dashboard" value="#{msg['sidebar.dashboard']}" icon="pi pi-fw pi-home" outcome="/s/dashboard"/>
                     <p:menuitem id="om_news" value="#{msg['sidebar.news']}" icon="pi pi-fw pi-home" outcome="/s/news/index"/>
                     <p:menuitem id="om_posts" value="#{msg['sidebar.posts']}" icon="pi pi-fw pi-id-card" outcome="/s/posts/index"/>
-                    <p:submenu id="om_messages" label="#{msg['sidebar.messages']}" icon="pi pi-fw pi-star" badge="0">
-                        <p:menuitem id="om_messages_input" value="#{msg['sidebar.message.input']}" icon="pi pi-fw pi-id-card" outcome="/s/messages/input"/>
-                        <p:menuitem id="om_messages_output" value="#{msg['sidebar.message.output']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/output"/>
+                    <p:submenu id="om_messages" label="#{msg['sidebar.messages']}" icon="pi pi-fw pi-star" badge="#{messageBean.unreadMessageCount}">
+                        <p:menuitem id="om_messages_input" value="#{msg['sidebar.message.input']}" icon="pi pi-fw pi-id-card" outcome="/s/messages/inbox"/>
+                        <p:menuitem id="om_messages_output" value="#{msg['sidebar.message.output']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/sent"/>
                         <p:menuitem id="om_messages_sms" value="#{msg['sidebar.message.sms']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/sms"/>
                     </p:submenu>
                     <p:menuitem id="om_users" value="#{msg['sidebar.users']}" icon="pi pi-fw pi-id-card" outcome="/s/users/index"/>

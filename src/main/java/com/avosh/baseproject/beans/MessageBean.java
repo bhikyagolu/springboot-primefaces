@@ -32,6 +32,7 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
 
     private MessageDto messageDto;
     private List<MessageDto> messageDtoList;
+    private Long unreadMessageCount = 0l;
 
     @PostConstruct
     public void init() {
@@ -59,6 +60,10 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
         this.messageDtoList = messageDtoList;
     }
 
+    public Long getUnreadMessageCount() {
+        return unreadMessageCount;
+    }
+
     @Override
     public void save() {
 
@@ -68,4 +73,10 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
         super.delete();
         init();
     }
+
+    public void updateMessageCounter(){
+        unreadMessageCount =  service.countUnreadMessage();
+    }
+
+
 }

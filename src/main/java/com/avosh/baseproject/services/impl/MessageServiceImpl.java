@@ -10,10 +10,8 @@ package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.MessageDto;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.Message;
-import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.MessageRepository;
 import com.avosh.baseproject.services.MessageService;
@@ -73,5 +71,13 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+
+
+    @Override
+    public Long countUnreadMessage() {
+        CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+       return repository.countAllById(auth.getSecUser().getId());
     }
 }

@@ -21,10 +21,10 @@
                 <input type="text" placeholder="#{msg['topbar.search']}"/>
                 <span class="topbar-search-icon pi pi-search"/>
             </span>
-            <a href="/s/messages/input.xhtml">
+            <a href="/s/messages/inbox.xhtml">
                 <span class="topbar-item-text">#{msg['topbar.messages']}</span>
                 <span class="topbar-icon pi pi-envelope"/>
-                <span class="topbar-badge animated rubberBand">5</span>
+                <span class="topbar-badge animated rubberBand">#{messageBean.unreadMessageCount}</span>
             </a>
             <a href="/s/system/index.xhtml">
                 <span class="topbar-item-text">#{msg['topbar.settings']}</span>
