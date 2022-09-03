@@ -40,7 +40,7 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     @PostConstruct
     public void init() {
         isEditMode = false;
-        dto = new PostDto();
+       setDto(new PostDto());
         postDtoList = new ArrayList<>();
         postDtoList = service.retrieveAll();
 

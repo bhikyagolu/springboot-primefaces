@@ -42,7 +42,7 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
     @PostConstruct
     public void init() {
         isEditMode = false;
-        dto = new NewsDto();
+        setDto(new NewsDto());
         newsDto = new NewsDto();
         newsDtoList = new ArrayList<>();
         newsDtoList = service.retrieveAll();

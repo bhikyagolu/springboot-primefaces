@@ -21,7 +21,7 @@ import java.io.Serializable;
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
     private static final Logger log = Logger.getLogger(BaseBean.class);
     protected SRV service;
-    protected D dto;
+    private D dto;
 
     public D getDto() {
         return dto;

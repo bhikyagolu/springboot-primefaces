@@ -5,7 +5,6 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,8 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,7 +39,7 @@ public class Message implements BaseEntity {
     @Column(name = "message")
     private String message;
     @Column(name = "is_read")
-    private Short isRead;
+    private Boolean isRead;
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -86,12 +83,12 @@ public class Message implements BaseEntity {
         this.message = message;
     }
 
-    public Short getIsRead() {
+    public Boolean getRead() {
         return isRead;
     }
 
-    public void setIsRead(Short isRead) {
-        this.isRead = isRead;
+    public void setRead(Boolean read) {
+        isRead = read;
     }
 
     public Date getCreateDate() {

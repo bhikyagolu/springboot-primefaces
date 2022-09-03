@@ -9,6 +9,7 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.MessageDto;
+import com.avosh.baseproject.dto.PostDto;
 import com.avosh.baseproject.services.MessageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
 
     public void setMessageDto(MessageDto messageDto) {
         this.messageDto = messageDto;
+        setDto(messageDto);
     }
 
     public List<MessageDto> getMessageDtoList() {
@@ -63,6 +65,7 @@ public class MessageBean extends BaseBean<MessageService,MessageDto>{
     }
 
     public void deleteRecord() {
-
+        super.delete();
+        init();
     }
 }

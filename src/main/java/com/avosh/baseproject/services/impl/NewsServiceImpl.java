@@ -39,11 +39,11 @@ public class NewsServiceImpl implements NewsService {
     public void save(NewsDto dto) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         News news = new News();
-        news.setNews(((NewsDto)dto).getNews());
+        news.setNews(dto.getNews());
         news.setSecUserId(new SecUser(auth.getSecUser().getId()));
-        news.setBrif(((NewsDto)dto).getBrief());
-        news.setTitle(((NewsDto)dto).getTitle());
-        news.setCreateDate(((NewsDto)dto).getCreateDateTime());
+        news.setBrif(dto.getBrief());
+        news.setTitle(dto.getTitle());
+        news.setCreateDate(dto.getCreateDateTime());
         repository.save(news);
     }
 

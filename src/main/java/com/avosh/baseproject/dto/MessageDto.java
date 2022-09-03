@@ -16,20 +16,22 @@ public class MessageDto extends BaseDto{
     private String message;
     private Date createDateTime;
     private Boolean isRead;
-    private String Sender;
-    private Long senderID;
+    private UserDto sender;
+    private UserDto receiver;
+    private Integer messageType;
 
     public MessageDto() {
     }
 
-    public MessageDto(Long id, String title, String message, Date createDateTime, Boolean isRead, String sender, Long senderID) {
+    public MessageDto(Long id, String title, String message, Date createDateTime, Boolean isRead, UserDto sender, UserDto receiver, Integer messageType) {
         this.id = id;
         this.title = title;
         this.message = message;
         this.createDateTime = createDateTime;
         this.isRead = isRead;
-        Sender = sender;
-        this.senderID = senderID;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.messageType = messageType;
     }
 
     public Long getId() {
@@ -72,19 +74,28 @@ public class MessageDto extends BaseDto{
         isRead = read;
     }
 
-    public String getSender() {
-        return Sender;
+    public UserDto getSender() {
+        return sender;
     }
 
-    public void setSender(String sender) {
-        Sender = sender;
+    public void setSender(UserDto sender) {
+        this.sender = sender;
     }
 
-    public Long getSenderID() {
-        return senderID;
+    public UserDto getReceiver() {
+        return receiver;
     }
 
-    public void setSenderID(Long senderID) {
-        this.senderID = senderID;
+    public void setReceiver(UserDto receiver) {
+        this.receiver = receiver;
     }
+
+    public Integer getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(Integer messageType) {
+        this.messageType = messageType;
+    }
+
 }
