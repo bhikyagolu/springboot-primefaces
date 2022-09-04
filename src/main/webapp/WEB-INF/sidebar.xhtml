@@ -35,9 +35,15 @@
                         <p:menuitem id="om_messages_sms" value="#{msg['sidebar.message.sms']}" icon="pi pi-fw pi-check-square" outcome="/s/messages/sms"/>
                     </p:submenu>
                     <p:menuitem id="om_users" value="#{msg['sidebar.users']}" icon="pi pi-fw pi-id-card" outcome="/s/users/index"/>
+                    <p:submenu id="om_education" label="#{msg['sidebar.education']}" icon="pi pi-fw pi-star" >
+                        <p:menuitem id="om_lesson" value="#{msg['sidebar.lesson']}" icon="pi pi-fw pi-id-card" outcome="/s/education/lesson"/>
+                        <p:menuitem id="om_sub_lesson" value="#{msg['sidebar.sub.lesson']}" icon="pi pi-fw pi-check-square" outcome="/s/education/sub-lesson"/>
+                        <p:menuitem id="om_question" value="#{msg['sidebar.question']}" icon="pi pi-fw pi-check-square" outcome="/s/education/question"/>
+                    </p:submenu>
                     <p:submenu id="om_financial" label="#{msg['sidebar.financial']}" icon="pi pi-fw pi-star" >
                         <p:menuitem id="om_transactions" value="#{msg['sidebar.transactions']}" icon="pi pi-fw pi-id-card" outcome="/s/finance/index"/>
                         <p:menuitem id="om_redeem" value="#{msg['sidebar.redeem']}" icon="pi pi-fw pi-check-square" outcome="/s/finance/redeem"/>
+                        <p:menuitem id="om_used_redeem" value="#{msg['sidebar.used.redeem']}" icon="pi pi-fw pi-check-square" outcome="/s/finance/used-redeem"/>
                     </p:submenu>
                     <p:submenu id="om_store" label="#{msg['sidebar.store']}" icon="pi pi-fw pi-star" >
                         <p:menuitem id="om_packages" value="#{msg['sidebar.packages']}" icon="pi pi-fw pi-id-card" outcome="/s/store/index"/>
