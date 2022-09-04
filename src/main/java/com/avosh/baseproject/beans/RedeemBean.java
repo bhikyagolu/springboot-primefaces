@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     private RedeemDto redeemDto;
     private List<RedeemDto> dtoList;

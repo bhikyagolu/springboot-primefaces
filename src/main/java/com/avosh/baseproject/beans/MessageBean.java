@@ -20,8 +20,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-@Scope("request")
+
 public class MessageBean extends BaseBean<MessageService,MessageDto>{
     private static final Logger log = Logger.getLogger(MessageBean.class);
 

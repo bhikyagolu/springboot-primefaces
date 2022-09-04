@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class PostBean extends BaseBean<PostService, PostDto> {
     private static final Logger log = Logger.getLogger(PostBean.class);
     private PostDto postDto;

@@ -15,6 +15,7 @@ import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.NewsRepository;
 import com.avosh.baseproject.services.NewsService;
+import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,6 +45,9 @@ public class NewsServiceImpl implements NewsService {
         news.setBrif(dto.getBrief());
         news.setTitle(dto.getTitle());
         news.setCreateDate(dto.getCreateDateTime());
+        if(Empty.isNotEmpty(dto.getId())){
+            news.setId(dto.getId());
+        }
         repository.save(news);
     }
 

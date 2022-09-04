@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class UserBean extends BaseBean<UserService, UserDto> {
     private boolean isEditMode;
     List<UserDto> dtoList;

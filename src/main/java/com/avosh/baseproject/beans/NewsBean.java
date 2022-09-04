@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class NewsBean extends BaseBean<NewsService, NewsDto> {
     private static final Logger log = Logger.getLogger(NewsBean.class);
 

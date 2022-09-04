@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
     private FinanceDto financeDto;
     private List<FinanceDto> dtoList;

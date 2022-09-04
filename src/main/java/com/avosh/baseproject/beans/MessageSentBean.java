@@ -34,6 +34,11 @@ public class MessageSentBean extends MessageBean{
 
     }
 
+    public void setMessageDto(MessageDto messageDto) {
+        this.messageDto = messageDto;
+        setDto(messageDto);
+    }
+
 
     public void deleteRecord() {
         super.delete();

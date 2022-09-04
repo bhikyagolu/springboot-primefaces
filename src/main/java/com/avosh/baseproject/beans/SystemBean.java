@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
 
     public void save() {

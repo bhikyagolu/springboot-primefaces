@@ -23,7 +23,7 @@ import javax.faces.context.FacesContext;
 import java.util.Date;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class ProfileBean extends BaseBean<UserService, UserDto> {
     private UploadedFile originalImageFile;
     private CroppedImage croppedImage;

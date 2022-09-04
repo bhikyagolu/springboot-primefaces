@@ -64,14 +64,14 @@
                                                                      target="#{messageBean.messageDto}"/>
                                     </p:menuitem>
                                     <p:separator/>
-                                    <p:menuitem value="#{msg['menu.delete']}" action="#{messageBean.deleteRecord}"
+                                    <p:menuitem value="#{msg['menu.delete']}" action="#{messageRecivedBean.deleteRecord}"
                                                 update=":messagesPanel form:dataTable" icon="pi pi-times">
                                         #{msg['menu.delete']}
                                         <p:confirm header="#{msg['menu.confirmation']}"
                                                    message="#{msg['menu.confirmation.message']}"
                                                    icon="pi pi-info-circle"/>
                                         <f:setPropertyActionListener value="#{data}"
-                                                                     target="#{messageBean.messageDto}"/>
+                                                                     target="#{messageRecivedBean.messageDto}"/>
                                     </p:menuitem>
                                 </p:menuButton>
                             </p:column>

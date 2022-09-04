@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class DashboardBean extends BaseBean{
     private String name ;
     private String family;

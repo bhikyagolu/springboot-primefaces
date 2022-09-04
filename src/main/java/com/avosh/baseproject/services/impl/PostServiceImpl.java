@@ -50,6 +50,9 @@ public class PostServiceImpl implements PostService {
             }
             post.setType(dto.getCategory());
             post.setCreateDatetime(dto.getCreateDateTime());
+            if(Empty.isNotEmpty(dto.getId())){
+                post.setId(dto.getId());
+            }
             repository.save(post);
         } catch (IOException e) {
             throw new BaseException(e);
