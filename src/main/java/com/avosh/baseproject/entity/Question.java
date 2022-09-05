@@ -5,26 +5,11 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -45,9 +30,9 @@ public class Question implements BaseEntity {
     @Column(name = "question")
     private String question;
     @Column(name = "has_voice")
-    private Short hasVoice;
+    private Boolean hasVoice;
     @Column(name = "has_video")
-    private Short hasVideo;
+    private Boolean hasVideo;
     @Column(name = "picture")
     private String picture;
     @Column(name = "create_date")
@@ -89,19 +74,19 @@ public class Question implements BaseEntity {
         this.question = question;
     }
 
-    public Short getHasVoice() {
+    public Boolean getHasVoice() {
         return hasVoice;
     }
 
-    public void setHasVoice(Short hasVoice) {
+    public void setHasVoice(Boolean hasVoice) {
         this.hasVoice = hasVoice;
     }
 
-    public Short getHasVideo() {
+    public Boolean getHasVideo() {
         return hasVideo;
     }
 
-    public void setHasVideo(Short hasVideo) {
+    public void setHasVideo(Boolean hasVideo) {
         this.hasVideo = hasVideo;
     }
 

@@ -13,8 +13,8 @@ import java.util.List;
 @Scope("session")
 public class UserBean extends BaseBean<UserService, UserDto> {
     private boolean isEditMode;
-    List<UserDto> dtoList;
-    UserDto userDto;
+    private List<UserDto> dtoList;
+    private UserDto userDto;
 
     @Autowired
     public void setService(UserService service) {

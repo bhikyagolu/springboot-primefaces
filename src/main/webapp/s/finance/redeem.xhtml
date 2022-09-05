@@ -114,7 +114,7 @@
                         <div class="ui-fluid formgrid grid">
                             <div class="field col-12 md:col-6">
                                 <p:outputLabel for="title" value="#{msg['table.header.title']}" />
-                                <p:inputText id="title" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
+                                <p:inputText id="title" value="#{redeemBean.lessonDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                             <div class="empty-table"/>
                             <div class="field col-12 md:col-6">
@@ -124,11 +124,11 @@
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="brief" value="#{msg['table.header.brief']}" />
-                                <p:inputText id="brief" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
+                                <p:inputText id="brief" value="#{redeemBean.lessonDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                             <div class="field col-12">
                                 <p:outputLabel for="content" value="#{msg['table.header.news']}" />
-                                <p:inputTextarea id="content" rows="4"  value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
+                                <p:inputTextarea id="content" rows="4" value="#{redeemBean.lessonDto().desc}" disabled="#{redeemBean.editMode}"/>
                             </div>
                         </div>
                     </div>
