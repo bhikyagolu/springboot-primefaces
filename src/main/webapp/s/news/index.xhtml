@@ -128,24 +128,24 @@
                             <div class="ui-fluid formgrid grid">
                                 <div class="field col-12 md:col-6">
                                     <p:outputLabel for="title" value="#{msg['table.header.title']}"/>
-                                    <p:inputText id="title" value="#{newsBean.lessonDto().title}"
+                                    <p:inputText id="title" value="#{newsBean.getDto().title}"
                                                  disabled="#{newsBean.editMode}"/>
                                 </div>
                                 <div class="empty-table"/>
                                 <div class="field col-12 md:col-6">
                                     <p:outputLabel for="time" value="#{msg['table.header.scheduler.time']}"/>
-                                    <p:datePicker id="time" value="#{newsBean.lessonDto().createDateTime}"
+                                    <p:datePicker id="time" value="#{newsBean.getDto().createDateTime}"
                                                   disabled="#{newsBean.editMode}"
                                                   timeOnly="false" pattern="yyyy/MM/dd HH:mm" showIcon="true"/>
                                 </div>
                                 <div class="field col-12">
                                     <p:outputLabel for="brief" value="#{msg['table.header.brief']}"/>
-                                    <p:inputText id="brief" value="#{newsBean.lessonDto().brief}"
+                                    <p:inputText id="brief" value="#{newsBean.getDto().brief}"
                                                  disabled="#{newsBean.editMode}"/>
                                 </div>
                                 <div class="field col-12">
                                     <p:outputLabel for="content" value="#{msg['table.header.news']}"/>
-                                    <p:inputTextarea id="content" rows="4" value="#{newsBean.lessonDto().news}"
+                                    <p:inputTextarea id="content" rows="4" value="#{newsBean.getDto().news}"
                                                      disabled="#{newsBean.editMode}"/>
                                 </div>
                             </div>
