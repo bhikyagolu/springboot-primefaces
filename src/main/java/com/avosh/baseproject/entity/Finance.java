@@ -5,7 +5,6 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -16,8 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,7 +45,7 @@ public class Finance implements BaseEntity {
     @Column(name = "desc")
     private String desc;
     @Column(name = "amount")
-    private BigInteger amount;
+    private Long amount;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
@@ -79,11 +76,11 @@ public class Finance implements BaseEntity {
         this.desc = desc;
     }
 
-    public BigInteger getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(BigInteger amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 

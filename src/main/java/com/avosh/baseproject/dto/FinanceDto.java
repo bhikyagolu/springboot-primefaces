@@ -14,8 +14,20 @@ public class FinanceDto extends BaseDto{
     private String desc;
     private Long amount;
     private Date createDateTime;
-    private UserDto secUserId;
-    private RedeemDto redeemUserId;
+    private UserDto userDto;
+    private RedeemDto redeemDto;
+
+    public FinanceDto() {
+    }
+
+    public FinanceDto(Long id, String desc, Long amount, Date createDateTime, UserDto userDto, RedeemDto redeemDto) {
+        this.id = id;
+        this.desc = desc;
+        this.amount = amount;
+        this.createDateTime = createDateTime;
+        this.userDto = userDto;
+        this.redeemDto = redeemDto;
+    }
 
     public String getDesc() {
         return desc;
@@ -41,19 +53,19 @@ public class FinanceDto extends BaseDto{
         this.createDateTime = createDateTime;
     }
 
-    public UserDto getSecUserId() {
-        return secUserId;
+    public UserDto getUserDto() {
+        return userDto;
     }
 
-    public void setSecUserId(UserDto secUserId) {
-        this.secUserId = secUserId;
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 
-    public RedeemDto getRedeemUserId() {
-        return redeemUserId;
+    public RedeemDto getRedeemDto() {
+        return redeemDto;
     }
 
-    public void setRedeemUserId(RedeemDto redeemUserId) {
-        this.redeemUserId = redeemUserId;
+    public void setRedeemDto(RedeemDto redeemDto) {
+        this.redeemDto = redeemDto;
     }
 }
