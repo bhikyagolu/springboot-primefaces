@@ -38,7 +38,7 @@
                                       style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.us.family}"
+                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.userDto.family}"
                                       filterBy="#{data.userDto.family}" responsivePriority="4">
                                 <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
                             </p:column>
