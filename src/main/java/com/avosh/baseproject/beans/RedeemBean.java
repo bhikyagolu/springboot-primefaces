@@ -10,26 +10,43 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.RedeemDto;
 import com.avosh.baseproject.services.RedeemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
 @Scope("session")
 public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     private RedeemDto redeemDto;
-    private List<RedeemDto> dtoList;
+    private List<RedeemDto> list;
     private boolean isEditMode;
+
+    @Autowired
+    public void setService(RedeemService service) {
+        this.service = service;
+    }
+
+    @PostConstruct
+    private void init(){
+        list = service.retrieveAll();
+        redeemDto = new RedeemDto();
+        setDto(new RedeemDto());
+    }
 
     @Override
     public void save() {
-
+        super.save();
+        init();
     }
 
 
 
-      public void deleteRecord() {
+    public void deleteRecord()  {
+        super.delete();
+        init();
 
     }
 
@@ -45,7 +62,12 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
         return redeemDto;
     }
 
+    public void setRedeemDto(RedeemDto redeemDto) {
+        this.redeemDto = redeemDto;
+        setDto(redeemDto);
+    }
+
     public List<RedeemDto> getDtoList() {
-        return dtoList;
+        return list;
     }
 }

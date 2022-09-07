@@ -24,9 +24,9 @@
     </style>
 </h:head>
 
-<h:body styleClass="#{guestPreferences.menuMode} #{guestPreferences.inputStyleClass}">
+<h:body styleClass="menu-layout-static ui-input-filled">
     <p:poll interval="20" listener="#{messagePollBean.updateMessageCounter()}" ignoreAutoUpdate="true"/>
-    <div class="wrapper #{guestPreferences.menuColor eq 'light' ? 'layout-light' : ''}">
+    <div class="wrapper dark">
         <ui:include src="topbar.xhtml"/>
 
         <ui:include src="sidebar.xhtml"/>
@@ -52,7 +52,7 @@
 
     <h:outputStylesheet name="css/primeicons.css" library="omega-layout"/>
     <h:outputStylesheet name="css/primeflex.min.css" library="omega-layout"/>
-    <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="omega-layout"/>
+    <h:outputStylesheet name="css/layout-light.css" library="omega-layout"/>
 </h:body>
 
 </html>

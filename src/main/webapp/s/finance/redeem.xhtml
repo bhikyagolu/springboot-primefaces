@@ -38,23 +38,37 @@
                                       style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.user']}" sortBy="#{data.userDto.family}"
-                                      filterBy="#{data.userDto.family}" responsivePriority="4">
-                                <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
-                            </p:column>
                             <p:column headerText="#{msg['table.header.title']}" sortBy="#{data.title}"
-                                      filterBy="#{data.title}"
-                                      responsivePriority="3">
-                                <h:outputText value="#{data.title}"/>
+                                      filterBy="#{data.title}" responsivePriority="4">
+                                <h:outputText value="#{data.title} #{data.title}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.brief']}" sortBy="#{data.desc}"
+                            <p:column headerText="#{msg['table.header.desc']}" sortBy="#{data.desc}"
                                       filterBy="#{data.desc}"
-                                      responsivePriority="4">
+                                      responsivePriority="3">
                                 <h:outputText value="#{data.desc}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.count}"
-                                      filterBy="#{data.count}" responsivePriority="5">
+                            <p:column headerText="#{msg['table.header.count']}" sortBy="#{data.count}"
+                                      filterBy="#{data.count}"
+                                      responsivePriority="4">
                                 <h:outputText value="#{data.count}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.multiple']}" sortBy="#{data.multiple}"
+                                      filterBy="#{data.multiple}"
+                                      responsivePriority="4">
+                                <h:outputText value="#{data.multiple}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.expireDate']}" sortBy="#{data.expireDate}"
+                                      filterBy="#{data.expireDate}"
+                                      responsivePriority="4">
+                                <h:outputText value="#{data.expireDate}">
+                                    <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.datetime']}" sortBy="#{data.createDate}"
+                                      filterBy="#{data.createDate}" responsivePriority="5">
+                                <h:outputText value="#{data.createDate}">
+                                    <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
+                                </h:outputText>
                             </p:column>
 
                             <p:column headerText="#{msg['table.header.operation']}" width="10%"
@@ -105,41 +119,6 @@
                 </div>
             </div>
 
-            <p:dialog header="#{msg['dialog.title.new']}"
-                      widgetVar="dlg" modal="true" showEffect="fade"
-                      hideEffect="fade"
-                      resizable="false">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="ui-fluid formgrid grid">
-                            <div class="field col-12 md:col-6">
-                                <p:outputLabel for="title" value="#{msg['table.header.title']}" />
-                                <p:inputText id="title" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
-                            </div>
-                            <div class="empty-table"/>
-                            <div class="field col-12 md:col-6">
-<!--                                <p:outputLabel for="time" value="#{msg['table.header.scheduler.time']}" />-->
-<!--                                <p:datePicker id="time" value="#{financeBean.getDto().desc}"  disabled="#{newsBean.editMode}"-->
-<!--                                              timeOnly="false" pattern="yyyy/MM/dd HH:mm"  showIcon="true"/>-->
-                            </div>
-                            <div class="field col-12">
-                                <p:outputLabel for="brief" value="#{msg['table.header.brief']}" />
-                                <p:inputText id="brief" value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
-                            </div>
-                            <div class="field col-12">
-                                <p:outputLabel for="content" value="#{msg['table.header.news']}" />
-                                <p:inputTextarea id="content" rows="4"  value="#{redeemBean.getDto().desc}" disabled="#{redeemBean.editMode}"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <f:facet name="footer">
-                    <p:commandButton value="#{msg['dialog.dismiss']}" type="button" styleClass="ui-button-secondary" onclick="PF('dlg').hide()" />
-                    <p:commandButton value="#{msg['dialog.save']}"
-                                     styleClass="ui-button-secondary" actionListener="#{redeemBean.insertRecord()}"
-                                     update=":messagesPanel" onclick="PF('dlg').hide()"  icon="pi pi-check"/>
-                </f:facet>
-            </p:dialog>
         </h:form>
     </ui:define>
 

@@ -7,6 +7,7 @@
  */
 package com.avosh.baseproject.beans;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Scope("session")
 public class GuestPreferences implements Serializable {
 
     private String theme = "blue";

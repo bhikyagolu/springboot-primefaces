@@ -54,7 +54,7 @@ public class Redeem implements BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
     @Column(name = "multiple")
-    private Short multiple;
+    private Boolean multiple;
     @Column(name = "count")
     private Integer count;
     @Column(name = "create_date")
@@ -121,11 +121,11 @@ public class Redeem implements BaseEntity {
         this.startDate = startDate;
     }
 
-    public Short getMultiple() {
+    public Boolean getMultiple() {
         return multiple;
     }
 
-    public void setMultiple(Short multiple) {
+    public void setMultiple(Boolean multiple) {
         this.multiple = multiple;
     }
 

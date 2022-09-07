@@ -35,7 +35,6 @@ public class SubLessonServiceImpl implements SubLessonService {
         List<SubLessonDto> list = new ArrayList<>();
         Iterable<SubLesson> itr = repository.findAll();
         for (SubLesson subLesson : itr) {
-            subLesson.getLessonId().getTitle();
             SubLessonDto subLessonDto = new SubLessonDto(subLesson.getId(),subLesson.getTitle(),
                     subLesson.getDesc(),subLesson.getLevel(),subLesson.getCreateDateTime(),
                     new LessonDto( subLesson.getLessonId().getId(), subLesson.getLessonId().getTitle()));

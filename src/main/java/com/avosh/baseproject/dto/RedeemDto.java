@@ -11,15 +11,32 @@ package com.avosh.baseproject.dto;
 import java.util.Date;
 
 public class RedeemDto extends BaseDto{
+
     private String title;
     private String desc;
     private String code;
     private Date expireDate;
     private Date startDate;
-    private Short multiple;
+    private Boolean multiple;
     private Integer count;
     private Date createDate;
     private UserDto userDto;
+
+    public RedeemDto() {
+    }
+
+    public RedeemDto(Long id, String title, String desc, String code, Date expireDate, Date startDate, Boolean multiple, Integer count, Date createDate, UserDto userDto) {
+        this.id = id;
+        this.title = title;
+        this.desc = desc;
+        this.code = code;
+        this.expireDate = expireDate;
+        this.startDate = startDate;
+        this.multiple = multiple;
+        this.count = count;
+        this.createDate = createDate;
+        this.userDto = userDto;
+    }
 
     public String getTitle() {
         return title;
@@ -61,11 +78,11 @@ public class RedeemDto extends BaseDto{
         this.startDate = startDate;
     }
 
-    public Short getMultiple() {
+    public Boolean getMultiple() {
         return multiple;
     }
 
-    public void setMultiple(Short multiple) {
+    public void setMultiple(Boolean multiple) {
         this.multiple = multiple;
     }
 
