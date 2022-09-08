@@ -57,7 +57,7 @@ public class RedeemServiceImpl implements RedeemService {
         Iterable<Redeem> itr = repository.findAll();
         for (Redeem redeem : itr) {
             UserDto userDto = new UserDto();
-            userDto.setId(redeem.getId());
+            userDto.setId(redeem.getSecUserId().getId());
 
             RedeemDto redeemDto = new RedeemDto(redeem.getId(), redeem.getTitle(), redeem.getDesc(),
                     redeem.getCode(), redeem.getExpireDate(), redeem.getStartDate(), redeem.getMultiple(),

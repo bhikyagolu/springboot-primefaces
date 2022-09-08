@@ -5,7 +5,6 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -16,8 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,7 +36,7 @@ public class RedeemUser implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -55,15 +52,15 @@ public class RedeemUser implements BaseEntity {
     public RedeemUser() {
     }
 
-    public RedeemUser(Integer id) {
+    public RedeemUser(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
