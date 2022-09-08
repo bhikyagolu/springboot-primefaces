@@ -45,6 +45,8 @@ public class Redeem implements BaseEntity {
     private String title;
     @Column(name = "desc")
     private String desc;
+    @Column(name = "amount")
+    private Long amount;
     @Column(name = "code")
     private String code;
     @Column(name = "expire_date")
@@ -95,6 +97,14 @@ public class Redeem implements BaseEntity {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public String getCode() {

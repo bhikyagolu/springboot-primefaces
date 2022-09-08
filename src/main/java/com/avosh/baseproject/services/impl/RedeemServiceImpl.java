@@ -40,6 +40,7 @@ public class RedeemServiceImpl implements RedeemService {
         Redeem redeem = new Redeem();
         redeem.setCode(dto.getCode());
         redeem.setDesc(dto.getDesc());
+        redeem.setAmount(dto.getAmount());
         redeem.setCount(dto.getCount());
         redeem.setCreateDate(new Date());
         redeem.setExpireDate(dto.getExpireDate());
@@ -59,7 +60,7 @@ public class RedeemServiceImpl implements RedeemService {
             UserDto userDto = new UserDto();
             userDto.setId(redeem.getSecUserId().getId());
 
-            RedeemDto redeemDto = new RedeemDto(redeem.getId(), redeem.getTitle(), redeem.getDesc(),
+            RedeemDto redeemDto = new RedeemDto(redeem.getId(), redeem.getTitle(), redeem.getDesc(),redeem.getAmount(),
                     redeem.getCode(), redeem.getExpireDate(), redeem.getStartDate(), redeem.getMultiple(),
                     redeem.getCount(), redeem.getCreateDate(), userDto);
             list.add(redeemDto);

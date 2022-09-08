@@ -34,32 +34,32 @@
                                 </div>
 
                             </f:facet>
-                            <p:column headerText="#{msg['table.header.index']}" width="10%" responsivePriority="6"
+                            <p:column headerText="#{msg['table.header.index']}" width="10%" responsivePriority="8"
                                       style="vertical-align: middle;">
                                 <h:outputText value=" #{row+1}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.title']}" sortBy="#{data.title}"
-                                      filterBy="#{data.title}" responsivePriority="4">
+                                      filterBy="#{data.title}" responsivePriority="3">
                                 <h:outputText value="#{data.title} #{data.title}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.desc']}" sortBy="#{data.desc}"
                                       filterBy="#{data.desc}"
-                                      responsivePriority="3">
+                                      responsivePriority="4">
                                 <h:outputText value="#{data.desc}"/>
                             </p:column>
-                            <p:column headerText="#{msg['table.header.count']}" sortBy="#{data.count}"
-                                      filterBy="#{data.count}"
-                                      responsivePriority="4">
-                                <h:outputText value="#{data.count}"/>
+                            <p:column headerText="#{msg['table.header.amount']}" sortBy="#{data.amount}"
+                                      filterBy="#{data.amount}"
+                                      responsivePriority="5">
+                                <h:outputText value="#{data.amount}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.multiple']}" sortBy="#{data.multiple}"
                                       filterBy="#{data.multiple}"
-                                      responsivePriority="4">
+                                      responsivePriority="6">
                                 <h:outputText value="#{data.multiple}"/>
                             </p:column>
                             <p:column headerText="#{msg['table.header.expireDate']}" sortBy="#{data.expireDate}"
                                       filterBy="#{data.expireDate}"
-                                      responsivePriority="4">
+                                      responsivePriority="7">
                                 <h:outputText value="#{data.expireDate}">
                                     <f:convertDateTime pattern="yyyy/MM/dd HH:mm"/>
                                 </h:outputText>

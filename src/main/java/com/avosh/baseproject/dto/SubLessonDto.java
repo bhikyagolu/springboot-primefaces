@@ -21,6 +21,11 @@ public class SubLessonDto extends BaseDto{
     public SubLessonDto() {
     }
 
+    public SubLessonDto(Long id) {
+        this.id = id;
+    }
+
+
     public SubLessonDto(Long id, String title, String desc, Integer level, Date createDateTime, LessonDto lesson) {
         this.id = id;
         this.title = title;

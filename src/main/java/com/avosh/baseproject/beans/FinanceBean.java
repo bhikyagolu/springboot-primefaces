@@ -41,12 +41,6 @@ public class FinanceBean extends BaseBean<FinanceService, FinanceDto> {
 
     }
 
-    @Override
-    public void save() {
-
-    }
-
-
     public void deleteRecord() {
 
     }
