@@ -28,7 +28,7 @@
                                       invalidSizeMessage="Maximum file size allowed is 100 KB"
                                       invalidFileMessage="only jpg | jpeg is allowed"
                                       update=":messagesPanel"
-                                      listener="#{UserBean.handleFileUpload}"/>
+                                      listener="#{profileBean.handleFileUpload}"/>
                         <p:commandButton type="button" value="Save"
                                          style="display:inline-block;margin-top:5px; width: auto"/>
                     </div>
@@ -36,23 +36,23 @@
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
-                            <p:inputText id="name"/>
+                            <p:inputText id="name" value="#{profileBean.dto.name}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="family">#{msg['profile.family']}</p:outputLabel>
-                            <p:inputText id="family"/>
+                            <p:inputText id="family" value="#{profileBean.dto.family}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="gender">#{msg['profile.gender']}</p:outputLabel>
-                            <p:inputText id="gender"/>
+                            <p:inputText id="gender" value="#{profileBean.dto.gender}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
-                            <p:inputText id="nationalcode"/>
+                            <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
-                            <p:inputTextarea id="bio" placeholder="#{msg['profile.bio']}" />
+                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" />
                         </div>
                         <div class="field">
                             <p:commandButton type="button" value="Save"
@@ -86,19 +86,19 @@
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
-                            <p:inputText id="cellphone" disabled="true"/>
+                            <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
-                            <p:inputText id="phone"/>
+                            <p:inputText id="phone" value="#{profileBean.dto.phone}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
-                            <p:inputText id="email" disabled="true"/>
+                            <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
-                            <p:inputText id="address"/>
+                            <p:inputText id="address" value="#{profileBean.dto.address}"/>
                         </div>
                         <div class="field">
                             <p:commandButton type="button" value="Save"

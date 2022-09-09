@@ -9,6 +9,7 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.services.UserProfileService;
 import com.avosh.baseproject.services.UserService;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.CroppedImage;
@@ -24,28 +25,21 @@ import java.util.Date;
 
 @Component
 @Scope("session")
-public class ProfileBean extends BaseBean<UserService, UserDto> {
+public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     private UploadedFile originalImageFile;
     private CroppedImage croppedImage;
-    private String name ;
-    private String family ;
-    private Integer gender ;
-    private String cellphone ;
-    private String phone ;
-    private String email ;
-    private String address ;
-    private String nationalCode ;
-    private String bio ;
-    private Date lastLogin ;
+
 
     @Autowired
-    public void setService(UserService service) {
+    public void setService(UserProfileService service) {
         this.service = service;
     }
 
     @PostConstruct
-    private void init(){
-        service.retrieveAll();
+    private void init() {
+        UserDto profile = service.retrieveById();
+        setDto(profile);
+
     }
 
     public void handleFileUpload(FileUploadEvent event) {
@@ -71,94 +65,11 @@ public class ProfileBean extends BaseBean<UserService, UserDto> {
         this.croppedImage = croppedImage;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNationalCode() {
-        return nationalCode;
-    }
-
-    public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
 
     @Override
     public void save() {
 
     }
 
-
-
-      public void deleteRecord() {
-
-    }
 }

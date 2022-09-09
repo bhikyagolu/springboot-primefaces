@@ -27,6 +27,8 @@ public class UserDto extends BaseDto{
     private Date createDate;
     private Date updateDate;
     private String token;
+    private String iban;
+    private String about;
 
     public UserDto() {
     }
@@ -171,5 +173,21 @@ public class UserDto extends BaseDto{
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 }
