@@ -8,15 +8,29 @@
 
 package com.avosh.baseproject.dto;
 
-import java.time.Instant;
+import java.util.Date;
 
 public class SystemDto extends BaseDto{
+
     private String description;
     private Boolean enable = false;
     private Integer version;
     private Boolean minVersion = false;
-    private Instant createDatetime;
+    private Date createDatetime;
     private UserDto userDto;
+
+    public SystemDto() {
+    }
+
+    public SystemDto(Long id, String description, Boolean enable, Integer version, Boolean minVersion, Date createDatetime, UserDto userDto) {
+        this.id = id;
+        this.description = description;
+        this.enable = enable;
+        this.version = version;
+        this.minVersion = minVersion;
+        this.createDatetime = createDatetime;
+        this.userDto = userDto;
+    }
 
     public String getDescription() {
         return description;
@@ -50,11 +64,11 @@ public class SystemDto extends BaseDto{
         this.minVersion = minVersion;
     }
 
-    public Instant getCreateDatetime() {
+    public Date getCreateDatetime() {
         return createDatetime;
     }
 
-    public void setCreateDatetime(Instant createDatetime) {
+    public void setCreateDatetime(Date createDatetime) {
         this.createDatetime = createDatetime;
     }
 

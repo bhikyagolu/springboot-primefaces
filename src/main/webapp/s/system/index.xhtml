@@ -1,4 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
@@ -99,7 +100,32 @@
                 </div>
                 <div class="card">
                     <h5>#{msg['profile.activity']}</h5>
+                    <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{systemBean.list}"
+                                 reflow="true"  resizableColumns="true"
+                                 rowKey="#{data.id}" rowIndexVar="row"
+                                 paginator="true" rows="10" paginatorPosition="bottom" >
 
+                        <p:column headerText="#{msg['table.header.index']}" responsivePriority="6"
+                                  style="vertical-align: middle;">
+                            <h:outputText value=" #{row+1}"/>
+                        </p:column>
+
+                        <p:column headerText="#{msg['table.header.user']}" responsivePriority="2">
+                            <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
+                        </p:column>
+                        <p:column headerText="#{msg['table.header.version']}" responsivePriority="1">
+                            <h:outputText value="#{data.version}"/>
+                        </p:column>
+                        <p:column headerText="#{msg['table.header.desc']}" responsivePriority="4">
+                            <h:outputText value="#{data.description}"/>
+                        </p:column>
+                        <p:column headerText="#{msg['table.header.enable']}" responsivePriority="3">
+                            <h:outputText value="#{data.enable}"/>
+                        </p:column>
+                        <p:column headerText="#{msg['table.header.minVersion']}" responsivePriority="5">
+                            <h:outputText value="#{data.minVersion}"/>
+                        </p:column>
+                    </p:dataTable>
                 </div>
             </div>
 

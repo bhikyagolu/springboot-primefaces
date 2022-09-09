@@ -10,20 +10,55 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.SystemDto;
 import com.avosh.baseproject.services.SystemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Component
 @Scope("session")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
+    private boolean isEditMode;
+    private List<SystemDto> list;
+    private SystemDto systemDto;
 
-    public void save() {
 
+    @Autowired
+    public void setService(SystemService service) {
+        this.service = service;
+    }
+
+    @PostConstruct
+    private void init(){
+        list = service.retrieveAll();
+        systemDto = new SystemDto();
+        setDto(new SystemDto());
+    }
+
+    public boolean isEditMode() {
+        return isEditMode;
+    }
+
+    public List<SystemDto> getList() {
+        return list;
     }
 
 
+    public SystemDto getDto() {
+        return systemDto;
+    }
 
-    public void deleteRecord() {
+
+    public void setDto(SystemDto dto) {
+        this.systemDto = dto;
+
+    }
+
+    public void deleteRecord()  {
+        super.delete();
+        init();
 
     }
 }

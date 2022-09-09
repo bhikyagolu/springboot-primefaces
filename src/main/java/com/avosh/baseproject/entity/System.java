@@ -5,7 +5,6 @@
  */
 package com.avosh.baseproject.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,8 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,7 +41,7 @@ public class System implements BaseEntity {
     @Column(name = "version")
     private Integer version;
     @Column(name = "min_version")
-    private Integer minVersion;
+    private Boolean minVersion;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
@@ -91,11 +88,11 @@ public class System implements BaseEntity {
         this.version = version;
     }
 
-    public Integer getMinVersion() {
+    public Boolean getMinVersion() {
         return minVersion;
     }
 
-    public void setMinVersion(Integer minVersion) {
+    public void setMinVersion(Boolean minVersion) {
         this.minVersion = minVersion;
     }
 
