@@ -8,21 +8,20 @@
 
 package com.avosh.baseproject.enums;
 
-public enum LibraryType {
-    IMAGE(1,"Image"),
-    VIDEO(2,"Video"),
-    PDF(3,"PDF");
+public enum ApplicationStatus {
+    ENABLE(1,"Enable"),
+    DISABLE(2,"Disable");
 
-    private Integer type;
+    private Integer stats;
     private String description;
 
-    LibraryType(Integer type, String description) {
-        this.type = type;
+    ApplicationStatus(Integer stats, String description) {
+        this.stats = stats;
         this.description = description;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getStats() {
+        return stats;
     }
 
     public String getDescription() {
