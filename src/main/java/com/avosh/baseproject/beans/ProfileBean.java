@@ -72,4 +72,16 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
     }
 
+    public void changePassword() {
+
+    }
+
+    public void saveContact() {
+
+    }
+
+    public void saveProfile() {
+
+    }
+
 }
