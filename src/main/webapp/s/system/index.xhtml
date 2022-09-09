@@ -103,7 +103,9 @@
                     <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{systemBean.list}"
                                  reflow="true"  resizableColumns="true"
                                  rowKey="#{data.id}" rowIndexVar="row"
-                                 paginator="true" rows="10" paginatorPosition="bottom" >
+                                 paginator="true" paginatorPosition="bottom" paginatorTemplate="
+                                                                 {PreviousPageLink} {PageLinks} {NextPageLink}  "
+                                  rows="10"  >
 
                         <p:column headerText="#{msg['table.header.index']}" responsivePriority="6"
                                   style="vertical-align: middle;">
