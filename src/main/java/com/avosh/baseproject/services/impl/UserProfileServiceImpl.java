@@ -64,7 +64,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         userDto.setEnable(user.get().getIsEnable());
         userDto.setLastLogin(user.get().getLastLogin());
         userDto.setNationalcode(user.get().getNationalcode());
-        userDto.setNationalcode(user.get().getIban());
+        userDto.setIban(user.get().getIban());
         userDto.setAbout(user.get().getAbout());
         userDto.setPhone(user.get().getPhone());
         return userDto;

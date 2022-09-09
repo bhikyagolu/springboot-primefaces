@@ -51,6 +51,10 @@
                             <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}"/>
                         </div>
                         <div class="field">
+                            <p:outputLabel for="iban">#{msg['profile.iban']}</p:outputLabel>
+                            <p:inputText id="iban" value="#{profileBean.dto.iban}"/>
+                        </div>
+                        <div class="field">
                             <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
                             <p:inputTextarea id="bio" value="#{profileBean.dto.about}" />
                         </div>
