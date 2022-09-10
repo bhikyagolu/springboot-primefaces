@@ -8,20 +8,29 @@
 
 package com.avosh.baseproject.enums;
 
-public enum PostType {
-    POST(1,"Post"),
-    ADS(2,"Advertisement");
+public enum ApplicationStatusEnum {
+    ENABLE(1,"Enable"),
+    DISABLE(2,"Disable");
 
-    private Integer type;
+    private Integer stats;
     private String description;
 
-    PostType(Integer type, String description) {
-        this.type = type;
+    ApplicationStatusEnum(Integer stats, String description) {
+        this.stats = stats;
         this.description = description;
     }
 
-    public Integer getType() {
-        return type;
+    public static String valueByCode(Integer code) {
+        for (ApplicationStatusEnum statusEnum : ApplicationStatusEnum.values()) {
+            if(statusEnum.getStats() == code){
+                return statusEnum.description;
+            }
+        }
+        return null;
+    }
+
+    public Integer getStats() {
+        return stats;
     }
 
     public String getDescription() {

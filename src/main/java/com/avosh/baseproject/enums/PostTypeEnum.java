@@ -8,17 +8,25 @@
 
 package com.avosh.baseproject.enums;
 
-public enum LibraryType {
-    IMAGE(1,"Image"),
-    VIDEO(2,"Video"),
-    PDF(3,"PDF");
+public enum PostTypeEnum {
+    POST(1,"Post"),
+    ADS(2,"Advertisement");
 
     private Integer type;
     private String description;
 
-    LibraryType(Integer type, String description) {
+    PostTypeEnum(Integer type, String description) {
         this.type = type;
         this.description = description;
+    }
+
+    public static String valueByCode(Integer code) {
+        for (PostTypeEnum typeEnum : PostTypeEnum.values()) {
+            if(typeEnum.getType() == code){
+                return typeEnum.description;
+            }
+        }
+        return null;
     }
 
     public Integer getType() {
