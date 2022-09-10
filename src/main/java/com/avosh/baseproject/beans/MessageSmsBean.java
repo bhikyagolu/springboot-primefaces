@@ -9,7 +9,7 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.MessageDto;
-import com.avosh.baseproject.enums.MessageType;
+import com.avosh.baseproject.enums.MessageTypeEnum;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class MessageSmsBean extends MessageBean{
         setDto(new MessageDto());
         messageDto = new MessageDto();
         messageDtoList = new ArrayList<>();
-        messageDtoList = service.retrieveAllByType(MessageType.SMS.getType());
+        messageDtoList = service.retrieveAllByType(MessageTypeEnum.SMS.getType());
 
     }
 
