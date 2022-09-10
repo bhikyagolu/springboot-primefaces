@@ -1,6 +1,8 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
+import com.avosh.baseproject.services.DashboardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,15 +10,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("session")
-public class DashboardBean extends BaseBean{
-    private String name ;
+public class DashboardBean extends BaseBean {
+    private String name;
     private String family;
     Authentication authentication;
     CustomUserDetail customUserDetail;
 
+    @Autowired
+    DashboardService dashboardService;
+
     public DashboardBean() {
         authentication = SecurityContextHolder.getContext().getAuthentication();
-        customUserDetail = (CustomUserDetail)authentication.getPrincipal();
+        customUserDetail = (CustomUserDetail) authentication.getPrincipal();
 
     }
 
@@ -28,14 +33,33 @@ public class DashboardBean extends BaseBean{
         return customUserDetail.getSecUser().getFamily();
     }
 
-    @Override
-    public void save() {
-
+    public Integer allUserCount() {
+        return 10;
     }
 
+    public Integer allSalesCount() {
+        return 10;
+    }
 
+    public Integer allRevenueCount() {
+        return 10;
+    }
 
-      public void deleteRecord() {
+    public Integer todayRegisterCount() {
+        return 10;
+    }
+    public Integer todayViewCount() {
+        return 10;
+    }
+    public Integer todayAndroidIncome() {
+        return 10;
+    }
 
+    public Integer todayIosIncome() {
+        return 10;
+    }
+
+    public Integer todayAllIncome() {
+        return 20;
     }
 }

@@ -40,33 +40,33 @@
             <div class="col-12 md:col-4">
                 <div class="card summary flex justify-content-between">
                     <div>
-                        <span class="title">Users</span>
-                        <span class="detail">Number of visitors</span>
+                        <span class="title">#{msg['dashboard.users']}</span>
+                        <span class="detail">#{msg['dashboard.users.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count visitors p-2">12</span>
+                        <span class="count visitors p-2">#{dashboardBean.allUserCount()}</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 md:col-4">
                 <div class="card summary flex justify-content-between">
                     <div>
-                        <span class="title">Sales</span>
-                        <span class="detail">Number of purchases</span>
+                        <span class="title">#{msg['dashboard.sales']}</span>
+                        <span class="detail">#{msg['dashboard.sales.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count purchases p-2">534</span>
+                        <span class="count purchases p-2">#{dashboardBean.allSalesCount()}</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 md:col-4">
                 <div class="card summary flex justify-content-between">
                     <div>
-                        <span class="title">Revenue</span>
-                        <span class="detail">Income for today</span>
+                        <span class="title">#{msg['dashboard.revenue']}</span>
+                        <span class="detail">#{msg['dashboard.revenue.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count revenue p-2">$3,200</span>
+                        <span class="count revenue p-2">#{dashboardBean.allRevenueCount()} T</span>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.register']}</h5>
-                    <p class="mb-1"><strong>$6752</strong> </p>
+                    <p class="mb-1"><strong>#{dashboardBean.todayRegisterCount()}</strong> </p>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.view']}</h5>
-                    <p class="mb-1"><strong>$6752</strong> </p>
+                    <p class="mb-1"><strong>#{dashboardBean.todayViewCount()}</strong> </p>
 
                 </div>
             </div>
@@ -116,7 +116,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.android']}</h5>
-                    <p class="mb-1"><strong>$1132</strong> / $6987</p>
+                    <p class="mb-1"><strong>#{dashboardBean.todayAndroidIncome()}T</strong> / #{dashboardBean.todayAllIncome()}T</p>
                     <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.apple']}</h5>
-                    <p class="mb-1"><strong>$58990</strong> / $65650</p>
+                    <p class="mb-1"><strong>#{dashboardBean.todayIosIncome()}T</strong> / #{dashboardBean.todayAllIncome()}T</p>
                     <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
