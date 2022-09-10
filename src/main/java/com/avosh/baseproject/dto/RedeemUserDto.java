@@ -8,10 +8,6 @@
 
 package com.avosh.baseproject.dto;
 
-import com.avosh.baseproject.entity.Redeem;
-import com.avosh.baseproject.entity.SecUser;
-
-import javax.persistence.*;
 import java.util.Date;
 
 public class RedeemUserDto extends BaseDto{

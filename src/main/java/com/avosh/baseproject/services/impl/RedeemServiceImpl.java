@@ -9,13 +9,10 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
-import com.avosh.baseproject.dto.LessonDto;
 import com.avosh.baseproject.dto.RedeemDto;
-import com.avosh.baseproject.dto.SubLessonDto;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.Redeem;
 import com.avosh.baseproject.entity.SecUser;
-import com.avosh.baseproject.entity.SubLesson;
 import com.avosh.baseproject.repository.RedeemRepository;
 import com.avosh.baseproject.services.RedeemService;
 import org.apache.log4j.Logger;

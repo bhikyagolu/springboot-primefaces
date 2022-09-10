@@ -11,7 +11,6 @@ package com.avosh.baseproject.services;
 import com.avosh.baseproject.dto.LessonDto;
 import com.avosh.baseproject.entity.Lesson;
 import com.avosh.baseproject.repository.LessonRepository;
-import org.springframework.stereotype.Service;
 
 public interface LessonService extends BaseService<LessonRepository, Lesson, LessonDto>{
 }

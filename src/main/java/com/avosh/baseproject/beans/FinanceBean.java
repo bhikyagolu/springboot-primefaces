@@ -9,7 +9,6 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.FinanceDto;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.services.FinanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

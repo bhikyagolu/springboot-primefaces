@@ -10,7 +10,6 @@ package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.dto.PackageDto;
 import com.avosh.baseproject.dto.SubLessonDto;
-import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.Package;
 import com.avosh.baseproject.entity.SubLesson;
 import com.avosh.baseproject.repository.PackageRepository;

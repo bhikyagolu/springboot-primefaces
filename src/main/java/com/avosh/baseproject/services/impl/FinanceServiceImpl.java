@@ -9,11 +9,9 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.dto.FinanceDto;
-import com.avosh.baseproject.dto.LessonDto;
 import com.avosh.baseproject.dto.RedeemDto;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.Finance;
-import com.avosh.baseproject.entity.Lesson;
 import com.avosh.baseproject.repository.FinanceRepository;
 import com.avosh.baseproject.services.FinanceService;
 import org.apache.log4j.Logger;

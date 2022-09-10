@@ -9,7 +9,6 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.SubLessonDto;
-import com.avosh.baseproject.services.LessonService;
 import com.avosh.baseproject.services.SubLessonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

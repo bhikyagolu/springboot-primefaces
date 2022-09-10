@@ -8,10 +8,8 @@
 
 package com.avosh.baseproject.services.impl;
 
-import com.avosh.baseproject.dto.LessonDto;
 import com.avosh.baseproject.dto.QuestionDto;
 import com.avosh.baseproject.dto.SubLessonDto;
-import com.avosh.baseproject.entity.Lesson;
 import com.avosh.baseproject.entity.Question;
 import com.avosh.baseproject.repository.QuestionRepository;
 import com.avosh.baseproject.services.QuestionService;

@@ -9,16 +9,13 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
-import com.avosh.baseproject.dto.RedeemDto;
 import com.avosh.baseproject.dto.SystemDto;
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.Redeem;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.entity.System;
 import com.avosh.baseproject.repository.SystemRepository;
 import com.avosh.baseproject.services.SystemService;
 import com.avosh.baseproject.util.Empty;
-import com.fasterxml.jackson.databind.DatabindException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
