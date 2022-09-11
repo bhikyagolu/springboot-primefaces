@@ -1,13 +1,12 @@
 package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
+import com.avosh.baseproject.backchannel.rest.RestMessage;
 import com.avosh.baseproject.backchannel.rest.RestMessageRequest;
 import com.avosh.baseproject.backchannel.rest.RestMessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
-import com.avosh.baseproject.backchannel.rest.RestMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -17,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
-import java.io.StringReader;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
@@ -50,7 +49,7 @@ public class BackendConnectorRest implements BackendConnector {
 
 //            String requestStr = request.getMessage();
             HttpEntity<String> requestEntity = new HttpEntity<>(requestJson, headers);
-            log.info("Sending rest message... request.toString()-->[" + request.toString() + "] , "
+            log.info("Sending rest message... request.toString()-->[" + request + "] , "
                     + "requets.getMessage()-->[" + request.getMessage() + "]");
             ResponseEntity<String> responseEntity = restTemplate.exchange(requestUri, request.getHttpMethod(),
                     requestEntity, String.class);
