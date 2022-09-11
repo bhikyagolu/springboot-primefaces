@@ -5,6 +5,7 @@ import com.avosh.baseproject.backchannel.rest.RestMessageRequest;
 import com.avosh.baseproject.backchannel.rest.RestMessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.avosh.baseproject.backchannel.rest.RestMessage;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import org.apache.log4j.Logger;
@@ -55,13 +56,9 @@ public class BackendConnectorRest implements BackendConnector {
                     requestEntity, String.class);
             log.info("Receiving rest message... result-->[" + responseEntity.getBody() + "]");
             String responseStr = responseEntity.getBody();
-            Gson gson = new Gson();
-            JsonReader reader = new JsonReader(new StringReader(responseStr));
-            reader.setLenient(true);
+            ObjectMapper objectMapper = new ObjectMapper();
             RestMessageResponse responseObj;
-
-            responseObj = (RestMessageResponse) gson.fromJson(responseStr, request.getResponseClass());
-
+            responseObj = (RestMessageResponse) objectMapper.readValue(responseStr, request.getResponseClass());
             return responseObj;
         } catch (URISyntaxException ex) {
             java.util.logging.Logger.getLogger(BackendConnectorRest.class.getName()).log(Level.SEVERE, null, ex);
