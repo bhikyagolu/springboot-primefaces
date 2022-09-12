@@ -2,6 +2,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">Menu</ui:define>
@@ -36,11 +37,11 @@
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
-                            <p:inputText id="name" value="#{profileBean.dto.name}"/>
+                            <p:inputText id="name" value="#{profileBean.dto.name}" maxlength="12" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="family">#{msg['profile.family']}</p:outputLabel>
-                            <p:inputText id="family" value="#{profileBean.dto.family}"/>
+                            <p:inputText id="family" value="#{profileBean.dto.family}" maxlength="12" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="gender">#{msg['profile.gender']}</p:outputLabel>
@@ -48,15 +49,15 @@
                         </div>
                         <div class="field">
                             <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
-                            <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}"/>
+                            <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}" maxlength="10" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="iban">#{msg['profile.iban']}</p:outputLabel>
-                            <p:inputText id="iban" value="#{profileBean.dto.iban}"/>
+                            <p:inputText id="iban" value="#{profileBean.dto.iban}" maxlength="24" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
-                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" />
+                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.changePassword()}"
@@ -72,15 +73,15 @@
                         <div class="formgrid grid">
                             <div class="field col">
                                 <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
-                                <p:password id="oldPassword"/>
+                                <p:password id="oldPassword" maxlength="10" rendered="true"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
-                                <p:password id="newPassword" feedback="true"  match="reNewPassword"/>
+                                <p:password id="newPassword" feedback="true"  match="reNewPassword" maxlength="10" rendered="true"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
-                                <p:password id="reNewPassword"/>
+                                <p:password id="reNewPassword" maxlength="10" rendered="true"/>
                             </div>
                         </div>
                         <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.saveProfile()}"
@@ -90,19 +91,23 @@
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
-                            <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}"/>
+                            <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}" maxlength="11">
+                                <f:validateRegex pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"  rendered="true"/>
+                            </p:inputText>
                         </div>
                         <div class="field">
                             <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
-                            <p:inputText id="phone" value="#{profileBean.dto.phone}"/>
+                            <p:inputText id="phone" value="#{profileBean.dto.phone}" maxlength="8" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
-                            <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}"/>
+                            <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}" maxlength="40">
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"  rendered="true"/>
+                            </p:inputText>
                         </div>
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
-                            <p:inputText id="address" value="#{profileBean.dto.address}"/>
+                            <p:inputText id="address" value="#{profileBean.dto.address}" maxlength="150" rendered="true"/>
                         </div>
                         <div class="field">
                             <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.saveContact()}"
