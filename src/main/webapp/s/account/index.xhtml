@@ -49,7 +49,8 @@
                         </div>
                         <div class="field">
                             <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
-                            <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}" maxlength="10" rendered="true"/>
+                            <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}" maxlength="10"
+                                         rendered="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="iban">#{msg['profile.iban']}</p:outputLabel>
@@ -60,7 +61,8 @@
                             <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" rendered="true"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.changePassword()}"
+                            <p:commandButton type="button" value="#{msg['profile.save']}"
+                                             actionListener="#{profileBean.changePassword()}"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
@@ -77,22 +79,25 @@
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
-                                <p:password id="newPassword" feedback="true"  match="reNewPassword" maxlength="10" rendered="true"/>
+                                <p:password id="newPassword" feedback="true" match="reNewPassword" maxlength="10"
+                                            rendered="true"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
                                 <p:password id="reNewPassword" maxlength="10" rendered="true"/>
                             </div>
                         </div>
-                        <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.saveProfile()}"
+                        <p:commandButton type="button" value="#{msg['profile.save']}"
+                                         actionListener="#{profileBean.saveProfile()}"
                                          style="display:inline-block;margin-top:5px; width: auto"/>
                     </div>
                     <div class="card ui-fluid">
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
-                            <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}" maxlength="11">
-                                <f:validateRegex pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"  rendered="true"/>
+                            <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}"
+                                         maxlength="11" rendered="true">
+                                <f:validateRegex pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"/>
                             </p:inputText>
                         </div>
                         <div class="field">
@@ -101,16 +106,20 @@
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
-                            <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}" maxlength="40">
-                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"  rendered="true"/>
+                            <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}" maxlength="40"
+                                         required="true">
+                                <f:validateRegex
+                                        pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
                             </p:inputText>
                         </div>
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
-                            <p:inputText id="address" value="#{profileBean.dto.address}" maxlength="150" rendered="true"/>
+                            <p:inputText id="address" value="#{profileBean.dto.address}" maxlength="150"
+                                         rendered="true"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="#{msg['profile.save']}" actionListener="#{profileBean.saveContact()}"
+                            <p:commandButton type="button" value="#{msg['profile.save']}"
+                                             actionListener="#{profileBean.saveContact()}"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>
