@@ -72,7 +72,7 @@ public class BackendConnectorRest implements BackendConnector {
     }
 
     private void logResponseCreationException(MessageRequest request, Exception ex) {
-        log.error("Exception occured whitle trying to instantiate rest response message. "
+        log.error("Exception occurred while trying to instantiate rest response message. "
                 + "request.toString-->[" + request.toString() + "] , "
                 + "request.getMessage()-->[" + request.getMessage() + "]", ex);
     }
