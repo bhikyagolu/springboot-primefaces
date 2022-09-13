@@ -1,9 +1,9 @@
 package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
-import com.avosh.baseproject.backchannel.rest.RestMessage;
-import com.avosh.baseproject.backchannel.rest.RestMessageRequest;
-import com.avosh.baseproject.backchannel.rest.RestMessageResponse;
+import com.avosh.baseproject.backchannel.rest.Message;
+import com.avosh.baseproject.backchannel.rest.MessageRequest;
+import com.avosh.baseproject.backchannel.rest.MessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -30,13 +30,13 @@ public class BackendConnectorRest implements BackendConnector {
 
 
     @Override
-    public RestMessage executeRequest(RestMessage requestMessage) {
-        if (requestMessage == null || !(requestMessage instanceof RestMessageRequest)) {
+    public Message executeRequest(Message requestMessage) {
+        if (requestMessage == null || !(requestMessage instanceof MessageRequest)) {
             log.error("Error, Bad requestMessage found in BackenedConnectorRest.executeRequest(Message requestMessage)."
                     + " requestMessage-->[" + requestMessage + "]");
             throw new BadRequestException();
         }
-        RestMessageRequest request = (RestMessageRequest) requestMessage;
+        MessageRequest request = (MessageRequest) requestMessage;
         try {
             URI requestUri = new URI(request.getUri());
             log.info("Sending rest to Uri ---> "+request.getUri());
@@ -56,8 +56,8 @@ public class BackendConnectorRest implements BackendConnector {
             log.info("Receiving rest message... result-->[" + responseEntity.getBody() + "]");
             String responseStr = responseEntity.getBody();
             ObjectMapper objectMapper = new ObjectMapper();
-            RestMessageResponse responseObj;
-            responseObj = (RestMessageResponse) objectMapper.readValue(responseStr, request.getResponseClass());
+            MessageResponse responseObj;
+            responseObj = (MessageResponse) objectMapper.readValue(responseStr, request.getResponseClass());
             return responseObj;
         } catch (URISyntaxException ex) {
             java.util.logging.Logger.getLogger(BackendConnectorRest.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +71,7 @@ public class BackendConnectorRest implements BackendConnector {
         }
     }
 
-    private void logResponseCreationException(RestMessageRequest request, Exception ex) {
+    private void logResponseCreationException(MessageRequest request, Exception ex) {
         log.error("Exception occured whitle trying to instantiate rest response message. "
                 + "request.toString-->[" + request.toString() + "] , "
                 + "request.getMessage()-->[" + request.getMessage() + "]", ex);

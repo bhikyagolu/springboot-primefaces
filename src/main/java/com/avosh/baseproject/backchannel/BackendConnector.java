@@ -1,7 +1,7 @@
 package com.avosh.baseproject.backchannel;
 
-import com.avosh.baseproject.backchannel.rest.RestMessage;
+import com.avosh.baseproject.backchannel.rest.Message;
 
 public interface BackendConnector {
-    RestMessage executeRequest(RestMessage requestMessage);
+    Message executeRequest(Message requestMessage);
 }
