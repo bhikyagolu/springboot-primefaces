@@ -55,7 +55,7 @@ public class GuestPreferences implements Serializable {
     }
 
     public void changeLanguage(){
-
+        LocaleContextHolder.setLocale(new Locale(language));
     }
 
     public String getTheme() {
