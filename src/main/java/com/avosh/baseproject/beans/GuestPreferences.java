@@ -8,12 +8,14 @@
 package com.avosh.baseproject.beans;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Component
 @Scope("session")
@@ -37,6 +39,9 @@ public class GuestPreferences implements Serializable {
 
     @PostConstruct
     public void init() {
+        Locale loca = LocaleContextHolder.getLocale();
+        language = loca.getLanguage();
+
         themes = new ArrayList<>();
         themes.add(new Theme("Blue", "blue", "#2196F3"));
         themes.add(new Theme("Green", "green", "#4CAF50"));
