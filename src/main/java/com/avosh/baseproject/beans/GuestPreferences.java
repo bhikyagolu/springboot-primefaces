@@ -19,7 +19,7 @@ import java.util.List;
 @Scope("session")
 public class GuestPreferences implements Serializable {
 
-    private String language;
+    private String language = "en";
 
     private String theme = "blue";
 
