@@ -49,6 +49,10 @@ public class GuestPreferences implements Serializable {
         layouts.add(new Layout("Dark", "dark", "#4d5058"));
     }
 
+    public void changeLanguage(){
+
+    }
+
     public String getTheme() {
         return theme;
     }

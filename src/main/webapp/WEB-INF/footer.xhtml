@@ -13,6 +13,7 @@
             <f:selectItem itemLabel="FA" itemValue="fa"/>
             <f:selectItem itemLabel="EN" itemValue="en"/>
             <f:selectItem itemLabel="DE" itemValue="de"/>
+            <p:ajax event="change" listener="#{guestPreferences.changeLanguage()}" />
         </p:selectOneMenu>
     </div>
 </ui:composition>
