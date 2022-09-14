@@ -19,6 +19,8 @@ import java.util.List;
 @Scope("session")
 public class GuestPreferences implements Serializable {
 
+    private String language;
+
     private String theme = "blue";
 
     private String layout = "light";
@@ -187,5 +189,13 @@ public class GuestPreferences implements Serializable {
         public void setColor(String color) {
             this.color = color;
         }
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
