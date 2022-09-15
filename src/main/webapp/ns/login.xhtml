@@ -45,6 +45,12 @@
                         <p:commandButton type="submit" action="/login" ajax="false" value="#{msg['login.sign.in']}"
                                          icon="pi pi-user"/>
                     </div>
+                    <div class="col-12">
+                        <p:selectOneMenu id="locale" value="#{guestPreferences.locale}" onchange="submit()"
+                                         valueChangeListener="#{guestPreferences.changeLanguage}">
+                            <f:selectItems value="#{guestPreferences.countries}"/>
+                        </p:selectOneMenu>
+                    </div>
                 </div>
             </div>
         </h:form>
