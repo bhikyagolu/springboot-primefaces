@@ -38,6 +38,8 @@ public class GuestPreferences implements Serializable {
 
     private List<Layout> layouts;
 
+    private String themePath = "custom-rtl.css";
+
     @PostConstruct
     public void init() {
         themes = new ArrayList<>();
@@ -54,6 +56,14 @@ public class GuestPreferences implements Serializable {
         countries = new LinkedHashMap<String, Object>();
         countries.put("English", Locale.ENGLISH);
         countries.put("Farsi", (new Locale("fa")));
+
+
+        if(FacesContext.getCurrentInstance()
+                .getViewRoot().getLocale().equals("fa")){
+            themePath ="custom-rtl.css";
+        }else {
+            themePath ="custom-ltr.css";
+        }
     }
 
 
@@ -66,8 +76,17 @@ public class GuestPreferences implements Serializable {
             if(entry.getValue().toString().equals(newLocaleValue)) {
                 FacesContext.getCurrentInstance()
                         .getViewRoot().setLocale((Locale)entry.getValue());
+                if(newLocaleValue.equals("fa")){
+                    themePath ="custom-rtl.css";
+                }else {
+                    themePath ="custom-ltr.css";
+                }
             }
         }
+    }
+
+    public String getThemePath(){
+        return themePath;
     }
 
     public String getTheme() {
