@@ -12,16 +12,17 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @Component
 @Scope("session")
 public class GuestPreferences implements Serializable {
 
-    private String language = "en";
+    LinkedHashMap<String, Object> countries;
+    private String locale;
 
     private String theme = "blue";
 
@@ -39,9 +40,6 @@ public class GuestPreferences implements Serializable {
 
     @PostConstruct
     public void init() {
-        Locale loca = LocaleContextHolder.getLocale();
-        language = loca.getLanguage();
-
         themes = new ArrayList<>();
         themes.add(new Theme("Blue", "blue", "#2196F3"));
         themes.add(new Theme("Green", "green", "#4CAF50"));
@@ -52,10 +50,24 @@ public class GuestPreferences implements Serializable {
         layouts.add(new Layout("Blue", "blue", "#0388e5"));
         layouts.add(new Layout("Light", "light", "#ffffff"));
         layouts.add(new Layout("Dark", "dark", "#4d5058"));
+
+        countries = new LinkedHashMap<String, Object>();
+        countries.put("English", Locale.ENGLISH);
+        countries.put("Farsi", (new Locale("fa")));
     }
 
-    public void changeLanguage(){
-        LocaleContextHolder.setLocale(new Locale(language));
+
+
+    public void changeLanguage(ValueChangeEvent e){
+        String newLocaleValue = e.getNewValue().toString();
+
+        for (Map.Entry<String, Object> entry : countries.entrySet()) {
+
+            if(entry.getValue().toString().equals(newLocaleValue)) {
+                FacesContext.getCurrentInstance()
+                        .getViewRoot().setLocale((Locale)entry.getValue());
+            }
+        }
     }
 
     public String getTheme() {
@@ -200,11 +212,19 @@ public class GuestPreferences implements Serializable {
         }
     }
 
-    public String getLanguage() {
-        return language;
+    public String getLocale() {
+        return locale;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public LinkedHashMap<String, Object> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(LinkedHashMap<String, Object> countries) {
+        this.countries = countries;
     }
 }

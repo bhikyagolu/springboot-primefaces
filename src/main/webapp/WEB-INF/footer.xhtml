@@ -9,13 +9,12 @@
             <!--        <p:graphicImage name="images/logo-colored.png" library="omega-layout" width="32"/>-->
             <span class="footer-text">#{msg['footer.copyright']}</span>
 
-            <p:outputLabel for="locale" value="#{msg['footer.language']}"/>
-            <p:selectOneMenu id="locale" value="#{guestPreferences.language}">
-                <f:selectItem itemLabel="FA" itemValue="fa"/>
-                <f:selectItem itemLabel="EN" itemValue="en"/>
-                <f:selectItem itemLabel="DE" itemValue="de"/>
-                <p:ajax event="change" listener="#{guestPreferences.changeLanguage()}" update="messagesPanel"/>
+            <span>
+            <p:selectOneMenu id="locale" value="#{guestPreferences.locale}" onchange="submit()"
+                             valueChangeListener="#{guestPreferences.changeLanguage}" style="float: right">
+                <f:selectItems value="#{guestPreferences.countries}"/>
             </p:selectOneMenu>
+            </span>
         </h:form>
     </div>
 </ui:composition>
