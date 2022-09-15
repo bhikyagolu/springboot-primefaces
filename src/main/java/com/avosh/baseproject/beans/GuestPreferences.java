@@ -38,7 +38,7 @@ public class GuestPreferences implements Serializable {
 
     private List<Layout> layouts;
 
-    private String themePath = "custom-rtl.css";
+    private String themePath;
 
     @PostConstruct
     public void init() {

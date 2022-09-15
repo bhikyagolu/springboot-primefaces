@@ -23,10 +23,27 @@ body{
 .footer-lang{
     float: left !important;
 }
+.wrapper .sidebar ul li > a .layout-submenu-toggler {
+    float: left !important;
+}
+.wrapper .sidebar ul li > a span {
+    margin-right: 0.3em !important;
+}
 /*.wrapper .sidebar .profile > ul {*/
 /*    text-align: right;*/
 /*}*/
-
+.wrapper .topbar #omega-menu-button{
+    float: right !important;
+}
+.wrapper .topbar .topbar-title{
+    vertical-align: top !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+.wrapper .topbar #topbar-icons a {
+    margin-right: 20px !important;
+    margin-left: 0px !important;
+}
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;
