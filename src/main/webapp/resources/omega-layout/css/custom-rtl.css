@@ -44,6 +44,12 @@ body{
     margin-right: 20px !important;
     margin-left: 0px !important;
 }
+.ui-datatable thead th{
+    text-align: right !important;
+}
+.export{
+    /*float: right;*/
+}
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;

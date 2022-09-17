@@ -7,6 +7,7 @@
  */
 package com.avosh.baseproject.beans;
 
+import com.avosh.baseproject.util.Empty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -58,34 +59,43 @@ public class GuestPreferences implements Serializable {
         countries.put("Farsi", (new Locale("fa")));
 
 
-        if(FacesContext.getCurrentInstance()
-                .getViewRoot().getLocale().equals("fa")){
-            themePath ="custom-rtl.css";
-        }else {
-            themePath ="custom-ltr.css";
+        if (FacesContext.getCurrentInstance()
+                .getViewRoot().getLocale().equals("fa")) {
+            themePath = "custom-rtl.css";
+            FacesContext.getCurrentInstance()
+                    .getViewRoot().setLocale(new Locale("fa"));
+        } else {
+            themePath = "custom-ltr.css";
         }
     }
 
 
-
-    public void changeLanguage(ValueChangeEvent e){
+    public void changeLanguage(ValueChangeEvent e) {
         String newLocaleValue = e.getNewValue().toString();
-
         for (Map.Entry<String, Object> entry : countries.entrySet()) {
 
-            if(entry.getValue().toString().equals(newLocaleValue)) {
+            if (entry.getValue().toString().equals(newLocaleValue)) {
                 FacesContext.getCurrentInstance()
-                        .getViewRoot().setLocale((Locale)entry.getValue());
-                if(newLocaleValue.equals("fa")){
-                    themePath ="custom-rtl.css";
-                }else {
-                    themePath ="custom-ltr.css";
+                        .getViewRoot().setLocale((Locale) entry.getValue());
+                if (newLocaleValue.equals("fa")) {
+                    themePath = "custom-rtl.css";
+                    FacesContext.getCurrentInstance()
+                            .getViewRoot().setLocale(new Locale("fa"));
+                } else {
+                    themePath = "custom-ltr.css";
                 }
             }
         }
     }
 
-    public String getThemePath(){
+    public String getThemePath() {
+        if (Empty.isNotEmpty(locale)) {
+            if (locale.equals("fa")) {
+                themePath = "custom-rtl.css";
+                FacesContext.getCurrentInstance()
+                        .getViewRoot().setLocale(new Locale("fa"));
+            }
+        }
         return themePath;
     }
 
@@ -157,7 +167,8 @@ public class GuestPreferences implements Serializable {
 
         private String color;
 
-        public Theme() {}
+        public Theme() {
+        }
 
         public Theme(String name, String file, String color) {
             this.name = name;
@@ -198,7 +209,8 @@ public class GuestPreferences implements Serializable {
 
         private String color;
 
-        public Layout() {}
+        public Layout() {
+        }
 
         public Layout(String name, String file, String color) {
             this.name = name;
