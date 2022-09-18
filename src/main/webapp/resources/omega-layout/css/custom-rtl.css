@@ -50,6 +50,25 @@ body{
 .export{
     /*float: right;*/
 }
+.ui-selectonemenu .ui-selectonemenu-trigger{
+    left: 0px !important;
+    right: auto !important;
+}
+.ui-selectonemenu .ui-selectonemenu-label{
+    text-align: right !important;
+}
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+    text-align: right !important;
+}
+/*element {*/
+/*    margin-right: 10px;*/
+/*}*/
+#login-wrapper #login-container .ui-chkbox{
+    margin-right: 10px;
+}
+#locale .ui-selectonemenu .ui-selectonemenu-trigger{
+    display: none;
+}
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;
