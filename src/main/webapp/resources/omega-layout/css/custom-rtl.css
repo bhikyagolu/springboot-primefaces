@@ -75,6 +75,9 @@ body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
 .tableToggler{
     float: right;
 }
+.table-new{
+    float: right;
+}
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;
