@@ -69,6 +69,12 @@ body{
 #locale .ui-selectonemenu .ui-selectonemenu-trigger{
     display: none;
 }
+body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
+    margin-right: 10px !important;
+}
+.tableToggler{
+    float: right;
+}
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;

@@ -26,10 +26,6 @@
                                             <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
                                                          placeholder="Search "/>
                                         </span>
-                                        <span style="font-weight: bold">
-                                            <p:commandButton id="toggler" type="button" icon="pi pi-align-justify"/>
-                                            <p:columnToggler datasource="dataTable" trigger="toggler"/>
-                                        </span>
                                     </div>
                                 </div>
 
@@ -90,6 +86,12 @@
                                     <p:commandButton icon="pi pi-file" styleClass="p-mr-2 p-mb-2 export" style="margin: 2px">
                                         <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
+
+                                    <span style="font-weight: bold" class="tableToggler">
+                                            <p:commandButton id="toggler" type="button" icon="pi pi-align-justify"/>
+                                            <p:columnToggler datasource="dataTable" trigger="toggler"/>
+                                        </span>
+
                                 </div>
 
                             </f:facet>

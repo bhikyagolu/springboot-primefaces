@@ -27,10 +27,7 @@
                                             <p:inputText id="globalFilter" onkeyup="PF('dataDT').filter()"
                                                          placeholder="Search "/>
                                         </span>
-                                        <span style="font-weight: bold">
-                                            <p:commandButton id="toggler" type="button" icon="pi pi-align-justify"/>
-                                            <p:columnToggler datasource="dataTable" trigger="toggler"/>
-                                        </span>
+
                                     </div>
                                 </div>
 
@@ -106,6 +103,11 @@
                                         <p:dataExporter type="csv" target="dataTable" fileName="#{msg['export.file.name']}"/>
                                     </p:commandButton>
                                     <p:tooltip for="exportFile" value="#{msg['export.file.csv']}" showEffect="clip" hideEffect="fold" />
+
+                                    <span style="font-weight: bold" class="tableToggler">
+                                            <p:commandButton id="toggler" type="button" icon="pi pi-align-justify"/>
+                                            <p:columnToggler datasource="dataTable" trigger="toggler"/>
+                                        </span>
                                 </div>
 
                             </f:facet>
