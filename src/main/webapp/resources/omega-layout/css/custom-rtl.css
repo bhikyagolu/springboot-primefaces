@@ -78,13 +78,13 @@ body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
 .table-new{
     float: right;
 }
-#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield{
+.table-search-input .ui-input-filled .ui-inputfield{
+    background-color: white !important;
+}
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-hover {
     background-color: white;
 }
-#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield .ui-inputfield.ui-state-hover {
-    background-color: white;
-}
-#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield .ui-inputfield.ui-state-focus{
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus{
     background-color: white;
 }
 @media (min-width: 1025px) {
