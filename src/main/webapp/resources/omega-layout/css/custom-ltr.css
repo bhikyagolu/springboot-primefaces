@@ -4,3 +4,12 @@
 .table-search{
     float: right;
 }
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield{
+    background-color: white;
+}
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-hover {
+    background-color: white;
+}
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus{
+    background-color: white;
+}
