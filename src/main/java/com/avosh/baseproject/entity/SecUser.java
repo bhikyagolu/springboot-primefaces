@@ -70,6 +70,8 @@ public class SecUser implements BaseEntity {
     private Date updateDate;
     @Column(name = "token")
     private String token;
+    @Column(name = "user_type")
+    private Integer userType;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<News> newsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
@@ -232,6 +234,14 @@ public class SecUser implements BaseEntity {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 
     @XmlTransient
