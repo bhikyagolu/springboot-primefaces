@@ -23,6 +23,9 @@ body{
 .footer-lang{
     float: left !important;
 }
+.footer-lang .ui-selectonemenu .ui-selectonemenu-trigger{
+    display: none !important;
+}
 .wrapper .sidebar ul li > a .layout-submenu-toggler {
     float: left !important;
 }
@@ -80,12 +83,17 @@ body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
 }
 .table-search-input .ui-input-filled .ui-inputfield{
     background-color: white !important;
+    padding-left: 0px;
 }
 #globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-hover {
     background-color: white;
 }
 #globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus{
     background-color: white;
+}
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon{
+    margin-left: 5px;
+    margin-right: 0px;
 }
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
