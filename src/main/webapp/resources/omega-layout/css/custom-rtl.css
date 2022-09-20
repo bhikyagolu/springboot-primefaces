@@ -1,5 +1,24 @@
 
+@font-face {
+    font-family: 'IranSans';
+    src: url("#{resource['omega-layout:fonts/IRANSans-web.eot']}");
+    src: url("#{resource['omega-layout:fonts/IRANSans-web.eot']}#iefix") format('embedded-opentype'),
+    url("#{resource['omega-layout:fonts/IRANSans-web.woff']}") format('woff'),
+    url("#{resource['omega-layout:fonts/IRANSans-web.ttf']}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src: url("#{resource['omega-layout:fonts/Yekan.ttf']}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
+    font-family: IranSans !important;
     direction: rtl;
 !important;
 }
@@ -129,6 +148,20 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon {
 .wrapper .sidebar ul li > a .menu-badge {
     left: 32px!important;
     right: auto !important;
+}
+.dashboard .summary .detail{
+    margin-top: 0px !important;
+}
+
+body .ui-widget {
+    font-family: iranSans;
+    font-size: 12px;
+}
+.ui-columntoggler .ui-columntoggler-item{
+    text-align: right!important;
+}
+body .ui-columntoggler .ui-columntoggler-items .ui-columntoggler-item .ui-chkbox {
+    margin-left: 10px !important;
 }
 
 @media (min-width: 1025px) {
