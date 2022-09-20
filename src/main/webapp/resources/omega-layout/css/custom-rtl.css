@@ -122,6 +122,14 @@ body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon {
     margin-left: 5px;
     margin-right: 0px;
 }
+.wrapper .sidebar .profile > ul {
+    text-align: right !important;
+}
+
+.wrapper .sidebar ul li > a .menu-badge {
+    left: 32px!important;
+    right: auto !important;
+}
 
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
