@@ -1,7 +1,9 @@
 
-body{
-    direction: rtl;!important;
+body {
+    direction: rtl;
+!important;
 }
+
 .wrapper .sidebar {
     right: 0px !important;
 }
@@ -20,93 +22,161 @@ body{
     margin-left: 0px !important;
     margin-right: 250px !important;
 }
-.footer-lang{
+
+.footer-lang {
     float: left !important;
 }
-.footer-lang .ui-selectonemenu .ui-selectonemenu-trigger{
+
+.footer-lang.ui-selectonemenu .ui-selectonemenu-trigger {
     display: none !important;
 }
+
+/*.footer-lang.ui-selectonemenu .ui-selectonemenu-label{*/
+/*    padding-right: 0px !important;*/
+/*}*/
+
 .wrapper .sidebar ul li > a .layout-submenu-toggler {
     float: left !important;
 }
+
 .wrapper .sidebar ul li > a span {
     margin-right: 0.3em !important;
 }
+
 /*.wrapper .sidebar .profile > ul {*/
 /*    text-align: right;*/
 /*}*/
-.wrapper .topbar #omega-menu-button{
+.wrapper .topbar #omega-menu-button {
     float: right !important;
 }
-.wrapper .topbar .topbar-title{
+
+.wrapper .topbar .topbar-title {
     vertical-align: top !important;
     margin-left: 15px !important;
     margin-right: 15px !important;
 }
+
 .wrapper .topbar #topbar-icons a {
     margin-right: 20px !important;
     margin-left: 0px !important;
 }
-.ui-datatable thead th{
+
+.ui-datatable thead th {
     text-align: right !important;
 }
-.export{
+
+.export {
     /*float: right;*/
 }
-.ui-selectonemenu .ui-selectonemenu-trigger{
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
     left: 0px !important;
     right: auto !important;
 }
-.ui-selectonemenu .ui-selectonemenu-label{
+
+.ui-selectonemenu .ui-selectonemenu-label {
     text-align: right !important;
 }
+
 .ui-selectonemenu-panel .ui-selectonemenu-list-item {
     text-align: right !important;
 }
+
 /*element {*/
 /*    margin-right: 10px;*/
 /*}*/
-#login-wrapper #login-container .ui-chkbox{
+#login-wrapper #login-container .ui-chkbox {
     margin-right: 10px;
 }
-#locale .ui-selectonemenu .ui-selectonemenu-trigger{
+
+#locale .ui-selectonemenu .ui-selectonemenu-trigger {
     display: none;
 }
+
 body .ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
     margin-right: 10px !important;
 }
-.tableToggler{
+
+.tableToggler {
     float: right;
 }
-.table-new{
+
+.table-new {
     float: right;
 }
-.table-search-input .ui-input-filled .ui-inputfield{
+
+.table-search-input .ui-input-filled .ui-inputfield {
     background-color: white !important;
     padding-left: 0px;
 }
+
 #globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-hover {
     background-color: white;
 }
-#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus{
+
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus {
     background-color: white;
 }
-body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon{
+
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon {
     margin-left: 5px;
     margin-right: 0px;
 }
+
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;
     }
+
     .wrapper.sidebar-inactive-l .footer {
         margin-right: 0 !important;;
     }
+
     .wrapper.sidebar-inactive-l .sidebar {
-        right :-249px !important;
+        right: -249px !important;
     }
+
     .wrapper.sidebar-inactive-l .main {
         margin-left: 0px !important;
         margin-right: 0px !important;
     }
 }
+
+@media (max-width: 1024px) {
+    .wrapper.sidebar-active-m .sidebar {
+        margin-right: 0;
+    }
+    .wrapper .sidebar {
+        margin-right: -250px;
+        margin-top: 50px;
+        width: 250px;
+    }
+    .wrapper .topbar {
+        right: 0 !important;
+    }
+    .wrapper .main {
+        margin-right: 0 !important;
+    }
+    /*.wrapper .topbar #topbar-icons{*/
+    /*    left: 10px!important;*/
+    /*    right: 200px !important;*/
+    /*    text-align: right;*/
+    /*}*/
+    .wrapper .footer{
+        margin-right: 0px !important;
+    }
+    @media (max-width: 640px){
+        .wrapper .topbar #topbar-icons{
+            left: 10px!important;
+            right: 200px !important;
+            text-align: right !important;
+        }
+        .wrapper .topbar #topbar-icons a span.topbar-icon{
+            float: right!important;
+        }
+
+    }
+
+}
+
+
