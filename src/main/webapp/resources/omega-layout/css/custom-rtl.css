@@ -215,6 +215,18 @@ body .ui-columntoggler .ui-columntoggler-items .ui-columntoggler-item .ui-chkbox
         .wrapper .topbar #topbar-icons a span.topbar-icon{
             float: right!important;
         }
+        .ui-datatable-reflow .ui-reflow-label, .ui-datatable-reflow .ui-reflow-dropdown{
+            display: none !important;
+        }
+        .ui-datatable-reflow .ui-reflow-dropdown{
+            display: none !important;
+        }
+        .ui-datatable-reflow .ui-datatable-data td[role="gridcell"] .ui-column-title {
+            float: right !important;
+        }
+        .ui-datatable-reflow .ui-datatable-data td[role="gridcell"]:not(.ui-helper-hidden){
+            text-align: right !important;
+        }
 
     }
 
