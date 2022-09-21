@@ -25,21 +25,25 @@ body {
 
 .wrapper .sidebar {
     right: 0px !important;
+    transition: all 0.3s !important;
 }
 
 .wrapper .topbar {
     right: 250px !important;
     left: 0px !important;
+    transition: all 0.3s !important;
 }
 
 .wrapper .footer {
     margin-left: 0px !important;
     margin-right: 250px !important;
+    transition: all 0.3s !important;
 }
 
 .wrapper .main {
     margin-left: 0px !important;
     margin-right: 250px !important;
+    transition: all 0.3s !important;
 }
 
 .footer-lang {
