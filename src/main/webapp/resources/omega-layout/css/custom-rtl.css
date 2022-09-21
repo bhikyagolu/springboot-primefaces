@@ -239,7 +239,14 @@ body .ui-datatable thead th .ui-column-title{
             text-align: right !important;
         }
         .wrapper .topbar #topbar-icons a span.topbar-item-text{
-            font-size: 12px !important;
+            font-size: 14px !important;
+        }
+        .tableToggler{
+            display: none !important;
+        }
+        .wrapper .topbar #topbar-icons a span.topbar-badge{
+            right: auto !important;
+            left: 10px !important;
         }
 
     }

@@ -28,4 +28,7 @@
     .ui-datatable-reflow .ui-reflow-dropdown {
         display: none !important;
     }
+    .tableToggler{
+        display: none !important;
+    }
 }
