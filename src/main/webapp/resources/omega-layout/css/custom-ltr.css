@@ -27,6 +27,10 @@
 #login-wrapper #login-container{
     height: 440px!important;
 }
+.captcha{
+    padding-right: 28px!important;
+    padding-left: 28px!important;
+}
 @media (max-width: 640px) {
     .ui-datatable-reflow .ui-reflow-label, .ui-datatable-reflow .ui-reflow-dropdown {
         display: none !important;
@@ -41,5 +45,9 @@
 
     #login-wrapper #login-container{
         height: 500px !important;
+    }
+    .captcha{
+        padding-right: 28px!important;
+        padding-left: 0px!important;
     }
 }

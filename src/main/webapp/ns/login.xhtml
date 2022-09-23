@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
     </f:facet>
-    <title>Login</title>
+    <title>#{msg['page.login']}</title>
 </h:head>
 
 <h:body styleClass="login-body">
@@ -38,7 +38,7 @@
                     <div class="col-12 md:col-6">
                         <p:link>#{msg['login.forgot.password']}</p:link>
                     </div>
-                    <div class="col-12" style="padding-right: 28px;padding-left: 28px;">
+                    <div class="col-12 captcha">
                         <p:captcha  label="#{msg['login.captcha']}" required="true"
                                    language="#{guestPreferences.captchaLocail}"/>
                     </div>

@@ -200,6 +200,11 @@ h5 {
 body .ui-panel .ui-panel-titlebar {
     font-weight: 500 !important;
 }
+.captcha{
+    padding-right: 28px!important;
+    padding-left: 28px!important;
+}
+
 
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
@@ -289,6 +294,10 @@ body .ui-panel .ui-panel-titlebar {
         }
         #login-wrapper #login-container{
             height: 500px !important;
+        }
+        .captcha{
+            padding-right: 0px !important;
+            padding-left: 28px !important;
         }
 
     }
