@@ -34,7 +34,11 @@ public class BaseProjectApplication extends WebMvcConfigurerAdapter {
     public ServletContextInitializer servletContextInitializer() {
         return servletContext -> {
             servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-//            servletContext.setInitParameter("primefaces.THEME", "omega-light");
+            servletContext.setInitParameter("primefaces.PUBLIC_CAPTCHA_KEY",
+                    "6LffwSIiAAAAABAfTW-Akbh_BkaU9mswr-aPiIvY");
+            servletContext.setInitParameter("primefaces.PRIVATE_CAPTCHA_KEY",
+                    "6LffwSIiAAAAAPKaFwz8SYjKAhT4zCDWPQmAKNpY");
+            //            servletContext.setInitParameter("primefaces.THEME", "omega-light");
         };
     }
 

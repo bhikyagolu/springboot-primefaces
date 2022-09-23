@@ -24,6 +24,7 @@ public class GuestPreferences implements Serializable {
 
     LinkedHashMap<String, Object> countries;
     private String locale;
+    private String captchaLocail;
 
     private String theme = "blue";
 
@@ -79,10 +80,12 @@ public class GuestPreferences implements Serializable {
                         .getViewRoot().setLocale((Locale) entry.getValue());
                 if (newLocaleValue.equals("fa")) {
                     themePath = "custom-rtl.css";
+                    captchaLocail= "fa";
                     FacesContext.getCurrentInstance()
                             .getViewRoot().setLocale(new Locale("fa"));
                 } else {
                     themePath = "custom-ltr.css";
+                    captchaLocail= "en";
                 }
             }
         }
@@ -92,6 +95,7 @@ public class GuestPreferences implements Serializable {
         if (Empty.isNotEmpty(locale)) {
             if (locale.equals("fa")) {
                 themePath = "custom-rtl.css";
+                captchaLocail= "fa";
                 FacesContext.getCurrentInstance()
                         .getViewRoot().setLocale(new Locale("fa"));
             }
@@ -257,5 +261,9 @@ public class GuestPreferences implements Serializable {
 
     public void setCountries(LinkedHashMap<String, Object> countries) {
         this.countries = countries;
+    }
+
+    public String getCaptchaLocail() {
+        return captchaLocail;
     }
 }

@@ -4,17 +4,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("session")
-public class LoginBean extends BaseBean{
+@Scope("request")
+public class LoginBean extends BaseBean {
 
-    @Override
-    public void save() {
-
-    }
-
-
-
-      public void deleteRecord() {
-
+    public String login(){
+        return "/login";
     }
 }

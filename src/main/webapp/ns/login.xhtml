@@ -38,11 +38,12 @@
                     <div class="col-12 md:col-6">
                         <p:link>#{msg['login.forgot.password']}</p:link>
                     </div>
-<!--                    <div class="col-12">-->
-<!--                        <p:captcha label="Captcha"/>-->
-<!--                    </div>-->
+                    <div class="col-12" style="padding-right: 28px;padding-left: 28px;">
+                        <p:captcha  label="#{msg['login.captcha']}" required="true"
+                                   language="#{guestPreferences.captchaLocail}"/>
+                    </div>
                     <div class="col-12">
-                        <p:commandButton type="submit" action="/login" ajax="false" value="#{msg['login.sign.in']}"
+                        <p:commandButton type="submit" action="#{loginBean.login()}" ajax="false" value="#{msg['login.sign.in']}"
                                          icon="pi pi-user"/>
                     </div>
                     <div class="col-12">

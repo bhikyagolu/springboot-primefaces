@@ -1,3 +1,7 @@
+.g-recaptcha {
+    display: inline-block;
+}
+
 .tableToggler{
     float: right;
 }
@@ -20,6 +24,9 @@
 .footer-lang.ui-selectonemenu .ui-selectonemenu-label{
     padding-right: 0px !important;
 }
+#login-wrapper #login-container{
+    height: 440px!important;
+}
 @media (max-width: 640px) {
     .ui-datatable-reflow .ui-reflow-label, .ui-datatable-reflow .ui-reflow-dropdown {
         display: none !important;
@@ -30,5 +37,9 @@
     }
     .tableToggler{
         display: none !important;
+    }
+
+    #login-wrapper #login-container{
+        height: 500px !important;
     }
 }
