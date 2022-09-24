@@ -10,8 +10,9 @@
 			<base-name>locale/message</base-name>
 			<var>msg</var>
 			<locale-config>
-				<default-locale>en</default-locale>
+				<default-locale>fa</default-locale>
 				<supported-locale>fa</supported-locale>
+				<supported-locale>en</supported-locale>
 			</locale-config>
 		</resource-bundle>
 	</application>

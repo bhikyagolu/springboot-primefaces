@@ -80,12 +80,12 @@ public class GuestPreferences implements Serializable {
                         .getViewRoot().setLocale((Locale) entry.getValue());
                 if (newLocaleValue.equals("fa")) {
                     themePath = "custom-rtl.css";
-                    captchaLocail= "fa";
+                    captchaLocail=locale= "fa";
                     FacesContext.getCurrentInstance()
                             .getViewRoot().setLocale(new Locale("fa"));
                 } else {
                     themePath = "custom-ltr.css";
-                    captchaLocail= "en";
+                    captchaLocail=locale= "en";
                 }
             }
         }
