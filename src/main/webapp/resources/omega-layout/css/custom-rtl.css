@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'IranSans';
     src: url("#{resource['omega-layout:fonts/IRANSans-web.eot']}");
@@ -8,21 +9,7 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'vazirmatn';
-    url("#{resource['omega-layout:fonts/Vazirmatn-Regular.woff2']}") format('woff'),
-    url("#{resource['omega-layout:fonts/Vazirmatn-Regular.ttf']}") format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'yekan';
-    src: url("#{resource['omega-layout:fonts/Yekan.ttf']}") format('truetype');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 body {
     font-family: IranSans !important;
