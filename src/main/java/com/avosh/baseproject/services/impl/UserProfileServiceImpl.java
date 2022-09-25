@@ -12,6 +12,8 @@ import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.excptions.BadRequestException;
+import com.avosh.baseproject.excptions.SaveContactException;
+import com.avosh.baseproject.excptions.SaveProfileException;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserProfileService;
 import org.apache.log4j.Logger;
@@ -91,5 +93,36 @@ public class UserProfileServiceImpl implements UserProfileService {
             log.info(e);
             throw new BadRequestException();
         }
+    }
+
+    @Override
+    public void updateContact(UserDto userDto) {
+        CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDto.setId(auth.getSecUser().getId());
+        try {
+            userRepository.updateContact(userDto);
+            log.info("Contact has been updated id = "+auth.getSecUser().getId());
+        } catch (Exception e) {
+            log.info("Contact not updated id = "+auth.getSecUser().getId());
+            log.info(e);
+            throw new SaveContactException();
+        }
+
+    }
+
+    @Override
+    public void updateProfile(UserDto userDto) {
+        CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDto.setId(auth.getSecUser().getId());
+        try {
+            userRepository.updateProfile(userDto);
+            log.info("Profile has been updated id = "+auth.getSecUser().getId());
+        } catch (Exception e) {
+            log.info("Profile not updated id = "+auth.getSecUser().getId());
+            log.info(e);
+            throw new SaveProfileException();
+        }
+
+
     }
 }

@@ -81,11 +81,23 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     }
 
     public void saveContact() {
-        System.out.println("saveContact");
+        try {
+            service.updateContact(getDto());
+            showMessage("Saved");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showMessage("Not Saved");
+        }
     }
 
     public void saveProfile() {
-        System.out.println("saveContact");
+        try {
+            service.updateProfile(getDto());
+            showMessage("Saved");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showMessage("Not Saved");
+        }
 
     }
 

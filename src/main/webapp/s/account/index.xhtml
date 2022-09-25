@@ -9,10 +9,10 @@
 
     <ui:define name="content">
 
-            <div class="grid">
-                <div class="col-12 md:col-6">
-                    <div class="card ui-fluid">
-                        <h:form>
+        <div class="grid">
+            <div class="col-12 md:col-6">
+                <div class="card ui-fluid">
+                    <h:form>
                         <h5>#{msg['profile.personal.picture']}</h5>
                         <div class="formgrid grid">
                             <div class="field col-3">
@@ -25,45 +25,50 @@
                                 <p>#{msg['profile.avatar.hint']}</p>
                             </div>
                         </div>
-                            <p:fileUpload mode="simple" skinSimple="true" style="float: right;"
-                                          sizeLimit="102400" allowTypes="/(\.|\/)(jpe?g)$/"
-                                          invalidSizeMessage="Maximum file size allowed is 100 KB"
-                                          invalidFileMessage="only jpg | jpeg is allowed"
-                                          update=":messagesPanel"
-                                          listener="#{profileBean.handleFileUpload}"/>
-                            <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
-                                             style="display:inline-block;margin-top:5px; width: auto"/>
+                        <p:fileUpload mode="simple" skinSimple="true" style="float: right;"
+                                      sizeLimit="102400" allowTypes="/(\.|\/)(jpe?g)$/"
+                                      invalidSizeMessage="Maximum file size allowed is 100 KB"
+                                      invalidFileMessage="only jpg | jpeg is allowed"
+                                      update=":messagesPanel"
+                                      listener="#{profileBean.handleFileUpload}"/>
+                        <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
+                                         style="display:inline-block;margin-top:5px; width: auto"/>
 
-                        </h:form>
+                    </h:form>
 
-                    </div>
-                    <div class="card ui-fluid">
-                        <h:form>
+                </div>
+                <div class="card ui-fluid">
+                    <h:form>
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
-                            <p:inputText id="name" value="#{profileBean.dto.name}" maxlength="12" rendered="true"/>
+                            <p:inputText id="name" value="#{profileBean.dto.name}" maxlength="12" required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="family">#{msg['profile.family']}</p:outputLabel>
-                            <p:inputText id="family" value="#{profileBean.dto.family}" maxlength="12" rendered="true"/>
+                            <p:inputText id="family" value="#{profileBean.dto.family}" maxlength="12" required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="gender">#{msg['profile.gender']}</p:outputLabel>
-                            <p:inputText id="gender" value="#{profileBean.dto.gender}"/>
+                            <p:selectOneMenu id="gender" value="#{profileBean.dto.gender}" required="true">
+                                <f:selectItem itemLabel="#{msg['profile.gender.select']}" itemValue=""
+                                              noSelectionOption="true"/>
+                                <f:selectItem itemLabel="#{msg['profile.male']}" itemValue="true"/>
+                                <f:selectItem itemLabel="#{msg['profile.woman']}" itemValue="false"/>
+                            </p:selectOneMenu>
                         </div>
                         <div class="field">
                             <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
                             <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}" maxlength="10"
-                                         rendered="true"/>
+                                         required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="iban">#{msg['profile.iban']}</p:outputLabel>
-                            <p:inputText id="iban" value="#{profileBean.dto.iban}" maxlength="24" rendered="true"/>
+                            <p:inputText id="iban" value="#{profileBean.dto.iban}" maxlength="24" required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
-                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" rendered="true"/>
+                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" required="true"/>
                         </div>
                         <div class="field">
                             <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
@@ -72,19 +77,20 @@
 
 
                         </div>
-                        </h:form>
-                    </div>
-
-
+                    </h:form>
                 </div>
-                <div class="col-12 md:col-6">
-                    <div class="card ui-fluid">
-                        <h:form>
+
+
+            </div>
+            <div class="col-12 md:col-6">
+                <div class="card ui-fluid">
+                    <h:form>
                         <h5>#{msg['profile.change.password']}</h5>
                         <div class="formgrid grid">
                             <div class="field col">
                                 <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
-                                <p:password id="oldPassword" maxlength="10" required="true" value="#{profileBean.oldPassword}"/>
+                                <p:password id="oldPassword" maxlength="10" required="true"
+                                            value="#{profileBean.oldPassword}"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
@@ -93,27 +99,29 @@
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
-                                <p:password id="reNewPassword" maxlength="10" required="true" value="#{profileBean.newPassword}"/>
+                                <p:password id="reNewPassword" maxlength="10" required="true"
+                                            value="#{profileBean.newPassword}"/>
                             </div>
                         </div>
                         <p:commandButton update=":messagesPanel" resetValues="true" value="#{msg['profile.save']}"
                                          actionListener="#{profileBean.changePassword()}"
                                          style="display:inline-block;margin-top:5px; width: auto"/>
-                        </h:form>
-                    </div>
+                    </h:form>
+                </div>
 
-                    <div class="card ui-fluid">
+                <div class="card ui-fluid">
+                    <h:form>
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
                             <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}"
-                                         maxlength="11" rendered="true">
+                                         maxlength="11" required="true">
                                 <f:validateRegex pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"/>
                             </p:inputText>
                         </div>
                         <div class="field">
                             <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
-                            <p:inputText id="phone" value="#{profileBean.dto.phone}" maxlength="8" rendered="true"/>
+                            <p:inputText id="phone" value="#{profileBean.dto.phone}" maxlength="8" required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
@@ -126,22 +134,22 @@
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
                             <p:inputText id="address" value="#{profileBean.dto.address}" maxlength="150"
-                                         rendered="true"/>
+                                         required="true"/>
                         </div>
                         <div class="field">
                             <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
                                              actionListener="#{profileBean.saveContact()}"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
+                    </h:form>
+                </div>
 
-                    </div>
+                <div class="card">
+                    <h5>#{msg['profile.activity']}</h5>
 
-                    <div class="card">
-                        <h5>#{msg['profile.activity']}</h5>
-
-                    </div>
                 </div>
             </div>
+        </div>
 
 
     </ui:define>
