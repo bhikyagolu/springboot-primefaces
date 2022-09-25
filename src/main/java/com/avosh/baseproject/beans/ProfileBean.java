@@ -10,6 +10,7 @@ package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.services.UserProfileService;
+import com.avosh.baseproject.util.Empty;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.CroppedImage;
 import org.primefaces.model.file.UploadedFile;
@@ -42,15 +43,28 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
         setDto(profile);
 
     }
-
+    UploadedFile file ;
     public void handleFileUpload(FileUploadEvent event) {
         this.originalImageFile = null;
         this.croppedImage = null;
-        UploadedFile file = event.getFile();
+       file = event.getFile();
         if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
             this.originalImageFile = file;
             FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public void uploadFile() {
+        try {
+            if (Empty.isNotEmpty(file)) {
+                showMessage("Successful", file.getFileName() + " is uploaded.");
+            }else {
+                showMessage("Not Successful", file.getFileName() + " is not uploaded.");
+            }
+        } catch (NullPointerException e) {
+            showMessage("Not Successful");
+            e.printStackTrace();
         }
     }
 

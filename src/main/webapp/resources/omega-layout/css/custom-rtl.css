@@ -194,7 +194,9 @@ body .ui-panel .ui-panel-titlebar {
 .ajax-status{
     width:32px;height:32px;position:fixed;left:7px;bottom:7px
 }
-
+p{
+    font-size: 12px !important;
+}
 
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
