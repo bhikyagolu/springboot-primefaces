@@ -43,16 +43,16 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
     }
 
-//    public void handleFileUpload(FileUploadEvent event) {
-//        this.originalImageFile = null;
-//        this.croppedImage = null;
-//        UploadedFile file = event.getFile();
-//        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
-//            this.originalImageFile = file;
-//            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
-//            FacesContext.getCurrentInstance().addMessage(null, msg);
-//        }
-//    }
+    public void handleFileUpload(FileUploadEvent event) {
+        this.originalImageFile = null;
+        this.croppedImage = null;
+        UploadedFile file = event.getFile();
+        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
+            this.originalImageFile = file;
+            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
 
     public UploadedFile getOriginalImageFile() {
         return originalImageFile;
@@ -77,6 +77,7 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
             e.printStackTrace();
             showMessage("Not Saved");
         }
+        newPassword = oldPassword = "";
     }
 
     public void saveContact() {

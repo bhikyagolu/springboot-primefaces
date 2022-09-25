@@ -81,14 +81,15 @@ public class UserProfileServiceImpl implements UserProfileService {
         try {
             if (passwordEncoder.matches(oldPassword, auth.getPassword())) {
                 userRepository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
+                log.info("Password Has been changed user id = "+auth.getSecUser().getId());
                 return true;
             }
-            log.info("Password Has been changed user id = "+auth.getSecUser().getId());
+            throw new BadRequestException();
+
         } catch (Exception e) {
             log.info("Password Has been not changed user id = "+auth.getSecUser().getId());
             log.info(e);
             throw new BadRequestException();
         }
-        return false;
     }
 }
