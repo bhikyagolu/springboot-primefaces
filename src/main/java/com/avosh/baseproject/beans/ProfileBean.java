@@ -70,7 +70,13 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
 
     public void changePassword() {
-        service.changePassword(newPassword,oldPassword);
+        try {
+            service.changePassword(newPassword,oldPassword);
+            showMessage("Saved");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showMessage("Not Saved");
+        }
     }
 
     public void saveContact() {

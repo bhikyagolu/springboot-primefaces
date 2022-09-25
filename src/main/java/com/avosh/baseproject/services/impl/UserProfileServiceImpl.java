@@ -11,6 +11,7 @@ package com.avosh.baseproject.services.impl;
 import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.SecUser;
+import com.avosh.baseproject.excptions.BadRequestException;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserProfileService;
 import org.apache.log4j.Logger;
@@ -78,15 +79,15 @@ public class UserProfileServiceImpl implements UserProfileService {
     public Boolean changePassword(String newPassword, String oldPassword) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            String hashedPassword = passwordEncoder.encode(newPassword);
-            if (passwordEncoder.matches(auth.getPassword(), hashedPassword)) {
+            if (passwordEncoder.matches(oldPassword, auth.getPassword())) {
                 userRepository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
                 return true;
             }
             log.info("Password Has been changed user id = "+auth.getSecUser().getId());
         } catch (Exception e) {
             log.info("Password Has been not changed user id = "+auth.getSecUser().getId());
-            e.printStackTrace();
+            log.info(e);
+            throw new BadRequestException();
         }
         return false;
     }
