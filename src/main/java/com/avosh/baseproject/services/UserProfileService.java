@@ -14,4 +14,5 @@ import com.avosh.baseproject.repository.UserRepository;
 
 public interface UserProfileService extends BaseService<UserRepository, SecUser, UserDto>{
      UserDto retrieveById();
+     Boolean changePassword(String newPassword,String oldPassword);
 }

@@ -16,6 +16,7 @@ import com.avosh.baseproject.services.UserProfileService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     UserRepository repository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
+    UserRepository userRepository;
 
 
 
@@ -67,5 +72,19 @@ public class UserProfileServiceImpl implements UserProfileService {
         userDto.setAbout(user.get().getAbout());
         userDto.setPhone(user.get().getPhone());
         return userDto;
+    }
+
+    @Override
+    public Boolean changePassword(String newPassword, String oldPassword) {
+        CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try {
+            if (passwordEncoder.matches(auth.getPassword(), oldPassword)) {
+                userRepository.updatePassword(newPassword, auth.getSecUser().getId());
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
