@@ -56,17 +56,12 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     }
 
     public void uploadFile() {
-        try {
             if (Empty.isNotEmpty(file)) {
                 showMessage("Successful", file.getFileName() + " is uploaded.");
             }else {
-                showMessage("Not Successful", file.getFileName() + " is not uploaded.");
+                showMessage("Not Successful");
             }
-        } catch (NullPointerException e) {
-            showMessage("Not Successful");
-            e.printStackTrace();
         }
-    }
 
     public UploadedFile getOriginalImageFile() {
         return originalImageFile;
