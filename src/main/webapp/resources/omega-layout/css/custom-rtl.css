@@ -191,6 +191,9 @@ body .ui-panel .ui-panel-titlebar {
     padding-right: 28px!important;
     padding-left: 28px!important;
 }
+.ajax-status{
+    width:32px;height:32px;position:fixed;left:7px;bottom:7px
+}
 
 
 @media (min-width: 1025px) {

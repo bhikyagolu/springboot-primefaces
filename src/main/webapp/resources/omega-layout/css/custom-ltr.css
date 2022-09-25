@@ -31,6 +31,10 @@
     padding-right: 28px!important;
     padding-left: 28px!important;
 }
+.ajax-status{
+    width:32px;height:32px;position:fixed;right:7px;bottom:7px
+}
+
 @media (max-width: 640px) {
     .ui-datatable-reflow .ui-reflow-label, .ui-datatable-reflow .ui-reflow-dropdown {
         display: none !important;
