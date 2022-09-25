@@ -8,10 +8,11 @@
     <ui:define name="title">Menu</ui:define>
 
     <ui:define name="content">
-        <h:form>
+
             <div class="grid">
                 <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
+                        <h:form>
                         <h5>#{msg['profile.personal.picture']}</h5>
                         <div class="formgrid grid">
                             <div class="field col-3">
@@ -21,19 +22,23 @@
                             </div>
 
                             <div class="field col">
-                                <p>Your avatar will show to other peaple, choose your avatar and then click save ,your avatar must be under 100kb</p>
+                                <p>#{msg['profile.avatar.hint']}</p>
                             </div>
                         </div>
-                        <p:fileUpload mode="simple" skinSimple="true" style="float: right;"
-                                      sizeLimit="102400" allowTypes="/(\.|\/)(jpe?g)$/"
-                                      invalidSizeMessage="Maximum file size allowed is 100 KB"
-                                      invalidFileMessage="only jpg | jpeg is allowed"
-                                      update=":messagesPanel"
-                                      listener="#{profileBean.handleFileUpload}"/>
-                        <p:commandButton type="button" value="#{msg['profile.save']}"
-                                         style="display:inline-block;margin-top:5px; width: auto"/>
+                            <p:fileUpload mode="simple" skinSimple="true" style="float: right;"
+                                          sizeLimit="102400" allowTypes="/(\.|\/)(jpe?g)$/"
+                                          invalidSizeMessage="Maximum file size allowed is 100 KB"
+                                          invalidFileMessage="only jpg | jpeg is allowed"
+                                          update=":messagesPanel"
+                                          listener="#{profileBean.handleFileUpload}"/>
+                            <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
+                                             style="display:inline-block;margin-top:5px; width: auto"/>
+
+                        </h:form>
+
                     </div>
                     <div class="card ui-fluid">
+                        <h:form>
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
@@ -61,36 +66,42 @@
                             <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" rendered="true"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="#{msg['profile.save']}"
-                                             actionListener="#{profileBean.changePassword()}"
+                            <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
+                                             actionListener="#{profileBean.saveProfile()}"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
+
+
                         </div>
+                        </h:form>
                     </div>
 
 
                 </div>
                 <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
+                        <h:form>
                         <h5>#{msg['profile.change.password']}</h5>
                         <div class="formgrid grid">
                             <div class="field col">
                                 <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
-                                <p:password id="oldPassword" maxlength="10" rendered="true"/>
+                                <p:password id="oldPassword" maxlength="10" required="true" value="#{profileBean.oldPassword}"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
                                 <p:password id="newPassword" feedback="true" match="reNewPassword" maxlength="10"
-                                            rendered="true"/>
+                                            value="#{profileBean.newPassword}" required="true"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
-                                <p:password id="reNewPassword" maxlength="10" rendered="true"/>
+                                <p:password id="reNewPassword" maxlength="10" required="true" value="#{profileBean.newPassword}"/>
                             </div>
                         </div>
-                        <p:commandButton type="button" value="#{msg['profile.save']}"
-                                         actionListener="#{profileBean.saveProfile()}"
+                        <p:commandButton update=":messagesPanel" resetValues="true" value="#{msg['profile.save']}"
+                                         actionListener="#{profileBean.changePassword()}"
                                          style="display:inline-block;margin-top:5px; width: auto"/>
+                        </h:form>
                     </div>
+
                     <div class="card ui-fluid">
                         <h5>#{msg['profile.personal.contact']}</h5>
                         <div class="field">
@@ -118,10 +129,11 @@
                                          rendered="true"/>
                         </div>
                         <div class="field">
-                            <p:commandButton type="button" value="#{msg['profile.save']}"
+                            <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
                                              actionListener="#{profileBean.saveContact()}"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
+
                     </div>
 
                     <div class="card">
@@ -130,7 +142,7 @@
                     </div>
                 </div>
             </div>
-        </h:form>
+
 
     </ui:define>
 

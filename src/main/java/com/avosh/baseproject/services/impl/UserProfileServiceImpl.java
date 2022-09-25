@@ -78,11 +78,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     public Boolean changePassword(String newPassword, String oldPassword) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            if (passwordEncoder.matches(auth.getPassword(), oldPassword)) {
-                userRepository.updatePassword(newPassword, auth.getSecUser().getId());
+            String hashedPassword = passwordEncoder.encode(newPassword);
+            if (passwordEncoder.matches(auth.getPassword(), hashedPassword)) {
+                userRepository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
                 return true;
             }
+            log.info("Password Has been changed user id = "+auth.getSecUser().getId());
         } catch (Exception e) {
+            log.info("Password Has been not changed user id = "+auth.getSecUser().getId());
             e.printStackTrace();
         }
         return false;

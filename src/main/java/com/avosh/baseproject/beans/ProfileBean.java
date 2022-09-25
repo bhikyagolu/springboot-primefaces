@@ -27,6 +27,9 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     private UploadedFile originalImageFile;
     private CroppedImage croppedImage;
 
+    private String oldPassword;
+    private String newPassword;
+
 
     @Autowired
     public void setService(UserProfileService service) {
@@ -40,16 +43,16 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
     }
 
-    public void handleFileUpload(FileUploadEvent event) {
-        this.originalImageFile = null;
-        this.croppedImage = null;
-        UploadedFile file = event.getFile();
-        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
-            this.originalImageFile = file;
-            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
-    }
+//    public void handleFileUpload(FileUploadEvent event) {
+//        this.originalImageFile = null;
+//        this.croppedImage = null;
+//        UploadedFile file = event.getFile();
+//        if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
+//            this.originalImageFile = file;
+//            FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
+//            FacesContext.getCurrentInstance().addMessage(null, msg);
+//        }
+//    }
 
     public UploadedFile getOriginalImageFile() {
         return originalImageFile;
@@ -65,21 +68,33 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
 
 
-    @Override
-    public void save() {
-
-    }
 
     public void changePassword() {
-
+        service.changePassword(newPassword,oldPassword);
     }
 
     public void saveContact() {
-
+        System.out.println("saveContact");
     }
 
     public void saveProfile() {
+        System.out.println("saveContact");
 
     }
 
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
 }
