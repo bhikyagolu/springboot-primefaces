@@ -27,7 +27,7 @@ public class System implements BaseEntity {
     @Column(name = "description")
     private String description;
     @Column(name = "enable")
-    private Short enable;
+    private Boolean enable;
     @Column(name = "version")
     private Integer version;
     @Column(name = "min_version")
@@ -62,11 +62,11 @@ public class System implements BaseEntity {
         this.description = description;
     }
 
-    public Short getEnable() {
+    public Boolean getEnable() {
         return enable;
     }
 
-    public void setEnable(Short enable) {
+    public void setEnable(Boolean enable) {
         this.enable = enable;
     }
 

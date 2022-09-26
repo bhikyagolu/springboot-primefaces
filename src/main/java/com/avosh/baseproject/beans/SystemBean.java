@@ -18,7 +18,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
-@Scope("session")
+@Scope("request")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
     private boolean isEditMode;
     private List<SystemDto> list;
@@ -31,7 +31,7 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         list = service.retrieveAll();
         systemDto = new SystemDto();
         setDto(new SystemDto());

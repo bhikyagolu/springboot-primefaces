@@ -39,9 +39,10 @@ public class SystemServiceImpl implements SystemService {
         if (Empty.isEmpty(dto.getId())) {
             system.setCreateDatetime(new Date());
         }
-        short enableStatus = (short) ((dto.getEnable()) ? 1 : 0);
-        system.setEnable(enableStatus);
-        system.setId(dto.getId());
+        system.setEnable(dto.getEnable());
+        if (Empty.isNotEmpty(dto.getId())) {
+            system.setId(dto.getId());
+        }
         system.setVersion(dto.getVersion());
         system.setMinVersion(dto.getMinVersion());
         system.setSecUserId(new SecUser(auth.getSecUser().getId()) );

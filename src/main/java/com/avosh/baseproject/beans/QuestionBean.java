@@ -30,7 +30,7 @@ public class QuestionBean extends BaseBean<QuestionService, QuestionDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         list = service.retrieveAll();
         questionDto = new QuestionDto();
         setDto(new QuestionDto());

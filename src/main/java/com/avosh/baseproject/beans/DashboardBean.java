@@ -62,4 +62,9 @@ public class DashboardBean extends BaseBean {
     public Integer todayAllIncome() {
         return 20;
     }
+
+    @Override
+    public void init() {
+
+    }
 }

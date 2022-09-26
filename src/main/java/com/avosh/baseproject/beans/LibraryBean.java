@@ -30,7 +30,7 @@ public class LibraryBean extends BaseBean<LibraryService, LibraryDto> {
     }
 
     @PostConstruct
-    private void init() {
+    public void init() {
         list = service.retrieveAll();
         lessonDto = new LibraryDto();
         setDto(new LibraryDto());

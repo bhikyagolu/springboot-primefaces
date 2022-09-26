@@ -8,134 +8,139 @@
     <ui:define name="title">#{msg['page.system']}</ui:define>
 
     <ui:define name="content">
-        <div class="grid help-page">
-            <div class="col-12 md:col-6">
-                <div class="card ui-fluid">
+        <h:form id="form">
+            <div class="grid help-page">
+                <div class="col-12 md:col-6">
+                    <div class="card ui-fluid">
+                        <div class="card">
+                            <h4>#{msg['system.status']}</h4>
+                            <p>#{msg['system.all.services.are.operational']}</p>
+                            <div class="status-bars">
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar status-bar-failure"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                                <div class="status-bar"></div>
+                            </div>
+                            <div class="status-bar-footer">
+                                <span>#{msg['system.30.days']}</span>
+                                <span>#{msg['system.today']}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card ui-fluid">
+                        <h4>#{msg['system.application.status']}</h4>
+                        <div class="field">
+                            <p:outputLabel for="version">#{msg['system.version']}</p:outputLabel>
+                            <p:inputNumber minValue="0" maxlength="999999" decimalPlaces="0" id="version"
+                                          value="#{systemBean.getDto().version}" required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="desc">#{msg['system.description']}</p:outputLabel>
+                            <p:inputText maxlength="40" id="desc" value="#{systemBean.getDto().description}" required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="status" value="#{msg['system.title.status']}"/>
+                            <p:selectOneMenu id="status" required="true" value="#{systemBean.getDto().enable}">
+                                <f:selectItem itemLabel="#{msg['system.select.one']}" itemValue="#{null}"
+                                              noSelectionOption="true"/>
+                                <f:selectItem itemLabel="#{msg['system.active']}" itemValue="true"/>
+                                <f:selectItem itemLabel="#{msg['system.deactivate']}" itemValue="false"/>
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="min" value="#{msg['system.min.version']}"/>
+                            <p:selectOneMenu id="min" required="true" value="#{systemBean.getDto().minVersion}">
+                                <f:selectItem itemLabel="#{msg['system.select.one']}" itemValue="#{null}"
+                                              noSelectionOption="true"/>
+                                <f:selectItem itemLabel="#{msg['system.yes']}" itemValue="true"/>
+                                <f:selectItem itemLabel="#{msg['system.no']}" itemValue="false"/>
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:commandButton  value="#{msg['system.save']}" update="form:dataTable :messagesPanel"
+                                              actionListener="#{systemBean.save()}"
+                                             style="display:inline-block;margin-top:5px; width: auto"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6">
                     <div class="card">
                         <h4>#{msg['system.status']}</h4>
-                        <p>#{msg['system.all.services.are.operational']}</p>
-                        <div class="status-bars">
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar status-bar-failure"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                            <div class="status-bar"></div>
-                        </div>
-                        <div class="status-bar-footer">
-                            <span>#{msg['system.30.days']}</span>
-                            <span>#{msg['system.today']}</span>
+                        <div class="grid formgrid">
+                            <div class="col-12 mb-2 lg:col-4 mb-lg-0">
+                                <h6>#{msg['system.cpu.usage']}</h6>
+                                <small class="block">100%</small>
+                            </div>
+                            <div class="col-12 mb-2 lg:col-4 mb-lg-0">
+                                <h6>#{msg['system.disc.usage']}</h6>
+                                <small class="block">100%</small>
+                            </div>
+                            <div class="col-12 mb-2 lg:col-4 mb-lg-0">
+                                <h6>#{msg['system.database']}</h6>
+                                <small class="block">Mysql UP</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card ui-fluid">
-                    <h4>#{msg['system.application.status']}</h4>
-                    <div class="field">
-                        <p:outputLabel for="version">#{msg['system.version']}</p:outputLabel>
-                        <p:inputNumber minValue="0" maxlength="999999" id="version" required="true"/>
-                    </div>
-                    <div class="field">
-                        <p:outputLabel for="desc">#{msg['system.description']}</p:outputLabel>
-                        <p:inputText maxlength="40" id="desc" required="true"/>
-                    </div>
-                    <div class="field">
-                        <p:outputLabel for="status" value="#{msg['system.title.status']}"  />
-                        <p:selectOneMenu id="status" required="true">
-                            <f:selectItem itemLabel="#{msg['system.select.one']}" itemValue="#{null}" noSelectionOption="true"/>
-                            <f:selectItem itemLabel="#{msg['system.active']}" itemValue="true" />
-                            <f:selectItem itemLabel="#{msg['system.deactivate']}" itemValue="false" />
-                        </p:selectOneMenu>
-                    </div>
-                    <div class="field">
-                        <p:outputLabel for="min" value="#{msg['system.min.version']}" />
-                        <p:selectOneMenu id="min" required="true">
-                            <f:selectItem itemLabel="#{msg['system.select.one']}" itemValue="#{null}" noSelectionOption="true"/>
-                            <f:selectItem itemLabel="#{msg['system.yse']}" itemValue="true" />
-                            <f:selectItem itemLabel="#{msg['system.no']}" itemValue="false" />
-                        </p:selectOneMenu>
-                    </div>
-                    <div class="field">
-                        <p:commandButton type="button" value="#{msg['system.save']}"
-                                         style="display:inline-block;margin-top:5px; width: auto"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 md:col-6">
-                <div class="card">
-                    <h4>#{msg['system.status']}</h4>
-                    <div class="grid formgrid">
-                        <div class="col-12 mb-2 lg:col-4 mb-lg-0">
-                            <h6>#{msg['system.cpu.usage']}</h6>
-                            <small class="block">100%</small>
-                        </div>
-                        <div class="col-12 mb-2 lg:col-4 mb-lg-0">
-                            <h6>#{msg['system.disc.usage']}</h6>
-                            <small class="block">100%</small>
-                        </div>
-                        <div class="col-12 mb-2 lg:col-4 mb-lg-0">
-                            <h6>#{msg['system.database']}</h6>
-                            <small class="block">Mysql UP</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h5>#{msg['profile.activity']}</h5>
-                    <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{systemBean.list}"
-                                 reflow="true"  resizableColumns="true"
-                                 rowKey="#{data.id}" rowIndexVar="row"
-                                 paginator="true" paginatorPosition="bottom" paginatorTemplate="
+                    <div class="card">
+                        <h5>#{msg['profile.activity']}</h5>
+                        <p:dataTable widgetVar="dataTable" id="dataTable" var="data" value="#{systemBean.list}"
+                                     reflow="true" resizableColumns="true"
+                                     rowKey="#{data.id}" rowIndexVar="row"
+                                     paginator="true" paginatorPosition="bottom" paginatorTemplate="
                                                                  {PreviousPageLink} {PageLinks} {NextPageLink}  "
-                                  rows="10"  >
+                                     rows="10">
 
-                        <p:column headerText="#{msg['table.header.index']}" responsivePriority="6"
-                                  style="vertical-align: middle;">
-                            <h:outputText value=" #{row+1}"/>
-                        </p:column>
+                            <p:column headerText="#{msg['table.header.index']}" responsivePriority="6"
+                                      style="vertical-align: middle;">
+                                <h:outputText value=" #{row+1}"/>
+                            </p:column>
 
-                        <p:column headerText="#{msg['table.header.user']}" responsivePriority="2">
-                            <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
-                        </p:column>
-                        <p:column headerText="#{msg['table.header.version']}" responsivePriority="1">
-                            <h:outputText value="#{data.version}"/>
-                        </p:column>
-<!--                        <p:column headerText="#{msg['table.header.desc']}" responsivePriority="4">-->
-<!--                            <h:outputText value="#{data.description}"/>-->
-<!--                        </p:column>-->
-                        <p:column headerText="#{msg['table.header.enable']}" responsivePriority="3">
-                            <h:outputText value="#{data.enable}"/>
-                        </p:column>
-                        <p:column headerText="#{msg['table.header.minVersion']}" responsivePriority="5">
-                            <h:outputText value="#{data.minVersion}"/>
-                        </p:column>
-                    </p:dataTable>
+                            <p:column headerText="#{msg['table.header.user']}" responsivePriority="2">
+                                <h:outputText value="#{data.userDto.name} #{data.userDto.family}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.version']}" responsivePriority="1">
+                                <h:outputText value="#{data.version}"/>
+                            </p:column>
+                            <!--                        <p:column headerText="#{msg['table.header.desc']}" responsivePriority="4">-->
+                            <!--                            <h:outputText value="#{data.description}"/>-->
+                            <!--                        </p:column>-->
+                            <p:column headerText="#{msg['table.header.enable']}" responsivePriority="3">
+                                <h:outputText value="#{data.enable}"/>
+                            </p:column>
+                            <p:column headerText="#{msg['table.header.minVersion']}" responsivePriority="5">
+                                <h:outputText value="#{data.minVersion}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </h:form>
     </ui:define>
 
 </ui:composition>

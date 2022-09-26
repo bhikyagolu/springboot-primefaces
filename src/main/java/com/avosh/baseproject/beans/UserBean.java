@@ -22,7 +22,7 @@ public class UserBean extends BaseBean<UserService, UserDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         dtoList = service.retrieveAll();
         userDto = new UserDto();
     }

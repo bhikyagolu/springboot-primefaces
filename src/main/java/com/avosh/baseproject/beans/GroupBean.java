@@ -19,9 +19,13 @@ public class GroupBean extends BaseBean{
 
     }
 
+    @Override
+    public void init() {
+
+    }
 
 
-      public void deleteRecord() {
+    public void deleteRecord() {
 
     }
 }

@@ -13,9 +13,9 @@ import java.util.Date;
 public class SystemDto extends BaseDto{
 
     private String description;
-    private Boolean enable = false;
+    private Boolean enable ;
     private Integer version;
-    private Boolean minVersion = false;
+    private Boolean minVersion ;
     private Date createDatetime;
     private UserDto userDto;
 

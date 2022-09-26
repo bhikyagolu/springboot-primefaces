@@ -19,8 +19,13 @@ public class HelpBean extends BaseBean{
 
     }
 
+    @Override
+    public void init() {
 
-      public void deleteRecord() {
+    }
+
+
+    public void deleteRecord() {
 
     }
 }

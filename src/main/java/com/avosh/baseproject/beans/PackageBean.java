@@ -32,7 +32,7 @@ public class PackageBean extends BaseBean<PackageService, PackageDto> {
     }
 
     @PostConstruct
-    private void init() {
+    public void init() {
         list = service.retrieveAll();
         packageDto = new PackageDto();
         setDto(new PackageDto());

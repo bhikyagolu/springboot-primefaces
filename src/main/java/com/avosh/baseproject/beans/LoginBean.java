@@ -10,4 +10,9 @@ public class LoginBean extends BaseBean {
     public String login(){
         return "/login";
     }
+
+    @Override
+    public void init() {
+
+    }
 }

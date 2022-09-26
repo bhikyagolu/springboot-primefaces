@@ -30,7 +30,7 @@ public class RedeemUserBean extends BaseBean<RedeemUserService, RedeemUserDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         list = service.retrieveAll();
         redeemUserDto = new RedeemUserDto();
         setDto(new RedeemUserDto());

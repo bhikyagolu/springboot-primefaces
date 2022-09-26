@@ -46,8 +46,11 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
         } catch (Exception e) {
             log.error(e);
             showMessage("Error!");
+        }finally {
+            init();
         }
     }
+    public abstract void init();
 
 
     public  void delete(){

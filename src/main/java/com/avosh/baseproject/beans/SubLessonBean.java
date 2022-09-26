@@ -31,7 +31,7 @@ public class SubLessonBean extends BaseBean<SubLessonService, SubLessonDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         list = service.retrieveAll();
         subLessonDto = new SubLessonDto();
         setDto(new SubLessonDto());

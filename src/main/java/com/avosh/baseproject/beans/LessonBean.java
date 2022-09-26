@@ -30,7 +30,7 @@ public class LessonBean extends BaseBean<LessonService, LessonDto> {
     }
 
     @PostConstruct
-    private void init(){
+    public void init(){
         list = service.retrieveAll();
         lessonDto = new LessonDto();
         setDto(new LessonDto());
