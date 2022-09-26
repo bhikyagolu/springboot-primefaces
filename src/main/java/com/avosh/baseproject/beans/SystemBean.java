@@ -1,9 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
+* Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -18,7 +14,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
-@Scope("request")
+@Scope("session")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
     private boolean isEditMode;
     private List<SystemDto> list;
@@ -60,5 +56,10 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
         super.delete();
         init();
 
+    }
+
+    public void doSave(){
+        super.save();
+        init();
     }
 }
