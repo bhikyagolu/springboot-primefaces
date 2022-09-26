@@ -13,7 +13,7 @@
                 <div class="col-12 md:col-6">
                     <div class="card ui-fluid">
                         <div class="card">
-                            <h4>#{msg['system.status']}</h4>
+                            <h5>#{msg['system.status']}</h5>
                             <p>#{msg['system.all.services.are.operational']}</p>
                             <div class="status-bars">
                                 <div class="status-bar"></div>
@@ -54,10 +54,10 @@
                         </div>
                     </div>
                     <div class="card ui-fluid">
-                        <h4>#{msg['system.application.status']}</h4>
+                        <h5>#{msg['system.application.status']}</h5>
                         <div class="field">
                             <p:outputLabel for="version">#{msg['system.version']}</p:outputLabel>
-                            <p:inputNumber minValue="0" maxlength="999999" decimalPlaces="0" id="version"
+                            <p:inputNumber minValue="0" maxlength="999999" thousandSeparator="" id="version"
                                           value="#{systemBean.getDto().version}" required="true"/>
                         </div>
                         <div class="field">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-12 md:col-6">
                     <div class="card">
-                        <h4>#{msg['system.status']}</h4>
+                        <h5>#{msg['system.status']}</h5>
                         <div class="grid formgrid">
                             <div class="col-12 mb-2 lg:col-4 mb-lg-0">
                                 <h6>#{msg['system.cpu.usage']}</h6>
