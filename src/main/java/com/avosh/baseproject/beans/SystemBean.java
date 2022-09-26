@@ -16,7 +16,6 @@ import java.util.List;
 @Component
 @Scope("session")
 public class SystemBean extends BaseBean<SystemService, SystemDto> {
-    private boolean isEditMode;
     private List<SystemDto> list;
     private SystemDto systemDto;
 
@@ -31,10 +30,6 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
         list = service.retrieveAll();
         systemDto = new SystemDto();
         setDto(new SystemDto());
-    }
-
-    public boolean isEditMode() {
-        return isEditMode;
     }
 
     public List<SystemDto> getList() {
