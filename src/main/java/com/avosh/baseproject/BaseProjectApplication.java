@@ -34,6 +34,9 @@ public class BaseProjectApplication extends WebMvcConfigurerAdapter {
     public ServletContextInitializer servletContextInitializer() {
         return servletContext -> {
             servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+            servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
+            
+            servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
             servletContext.setInitParameter("primefaces.PUBLIC_CAPTCHA_KEY",
                     "6LffwSIiAAAAABAfTW-Akbh_BkaU9mswr-aPiIvY");
             servletContext.setInitParameter("primefaces.PRIVATE_CAPTCHA_KEY",
