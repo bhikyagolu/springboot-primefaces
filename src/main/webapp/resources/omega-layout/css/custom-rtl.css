@@ -317,12 +317,15 @@ body .ui-panel .ui-panel-titlebar {
         }
 
         #login-wrapper #login-container {
-            height: 500px !important;
+            height: 510px !important;
         }
 
         .captcha {
-            padding-right: 0px !important;
-            padding-left: 28px !important;
+            padding-right: 8px!important;
+            padding-left: 0px !important;
+        }
+        #login-wrapper {
+            width: 360px !important;
         }
 
     }

@@ -51,7 +51,10 @@
         height: 500px !important;
     }
     .captcha{
-        padding-right: 28px!important;
-        padding-left: 0px!important;
+        padding-right: 0px!important;
+        padding-left: 8px !important;
+    }
+    #login-wrapper {
+        width: 360px !important;
     }
 }
