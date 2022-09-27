@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class NotificationDto extends BaseDto{
 
-    private long id;
-    private long secUserId;
+    private UserDto userDto;
     private String title;
     private String description;
     private Date createDate;
@@ -13,14 +12,26 @@ public class NotificationDto extends BaseDto{
     private Date startDate;
     private Date endDate;
 
-
-
-    public long getSecUserId() {
-        return secUserId;
+    public NotificationDto() {
     }
 
-    public void setSecUserId(long secUserId) {
-        this.secUserId = secUserId;
+    public NotificationDto(long id, UserDto userDto, String title, String description, Date createDate, Date updateDate, Date startDate, Date endDate) {
+        this.id = id;
+        this.userDto = userDto;
+        this.title = title;
+        this.description = description;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public UserDto getUserDto() {
+        return userDto;
+    }
+
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 
     public String getTitle() {

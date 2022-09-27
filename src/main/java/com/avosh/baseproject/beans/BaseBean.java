@@ -5,6 +5,7 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.BaseDto;
+import com.avosh.baseproject.dto.NotificationDto;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.List;
 
 
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
@@ -19,9 +21,14 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     private boolean isEditMode;
     protected SRV service;
     private D dto;
+    protected List<D> list;
 
     public boolean isEditMode() {
         return isEditMode;
+    }
+
+    public void setEditMode(boolean editMode) {
+        isEditMode = editMode;
     }
 
     public D getDto() {
@@ -35,6 +42,14 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
 
     public SRV getService() {
         return service;
+    }
+
+    public List<D> getList() {
+        return list;
+    }
+
+    public void setList(List<D> list) {
+        this.list = list;
     }
 
     public void doFind(){
