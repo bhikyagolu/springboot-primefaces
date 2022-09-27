@@ -44,7 +44,7 @@
                         <span class="detail">#{msg['dashboard.users.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count visitors p-2">#{dashboardBean.allUserCount()}</span>
+                        <span class="count visitors p-2 farsi-num">#{dashboardBean.allUserCount()}</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="detail">#{msg['dashboard.sales.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count purchases p-2">#{dashboardBean.allSalesCount()}</span>
+                        <span class="count purchases p-2 farsi-num">#{dashboardBean.allSalesCount()}</span>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         <span class="detail">#{msg['dashboard.revenue.sub']}</span>
                     </div>
                     <div class="flex align-items-center">
-                        <span class="count revenue p-2">#{dashboardBean.allRevenueCount()} T</span>
+                        <span class="count revenue p-2 farsi-num">#{dashboardBean.allRevenueCount()} #{msg['dashboard.toman']}</span>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.register']}</h5>
-                    <p class="mb-1"><strong>#{dashboardBean.todayRegisterCount()}</strong> </p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayRegisterCount()}</strong> </p>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.view']}</h5>
-                    <p class="mb-1"><strong>#{dashboardBean.todayViewCount()}</strong> </p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayViewCount()}</strong> </p>
 
                 </div>
             </div>
@@ -116,7 +116,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.android']}</h5>
-                    <p class="mb-1"><strong>#{dashboardBean.todayAndroidIncome()}T</strong> / #{dashboardBean.todayAllIncome()}T</p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayAndroidIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}</p>
                     <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.apple']}</h5>
-                    <p class="mb-1"><strong>#{dashboardBean.todayIosIncome()}T</strong> / #{dashboardBean.todayAllIncome()}T</p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayIosIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}</p>
                     <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
@@ -145,7 +145,7 @@
             </div>
             <div class="col-12 md:col-8">
                 <p:panel header="#{msg['dashboard.sales.chart']}" style="height:100%">
-                    <canvas id="sales-chart"/>
+                    <canvas id="sales-chart" class="farsi-num"/>
                 </p:panel>
             </div>
         </div>

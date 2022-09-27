@@ -18,6 +18,10 @@
     font-style: normal;
 }
 
+.farsi-num{
+    font-family: IranSansX !important;
+}
+
 
 body {
     font-family: IranSans !important;
@@ -223,9 +227,7 @@ body .ui-panel .ui-panel-titlebar {
     bottom: 7px
 }
 
-p {
-    font-size: 12px !important;
-}
+
 
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
