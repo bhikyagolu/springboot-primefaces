@@ -5,7 +5,6 @@
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.BaseDto;
-import com.avosh.baseproject.dto.NotificationDto;
 import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;

@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">#{msg['page.notification']}</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="grid">
+                <div class="col-12 md:col-8">
+                    <div class="card ui-fluid">
+                        <h5>#{msg['notification.details']}</h5>
+                        <div class="field">
+                            <p:outputLabel for="title">#{msg['notification.title']}</p:outputLabel>
+                            <p:inputText id="title" value="#{notificationBean.getDto().title}"
+                                        disabled="#{notificationBean.editMode}" maxlength="15" required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:selectBooleanCheckbox id="checkbox" value="#{notificationBean.hasScheduled}"
+                                                     disabled="#{notificationBean.editMode}" itemLabel="#{msg['notification.scheduled']}">
+                                <p:ajax update="date" event="change"/>
+                            </p:selectBooleanCheckbox>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="date">#{msg['notification.scheduled.time']}</p:outputLabel>
+                            <p:datePicker id="date" value="#{notificationBean.getDto().createDate}"
+                                          disabled="#{notificationBean.editMode or !notificationBean.hasScheduled}" showTime="true" showIcon="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="message">#{msg['notification.message']}</p:outputLabel>
+                            <p:inputTextarea id="message" value="#{notificationBean.getDto().description}"
+                                             disabled="#{notificationBean.editMode}" maxlength="150" required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
+                                             actionListener="#{notificationBean.doSave()}"
+                                             rendered="#{!notificationBean.editMode}"
+                                             style="display:inline-block;margin-top:5px; width: auto"/>
+                            <p:commandButton styleClass="table-new" id="new" type="button" value="#{msg['menu.back']}"
+                                             onclick="window.open('index.xhtml','_self')"
+                                             style="display:inline-block;margin-top:5px;margin-left: 5px; margin-right: 5px; width: auto"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

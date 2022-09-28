@@ -19,6 +19,7 @@ import java.util.List;
 @Scope("session")
 public class NotificationBean extends BaseBean<NotificationService, NotificationDto> {
     private NotificationDto notificationDto;
+    private Boolean hasScheduled;
 
 
     @Autowired
@@ -28,6 +29,7 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
 
     @PostConstruct
     public void init(){
+        hasScheduled= false;
         list = service.retrieveAll();
         notificationDto = new NotificationDto();
         setDto(new NotificationDto());
@@ -50,5 +52,13 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
 
     public List<NotificationDto> getDtoList() {
         return list;
+    }
+
+    public Boolean getHasScheduled() {
+        return hasScheduled;
+    }
+
+    public void setHasScheduled(Boolean hasScheduled) {
+        this.hasScheduled = hasScheduled;
     }
 }

@@ -227,6 +227,10 @@ body .ui-panel .ui-panel-titlebar {
     bottom: 7px
 }
 
+body .ui-breadcrumb .ui-breadcrumb-items li:not(.ui-breadcrumb-chevron)::before{
+    content: "\e931";
+}
+
 
 
 @media (min-width: 1025px) {
