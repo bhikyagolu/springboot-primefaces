@@ -15,15 +15,19 @@
                         <p:dataTable widgetVar="dataTable" id="dataTable" var="data" value="#{notificationBean.list}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      rowKey="#{data.id}" rowIndexVar="row"
-                                     paginator="true" rows="10" paginatorPosition="bottom" >
+                                     paginator="true" rows="10" paginatorPosition="bottom">
                             <f:facet name="header">
                                 <div class="p-d-flex p-jc-between p-ai-center">
-                                    <p:commandButton styleClass="table-new" id="new" type="button" value="#{msg['menu.new']}"
-                                                     onclick="window.open('detaile.xhtml','_self')" icon="pi pi-plus"/>
+                                    <p:commandButton update=":messagesPanel form:dlg"
+                                                     icon="pi pi-plus"
+                                                     value="#{msg['menu.new']}"
+                                                     actionListener="#{notificationBean.viewMode(false)}"
+                                                     oncomplete="PF('dlg').show()"/>
                                     <div class="customers-table-header table-search">
                                         <span class="ui-input-icon-left filter-container">
                                             <i class="pi pi-search"/>
-                                            <p:inputText id="globalFilter" styleClass="table-search-input" style="background-color: white" onkeyup="PF('dataDT').filter()"
+                                            <p:inputText id="globalFilter" styleClass="table-search-input"
+                                                         style="background-color: white" onkeyup="PF('dataDT').filter()"
                                                          placeholder="#{msg['table.search']}"/>
                                         </span>
 
@@ -57,10 +61,23 @@
                             </p:column>
 
                             <p:column headerText="#{msg['table.header.operation']}" width="10%"
-                                      exportable="false"   style="text-align: center;" responsivePriority="2">
+                                      exportable="false" style="text-align: center;" responsivePriority="2">
                                 <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary"
                                               buttonStyle="box-shadow: 0 0 10px">
-                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
+                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form:dlg"
+                                                icon="pi pi-eye"
+                                                actionListener="#{notificationBean.viewMode(true)}"
+                                                oncomplete="PF('dlg').show()" >
+                                        <f:setPropertyActionListener value="#{data}"
+                                                                     target="#{notificationBean.notificationDto}"/>
+                                    </p:menuitem>
+                                    <p:separator/>
+                                    <p:menuitem value="#{msg['menu.delete']}" action="#{notificationBean.doDelete()}"
+                                                update=":messagesPanel form:dataTable" icon="pi pi-times">
+                                        #{msg['menu.delete']}
+                                        <p:confirm header="#{msg['menu.confirmation']}"
+                                                   message="#{msg['menu.confirmation.message']}"
+                                                   icon="pi pi-info-circle"/>
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{notificationBean.notificationDto}"/>
                                     </p:menuitem>
@@ -78,7 +95,8 @@
                                         <p:dataExporter type="pdf" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
 
-                                    <p:commandButton icon="pi pi-file" styleClass="p-mr-2 p-mb-2 export" style="margin: 2px">
+                                    <p:commandButton icon="pi pi-file" styleClass="p-mr-2 p-mb-2 export"
+                                                     style="margin: 2px">
                                         <p:dataExporter type="csv" target="dataTable" fileName="exort"/>
                                     </p:commandButton>
 
@@ -91,12 +109,60 @@
                             </f:facet>
                         </p:dataTable>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="350">
-                            <p:commandButton value="#{msg['menu.confirmation.yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                            <p:commandButton value="#{msg['menu.confirmation.no']}" type="button" styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times" />
+                            <p:commandButton value="#{msg['menu.confirmation.yes']}" type="button"
+                                             styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
+                            <p:commandButton value="#{msg['menu.confirmation.no']}" type="button"
+                                             styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times"/>
                         </p:confirmDialog>
                     </div>
                 </div>
             </div>
+            <p:dialog header="#{msg['dialog.title.new']}"
+                      widgetVar="dlg" id="dlg" modal="true" showEffect="fade"
+                      hideEffect="fade"
+                      resizable="true">
+                <div class="grid">
+                    <div class="col-12 md:col-12">
+                        <div class="card ui-fluid">
+                            <div class="field">
+                                <p:outputLabel for="title">#{msg['notification.title']}</p:outputLabel>
+                                <p:inputText id="title" value="#{notificationBean.getDto().title}"
+                                             disabled="#{notificationBean.editMode}" maxlength="15" />
+                            </div>
+                            <div class="field">
+                                <p:selectBooleanCheckbox id="checkbox" value="#{notificationBean.hasScheduled}"
+                                                         disabled="#{notificationBean.editMode}"
+                                                         itemLabel="#{msg['notification.scheduled']}">
+                                    <p:ajax update="date" event="change"/>
+                                </p:selectBooleanCheckbox>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="date">#{msg['notification.scheduled.time']}</p:outputLabel>
+                                <p:datePicker id="date" value="#{notificationBean.getDto().createDate}"
+                                              disabled="#{notificationBean.editMode or !notificationBean.hasScheduled}"
+                                              showTime="true" showIcon="true"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="message">#{msg['notification.message']}</p:outputLabel>
+                                <p:inputTextarea id="message" value="#{notificationBean.getDto().description}"
+                                                 disabled="#{notificationBean.editMode}" maxlength="150"
+                                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <f:facet name="footer">
+                    <p:commandButton value="#{msg['dialog.dismiss']}" type="button" styleClass="ui-button-secondary"
+                                     onclick="PF('dlg').hide()"/>
+                    <p:commandButton value="#{msg['dialog.save']}"
+                                     styleClass="ui-button-secondary" rendered="#{!notificationBean.editMode}"
+                                     actionListener="#{notificationBean.doSave()}"
+                                     update=":messagesPanel :form formdlg" onclick="PF('dlg').hide()"
+                                     icon="pi pi-check"/>
+                </f:facet>
+            </p:dialog>
+        </h:form>
+        <h:form id="formdlg">
 
         </h:form>
     </ui:define>

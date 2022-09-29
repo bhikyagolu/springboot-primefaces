@@ -29,6 +29,7 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
 
     @PostConstruct
     public void init(){
+        setEditMode(false);
         hasScheduled= false;
         list = service.retrieveAll();
         notificationDto = new NotificationDto();
@@ -41,12 +42,27 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
         init();
     }
 
+    public void doDelete() {
+        setDto(notificationDto);
+        super.delete();
+        init();
+    }
+
+    public void viewMode(Boolean flag){
+        if(!flag){
+            notificationDto =new NotificationDto();
+            setDto(new NotificationDto());
+        }
+        setEditMode(flag);
+    }
+
 
     public NotificationDto getNotificationDto() {
         return notificationDto;
     }
 
     public void setNotificationDto(NotificationDto notificationDto) {
+        setDto(notificationDto);
         this.notificationDto = notificationDto;
     }
 
