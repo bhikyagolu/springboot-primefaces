@@ -63,6 +63,6 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void deleteById(Long id) {
-
+        repository.deleteById(id);
     }
 }
