@@ -14,7 +14,8 @@ import com.avosh.baseproject.repository.PostRepository;
 import com.avosh.baseproject.services.PostService;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
-import org.primefaces.shaded.commons.io.IOUtils;
+
+import org.primefaces.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class PostServiceImpl implements PostService {
             post.setBrief(dto.getBrief());
             post.setTitle(dto.getTitle());
             if(Empty.isNotEmpty(dto.getPhoto())){
-                byte[] img =IOUtils.toByteArray(dto.getPhoto());
+                byte[] img = IOUtils.toByteArray(dto.getPhoto());
                 post.setPhoto(img);
             }
             post.setType(dto.getCategory());
