@@ -21,6 +21,7 @@
                                     <p:commandButton update=":messagesPanel form:dlg"
                                                      styleClass="table-new"
                                                      icon="pi pi-plus"
+                                                     resetValues="true"
                                                      value="#{msg['menu.new']}"
                                                      actionListener="#{notificationBean.viewMode(false)}"
                                                      oncomplete="PF('dlg').show()"/>
@@ -128,11 +129,13 @@
                             <div class="field">
                                 <p:outputLabel for="title">#{msg['notification.title']}</p:outputLabel>
                                 <p:inputText id="title" value="#{notificationBean.getDto().title}"
-                                             disabled="#{notificationBean.editMode}" maxlength="15" />
+                                             label="#{msg['notification.title']}"
+                                             disabled="#{notificationBean.editMode}" maxlength="15"/>
                             </div>
                             <div class="field">
                                 <p:selectBooleanCheckbox id="checkbox" value="#{notificationBean.hasScheduled}"
                                                          disabled="#{notificationBean.editMode}"
+                                                         label="#{msg['notification.scheduled']}"
                                                          itemLabel="#{msg['notification.scheduled']}">
                                     <p:ajax update="date" event="change"/>
                                 </p:selectBooleanCheckbox>
@@ -140,12 +143,14 @@
                             <div class="field">
                                 <p:outputLabel for="date">#{msg['notification.scheduled.time']}</p:outputLabel>
                                 <p:datePicker id="date" value="#{notificationBean.getDto().createDate}"
+                                              label="#{msg['notification.scheduled.time']}"
                                               disabled="#{notificationBean.editMode or !notificationBean.hasScheduled}"
                                               showTime="true" showIcon="true"/>
                             </div>
                             <div class="field">
                                 <p:outputLabel for="message">#{msg['notification.message']}</p:outputLabel>
                                 <p:inputTextarea id="message" value="#{notificationBean.getDto().description}"
+                                                 label="#{msg['notification.message']}"
                                                  disabled="#{notificationBean.editMode}" maxlength="150"
                                                 />
                             </div>
@@ -158,13 +163,10 @@
                     <p:commandButton value="#{msg['dialog.save']}"
                                      styleClass="ui-button-secondary" rendered="#{!notificationBean.editMode}"
                                      actionListener="#{notificationBean.doSave()}"
-                                     update=":messagesPanel :form formdlg" onclick="PF('dlg').hide()"
+                                     update=":messagesPanel :form" resetValues="true" onsuccess="PF('dlg').hide()"
                                      icon="pi pi-check"/>
                 </f:facet>
             </p:dialog>
-        </h:form>
-        <h:form id="formdlg">
-
         </h:form>
     </ui:define>
 

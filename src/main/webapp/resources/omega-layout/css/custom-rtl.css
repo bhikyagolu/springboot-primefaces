@@ -231,7 +231,10 @@ body .ui-breadcrumb .ui-breadcrumb-items li:not(.ui-breadcrumb-chevron)::before{
     content: "\e931";
 }
 
-
+body .ui-fluid .ui-trigger-calendar input.hasDatepicker {
+    width: 100% !important;
+    text-align: left !important;
+}
 
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
