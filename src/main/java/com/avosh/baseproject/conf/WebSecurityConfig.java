@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user").hasAnyRole("USER")
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/javax.faces.resource/**").permitAll()
+                .antMatchers("/service/**").permitAll()
                 .antMatchers("/ws/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
