@@ -8,6 +8,10 @@
 
 package com.avosh.baseproject.conf;
 
+import com.avosh.baseproject.model.Student;
+import com.avosh.baseproject.model.StudentDetailsRequest;
+import com.avosh.baseproject.model.StudentDetailsResponse;
+
 import javax.xml.bind.annotation.XmlRegistry;
 
 
