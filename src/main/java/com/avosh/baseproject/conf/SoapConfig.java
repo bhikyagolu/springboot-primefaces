@@ -46,12 +46,12 @@ public class SoapConfig extends WsConfigurerAdapter {
 
 	@Bean(name="schema")
 	public XsdSchema studentSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("school.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("xsd/school.xsd"));
 	}
 
 	@Bean(name="webservice2Schema")
 	public XsdSchema webservice2Schema() {
-		return new SimpleXsdSchema(new ClassPathResource("gholi.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("xsd/gholi.xsd"));
 	}
 
 }

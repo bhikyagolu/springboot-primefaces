@@ -1,8 +1,8 @@
 package com.avosh.baseproject.endpoint;
 
 
-import com.avosh.baseproject.model.StudentDetailsRequest;
-import com.avosh.baseproject.model.StudentDetailsResponse;
+import com.avosh.baseproject.model.request.StudentDetailsRequest;
+import com.avosh.baseproject.model.response.StudentDetailsResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
