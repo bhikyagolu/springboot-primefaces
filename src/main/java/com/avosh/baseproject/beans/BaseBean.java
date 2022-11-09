@@ -9,7 +9,7 @@ import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-
+import org.springframework.context.i18n.LocaleContextHolder;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
@@ -120,6 +120,10 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
     }
 
     private Locale setLocale() {
-        return new Locale(GuestPreferences.locale);
+        try {
+            return new Locale(GuestPreferences.locale);
+        } catch (Exception e) {
+            return LocaleContextHolder.getLocale();
+        }
     }
 }
