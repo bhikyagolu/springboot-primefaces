@@ -10,6 +10,7 @@ import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -62,11 +63,10 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public  void save(){
         try {
             service.save(getDto());
-            messageSource.getMessage("app.header", null, Locale.ENGLISH);
-            showMessage("Done!");
+            showMessage("message,save.done");
         } catch (Exception e) {
             log.error(e);
-            showMessage("Error!");
+            showErrorMessage("message.save.error ");
         }finally {
 
         }
@@ -77,55 +77,39 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public  void delete(){
         try {
             service.deleteById(dto.getId());
-            showMessage("Done!");
+            showMessage("message,delete.done");
         } catch (Exception e) {
             log.error(e);
-            showMessage("Error!");
+            showErrorMessage("message.delete.error");
         }
     }
 
 
-    protected void saveError(String clientId, String errorKey) {
-        FacesMessage message = new FacesMessage(errorKey);
-        message.setSeverity(FacesMessage.SEVERITY_ERROR);
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.addMessage(clientId,message);
 
-    }
-
-    protected void saveInfo(String clientId, String errorKey) {
-        FacesMessage message = new FacesMessage(errorKey);
-        message.setSeverity(FacesMessage.SEVERITY_INFO);
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.addMessage(clientId,message);
-
-    }
-
-    protected void saveWarning(String clientId, String errorKey) {
-        FacesMessage message = new FacesMessage(errorKey);
-        message.setSeverity(FacesMessage.SEVERITY_WARN);
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.addMessage(clientId,message);
-    }
-
-    protected void saveError(BaseException e) {
-        saveError("messagesPanel", e.getClass().getName());
-    }
-
-    protected void saveWarning(BaseException e) {
-        saveWarning("messagesPanel", e.getClass().getName());
-    }
-
-    protected void saveInfo(BaseException e) {
-        saveInfo("messagesPanel", e.getClass().getName());
-    }
     protected void showMessage(String title,String detail){
         FacesMessage msg = new FacesMessage(title, detail);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     protected void showMessage(String detail){
-        FacesMessage msg = new FacesMessage( detail);
+        Locale locale = LocaleContextHolder.getLocale();
+        String message = messageSource.getMessage(detail, null, locale);
+        FacesMessage msg = new FacesMessage(message);
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    protected void showErrorMessage(String detail){
+        Locale locale = LocaleContextHolder.getLocale();
+        String message = messageSource.getMessage(detail, null, locale);
+        FacesMessage msg = new FacesMessage(message);
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    protected void showWarnMessage(String detail){
+        Locale locale = LocaleContextHolder.getLocale();
+        String message = messageSource.getMessage(detail, null, locale);
+        FacesMessage msg = new FacesMessage(message);
+        msg.setSeverity(FacesMessage.SEVERITY_WARN);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
