@@ -40,7 +40,7 @@ public class RedeemBean extends BaseBean<RedeemService, RedeemDto> {
 
 
     public void deleteRecord() {
-        super.deleteById();
+        super.delete();
         init();
 
     }

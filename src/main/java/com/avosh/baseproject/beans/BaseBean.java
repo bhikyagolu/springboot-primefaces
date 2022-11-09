@@ -67,20 +67,20 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
             showMessage("message.save.done");
         } catch (Exception e) {
             log.error(e);
-            showErrorMessage("message.save.error ");
+            showExceptionMessage(e);
         } finally {
 
         }
     }
 
 
-    public void deleteById() {
+    public void delete() {
         try {
             service.deleteById(dto.getId());
             showMessage("message.delete.done");
         } catch (Exception e) {
             log.error(e);
-            showErrorMessage("message.delete.error");
+            showExceptionMessage(e);
         }
     }
 
@@ -94,7 +94,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
         String message = messageSource.getMessage(
                 exception.getClass().getName(), null, setLocale());
         FacesMessage msg = new FacesMessage(message);
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 

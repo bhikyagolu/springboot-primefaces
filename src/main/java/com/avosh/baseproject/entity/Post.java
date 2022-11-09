@@ -29,7 +29,7 @@ public class Post implements BaseEntity {
     private String brief;
     @Column(name = "post")
     private String post;
-    @Column(name = "photo", unique = false, nullable = false, length = 100000)
+    @Column(name = "photo", unique = false, nullable = true, length = 100000)
     private byte[] photo;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)

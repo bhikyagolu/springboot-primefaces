@@ -52,7 +52,7 @@ public class LessonBean extends BaseBean<LessonService, LessonDto> {
     }
 
     public void deleteRecord() {
-        super.deleteById();
+        super.delete();
         init();
 
     }

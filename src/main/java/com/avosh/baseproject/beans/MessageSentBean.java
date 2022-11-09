@@ -34,7 +34,7 @@ public class MessageSentBean extends MessageBean {
 
 
     public void deleteRecord() {
-        super.deleteById();
+        super.delete();
         init();
     }
 

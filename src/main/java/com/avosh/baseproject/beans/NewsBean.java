@@ -79,7 +79,7 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
 
     public void deleteRecord() {
-        super.deleteById();
+        super.delete();
         init();
 
     }
