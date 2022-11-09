@@ -11,7 +11,8 @@
 
             <span>
             <p:selectOneMenu id="locale" value="#{guestPreferences.locale}" onchange="submit()"
-                             valueChangeListener="#{guestPreferences.changeLanguage}" style="float: right" styleClass="footer-lang">
+                             valueChangeListener="#{guestPreferences.changeLanguage}" style="float: right"
+                             styleClass="footer-lang">
                 <f:selectItems value="#{guestPreferences.countries}"/>
             </p:selectOneMenu>
             </span>

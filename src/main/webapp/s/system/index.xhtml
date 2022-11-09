@@ -58,11 +58,12 @@
                         <div class="field">
                             <p:outputLabel for="version">#{msg['system.version']}</p:outputLabel>
                             <p:inputNumber minValue="0" maxlength="999999" thousandSeparator="" id="version"
-                                          value="#{systemBean.getDto().version}" required="true"/>
+                                           value="#{systemBean.getDto().version}" required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="description">#{msg['system.description']}</p:outputLabel>
-                            <p:inputText maxlength="40" id="description" value="#{systemBean.getDto().description}" required="true"/>
+                            <p:inputText maxlength="40" id="description" value="#{systemBean.getDto().description}"
+                                         required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="status" value="#{msg['system.title.status']}"/>
@@ -83,8 +84,8 @@
                             </p:selectOneMenu>
                         </div>
                         <div class="field">
-                            <p:commandButton  value="#{msg['system.save']}" update="@form form:dataTable :messagesPanel"
-                                              actionListener="#{systemBean.doSave()}" resetValues="true"
+                            <p:commandButton value="#{msg['system.save']}" update="@form form:dataTable :messagesPanel"
+                                             actionListener="#{systemBean.doSave()}" resetValues="true"
                                              style="display:inline-block;margin-top:5px; width: auto"/>
                         </div>
                     </div>

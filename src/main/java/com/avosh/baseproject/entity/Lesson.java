@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -86,5 +85,5 @@ public class Lesson implements BaseEntity {
     public String toString() {
         return "javaapplication1.Lesson[ id=" + id + " ]";
     }
-    
+
 }

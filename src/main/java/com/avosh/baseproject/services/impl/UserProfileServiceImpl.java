@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -31,7 +31,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     PasswordEncoder passwordEncoder;
     @Autowired
     UserRepository userRepository;
-
 
 
     @Override
@@ -79,13 +78,13 @@ public class UserProfileServiceImpl implements UserProfileService {
         try {
             if (passwordEncoder.matches(oldPassword, auth.getPassword())) {
                 userRepository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
-                log.info("Password Has been changed user id = "+auth.getSecUser().getId());
+                log.info("Password Has been changed user id = " + auth.getSecUser().getId());
                 return true;
             }
             throw new BadRequestException();
 
         } catch (Exception e) {
-            log.info("Password Has been not changed user id = "+auth.getSecUser().getId());
+            log.info("Password Has been not changed user id = " + auth.getSecUser().getId());
             log.info(e);
             throw new BadRequestException();
         }
@@ -97,9 +96,9 @@ public class UserProfileServiceImpl implements UserProfileService {
         userDto.setId(auth.getSecUser().getId());
         try {
             userRepository.updateContact(userDto);
-            log.info("Contact has been updated id = "+auth.getSecUser().getId());
+            log.info("Contact has been updated id = " + auth.getSecUser().getId());
         } catch (Exception e) {
-            log.info("Contact not updated id = "+auth.getSecUser().getId());
+            log.info("Contact not updated id = " + auth.getSecUser().getId());
             log.info(e);
             throw new SaveContactException();
         }
@@ -112,9 +111,9 @@ public class UserProfileServiceImpl implements UserProfileService {
         userDto.setId(auth.getSecUser().getId());
         try {
             userRepository.updateProfile(userDto);
-            log.info("Profile has been updated id = "+auth.getSecUser().getId());
+            log.info("Profile has been updated id = " + auth.getSecUser().getId());
         } catch (Exception e) {
-            log.info("Profile not updated id = "+auth.getSecUser().getId());
+            log.info("Profile not updated id = " + auth.getSecUser().getId());
             log.info(e);
             throw new SaveProfileException();
         }

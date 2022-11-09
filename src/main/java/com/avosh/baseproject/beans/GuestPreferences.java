@@ -22,8 +22,8 @@ import java.util.*;
 @Scope("session")
 public class GuestPreferences implements Serializable {
 
-    LinkedHashMap<String, Object> countries;
     public static String locale;
+    LinkedHashMap<String, Object> countries;
     private String captchaLocail;
 
     private String theme = "blue";
@@ -81,14 +81,14 @@ public class GuestPreferences implements Serializable {
                         .getViewRoot().setLocale((Locale) entry.getValue());
                 if (newLocaleValue.equals("fa")) {
                     themePath = "custom-rtl.css";
-                    captchaLocail=locale= "fa";
+                    captchaLocail = locale = "fa";
                     LocaleContextHolder.setLocale(new Locale("fa"));
                     FacesContext.getCurrentInstance()
                             .getViewRoot().setLocale(new Locale("fa"));
                 } else {
                     LocaleContextHolder.setLocale(new Locale("en"));
                     themePath = "custom-ltr.css";
-                    captchaLocail=locale= "en";
+                    captchaLocail = locale = "en";
                 }
             }
         }
@@ -98,7 +98,7 @@ public class GuestPreferences implements Serializable {
         if (Empty.isNotEmpty(locale)) {
             if (locale.equals("fa")) {
                 themePath = "custom-rtl.css";
-                captchaLocail= "fa";
+                captchaLocail = "fa";
                 FacesContext.getCurrentInstance()
                         .getViewRoot().setLocale(new Locale("fa"));
             }
@@ -164,6 +164,26 @@ public class GuestPreferences implements Serializable {
 
     public void setLayouts(List<Layout> layouts) {
         this.layouts = layouts;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public LinkedHashMap<String, Object> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(LinkedHashMap<String, Object> countries) {
+        this.countries = countries;
+    }
+
+    public String getCaptchaLocail() {
+        return captchaLocail;
     }
 
     public class Theme {
@@ -248,25 +268,5 @@ public class GuestPreferences implements Serializable {
         public void setColor(String color) {
             this.color = color;
         }
-    }
-
-    public String getLocale() {
-        return locale;
-    }
-
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
-
-    public LinkedHashMap<String, Object> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(LinkedHashMap<String, Object> countries) {
-        this.countries = countries;
-    }
-
-    public String getCaptchaLocail() {
-        return captchaLocail;
     }
 }

@@ -1,7 +1,6 @@
 package com.avosh.baseproject.repository;
 
 
-
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.entity.SecUser;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,7 +17,7 @@ public interface UserRepository extends BaseRepository<SecUser, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE SecUser s SET s.password = :newPassword WHERE s.id = :id")
-    void updatePassword(@Param("newPassword")String newPassword,@Param("id") Long id);
+    void updatePassword(@Param("newPassword") String newPassword, @Param("id") Long id);
 
 
     @Transactional

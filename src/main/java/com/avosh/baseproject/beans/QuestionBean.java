@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -26,7 +26,7 @@ public class QuestionBean extends BaseBean<QuestionService, QuestionDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         list = service.retrieveAll();
         questionDto = new QuestionDto();
         setDto(new QuestionDto());
@@ -50,7 +50,7 @@ public class QuestionBean extends BaseBean<QuestionService, QuestionDto> {
         this.questionDto = dto;
     }
 
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 

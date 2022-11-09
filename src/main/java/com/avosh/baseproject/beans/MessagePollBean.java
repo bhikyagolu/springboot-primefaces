@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("request")
-public class MessagePollBean extends MessageBean{
+public class MessagePollBean extends MessageBean {
     private static final Logger log = Logger.getLogger(MessagePollBean.class);
 
 
@@ -21,8 +21,8 @@ public class MessagePollBean extends MessageBean{
         return unreadMessageCount;
     }
 
-    public void updateMessageCounter(){
-        unreadMessageCount =  service.countUnreadMessage();
+    public void updateMessageCounter() {
+        unreadMessageCount = service.countUnreadMessage();
     }
 
 

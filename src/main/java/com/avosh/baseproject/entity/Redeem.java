@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -181,5 +180,5 @@ public class Redeem implements BaseEntity {
     public String toString() {
         return "javaapplication1.Redeem[ id=" + id + " ]";
     }
-    
+
 }

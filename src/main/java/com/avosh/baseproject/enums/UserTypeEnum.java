@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.enums;
 
 public enum UserTypeEnum {
-    ENABLE(1,"Admin"),
-    ASSISTANT(2,"Assistant"),
-    ORDINARY(3,"Ordinary");
+    ENABLE(1, "Admin"),
+    ASSISTANT(2, "Assistant"),
+    ORDINARY(3, "Ordinary");
 
     private Integer code;
     private String description;
@@ -19,7 +19,7 @@ public enum UserTypeEnum {
 
     public static String valueByCode(Integer code) {
         for (UserTypeEnum statusEnum : UserTypeEnum.values()) {
-            if(statusEnum.getCode() == code){
+            if (statusEnum.getCode() == code) {
                 return statusEnum.description;
             }
         }

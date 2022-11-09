@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class RedeemUserDto extends BaseDto{
+public class RedeemUserDto extends BaseDto {
 
     private Date createDate;
     private RedeemDto redeem;

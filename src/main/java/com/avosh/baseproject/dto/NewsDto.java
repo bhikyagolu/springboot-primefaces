@@ -10,7 +10,7 @@ package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class NewsDto extends BaseDto{
+public class NewsDto extends BaseDto {
 
     private String title;
     private String brief;

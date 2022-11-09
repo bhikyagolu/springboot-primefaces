@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class UserDto extends BaseDto{
+public class UserDto extends BaseDto {
 
     private String name;
     private String family;

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @Scope("session")
-public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
+public class RedeemBean extends BaseBean<RedeemService, RedeemDto> {
     private RedeemDto redeemDto;
     private List<RedeemDto> list;
     private boolean isEditMode;
@@ -26,7 +26,7 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         list = service.retrieveAll();
         redeemDto = new RedeemDto();
         setDto(new RedeemDto());
@@ -39,8 +39,7 @@ public class RedeemBean  extends BaseBean<RedeemService, RedeemDto> {
     }
 
 
-
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 

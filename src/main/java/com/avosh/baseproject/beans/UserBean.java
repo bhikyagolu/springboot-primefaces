@@ -22,7 +22,7 @@ public class UserBean extends BaseBean<UserService, UserDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         dtoList = service.retrieveAll();
         userDto = new UserDto();
     }
@@ -51,7 +51,6 @@ public class UserBean extends BaseBean<UserService, UserDto> {
     public void save() {
 
     }
-
 
 
     public void deleteRecord() {

@@ -55,6 +55,7 @@ body {
       width: calc(100% - #{$buttonIconOnlyWidth});
       padding: $inputPadding;
     }
+
     .ui-selectonemenu {
       .ui-selectonemenu-trigger {
         width: $buttonIconOnlyWidth;

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 @Component
 @Scope("request")
-public class MessageSentBean extends MessageBean{
+public class MessageSentBean extends MessageBean {
     private static final Logger log = Logger.getLogger(MessageSentBean.class);
 
     @PostConstruct
@@ -37,7 +37,6 @@ public class MessageSentBean extends MessageBean{
         super.delete();
         init();
     }
-
 
 
 }

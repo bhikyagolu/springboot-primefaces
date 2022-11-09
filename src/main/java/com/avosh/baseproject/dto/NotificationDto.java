@@ -2,7 +2,7 @@ package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class NotificationDto extends BaseDto{
+public class NotificationDto extends BaseDto {
 
     private UserDto userDto;
     private String title;

@@ -11,7 +11,7 @@ package com.avosh.baseproject.dto;
 import java.math.BigInteger;
 import java.util.Date;
 
-public class PackageDto extends BaseDto{
+public class PackageDto extends BaseDto {
     private String title;
     private String desc;
     private BigInteger fee;
@@ -27,7 +27,7 @@ public class PackageDto extends BaseDto{
         this.id = id;
     }
 
-    public PackageDto(Long id, String title, String desc, BigInteger fee, Integer discount, Date endDiscount, String picture,SubLessonDto subLesson) {
+    public PackageDto(Long id, String title, String desc, BigInteger fee, Integer discount, Date endDiscount, String picture, SubLessonDto subLesson) {
         this.id = id;
         this.title = title;
         this.desc = desc;

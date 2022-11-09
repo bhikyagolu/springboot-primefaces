@@ -31,7 +31,8 @@
                                       invalidFileMessage="only jpg | jpeg is allowed"
                                       update=":messagesPanel"
                                       listener="#{profileBean.handleFileUpload}"/>
-                        <p:commandButton update=":messagesPanel" actionListener="#{profileBean.uploadFile()}" value="#{msg['profile.save']}"
+                        <p:commandButton update=":messagesPanel" actionListener="#{profileBean.uploadFile()}"
+                                         value="#{msg['profile.save']}"
                                          style="display:inline-block;margin-top:5px; width: auto"/>
 
                     </h:form>

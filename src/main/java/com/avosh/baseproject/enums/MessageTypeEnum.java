@@ -1,13 +1,13 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.enums;
 
 public enum MessageTypeEnum {
-    INSTANT_MESSAGE_SENT(1,"INSTANT_MESSAGE_SENT"),
-    INSTANT_MESSAGE_RECEIVED(2,"INSTANT_MESSAGE_RECEIVED"),
-    SMS(3,"SMS");
+    INSTANT_MESSAGE_SENT(1, "INSTANT_MESSAGE_SENT"),
+    INSTANT_MESSAGE_RECEIVED(2, "INSTANT_MESSAGE_RECEIVED"),
+    SMS(3, "SMS");
 
     private Integer type;
     private String description;
@@ -19,7 +19,7 @@ public enum MessageTypeEnum {
 
     public static String valueByCode(Integer code) {
         for (MessageTypeEnum typeEnum : MessageTypeEnum.values()) {
-            if(typeEnum.getType() == code){
+            if (typeEnum.getType() == code) {
                 return typeEnum.description;
             }
         }

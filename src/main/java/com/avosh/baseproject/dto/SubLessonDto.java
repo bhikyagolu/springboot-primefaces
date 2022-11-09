@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class SubLessonDto extends BaseDto{
+public class SubLessonDto extends BaseDto {
 
     private String title;
     private String desc;

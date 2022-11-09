@@ -39,10 +39,10 @@ public class BackendConnectorRest implements BackendConnector {
         MessageRequest request = (MessageRequest) requestMessage;
         try {
             URI requestUri = new URI(request.getUri());
-            log.info("Sending rest to Uri ---> "+request.getUri());
+            log.info("Sending rest to Uri ---> " + request.getUri());
             Gson og = new Gson();
             String requestJson = og.toJson(request);
-            log.info("requestJson ---> "+requestJson);
+            log.info("requestJson ---> " + requestJson);
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
             headers.setContentType(MediaType.APPLICATION_JSON);

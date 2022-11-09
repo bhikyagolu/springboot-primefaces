@@ -15,11 +15,11 @@
                         <p:dataTable widgetVar="dataDT" id="dataTable" var="data" value="#{redeemUserBean.dtoList}"
                                      reflow="true" style="min-height: 500px" resizableColumns="true"
                                      rowKey="#{data.id}" rowIndexVar="row"
-                                     paginator="true" rows="10" paginatorPosition="bottom" >
+                                     paginator="true" rows="10" paginatorPosition="bottom">
                             <f:facet name="header">
                                 <div class="p-d-flex p-jc-between p-ai-center">
                                     <p:commandButton id="new" type="button" value="#{msg['menu.new']}"
-                                                     update="form"  onclick="PF('dlg').show()" icon="pi pi-plus"/>
+                                                     update="form" onclick="PF('dlg').show()" icon="pi pi-plus"/>
                                     <div class="customers-table-header" style="float: right">
                                         <span class="ui-input-icon-left filter-container">
                                             <i class="pi pi-search"/>
@@ -60,21 +60,26 @@
                             </p:column>
 
                             <p:column headerText="#{msg['table.header.operation']}" width="10%"
-                                      exportable="false"   style="text-align: center;" responsivePriority="2">
+                                      exportable="false" style="text-align: center;" responsivePriority="2">
                                 <p:menuButton icon="pi pi-cog" buttonStyleClass="ui-button-secondary"
                                               buttonStyle="box-shadow: 0 0 10px">
-                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form" icon="pi pi-eye"  oncomplete="PF('dlg').show()">
+                                    <p:menuitem value="#{msg['menu.view']}" update=":messagesPanel form"
+                                                icon="pi pi-eye" oncomplete="PF('dlg').show()">
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{RedeemUserBean.redeemDto}"/>
                                     </p:menuitem>
-                                    <p:menuitem value="#{msg['menu.edit']}" update=":messagesPanel form" icon="pi pi-pencil"  oncomplete="PF('dlg').show()">
+                                    <p:menuitem value="#{msg['menu.edit']}" update=":messagesPanel form"
+                                                icon="pi pi-pencil" oncomplete="PF('dlg').show()">
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{RedeemUserBean.redeemDto}"/>
                                     </p:menuitem>
-                                    <p:separator />
-                                    <p:menuitem value="#{msg['menu.delete']}"  action="#{RedeemUserBean.deleteRecord}" update=":messagesPanel form" icon="pi pi-times">
+                                    <p:separator/>
+                                    <p:menuitem value="#{msg['menu.delete']}" action="#{RedeemUserBean.deleteRecord}"
+                                                update=":messagesPanel form" icon="pi pi-times">
                                         #{msg['menu.delete']}
-                                        <p:confirm header="#{msg['menu.confirmation']}" message="#{msg['menu.confirmation.message']}" icon="pi pi-info-circle"/>
+                                        <p:confirm header="#{msg['menu.confirmation']}"
+                                                   message="#{msg['menu.confirmation.message']}"
+                                                   icon="pi pi-info-circle"/>
                                         <f:setPropertyActionListener value="#{data}"
                                                                      target="#{RedeemUserBean.redeemDto}"/>
                                     </p:menuitem>
@@ -100,8 +105,10 @@
                             </f:facet>
                         </p:dataTable>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="350">
-                            <p:commandButton value="#{msg['menu.confirmation.yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                            <p:commandButton value="#{msg['menu.confirmation.no']}" type="button" styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times" />
+                            <p:commandButton value="#{msg['menu.confirmation.yes']}" type="button"
+                                             styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
+                            <p:commandButton value="#{msg['menu.confirmation.no']}" type="button"
+                                             styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times"/>
                         </p:confirmDialog>
                     </div>
                 </div>

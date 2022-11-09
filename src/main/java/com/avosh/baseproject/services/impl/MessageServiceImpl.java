@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -56,8 +56,8 @@ public class MessageServiceImpl implements MessageService {
             ReceiverUser.setName(message.getSecUserId1().getName());
             ReceiverUser.setCellphone(message.getSecUserId1().getCellphone());
 
-            MessageDto messageDto = new MessageDto(message.getId(),message.getTitle(),message.getMessage(),
-                    message.getCreateDate(),message.getRead(),senderUser,ReceiverUser,message.getType());
+            MessageDto messageDto = new MessageDto(message.getId(), message.getTitle(), message.getMessage(),
+                    message.getCreateDate(), message.getRead(), senderUser, ReceiverUser, message.getType());
             dtoList.add(messageDto);
 
         }
@@ -80,8 +80,8 @@ public class MessageServiceImpl implements MessageService {
             ReceiverUser.setName(message.getSecUserId1().getName());
             ReceiverUser.setCellphone(message.getSecUserId1().getCellphone());
 
-            MessageDto messageDto = new MessageDto(message.getId(),message.getTitle(),message.getMessage(),
-                    message.getCreateDate(),message.getRead(),senderUser,ReceiverUser,message.getType());
+            MessageDto messageDto = new MessageDto(message.getId(), message.getTitle(), message.getMessage(),
+                    message.getCreateDate(), message.getRead(), senderUser, ReceiverUser, message.getType());
             dtoList.add(messageDto);
 
         }
@@ -98,6 +98,6 @@ public class MessageServiceImpl implements MessageService {
     public Long countUnreadMessage() {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-       return repository.countAllById(auth.getSecUser().getId());
+        return repository.countAllById(auth.getSecUser().getId());
     }
 }

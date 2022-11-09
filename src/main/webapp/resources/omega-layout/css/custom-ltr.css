@@ -2,37 +2,50 @@
     display: inline-block;
 }
 
-.tableToggler{
+.tableToggler {
     float: right;
 }
-.table-search{
+
+.table-search {
     float: right;
 }
-.table-search-input .ui-input-filled .ui-inputfield{
+
+.table-search-input .ui-input-filled .ui-inputfield {
     background-color: white !important;
     padding-right: 0px;
 }
+
 #globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-hover {
     background-color: white;
 }
-#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus{
+
+#globalFilter .ui-input-filled .ui-inputfield, body.ui-input-filled .ui-inputfield.ui-state-focus {
     background-color: white;
 }
+
 .footer-lang.ui-selectonemenu .ui-selectonemenu-trigger {
     display: none !important;
 }
-.footer-lang.ui-selectonemenu .ui-selectonemenu-label{
+
+.footer-lang.ui-selectonemenu .ui-selectonemenu-label {
     padding-right: 0px !important;
 }
-#login-wrapper #login-container{
-    height: 440px!important;
+
+#login-wrapper #login-container {
+    height: 440px !important;
 }
-.captcha{
-    padding-right: 28px!important;
-    padding-left: 28px!important;
+
+.captcha {
+    padding-right: 28px !important;
+    padding-left: 28px !important;
 }
-.ajax-status{
-    width:32px;height:32px;position:fixed;right:7px;bottom:7px
+
+.ajax-status {
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    right: 7px;
+    bottom: 7px
 }
 
 @media (max-width: 640px) {
@@ -43,17 +56,20 @@
     .ui-datatable-reflow .ui-reflow-dropdown {
         display: none !important;
     }
-    .tableToggler{
+
+    .tableToggler {
         display: none !important;
     }
 
-    #login-wrapper #login-container{
+    #login-wrapper #login-container {
         height: 500px !important;
     }
-    .captcha{
-        padding-right: 0px!important;
+
+    .captcha {
+        padding-right: 0px !important;
         padding-left: 8px !important;
     }
+
     #login-wrapper {
         width: 360px !important;
     }

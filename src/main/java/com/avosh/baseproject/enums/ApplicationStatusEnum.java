@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.enums;
 
 public enum ApplicationStatusEnum {
-    ENABLE(1,"Enable"),
-    DISABLE(2,"Disable");
+    ENABLE(1, "Enable"),
+    DISABLE(2, "Disable");
 
     private Integer stats;
     private String description;
@@ -18,7 +18,7 @@ public enum ApplicationStatusEnum {
 
     public static String valueByCode(Integer code) {
         for (ApplicationStatusEnum statusEnum : ApplicationStatusEnum.values()) {
-            if(statusEnum.getStats() == code){
+            if (statusEnum.getStats() == code) {
                 return statusEnum.description;
             }
         }

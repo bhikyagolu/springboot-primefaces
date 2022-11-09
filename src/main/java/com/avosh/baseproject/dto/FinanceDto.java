@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class FinanceDto extends BaseDto{
+public class FinanceDto extends BaseDto {
     private String desc;
     private Long amount;
     private Date createDateTime;

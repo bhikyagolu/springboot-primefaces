@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -18,14 +17,13 @@ import java.util.Date;
 @XmlRootElement
 public class Finance implements BaseEntity {
 
+    private static final long serialVersionUID = 1L;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
     @JoinColumn(name = "bank_id", referencedColumnName = "id")
     @ManyToOne
     private Bank bankId;
-
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -129,5 +127,5 @@ public class Finance implements BaseEntity {
     public void setBankId(Bank bankId) {
         this.bankId = bankId;
     }
-    
+
 }

@@ -1,16 +1,14 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.BaseDto;
-import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,14 +17,14 @@ import java.util.List;
 import java.util.Locale;
 
 
-public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  implements Serializable {
+public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> implements Serializable {
+    private static final Logger log = Logger.getLogger(BaseBean.class);
+    protected SRV service;
+    protected List<D> list;
     @Autowired
     private MessageSource messageSource;
-    private static final Logger log = Logger.getLogger(BaseBean.class);
     private boolean isEditMode;
-    protected SRV service;
     private D dto;
-    protected List<D> list;
 
     public boolean isEditMode() {
         return isEditMode;
@@ -57,24 +55,26 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
         this.list = list;
     }
 
-    public void doFind(){
+    public void doFind() {
 
     }
-    public  void save(){
+
+    public void save() {
         try {
             service.save(getDto());
             showMessage("message.save.done");
         } catch (Exception e) {
             log.error(e);
             showErrorMessage("message.save.error ");
-        }finally {
+        } finally {
 
         }
     }
+
     public abstract void init();
 
 
-    public  void delete(){
+    public void delete() {
         try {
             service.deleteById(dto.getId());
             showMessage("message.delete.done");
@@ -85,13 +85,12 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     }
 
 
-
-    protected void showMessage(String title,String detail){
+    protected void showMessage(String title, String detail) {
         FacesMessage msg = new FacesMessage(title, detail);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    protected void showExceptionMessage(Exception exception){
+    protected void showExceptionMessage(Exception exception) {
         String message = messageSource.getMessage(
                 exception.getClass().getName(), null, setLocale());
         FacesMessage msg = new FacesMessage(message);
@@ -99,25 +98,28 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    protected void showMessage(String detail){
+    protected void showMessage(String detail) {
         String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    protected void showErrorMessage(String detail){
+
+    protected void showErrorMessage(String detail) {
         String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    protected void showWarnMessage(String detail){
+
+    protected void showWarnMessage(String detail) {
         String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_WARN);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    private Locale setLocale(){
+
+    private Locale setLocale() {
         return new Locale(GuestPreferences.locale);
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -25,15 +25,14 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
     private boolean isEditMode;
 
 
-    @Autowired
-    public void setService(NewsService service) {
-        this.service = service;
-    }
-
     public NewsBean() {
         newsDto = new NewsDto();
     }
 
+    @Autowired
+    public void setService(NewsService service) {
+        this.service = service;
+    }
 
     @PostConstruct
     public void init() {
@@ -45,12 +44,12 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
 
     }
 
-    public void viewStatus(Boolean status){
+    public void viewStatus(Boolean status) {
         isEditMode = status;
         setDto(new NewsDto());
     }
 
-    public void newStatus(){
+    public void newStatus() {
         isEditMode = true;
         setDto(new NewsDto());
     }
@@ -77,8 +76,6 @@ public class NewsBean extends BaseBean<NewsService, NewsDto> {
         super.save();
         init();
     }
-
-
 
 
     public void deleteRecord() {

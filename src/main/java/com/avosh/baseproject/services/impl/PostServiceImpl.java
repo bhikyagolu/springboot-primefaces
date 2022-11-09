@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -14,7 +14,6 @@ import com.avosh.baseproject.repository.PostRepository;
 import com.avosh.baseproject.services.PostService;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
-
 import org.primefaces.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,7 +30,6 @@ public class PostServiceImpl implements PostService {
     PostRepository repository;
 
 
-
     @Override
     public void save(PostDto dto) {
         try {
@@ -41,13 +39,13 @@ public class PostServiceImpl implements PostService {
             post.setSecUserId(new SecUser(auth.getSecUser().getId()));
             post.setBrief(dto.getBrief());
             post.setTitle(dto.getTitle());
-            if(Empty.isNotEmpty(dto.getPhoto())){
+            if (Empty.isNotEmpty(dto.getPhoto())) {
                 byte[] img = IOUtils.toByteArray(dto.getPhoto());
                 post.setPhoto(img);
             }
             post.setType(dto.getCategory());
             post.setCreateDatetime(dto.getCreateDateTime());
-            if(Empty.isNotEmpty(dto.getId())){
+            if (Empty.isNotEmpty(dto.getId())) {
                 post.setId(dto.getId());
             }
             repository.save(post);

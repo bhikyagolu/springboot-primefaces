@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Scope("request")
 public class LoginBean extends BaseBean {
 
-    public String login(){
+    public String login() {
         return "/login";
     }
 

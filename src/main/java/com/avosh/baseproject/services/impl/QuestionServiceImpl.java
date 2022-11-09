@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -32,9 +32,9 @@ public class QuestionServiceImpl implements QuestionService {
         Iterable<Question> itr = repository.findAll();
         for (Question question : itr) {
 
-            QuestionDto questionDto = new QuestionDto(question.getId(),question.getQuestion(),question.getHasVoice(),
-                    question.getHasVideo(),question.getPicture(),question.getCreateDate(),
-                    new SubLessonDto(question.getSubLessonId().getId(),question.getSubLessonId().getTitle(),null,null,null,null));
+            QuestionDto questionDto = new QuestionDto(question.getId(), question.getQuestion(), question.getHasVoice(),
+                    question.getHasVideo(), question.getPicture(), question.getCreateDate(),
+                    new SubLessonDto(question.getSubLessonId().getId(), question.getSubLessonId().getTitle(), null, null, null, null));
             list.add(questionDto);
 
         }

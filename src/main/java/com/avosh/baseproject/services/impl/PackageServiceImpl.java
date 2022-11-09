@@ -53,8 +53,8 @@ public class PackageServiceImpl implements PackageService {
             subLessonDto.setId(pkg.getSubLessonId().getId());
             subLessonDto.setTitle(pkg.getSubLessonId().getTitle());
 
-            PackageDto packageDto = new PackageDto(pkg.getId(),pkg.getTitle(),pkg.getDesc(),
-                    pkg.getFee(),pkg.getDiscount(),pkg.getEndDiscount(),pkg.getPicture(),subLessonDto);
+            PackageDto packageDto = new PackageDto(pkg.getId(), pkg.getTitle(), pkg.getDesc(),
+                    pkg.getFee(), pkg.getDiscount(), pkg.getEndDiscount(), pkg.getPicture(), subLessonDto);
             list.add(packageDto);
 
         }

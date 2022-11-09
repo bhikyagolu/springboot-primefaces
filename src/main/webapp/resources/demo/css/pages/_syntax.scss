@@ -33,7 +33,8 @@ pre[class*="language-"] {
   overflow: visible;
   padding: 0;
 }
-pre[class*="language-"]>code {
+
+pre[class*="language-"] > code {
   position: relative;
   border-left: 10px solid #358ccb;
   box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
@@ -168,6 +169,7 @@ pre[class*="language-"]:after {
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
@@ -215,14 +217,16 @@ pre[class*="language-"][data-line] {
   padding-bottom: 0;
   padding-left: 0;
 }
+
 pre[data-line] code {
   position: relative;
   padding-left: 4em;
 }
+
 pre .line-highlight {
   margin-top: 0;
 }
-  
+
 /* PrimeFaces styles */
 pre[class*="language-"] {
   &:before, &:after {

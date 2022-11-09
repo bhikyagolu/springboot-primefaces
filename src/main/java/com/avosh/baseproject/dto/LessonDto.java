@@ -1,10 +1,10 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
-public class LessonDto extends BaseDto{
+public class LessonDto extends BaseDto {
 
     private String title;
 

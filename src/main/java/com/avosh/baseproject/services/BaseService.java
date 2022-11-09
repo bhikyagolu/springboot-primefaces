@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services;
@@ -14,8 +14,10 @@ import java.util.List;
 
 
 @Service
-public interface BaseService<R extends BaseRepository, M extends BaseEntity,D extends BaseDto> {
+public interface BaseService<R extends BaseRepository, M extends BaseEntity, D extends BaseDto> {
     public void save(D dto);
-    List<D> retrieveAll() ;
+
+    List<D> retrieveAll();
+
     void deleteById(Long id);
 }

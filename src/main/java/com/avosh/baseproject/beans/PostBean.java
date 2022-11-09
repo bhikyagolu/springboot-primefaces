@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -36,7 +36,7 @@ public class PostBean extends BaseBean<PostService, PostDto> {
     @PostConstruct
     public void init() {
         isEditMode = false;
-       setDto(new PostDto());
+        setDto(new PostDto());
         postDtoList = new ArrayList<>();
         postDtoList = service.retrieveAll();
 
@@ -59,14 +59,13 @@ public class PostBean extends BaseBean<PostService, PostDto> {
         return isEditMode;
     }
 
-    public void doSave()  {
+    public void doSave() {
         super.save();
         init();
     }
 
 
-
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 
@@ -76,12 +75,12 @@ public class PostBean extends BaseBean<PostService, PostDto> {
         isEditMode = true;
     }
 
-    public void status(){
+    public void status() {
         isEditMode = true;
         setDto(new PostDto());
     }
 
-    public void viewStatus(Boolean status){
+    public void viewStatus(Boolean status) {
         isEditMode = status;
         setDto(new PostDto());
     }

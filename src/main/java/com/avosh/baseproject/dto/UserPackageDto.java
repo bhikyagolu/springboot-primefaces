@@ -1,10 +1,10 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
-public class UserPackageDto extends BaseDto{
+public class UserPackageDto extends BaseDto {
 
     private PackageDto packageDto;
     private UserDto userDto;

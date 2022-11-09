@@ -43,7 +43,7 @@ public class RedeemUserServiceImpl implements RedeemUserService {
         redeemUser.setRedeemId(redeem);
         redeemUser.setId(dto.getId());
         redeemUser.setSecUserId(new SecUser(auth.getSecUser().getId()));
-        if(Empty.isEmpty(dto.getCreateDate())){
+        if (Empty.isEmpty(dto.getCreateDate())) {
             redeemUser.setCreateDate(new Date());
         }
         repository.save(redeemUser);
@@ -66,7 +66,7 @@ public class RedeemUserServiceImpl implements RedeemUserService {
             redeemDto.setDesc(redeemUser.getRedeemId().getDesc());
 
 
-            RedeemUserDto redeemUserDto = new RedeemUserDto(redeemUser.getId(),redeemUser.getCreateDate(),redeemDto,userDto);
+            RedeemUserDto redeemUserDto = new RedeemUserDto(redeemUser.getId(), redeemUser.getCreateDate(), redeemDto, userDto);
             list.add(redeemUserDto);
         }
         return list;

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -26,7 +26,7 @@ public class RedeemUserBean extends BaseBean<RedeemUserService, RedeemUserDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         list = service.retrieveAll();
         redeemUserDto = new RedeemUserDto();
         setDto(new RedeemUserDto());
@@ -39,8 +39,7 @@ public class RedeemUserBean extends BaseBean<RedeemUserService, RedeemUserDto> {
     }
 
 
-
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 

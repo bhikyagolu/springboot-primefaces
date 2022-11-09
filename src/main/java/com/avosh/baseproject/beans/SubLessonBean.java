@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -27,7 +27,7 @@ public class SubLessonBean extends BaseBean<SubLessonService, SubLessonDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         list = service.retrieveAll();
         subLessonDto = new SubLessonDto();
         setDto(new SubLessonDto());
@@ -52,7 +52,7 @@ public class SubLessonBean extends BaseBean<SubLessonService, SubLessonDto> {
 
     }
 
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 

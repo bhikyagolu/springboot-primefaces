@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -21,12 +21,11 @@ import javax.faces.context.FacesContext;
 @Component
 @Scope("session")
 public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
+    UploadedFile file;
     private UploadedFile originalImageFile;
     private CroppedImage croppedImage;
-
     private String oldPassword;
     private String newPassword;
-
 
     @Autowired
     public void setService(UserProfileService service) {
@@ -39,11 +38,11 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
         setDto(profile);
 
     }
-    UploadedFile file ;
+
     public void handleFileUpload(FileUploadEvent event) {
         this.originalImageFile = null;
         this.croppedImage = null;
-       file = event.getFile();
+        file = event.getFile();
         if (file != null && file.getContent() != null && file.getContent().length > 0 && file.getFileName() != null) {
             this.originalImageFile = file;
             FacesMessage msg = new FacesMessage("Successful", this.originalImageFile.getFileName() + " is uploaded.");
@@ -52,12 +51,12 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     }
 
     public void uploadFile() {
-            if (Empty.isNotEmpty(file)) {
-                showMessage("Successful", file.getFileName() + " is uploaded.");
-            }else {
-                showMessage("Not Successful");
-            }
+        if (Empty.isNotEmpty(file)) {
+            showMessage("Successful", file.getFileName() + " is uploaded.");
+        } else {
+            showMessage("Not Successful");
         }
+    }
 
     public UploadedFile getOriginalImageFile() {
         return originalImageFile;
@@ -72,11 +71,9 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
     }
 
 
-
-
     public void changePassword() {
         try {
-            service.changePassword(newPassword,oldPassword);
+            service.changePassword(newPassword, oldPassword);
             showMessage("Saved");
         } catch (Exception e) {
             e.printStackTrace();

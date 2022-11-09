@@ -21,10 +21,11 @@
             <hr/>
 
             <h5>Menu Color</h5>
-            <p:selectOneRadio value="#{guestPreferences.menuColor}" layout="pageDirection" onchange="PrimeFaces.OmegaConfigurator.changeMenuColor(event.target.value)" >
+            <p:selectOneRadio value="#{guestPreferences.menuColor}" layout="pageDirection"
+                              onchange="PrimeFaces.OmegaConfigurator.changeMenuColor(event.target.value)">
                 <f:selectItem itemLabel="Light" itemValue="light"/>
                 <f:selectItem itemLabel="Dark" itemValue="dark"/>
-                <p:ajax update="config-form menuform" />
+                <p:ajax update="config-form menuform"/>
             </p:selectOneRadio>
 
             <hr/>

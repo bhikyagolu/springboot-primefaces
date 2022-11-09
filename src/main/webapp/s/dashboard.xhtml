@@ -83,7 +83,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.register']}</h5>
-                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayRegisterCount()}</strong> </p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayRegisterCount()}</strong></p>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.view']}</h5>
-                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayViewCount()}</strong> </p>
+                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayViewCount()}</strong></p>
 
                 </div>
             </div>
@@ -116,7 +116,9 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.android']}</h5>
-                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayAndroidIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}</p>
+                    <p class="mb-1 farsi-num">
+                        <strong>#{dashboardBean.todayAndroidIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}
+                    </p>
                     <p:progressBar value="13" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>
@@ -133,7 +135,9 @@
                         </p:menu>
                     </div>
                     <h5 class="mb-3">#{msg['dashboard.apple']}</h5>
-                    <p class="mb-1 farsi-num"><strong>#{dashboardBean.todayIosIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}</p>
+                    <p class="mb-1 farsi-num">
+                        <strong>#{dashboardBean.todayIosIncome()} #{msg['dashboard.toman']}</strong> / #{dashboardBean.todayAllIncome()} #{msg['dashboard.toman']}
+                    </p>
                     <p:progressBar value="90" labelTemplate="" displayOnly="true"/>
                 </div>
             </div>

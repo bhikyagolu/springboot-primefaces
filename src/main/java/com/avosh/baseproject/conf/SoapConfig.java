@@ -15,43 +15,43 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class SoapConfig extends WsConfigurerAdapter {
-	@Bean
-	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(applicationContext);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/service/*");
-	}
+    @Bean
+    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+        servlet.setApplicationContext(applicationContext);
+        servlet.setTransformWsdlLocations(true);
+        return new ServletRegistrationBean(servlet, "/service/*");
+    }
 
-	@Bean(name = "studentDetailsWsdl")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("StudentDetailsPort");
-		wsdl11Definition.setLocationUri("/service/student-details");
-		wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
-		wsdl11Definition.setSchema(schema);
-		return wsdl11Definition;
-	}
+    @Bean(name = "studentDetailsWsdl")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("StudentDetailsPort");
+        wsdl11Definition.setLocationUri("/service/student-details");
+        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
+        wsdl11Definition.setSchema(schema);
+        return wsdl11Definition;
+    }
 
-	@Bean(name = "gholi")
-	public DefaultWsdl11Definition webservice2Wsdl11Definition(XsdSchema webservice2Schema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("webservice2Port");
-		wsdl11Definition.setLocationUri("/service/gholi-details");
-		wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
-		wsdl11Definition.setSchema(webservice2Schema);
-		return wsdl11Definition;
-	}
+    @Bean(name = "gholi")
+    public DefaultWsdl11Definition webservice2Wsdl11Definition(XsdSchema webservice2Schema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("webservice2Port");
+        wsdl11Definition.setLocationUri("/service/gholi-details");
+        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
+        wsdl11Definition.setSchema(webservice2Schema);
+        return wsdl11Definition;
+    }
 
 
-	@Bean(name="schema")
-	public XsdSchema studentSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("xsd/school.xsd"));
-	}
+    @Bean(name = "schema")
+    public XsdSchema studentSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/school.xsd"));
+    }
 
-	@Bean(name="webservice2Schema")
-	public XsdSchema webservice2Schema() {
-		return new SimpleXsdSchema(new ClassPathResource("xsd/gholi.xsd"));
-	}
+    @Bean(name = "webservice2Schema")
+    public XsdSchema webservice2Schema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/gholi.xsd"));
+    }
 
 }

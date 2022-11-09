@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -137,5 +136,5 @@ public class Message implements BaseEntity {
     public String toString() {
         return "javaapplication1.Message[ id=" + id + " ]";
     }
-    
+
 }

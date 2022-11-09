@@ -1,10 +1,10 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
-public class LibraryDto extends BaseDto{
+public class LibraryDto extends BaseDto {
 
     private Integer type;
     private String name;

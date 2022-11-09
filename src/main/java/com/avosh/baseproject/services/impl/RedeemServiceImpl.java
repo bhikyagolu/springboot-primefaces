@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -53,7 +53,7 @@ public class RedeemServiceImpl implements RedeemService {
             UserDto userDto = new UserDto();
             userDto.setId(redeem.getSecUserId().getId());
 
-            RedeemDto redeemDto = new RedeemDto(redeem.getId(), redeem.getTitle(), redeem.getDesc(),redeem.getAmount(),
+            RedeemDto redeemDto = new RedeemDto(redeem.getId(), redeem.getTitle(), redeem.getDesc(), redeem.getAmount(),
                     redeem.getCode(), redeem.getExpireDate(), redeem.getStartDate(), redeem.getMultiple(),
                     redeem.getCount(), redeem.getCreateDate(), userDto);
             list.add(redeemDto);

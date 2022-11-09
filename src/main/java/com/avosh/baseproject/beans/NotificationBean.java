@@ -1,13 +1,11 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
 
 import com.avosh.baseproject.dto.NotificationDto;
-import com.avosh.baseproject.dto.RedeemDto;
 import com.avosh.baseproject.services.NotificationService;
-import com.avosh.baseproject.services.RedeemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -28,9 +26,9 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         setEditMode(false);
-        hasScheduled= false;
+        hasScheduled = false;
         list = service.retrieveAll();
         notificationDto = new NotificationDto();
         setDto(new NotificationDto());
@@ -48,9 +46,9 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
         init();
     }
 
-    public void viewMode(Boolean flag){
-        if(!flag){
-            notificationDto =new NotificationDto();
+    public void viewMode(Boolean flag) {
+        if (!flag) {
+            notificationDto = new NotificationDto();
             setDto(new NotificationDto());
         }
         setEditMode(flag);

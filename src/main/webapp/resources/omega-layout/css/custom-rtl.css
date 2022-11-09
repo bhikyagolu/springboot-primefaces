@@ -18,7 +18,7 @@
     font-style: normal;
 }
 
-.farsi-num{
+.farsi-num {
     font-family: IranSansX !important;
 }
 
@@ -29,11 +29,11 @@ body {
 !important;
 }
 
-table td{
+table td {
     font-family: IranSansX !important;
 }
 
-table th{
+table th {
     font-family: IranSans !important;
 }
 
@@ -227,7 +227,7 @@ body .ui-panel .ui-panel-titlebar {
     bottom: 7px
 }
 
-body .ui-breadcrumb .ui-breadcrumb-items li:not(.ui-breadcrumb-chevron)::before{
+body .ui-breadcrumb .ui-breadcrumb-items li:not(.ui-breadcrumb-chevron)::before {
     content: "\e931";
 }
 
@@ -328,9 +328,10 @@ body .ui-fluid .ui-trigger-calendar input.hasDatepicker {
         }
 
         .captcha {
-            padding-right: 8px!important;
+            padding-right: 8px !important;
             padding-left: 0px !important;
         }
+
         #login-wrapper {
             width: 360px !important;
         }

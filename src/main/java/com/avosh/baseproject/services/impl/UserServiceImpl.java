@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository repository;
-
 
 
     @Override

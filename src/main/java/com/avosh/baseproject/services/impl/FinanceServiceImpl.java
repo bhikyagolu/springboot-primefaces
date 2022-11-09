@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -43,8 +43,8 @@ public class FinanceServiceImpl implements FinanceService {
             redeemDto.setDesc(finance.getRedeemUserId().getRedeemId().getDesc());
             redeemDto.setId(finance.getRedeemUserId().getRedeemId().getId());
 
-            FinanceDto financeDto = new FinanceDto(finance.getId(),finance.getDesc(),finance.getAmount(),
-                    finance.getCreateDatetime(),userDto,redeemDto);
+            FinanceDto financeDto = new FinanceDto(finance.getId(), finance.getDesc(), finance.getAmount(),
+                    finance.getCreateDatetime(), userDto, redeemDto);
             list.add(financeDto);
 
         }

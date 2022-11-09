@@ -9,7 +9,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -95,5 +94,5 @@ public class SessionQuestion implements BaseEntity {
     public String toString() {
         return "javaapplication1.SessionQuestion[ id=" + id + " ]";
     }
-    
+
 }

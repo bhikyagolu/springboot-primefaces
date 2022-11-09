@@ -31,27 +31,9 @@ public class OmegaMenu extends AbstractMenu implements Widget, ComponentSystemEv
     public static final String COMPONENT_TYPE = "org.primefaces.component.OmegaMenu";
     public static final String COMPONENT_FAMILY = "org.primefaces.component";
     private static final String DEFAULT_RENDERER = "org.primefaces.component.OmegaMenuRenderer";
-//    private static final String[] LEGACY_RESOURCES = new String[]{"primefaces.css","jquery/jquery.js","jquery/jquery-plugins.js","primefaces.js"};
+    //    private static final String[] LEGACY_RESOURCES = new String[]{"primefaces.css","jquery/jquery.js","jquery/jquery-plugins.js","primefaces.js"};
 //private static final String[] LEGACY_RESOURCES = new String[]{"components.css","jquery/jquery.js","jquery/jquery-plugins.js","core.js"};
-    private static final String[] MODERN_RESOURCES = new String[]{"components.css","jquery/jquery.js","jquery/jquery-plugins.js","core.js"};
-
-    protected enum PropertyKeys {
-
-        widgetVar, model, style, styleClass;
-
-        String toString;
-
-        PropertyKeys(String toString) {
-            this.toString = toString;
-        }
-
-        PropertyKeys() {
-        }
-
-        public String toString() {
-            return ((this.toString != null) ? this.toString : super.toString());
-        }
-    }
+    private static final String[] MODERN_RESOURCES = new String[]{"components.css", "jquery/jquery.js", "jquery/jquery-plugins.js", "core.js"};
 
     public OmegaMenu() {
         setRendererType(DEFAULT_RENDERER);
@@ -103,13 +85,13 @@ public class OmegaMenu extends AbstractMenu implements Widget, ComponentSystemEv
             return "widget_" + getClientId(context).replaceAll("-|" + UINamingContainer.getSeparatorChar(context), "_");
         }
     }
-    
+
     @Override
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-        if(event instanceof PostAddToViewEvent) {
+        if (event instanceof PostAddToViewEvent) {
             FacesContext context = getFacesContext();
             UIViewRoot root = context.getViewRoot();
-            
+
             boolean isPrimeConfig;
             try {
                 isPrimeConfig = Class.forName("org.primefaces.config.PrimeConfiguration") != null;
@@ -119,11 +101,11 @@ public class OmegaMenu extends AbstractMenu implements Widget, ComponentSystemEv
 
             String[] resources = MODERN_RESOURCES;
 
-            for(String res : resources) {
+            for (String res : resources) {
                 UIComponent component = context.getApplication().createComponent(UIOutput.COMPONENT_TYPE);
-                if(res.endsWith("css"))
+                if (res.endsWith("css"))
                     component.setRendererType("javax.faces.resource.Stylesheet");
-                else if(res.endsWith("js"))
+                else if (res.endsWith("js"))
                     component.setRendererType("javax.faces.resource.Script");
 
                 component.getAttributes().put("library", "primefaces");
@@ -131,6 +113,24 @@ public class OmegaMenu extends AbstractMenu implements Widget, ComponentSystemEv
 
                 root.addComponentResource(context, component);
             }
+        }
+    }
+
+    protected enum PropertyKeys {
+
+        widgetVar, model, style, styleClass;
+
+        String toString;
+
+        PropertyKeys(String toString) {
+            this.toString = toString;
+        }
+
+        PropertyKeys() {
+        }
+
+        public String toString() {
+            return ((this.toString != null) ? this.toString : super.toString());
         }
     }
 }

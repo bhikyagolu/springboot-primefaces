@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -41,7 +41,7 @@ public class NewsServiceImpl implements NewsService {
         news.setBrif(dto.getBrief());
         news.setTitle(dto.getTitle());
         news.setCreateDate(dto.getCreateDateTime());
-        if(Empty.isNotEmpty(dto.getId())){
+        if (Empty.isNotEmpty(dto.getId())) {
             news.setId(dto.getId());
         }
         repository.save(news);

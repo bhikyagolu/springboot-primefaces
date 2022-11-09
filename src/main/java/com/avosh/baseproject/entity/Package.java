@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -150,5 +149,5 @@ public class Package implements BaseEntity {
     public String toString() {
         return "javaapplication1.Package[ id=" + id + " ]";
     }
-    
+
 }

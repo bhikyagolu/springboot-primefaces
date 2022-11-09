@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -26,7 +26,7 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         list = service.retrieveAll();
         systemDto = new SystemDto();
         setDto(new SystemDto());
@@ -47,13 +47,13 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
 
     }
 
-    public void deleteRecord()  {
+    public void deleteRecord() {
         super.delete();
         init();
 
     }
 
-    public void doSave(){
+    public void doSave() {
         super.save();
         init();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -31,7 +31,7 @@ public class LessonServiceImpl implements LessonService {
         Iterable<Lesson> itr = repository.findAll();
         for (Lesson lesson : itr) {
 
-            LessonDto lessonDto = new LessonDto(lesson.getId(),lesson.getTitle());
+            LessonDto lessonDto = new LessonDto(lesson.getId(), lesson.getTitle());
             list.add(lessonDto);
 
         }

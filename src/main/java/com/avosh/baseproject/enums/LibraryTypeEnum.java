@@ -9,9 +9,9 @@
 package com.avosh.baseproject.enums;
 
 public enum LibraryTypeEnum {
-    IMAGE(1,"Image"),
-    VIDEO(2,"Video"),
-    PDF(3,"PDF");
+    IMAGE(1, "Image"),
+    VIDEO(2, "Video"),
+    PDF(3, "PDF");
 
     private Integer type;
     private String description;
@@ -23,7 +23,7 @@ public enum LibraryTypeEnum {
 
     public static String valueByCode(Integer code) {
         for (LibraryTypeEnum typeEnum : LibraryTypeEnum.values()) {
-            if(typeEnum.getType() == code){
+            if (typeEnum.getType() == code) {
                 return typeEnum.description;
             }
         }

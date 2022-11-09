@@ -11,13 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("session")
 public class DashboardBean extends BaseBean {
-    private String name;
-    private String family;
     Authentication authentication;
     CustomUserDetail customUserDetail;
-
     @Autowired
     DashboardService dashboardService;
+    private String name;
+    private String family;
 
     public DashboardBean() {
         authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -48,9 +47,11 @@ public class DashboardBean extends BaseBean {
     public Integer todayRegisterCount() {
         return 10;
     }
+
     public Integer todayViewCount() {
         return 10;
     }
+
     public Integer todayAndroidIncome() {
         return 10;
     }

@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class QuestionDto extends BaseDto{
+public class QuestionDto extends BaseDto {
 
     private String question;
     private Boolean hasVoice;

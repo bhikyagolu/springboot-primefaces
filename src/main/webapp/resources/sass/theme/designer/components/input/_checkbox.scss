@@ -27,9 +27,9 @@ body {
       }
 
       &.ui-state-active {
-        border-color:$checkboxActiveBorderColor;
+        border-color: $checkboxActiveBorderColor;
         background: $checkboxActiveBg;
-        color:$checkboxTextActiveColor;
+        color: $checkboxTextActiveColor;
 
         &.ui-state-hover {
           background: $checkboxActiveHoverBg;

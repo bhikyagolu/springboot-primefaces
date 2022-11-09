@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class RedeemDto extends BaseDto{
+public class RedeemDto extends BaseDto {
     protected Long id;
     private String title;
     private String desc;
@@ -48,16 +48,16 @@ public class RedeemDto extends BaseDto{
         return desc;
     }
 
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public Long getAmount() {
         return amount;
     }
 
     public void setAmount(Long amount) {
         this.amount = amount;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public String getCode() {

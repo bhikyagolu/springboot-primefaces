@@ -67,7 +67,7 @@ body {
     }
 
     .ui-messages-warn {
-      background:$warnMessageBg;
+      background: $warnMessageBg;
       border: $warnMessageBorder;
       border-width: $messagesBorderWidth;
       color: $warnMessageTextColor;
@@ -80,7 +80,7 @@ body {
       }
 
       .ui-messages-close {
-        background:$warnMessageBg;
+        background: $warnMessageBg;
         color: $warnMessageIconColor;
 
         &:hover {

@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -108,5 +107,5 @@ public class SecRole implements BaseEntity {
     public String toString() {
         return "javaapplication1.SecRole[ id=" + id + " ]";
     }
-    
+
 }

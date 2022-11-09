@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
@@ -7,7 +7,7 @@ package com.avosh.baseproject.dto;
 import java.io.InputStream;
 import java.util.Date;
 
-public class PostDto extends BaseDto{
+public class PostDto extends BaseDto {
     private String title;
     private String brief;
     private String post;

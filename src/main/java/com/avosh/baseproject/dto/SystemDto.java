@@ -1,17 +1,17 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class SystemDto extends BaseDto{
+public class SystemDto extends BaseDto {
 
     private String description;
-    private Boolean enable ;
+    private Boolean enable;
     private Integer version;
-    private Boolean minVersion ;
+    private Boolean minVersion;
     private Date createDatetime;
     private UserDto userDto;
 

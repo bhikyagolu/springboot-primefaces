@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -20,6 +19,7 @@ import java.util.List;
 @XmlRootElement
 public class SecUser implements BaseEntity {
 
+    private static final long serialVersionUID = 1L;
     @Column(name = "iban")
     private String iban;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
@@ -28,8 +28,6 @@ public class SecUser implements BaseEntity {
     private List<UserPackage> userPackageList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<SubLesson> subLessonList;
-
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -393,5 +391,5 @@ public class SecUser implements BaseEntity {
     public void setSubLessonList(List<SubLesson> subLessonList) {
         this.subLessonList = subLessonList;
     }
-    
+
 }

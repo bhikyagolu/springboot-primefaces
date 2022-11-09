@@ -1,6 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
@@ -16,18 +15,20 @@
                         <div class="field">
                             <p:outputLabel for="title">#{msg['notification.title']}</p:outputLabel>
                             <p:inputText id="title" value="#{notificationBean.getDto().title}"
-                                        disabled="#{notificationBean.editMode}" maxlength="15" required="true"/>
+                                         disabled="#{notificationBean.editMode}" maxlength="15" required="true"/>
                         </div>
                         <div class="field">
                             <p:selectBooleanCheckbox id="checkbox" value="#{notificationBean.hasScheduled}"
-                                                     disabled="#{notificationBean.editMode}" itemLabel="#{msg['notification.scheduled']}">
+                                                     disabled="#{notificationBean.editMode}"
+                                                     itemLabel="#{msg['notification.scheduled']}">
                                 <p:ajax update="date" event="change"/>
                             </p:selectBooleanCheckbox>
                         </div>
                         <div class="field">
                             <p:outputLabel for="date">#{msg['notification.scheduled.time']}</p:outputLabel>
                             <p:datePicker id="date" value="#{notificationBean.getDto().createDate}"
-                                          disabled="#{notificationBean.editMode or !notificationBean.hasScheduled}" showTime="true" showIcon="true"/>
+                                          disabled="#{notificationBean.editMode or !notificationBean.hasScheduled}"
+                                          showTime="true" showIcon="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="message">#{msg['notification.message']}</p:outputLabel>

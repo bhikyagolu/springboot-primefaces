@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.services.impl;
@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 @Service
 public class SystemServiceImpl implements SystemService {
     private static final Logger log = Logger.getLogger(SystemServiceImpl.class);
@@ -41,7 +42,7 @@ public class SystemServiceImpl implements SystemService {
         }
         system.setVersion(dto.getVersion());
         system.setMinVersion(dto.getMinVersion());
-        system.setSecUserId(new SecUser(auth.getSecUser().getId()) );
+        system.setSecUserId(new SecUser(auth.getSecUser().getId()));
         repository.save(system);
     }
 
@@ -55,8 +56,8 @@ public class SystemServiceImpl implements SystemService {
             userDto.setName(system.getSecUserId().getName());
             userDto.setFamily(system.getSecUserId().getFamily());
 
-            SystemDto systemDto = new SystemDto(system.getId(),system.getDescription(),system.getMinVersion(),
-                    system.getVersion(),system.getMinVersion(),system.getCreateDatetime(),userDto);
+            SystemDto systemDto = new SystemDto(system.getId(), system.getDescription(), system.getMinVersion(),
+                    system.getVersion(), system.getMinVersion(), system.getCreateDatetime(), userDto);
             list.add(systemDto);
         }
         return list;

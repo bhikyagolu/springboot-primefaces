@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class MessageDto extends BaseDto{
+public class MessageDto extends BaseDto {
     private Long id;
     private String title;
     private String message;

@@ -10,14 +10,14 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class CustomUserDetail implements UserDetails {
-private SecUserDto secUser;
-
-    public SecUserDto getSecUser() {
-        return secUser;
-    }
+    private SecUserDto secUser;
 
     public CustomUserDetail(SecUserDto secUser) {
         this.secUser = secUser;
+    }
+
+    public SecUserDto getSecUser() {
+        return secUser;
     }
 
     @Override

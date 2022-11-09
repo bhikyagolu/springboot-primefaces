@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -30,7 +29,7 @@ public class Post implements BaseEntity {
     private String brief;
     @Column(name = "post")
     private String post;
-    @Column(name = "photo" , unique = false, nullable = false, length = 100000)
+    @Column(name = "photo", unique = false, nullable = false, length = 100000)
     private byte[] photo;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
@@ -136,5 +135,5 @@ public class Post implements BaseEntity {
     public String toString() {
         return "javaapplication1.Post[ id=" + id + " ]";
     }
-    
+
 }

@@ -1,10 +1,8 @@
 package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
-import com.avosh.baseproject.dto.NewsDto;
 import com.avosh.baseproject.dto.NotificationDto;
 import com.avosh.baseproject.dto.UserDto;
-import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.entity.Notification;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.NotificationRepository;
@@ -31,9 +29,9 @@ public class NotificationServiceImpl implements NotificationService {
     public void save(NotificationDto dto) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Notification notification = new Notification();
-        if(Empty.isEmpty(dto.getCreateDate())){
+        if (Empty.isEmpty(dto.getCreateDate())) {
             notification.setCreateDate(new Date());
-        }else {
+        } else {
             notification.setCreateDate(dto.getCreateDate());
         }
         notification.setTitle(dto.getTitle());
@@ -52,9 +50,9 @@ public class NotificationServiceImpl implements NotificationService {
             userDto.setId(notification.getSecUserId().getId());
             userDto.setFamily(notification.getSecUserId().getFamily());
             userDto.setName(notification.getSecUserId().getName());
-            NotificationDto notificationDto = new NotificationDto(notification.getId(), userDto,notification.getTitle(),
-                    notification.getDescription(),notification.getCreateDate(),notification.getUpdateDate(),
-                    notification.getStartDate(),notification.getEndDate());
+            NotificationDto notificationDto = new NotificationDto(notification.getId(), userDto, notification.getTitle(),
+                    notification.getDescription(), notification.getCreateDate(), notification.getUpdateDate(),
+                    notification.getStartDate(), notification.getEndDate());
             list.add(notificationDto);
 
         }

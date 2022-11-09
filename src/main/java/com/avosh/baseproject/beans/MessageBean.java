@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.beans;
@@ -12,17 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 
-public class MessageBean extends BaseBean<MessageService,MessageDto>{
+public class MessageBean extends BaseBean<MessageService, MessageDto> {
     private static final Logger log = Logger.getLogger(MessageBean.class);
+    protected MessageDto messageDto;
+    protected List<MessageDto> messageDtoList;
 
     @Autowired
     public void setService(MessageService service) {
         this.service = service;
     }
-
-    protected MessageDto messageDto;
-    protected List<MessageDto> messageDtoList;
-
 
 
 //    @PostConstruct

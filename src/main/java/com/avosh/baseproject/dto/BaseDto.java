@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.dto;
 
 import java.io.Serializable;
 
-public class BaseDto implements Serializable ,Comparable {
+public class BaseDto implements Serializable, Comparable {
     protected Long id;
 
     public Long getId() {

@@ -48,7 +48,7 @@ body {
       }
     }
 
-    &.ui-message-error,&.ui-message-fatal {
+    &.ui-message-error, &.ui-message-fatal {
       background: $errorMessageBg;
       border: $errorMessageBorder;
       border-width: $messageBorderWidth;

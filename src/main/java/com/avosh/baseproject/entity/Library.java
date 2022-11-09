@@ -9,7 +9,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author amirk
  */
 @Entity
@@ -94,5 +93,5 @@ public class Library implements BaseEntity {
     public String toString() {
         return "javaapplication1.Library[ id=" + id + " ]";
     }
-    
+
 }

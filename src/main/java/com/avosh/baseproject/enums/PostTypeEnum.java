@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Created by Alireza Amirkhani 2022
+ * Created by Alireza Amirkhani 2022
  ******************************************************************************/
 
 package com.avosh.baseproject.enums;
 
 public enum PostTypeEnum {
-    POST(1,"Post"),
-    ADS(2,"Advertisement");
+    POST(1, "Post"),
+    ADS(2, "Advertisement");
 
     private Integer type;
     private String description;
@@ -18,7 +18,7 @@ public enum PostTypeEnum {
 
     public static String valueByCode(Integer code) {
         for (PostTypeEnum typeEnum : PostTypeEnum.values()) {
-            if(typeEnum.getType() == code){
+            if (typeEnum.getType() == code) {
                 return typeEnum.description;
             }
         }
