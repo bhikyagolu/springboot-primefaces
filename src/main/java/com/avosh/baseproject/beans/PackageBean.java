@@ -54,7 +54,7 @@ public class PackageBean extends BaseBean<PackageService, PackageDto> {
     }
 
     public void deleteRecord() {
-        super.delete();
+        super.deleteById();
 
 
     }

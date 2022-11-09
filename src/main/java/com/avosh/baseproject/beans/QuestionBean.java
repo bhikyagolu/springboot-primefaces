@@ -51,7 +51,7 @@ public class QuestionBean extends BaseBean<QuestionService, QuestionDto> {
     }
 
     public void deleteRecord() {
-        super.delete();
+        super.deleteById();
         init();
 
     }

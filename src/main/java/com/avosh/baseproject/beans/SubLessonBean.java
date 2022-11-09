@@ -53,7 +53,7 @@ public class SubLessonBean extends BaseBean<SubLessonService, SubLessonDto> {
     }
 
     public void deleteRecord() {
-        super.delete();
+        super.deleteById();
         init();
 
     }

@@ -48,7 +48,7 @@ public class SystemBean extends BaseBean<SystemService, SystemDto> {
     }
 
     public void deleteRecord() {
-        super.delete();
+        super.deleteById();
         init();
 
     }

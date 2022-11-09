@@ -42,7 +42,7 @@ public class NotificationBean extends BaseBean<NotificationService, Notification
 
     public void doDelete() {
         setDto(notificationDto);
-        super.delete();
+        super.deleteById();
         init();
     }
 

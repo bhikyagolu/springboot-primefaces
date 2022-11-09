@@ -55,6 +55,8 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
         this.list = list;
     }
 
+    public abstract void init();
+
     public void doFind() {
 
     }
@@ -71,10 +73,8 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
         }
     }
 
-    public abstract void init();
 
-
-    public void delete() {
+    public void deleteById() {
         try {
             service.deleteById(dto.getId());
             showMessage("message.delete.done");
