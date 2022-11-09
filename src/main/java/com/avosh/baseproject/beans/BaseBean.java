@@ -63,7 +63,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public  void save(){
         try {
             service.save(getDto());
-            showMessage("message,save.done");
+            showMessage("message.save.done");
         } catch (Exception e) {
             log.error(e);
             showErrorMessage("message.save.error ");
@@ -77,7 +77,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
     public  void delete(){
         try {
             service.deleteById(dto.getId());
-            showMessage("message,delete.done");
+            showMessage("message.delete.done");
         } catch (Exception e) {
             log.error(e);
             showErrorMessage("message.delete.error");
