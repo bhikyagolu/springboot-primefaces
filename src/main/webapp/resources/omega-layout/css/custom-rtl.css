@@ -236,6 +236,11 @@ body .ui-fluid .ui-trigger-calendar input.hasDatepicker {
     text-align: left !important;
 }
 
+body .ui-datatable .ui-paginator.ui-paginator-bottom {
+    direction: ltr !important;
+    font-family: IranSansX !important;
+}
+
 @media (min-width: 1025px) {
     .wrapper.sidebar-inactive-l .topbar {
         right: 0px !important;
