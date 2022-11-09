@@ -91,25 +91,33 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto>  impl
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
+    protected void showExceptionMessage(Exception exception){
+        String message = messageSource.getMessage(
+                exception.getClass().getName(), null, setLocale());
+        FacesMessage msg = new FacesMessage(message);
+        msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
     protected void showMessage(String detail){
-        Locale locale = LocaleContextHolder.getLocale();
-        String message = messageSource.getMessage(detail, null, locale);
+        String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     protected void showErrorMessage(String detail){
-        Locale locale = LocaleContextHolder.getLocale();
-        String message = messageSource.getMessage(detail, null, locale);
+        String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     protected void showWarnMessage(String detail){
-        Locale locale = LocaleContextHolder.getLocale();
-        String message = messageSource.getMessage(detail, null, locale);
+        String message = messageSource.getMessage(detail, null, setLocale());
         FacesMessage msg = new FacesMessage(message);
         msg.setSeverity(FacesMessage.SEVERITY_WARN);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    private Locale setLocale(){
+        return new Locale(GuestPreferences.locale);
     }
 }

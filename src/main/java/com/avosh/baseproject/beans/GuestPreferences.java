@@ -23,7 +23,7 @@ import java.util.*;
 public class GuestPreferences implements Serializable {
 
     LinkedHashMap<String, Object> countries;
-    private String locale;
+    public static String locale;
     private String captchaLocail;
 
     private String theme = "blue";
@@ -63,6 +63,7 @@ public class GuestPreferences implements Serializable {
         if (FacesContext.getCurrentInstance()
                 .getViewRoot().getLocale().equals("fa")) {
             themePath = "custom-rtl.css";
+            LocaleContextHolder.setLocale(new Locale("fa"));
             FacesContext.getCurrentInstance()
                     .getViewRoot().setLocale(new Locale("fa"));
         } else {
@@ -81,9 +82,11 @@ public class GuestPreferences implements Serializable {
                 if (newLocaleValue.equals("fa")) {
                     themePath = "custom-rtl.css";
                     captchaLocail=locale= "fa";
+                    LocaleContextHolder.setLocale(new Locale("fa"));
                     FacesContext.getCurrentInstance()
                             .getViewRoot().setLocale(new Locale("fa"));
                 } else {
+                    LocaleContextHolder.setLocale(new Locale("en"));
                     themePath = "custom-ltr.css";
                     captchaLocail=locale= "en";
                 }
