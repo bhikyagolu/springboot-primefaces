@@ -37,10 +37,7 @@ import javax.xml.bind.annotation.*;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "name"
-})
-@XmlRootElement(name = "StudentDetailsRequest")
+@XmlRootElement(name = "StudentDetailsRequest" ,namespace = "http://www.avosh.com/xml/school")
 public class StudentDetailsRequest {
 
     @XmlElement(required = true)

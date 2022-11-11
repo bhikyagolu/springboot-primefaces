@@ -1,6 +1,7 @@
 package com.avosh.baseproject.endpoint;
 
 
+import com.avosh.baseproject.model.Student;
 import com.avosh.baseproject.model.request.StudentDetailsRequest;
 import com.avosh.baseproject.model.response.StudentDetailsResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -17,7 +18,11 @@ public class StudentEndpoint {
     @ResponsePayload
     public StudentDetailsResponse getStudent(@RequestPayload StudentDetailsRequest request) {
         StudentDetailsResponse response = new StudentDetailsResponse();
-
+        Student res =  new Student();
+        res.setAddress("address");
+        res.setName("name");
+        res.setStandard(1);
+        response.setStudent(res);
         return response;
     }
 }
