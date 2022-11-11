@@ -57,7 +57,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
 
     public abstract void init();
 
-    public void doFind() {
+    public void findById() {
 
     }
 
