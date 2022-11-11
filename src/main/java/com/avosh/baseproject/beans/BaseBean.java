@@ -19,10 +19,11 @@ import java.util.Locale;
 
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> implements Serializable {
     private static final Logger log = Logger.getLogger(BaseBean.class);
-    protected SRV service;
-    protected List<D> list;
     @Autowired
     private MessageSource messageSource;
+
+    protected SRV service;
+    protected List<D> list;
     private boolean isEditMode;
     private D dto;
 
