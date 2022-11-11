@@ -13,7 +13,8 @@ import java.lang.reflect.Method;
 public class SchedulerAspect {
     private final static Logger log = Logger.getLogger(SchedulerAspect.class);
 
-    @Pointcut("execution(* com.*.run()) && @annotation(com.avosh.baseproject.validator.CheckScheduler)")
+    @Pointcut("execution(* com.avosh.baseproject.task.*.run()) && " +
+            "@annotation(com.avosh.baseproject.validator.CheckScheduler)")
     private void schedulerPointcut() {
     }
 
@@ -26,12 +27,16 @@ public class SchedulerAspect {
             CheckScheduler busyAnnotation = method.getAnnotation(CheckScheduler.class);
             schedulerId = busyAnnotation.schedulerId();
             //todo start
+            log.info("Task Num -- > " + schedulerId + " Start");
             point.proceed();
+            log.info("Task Num -- > " + schedulerId + " End");
+
             //todo end
 
         } catch (Exception e) {
-
+            log.error(e.getStackTrace());
         } catch (Throwable e) {
+            log.error(e.getStackTrace());
 
         }
     }
