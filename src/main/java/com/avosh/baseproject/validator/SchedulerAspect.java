@@ -30,7 +30,7 @@ public class SchedulerAspect {
             CheckScheduler checkScheduler = method.getAnnotation(CheckScheduler.class);
             schedulerId = checkScheduler.schedulerId();
             //todo start
-            log.info("Task Num -- > " + schedulerId + " Start");
+            log.info("Task Num -- > " + schedulerId + " is Started");
             point.proceed();
             //todo end
 
@@ -39,7 +39,7 @@ public class SchedulerAspect {
         } catch (Throwable e) {
             log.error(e.getStackTrace());
         } finally {
-            log.info("Task Num -- > " + schedulerId + " End");
+            log.info("Task Num -- > " + schedulerId + " is Ended");
         }
     }
 
