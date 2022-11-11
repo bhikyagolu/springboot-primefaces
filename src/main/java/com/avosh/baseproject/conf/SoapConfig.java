@@ -28,7 +28,7 @@ public class SoapConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("StudentDetailsPort");
         wsdl11Definition.setLocationUri("/service/student-details");
-        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
+        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/definitions");
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
     }
@@ -38,7 +38,7 @@ public class SoapConfig extends WsConfigurerAdapter {
 //        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 //        wsdl11Definition.setPortTypeName("webservice2Port");
 //        wsdl11Definition.setLocationUri("/service/gholi-details");
-//        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/school");
+//        wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/definitions");
 //        wsdl11Definition.setSchema(webservice2Schema);
 //        return wsdl11Definition;
 //    }

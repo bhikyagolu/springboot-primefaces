@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.*;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "StudentDetailsRequest" ,namespace = "http://www.avosh.com/xml/school")
+@XmlRootElement(name = "StudentDetailsRequest" ,namespace = "http://www.avosh.com/xml/definitions")
 public class StudentDetailsRequest {
 
     @XmlElement(required = true)
