@@ -37,16 +37,7 @@ public class SoapConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
-    @Override
-    public void addInterceptors(List<EndpointInterceptor> interceptors) {
-        PayloadValidatingInterceptor validatingInterceptor = new PayloadValidatingInterceptor();
-        validatingInterceptor.setValidateRequest(true);
-        validatingInterceptor.setValidateResponse(true);
-        validatingInterceptor.setXsdSchema(studentSchema());
-        interceptors.add(validatingInterceptor);
-    }
-
-//    @Bean(name = "gholi")
+    //    @Bean(name = "gholi")
 //    public DefaultWsdl11Definition webservice2Wsdl11Definition(XsdSchema webservice2Schema) {
 //        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 //        wsdl11Definition.setPortTypeName("webservice2Port");
@@ -55,6 +46,14 @@ public class SoapConfig extends WsConfigurerAdapter {
 //        wsdl11Definition.setSchema(webservice2Schema);
 //        return wsdl11Definition;
 //    }
+    @Override
+    public void addInterceptors(List<EndpointInterceptor> interceptors) {
+        PayloadValidatingInterceptor validatingInterceptor = new PayloadValidatingInterceptor();
+        validatingInterceptor.setValidateRequest(true);
+        validatingInterceptor.setValidateResponse(true);
+        validatingInterceptor.setXsdSchema(studentSchema());
+        interceptors.add(validatingInterceptor);
+    }
 
 
     @Bean(name = "schema")
