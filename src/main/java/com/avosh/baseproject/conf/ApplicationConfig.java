@@ -13,8 +13,8 @@ public class ApplicationConfig implements Serializable {
     @Autowired
     private Environment env;
 
-    public String detDevMode() {
-        return env.getProperty("scom.avosh.dev");
+    public Boolean detDevMode() {
+        return Boolean.getBoolean(env.getProperty("com.avosh.dev"));
     }
     public String getTempFilesPath() {
         return env.getProperty("temp.path");
