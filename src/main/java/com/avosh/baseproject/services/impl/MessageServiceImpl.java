@@ -89,6 +89,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public MessageDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

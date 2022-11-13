@@ -62,6 +62,11 @@ public class RedeemServiceImpl implements RedeemService {
     }
 
     @Override
+    public RedeemDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

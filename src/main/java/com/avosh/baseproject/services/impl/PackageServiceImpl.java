@@ -62,6 +62,11 @@ public class PackageServiceImpl implements PackageService {
     }
 
     @Override
+    public PackageDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

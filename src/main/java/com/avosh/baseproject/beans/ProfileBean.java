@@ -34,7 +34,7 @@ public class ProfileBean extends BaseBean<UserProfileService, UserDto> {
 
     @PostConstruct
     public void init() {
-        UserDto profile = service.retrieveById();
+        UserDto profile = service.retrieveById(null);
         setDto(profile);
 
     }

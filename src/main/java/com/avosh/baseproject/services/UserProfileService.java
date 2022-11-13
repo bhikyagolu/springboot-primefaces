@@ -9,7 +9,7 @@ import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.repository.UserRepository;
 
 public interface UserProfileService extends BaseService<UserRepository, SecUser, UserDto> {
-    UserDto retrieveById();
+    UserDto retrieveById(Long id);
 
     Boolean changePassword(String newPassword, String oldPassword);
 

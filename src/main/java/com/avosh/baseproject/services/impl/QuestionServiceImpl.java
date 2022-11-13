@@ -42,6 +42,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public QuestionDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

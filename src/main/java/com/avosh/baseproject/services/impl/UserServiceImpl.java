@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
 
     }

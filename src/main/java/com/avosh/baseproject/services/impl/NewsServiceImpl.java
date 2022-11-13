@@ -64,5 +64,10 @@ public class NewsServiceImpl implements NewsService {
         return newsDtoList;
     }
 
+    @Override
+    public NewsDto retrieveById(Long id) {
+        return null;
+    }
+
 
 }

@@ -52,6 +52,11 @@ public class FinanceServiceImpl implements FinanceService {
     }
 
     @Override
+    public FinanceDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

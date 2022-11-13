@@ -46,11 +46,15 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
+    public UserDto retrieveById(Long id) {
+        return retrieveById();
+    }
+
+    @Override
     public void deleteById(Long id) {
 
     }
 
-    @Override
     public UserDto retrieveById() {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<SecUser> user = repository.findById(auth.getSecUser().getId());

@@ -60,6 +60,11 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
+    public NotificationDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

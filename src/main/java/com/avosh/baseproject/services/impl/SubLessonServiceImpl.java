@@ -41,6 +41,11 @@ public class SubLessonServiceImpl implements SubLessonService {
     }
 
     @Override
+    public SubLessonDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

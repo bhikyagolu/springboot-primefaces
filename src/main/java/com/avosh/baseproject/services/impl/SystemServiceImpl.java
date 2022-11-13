@@ -64,6 +64,11 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
+    public SystemDto retrieveById(Long id) {
+        return null;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
