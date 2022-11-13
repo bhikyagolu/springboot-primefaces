@@ -5,9 +5,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
 @Scope("singleton")
-public class ApplicationConfig {
+public class ApplicationConfig implements Serializable {
     @Autowired
     private Environment env;
 
