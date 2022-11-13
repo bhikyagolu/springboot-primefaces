@@ -156,6 +156,16 @@
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.55</version>
+        </dependency>
+        <dependency>
+            <groupId>com.enterprisedt</groupId>
+            <artifactId>edtFTPj</artifactId>
+            <version>1.5.3</version>
+        </dependency>
     </dependencies>
 
     <build>
