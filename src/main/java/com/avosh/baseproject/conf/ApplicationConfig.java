@@ -16,4 +16,7 @@ public class ApplicationConfig implements Serializable {
     public String detDevMode() {
         return env.getProperty("scom.avosh.dev");
     }
+    public String getTempFilesPath() {
+        return env.getProperty("temp.path");
+    }
 }
