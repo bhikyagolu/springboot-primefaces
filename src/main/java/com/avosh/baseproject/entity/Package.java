@@ -28,7 +28,7 @@ public class Package implements BaseEntity {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "desc")
+    @Column(name = "description")
     private String desc;
     @Column(name = "fee")
     private BigInteger fee;

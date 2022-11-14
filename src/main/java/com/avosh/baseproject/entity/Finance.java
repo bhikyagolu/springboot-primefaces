@@ -29,7 +29,7 @@ public class Finance implements BaseEntity {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "desc")
+    @Column(name = "description")
     private String desc;
     @Column(name = "amount")
     private Long amount;
