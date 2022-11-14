@@ -9,6 +9,7 @@ import com.avosh.baseproject.services.BaseService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.i18n.LocaleContextHolder;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -16,7 +17,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-
+@Scope("session")
 public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> implements Serializable {
     private static final Logger log = Logger.getLogger(BaseBean.class);
     @Autowired
@@ -122,7 +123,8 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
 
     private Locale setLocale() {
         try {
-            return new Locale(GuestPreferences.locale);
+            String locale =  LocaleContextHolder.getLocale().getLanguage();
+            return new Locale(locale);
         } catch (Exception e) {
             return LocaleContextHolder.getLocale();
         }

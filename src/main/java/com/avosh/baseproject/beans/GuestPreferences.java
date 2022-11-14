@@ -22,7 +22,7 @@ import java.util.*;
 @Scope("session")
 public class GuestPreferences implements Serializable {
 
-    public static String locale;
+    public String locale;
     LinkedHashMap<String, Object> countries;
     private String captchaLocail;
 
@@ -99,6 +99,7 @@ public class GuestPreferences implements Serializable {
             if (locale.equals("fa")) {
                 themePath = "custom-rtl.css";
                 captchaLocail = "fa";
+                LocaleContextHolder.setLocale(new Locale("fa"));
                 FacesContext.getCurrentInstance()
                         .getViewRoot().setLocale(new Locale("fa"));
             }
