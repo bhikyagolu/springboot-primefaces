@@ -22,6 +22,6 @@ public class ScheduleTask {
     @Scheduled(fixedRate = 100000)
     @CheckScheduler(schedulerId = 1)
     public void run() {
-        System.out.println("task is run");
+        System.out.println("task is running");
     }
 }
