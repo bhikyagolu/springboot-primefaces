@@ -33,7 +33,7 @@ public class MetricAspect {
             Method method = signature.getMethod();
             methodName = method.getName();
             root = method.getDeclaringClass().getName() +" "+method.getName();
-            log.debug("Method  " + methodName + " in " + root + " is Started");
+            log.info("Method  " + methodName + " in " + root + " is Started");
             point.proceed();
 
 
@@ -43,7 +43,7 @@ public class MetricAspect {
             log.error(e.getStackTrace());
         } finally {
             long end = System.currentTimeMillis();
-            log.debug("Method  " + methodName + " in " + root + " is Ended in " + (end - start) + " milliseconds");
+            log.info("Method  " + methodName + " in " + root + " is Ended in " + (end - start) + " milliseconds");
         }
     }
 
