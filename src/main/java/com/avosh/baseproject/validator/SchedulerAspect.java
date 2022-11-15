@@ -28,6 +28,7 @@ public class SchedulerAspect {
 
     @Around("schedulerPointcut()")
     public void checkSchedulerState(ProceedingJoinPoint point) {
+        long start = System.currentTimeMillis();
         int schedulerId = -1;
         try {
             MethodSignature signature = (MethodSignature) point.getSignature();
@@ -35,7 +36,7 @@ public class SchedulerAspect {
             CheckScheduler checkScheduler = method.getAnnotation(CheckScheduler.class);
             schedulerId = checkScheduler.schedulerId();
             //todo start
-            log.info("Task Num -- > " + schedulerId + " is Started");
+            log.info("Task Num " + schedulerId + " is Started");
             SchedulerDto res = schedulerService.retrieveById(Long.valueOf(schedulerId));
             if(res.getStatus() == false){
                 res.setStatus(true);
@@ -52,7 +53,8 @@ public class SchedulerAspect {
         } catch (Throwable e) {
             log.error(e.getStackTrace());
         } finally {
-            log.info("Task Num -- > " + schedulerId + " is Ended");
+            long end = System.currentTimeMillis();
+            log.info("Task Num " + schedulerId + " is Ended in "+(end - start) +" milliseconds");
         }
     }
 
