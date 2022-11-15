@@ -38,7 +38,7 @@ public class SchedulerAspect {
             //todo start
             log.info("Task Num " + schedulerId + " is Started");
             SchedulerDto res = schedulerService.retrieveById(Long.valueOf(schedulerId));
-            if(res.getStatus() == false){
+            if(!res.getStatus()){
                 res.setStatus(true);
                 schedulerService.save(res);
                 point.proceed();
