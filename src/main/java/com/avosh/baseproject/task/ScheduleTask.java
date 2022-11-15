@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("dev")
-public class ScheduleTask {
+public class ScheduleTask implements BaseTask{
 
     @Scheduled(fixedRate = 100000)
     @CheckScheduler(schedulerId = 1)
