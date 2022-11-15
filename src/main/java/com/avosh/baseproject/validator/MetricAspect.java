@@ -27,12 +27,13 @@ public class MetricAspect {
     public void checkSchedulerState(ProceedingJoinPoint point) {
         long start = System.currentTimeMillis();
         String root = null;
+        String  methodName = null;
         try {
             MethodSignature signature = (MethodSignature) point.getSignature();
             Method method = signature.getMethod();
+            methodName = method.getName();
             root = method.getDeclaringClass().getName() +" "+method.getName();
-
-            log.debug("Method  " + root + " is Started");
+            log.debug("Method  " + methodName + " in " + root + " is Started");
             point.proceed();
 
 
@@ -42,7 +43,7 @@ public class MetricAspect {
             log.error(e.getStackTrace());
         } finally {
             long end = System.currentTimeMillis();
-            log.info("Method " + root + " is Ended in "+(end - start) +" milliseconds");
+            log.debug("Method  " + methodName + " in " + root + " is Ended in " + (end - start) + " milliseconds");
         }
     }
 
