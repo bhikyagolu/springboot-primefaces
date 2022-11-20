@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.avosh</groupId>
     <artifactId>baseProject</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>baseProject</name>
     <description>baseProject</description>
     <properties>
@@ -175,6 +175,14 @@
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
 
