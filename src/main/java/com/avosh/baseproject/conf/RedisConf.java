@@ -16,8 +16,8 @@ public class RedisConf {
 
 
     @Bean
-    RedisTemplate<String, SecUserDto> redisTemplate(){
-        RedisTemplate<String, SecUserDto> redisTemplate = new RedisTemplate<>();
+    RedisTemplate<String, Object> redisTemplate(){
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
         return redisTemplate;
     }
