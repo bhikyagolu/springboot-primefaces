@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
 
-  myapp-mysql:
+  app-mysql:
     image: mysql:5.7.40
     networks:
-      - bored-network
+      - avosh-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=MyAppDb
@@ -14,13 +14,13 @@ services:
     ports:
       - 3306:3306
 
-  myapp-main:
-    image: 22e21237d8b5
+  app-main:
+    image: eb7e2403866a
     restart: on-failure
     networks:
-      - bored-network
+      - avosh-network
     depends_on:
-      - myapp-mysql
+      - app-mysql
     ports:
       - 8080:8080
     environment:
@@ -30,5 +30,5 @@ services:
       - DATABASE_NAME=MyAppDb
       - DATABASE_PORT=3306
 networks:
-    bored-network:
-      name: bored-network
+    avosh-network:
+      name: avosh-network
