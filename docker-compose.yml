@@ -13,13 +13,21 @@ services:
       - MYSQL_PASSWORD=password
     ports:
       - 3306:3306
+  redis-server:
+    container_name: redis
+    image: redis
+    networks:
+      - avosh-network
+    ports:
+      - 6379:6379
 
   app-main:
-    image: eb7e2403866a
+    image: b2b30e66606f
     restart: on-failure
     networks:
       - avosh-network
     depends_on:
+      - redis-server
       - app-mysql
     ports:
       - 8080:8080
