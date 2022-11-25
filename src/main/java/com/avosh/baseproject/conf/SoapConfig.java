@@ -27,11 +27,11 @@ public class SoapConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/service/*");
     }
 
-    @Bean(name = "studentDetailsWsdl")
+    @Bean(name = "testDetailsWsdl")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("StudentDetailsPort");
-        wsdl11Definition.setLocationUri("/service/student-details");
+        wsdl11Definition.setPortTypeName("TestDetailsPort");
+        wsdl11Definition.setLocationUri("/service/test-details");
         wsdl11Definition.setTargetNamespace("http://www.avosh.com/xml/definitions");
         wsdl11Definition.setSchema(schema);
         return wsdl11Definition;
@@ -58,7 +58,7 @@ public class SoapConfig extends WsConfigurerAdapter {
 
     @Bean(name = "schema")
     public XsdSchema studentSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/school.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("xsd/test.xsd"));
     }
 
 //    @Bean(name = "webservice2Schema")
