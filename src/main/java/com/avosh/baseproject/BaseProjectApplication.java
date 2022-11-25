@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -57,7 +58,11 @@ public class BaseProjectApplication extends WebMvcConfigurerAdapter {
 
     @Bean
     public RestTemplate getRestTemplate() {
-        return new RestTemplate();
+        HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        httpRequestFactory.setConnectionRequestTimeout(20000);
+        httpRequestFactory.setConnectTimeout(20000);
+        httpRequestFactory.setReadTimeout(20000);
+        return new RestTemplate(httpRequestFactory);
     }
 
     @Bean
