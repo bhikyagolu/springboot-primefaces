@@ -4,6 +4,7 @@ services:
 
   app-mysql:
     image: mysql:5.7.40
+    container_name: app-mysql
     networks:
       - avosh-network
     environment:
@@ -21,22 +22,36 @@ services:
     ports:
       - 6379:6379
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: php-myadmin
+    networks:
+      - avosh-network
+    ports:
+      - "8082:80"
+    restart: always
+
+    links:
+      - app-mysql
+    environment:
+      PMA_HOST: app-mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+
   app-main:
-    image: b2b30e66606f
+    image: 9de7e9045112
     restart: on-failure
     networks:
       - avosh-network
-    depends_on:
-      - redis-server
+    links:
       - app-mysql
+      - redis-server
     ports:
       - 8080:8080
     environment:
-      - DATABASE_HOST=myapp-mysql
-      - DATABASE_USER=myapp-user
-      - DATABASE_PASSWORD=password
-      - DATABASE_NAME=MyAppDb
-      - DATABASE_PORT=3306
+      SPRING_DATASOURCE_URL: jdbc:mysql://app-mysql:3306/MyAppDb?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: myapp-user
+      SPRING_DATASOURCE_PASSWORD: password
 networks:
     avosh-network:
       name: avosh-network
