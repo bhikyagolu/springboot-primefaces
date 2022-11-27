@@ -6,7 +6,6 @@ import com.avosh.baseproject.backchannel.rest.MessageRequest;
 import com.avosh.baseproject.backchannel.rest.MessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,8 +39,8 @@ public class BackendConnectorRest implements BackendConnector {
         try {
             URI requestUri = new URI(request.getUri());
             log.info("Sending rest to Uri ---> " + request.getUri());
-            Gson og = new Gson();
-            String requestJson = og.toJson(request);
+            ObjectMapper objectMapper = new ObjectMapper();
+            String requestJson = objectMapper.writeValueAsString(request);
             log.info("requestJson ---> " + requestJson);
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -55,7 +54,7 @@ public class BackendConnectorRest implements BackendConnector {
                     requestEntity, String.class);
             log.info("Receiving rest message... result-->[" + responseEntity.getBody() + "]");
             String responseStr = responseEntity.getBody();
-            ObjectMapper objectMapper = new ObjectMapper();
+
             MessageResponse responseObj;
             responseObj = (MessageResponse) objectMapper.readValue(responseStr, request.getResponseClass());
             return responseObj;
