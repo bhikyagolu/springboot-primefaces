@@ -53,5 +53,5 @@ services:
       SPRING_DATASOURCE_USERNAME: myapp-user
       SPRING_DATASOURCE_PASSWORD: password
 networks:
-    avosh-network:
-      name: avosh-network
+  avosh-network:
+    name: avosh-network
