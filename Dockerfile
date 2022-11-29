@@ -8,8 +8,8 @@
 
 
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+ARG JAR_FILE=target/*.war
+COPY ${JAR_FILE} app.war
 EXPOSE 8080
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar","/app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar","/app.war"]
 
