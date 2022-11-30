@@ -10,8 +10,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=AvDb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=1
+      - MYSQL_USER=myapp-user
+      - MYSQL_PASSWORD=password
     ports:
       - 3306:3306
   redis-server:
@@ -39,19 +39,22 @@ services:
       PMA_ARBITRARY: 1
 
   app-main:
-    image: b2b30e66606f
+    image: d5b6071daf84
     restart: on-failure
     networks:
       - avosh-network
     links:
       - app-mysql
       - redis-server
+    depends_on:
+      - app-mysql
+      - redis-server
     ports:
       - 8080:8080
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://app-mysql:3306/AvDb?createDatabaseIfNotExist=true?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Tehran&characterEncoding=utf-8
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1
+      SPRING_DATASOURCE_URL: jdbc:mysql://app-mysql:3306/AvDb?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Tehran&characterEncoding=utf-8
+      SPRING_DATASOURCE_USERNAME: myapp-user
+      SPRING_DATASOURCE_PASSWORD: password
 networks:
   avosh-network:
     name: avosh-network
