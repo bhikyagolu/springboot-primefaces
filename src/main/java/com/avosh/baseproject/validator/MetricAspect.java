@@ -1,14 +1,11 @@
 package com.avosh.baseproject.validator;
 
-import com.avosh.baseproject.dto.SchedulerDto;
-import com.avosh.baseproject.services.SchedulerService;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -24,7 +21,7 @@ public class MetricAspect {
     }
 
     @Around("metricPointcut()")
-    public void checkSchedulerState(ProceedingJoinPoint point) {
+    public void checkMetric(ProceedingJoinPoint point) {
         long start = System.currentTimeMillis();
         String root = null;
         String  methodName = null;
