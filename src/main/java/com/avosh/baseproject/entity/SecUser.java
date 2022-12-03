@@ -91,6 +91,10 @@ public class SecUser implements BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<Finance> financeList;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private List<Device> deviceList;
+
+
     public SecUser() {
     }
 
@@ -392,4 +396,28 @@ public class SecUser implements BaseEntity {
         this.subLessonList = subLessonList;
     }
 
+    @XmlTransient
+    public Boolean getLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(Boolean login) {
+        isLogin = login;
+    }
+    @XmlTransient
+    public Boolean getEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(Boolean enable) {
+        isEnable = enable;
+    }
+    @XmlTransient
+    public List<Device> getDeviceList() {
+        return deviceList;
+    }
+
+    public void setDeviceList(List<Device> deviceList) {
+        this.deviceList = deviceList;
+    }
 }
