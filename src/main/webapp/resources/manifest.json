@@ -1,20 +1,59 @@
 {
-  "short_name": "App",
-  "name": "App",
   "icons": [
     {
-      "src": "/omega-layout/icons/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "36x36",
+      "type": "image\/png",
+      "density": "0.75"
     },
     {
-      "src": "/omega-layout/icons/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "48x48",
+      "type": "image\/png",
+      "density": "1.0"
+    },
+    {
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "72x72",
+      "type": "image\/png",
+      "density": "1.5"
+    },
+    {
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "96x96",
+      "type": "image\/png",
+      "density": "2.0"
+    },
+    {
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "144x144",
+      "type": "image\/png",
+      "density": "3.0"
+    },
+    {
+      "src": "\\/omega-layout\\/icons\\/favicon.png",
+      "sizes": "192x192",
+      "type": "image\/png",
+      "density": "4.0"
     }
   ],
-  "start_url": "/ns/login.xhtml",
-  "display": "standalone",
-  "theme_color": "#5B5B66",
-  "background_color": "#F0F0F4;"
+  "name": "Avosh",
+  "display": "fullscreen",
+  "gcm_sender_id": "684034436780",
+  "short_name": "Avosh",
+  "lang": "fa",
+  "dir": "rtl",
+  "description": "Avosh Web App",
+  "scope": "/",
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "theme_color": "#14bef0",
+  "version": "0.9",
+  "manifest_version": "0.2",
+  "orientation": "portrait",
+  "permissions": [
+    "notifications",
+    "webRequest"
+  ],
+  "author": "Avosh."
 }
