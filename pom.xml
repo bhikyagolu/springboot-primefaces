@@ -193,6 +193,15 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>2.7.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>mq-jms-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
 
     <profiles>
