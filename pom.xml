@@ -16,6 +16,9 @@
     <description>baseProject</description>
     <properties>
         <java.version>1.8</java.version>
+        <project.name>name</project.name>
+        <project.version>version</project.version>
+        <project.description>description</project.description>
     </properties>
     <dependencies>
         <dependency>
