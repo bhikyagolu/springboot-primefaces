@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
+import javax.jms.*;
 
 @EnableJms
 @Configuration
@@ -17,14 +18,19 @@ public class JmsConf {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    @JmsListener(destination = "NOTIFICATION_SMS_QUEUE")
-    public void listener(Object message) {
-//        log.info("message received {}", message.toString());
-        //do something
+    @JmsListener(destination = "DEV.QUEUE.1")
+    public void listener(Message message) {
+        try {
+            if (message instanceof javax.jms.TextMessage) {
+                log.info(message.getBody(String.class));
+            }
+        } catch (JMSException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void sendJmsMessage(){
-        jmsTemplate.convertAndSend("NOTIFICATION_SMS_QUEUE", "Hello World!");
+        jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello World!");
     }
 
 
