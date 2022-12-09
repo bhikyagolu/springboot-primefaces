@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.avosh.baseproject.entity;
 
 import javax.persistence.*;
@@ -11,23 +7,14 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author amirk
- */
+
+
 @Entity
 @Table(name = "sec_user")
 @XmlRootElement
 public class SecUser implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "iban")
-    private String iban;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private List<Session> sessionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private List<UserPackage> userPackageList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private List<SubLesson> subLessonList;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -70,6 +57,8 @@ public class SecUser implements BaseEntity {
     private String token;
     @Column(name = "user_type")
     private Integer userType;
+    @Column(name = "iban")
+    private String iban;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<News> newsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
@@ -90,9 +79,12 @@ public class SecUser implements BaseEntity {
     private List<SecUserRole> secUserRoleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<Finance> financeList;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<Device> deviceList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private List<SourceAccount> sourceAccounts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private List<DestinationAccount> destinationAccounts;
 
 
     public SecUser() {
@@ -370,33 +362,6 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
-    public List<Session> getSessionList() {
-        return sessionList;
-    }
-
-    public void setSessionList(List<Session> sessionList) {
-        this.sessionList = sessionList;
-    }
-
-    @XmlTransient
-    public List<UserPackage> getUserPackageList() {
-        return userPackageList;
-    }
-
-    public void setUserPackageList(List<UserPackage> userPackageList) {
-        this.userPackageList = userPackageList;
-    }
-
-    @XmlTransient
-    public List<SubLesson> getSubLessonList() {
-        return subLessonList;
-    }
-
-    public void setSubLessonList(List<SubLesson> subLessonList) {
-        this.subLessonList = subLessonList;
-    }
-
-    @XmlTransient
     public Boolean getLogin() {
         return isLogin;
     }
@@ -419,5 +384,21 @@ public class SecUser implements BaseEntity {
 
     public void setDeviceList(List<Device> deviceList) {
         this.deviceList = deviceList;
+    }
+    @XmlTransient
+    public List<SourceAccount> getSourceAccounts() {
+        return sourceAccounts;
+    }
+
+    public void setSourceAccounts(List<SourceAccount> sourceAccountList) {
+        this.sourceAccounts = sourceAccountList;
+    }
+
+    public List<DestinationAccount> getDestinationAccounts() {
+        return destinationAccounts;
+    }
+    @XmlTransient
+    public void setDestinationAccounts(List<DestinationAccount> destinationAccounts) {
+        this.destinationAccounts = destinationAccounts;
     }
 }
