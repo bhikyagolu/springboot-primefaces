@@ -35,7 +35,7 @@ public class Bank implements BaseEntity {
     @Column(name = "status")
     private Short status;
     @OneToMany(mappedBy = "bankId")
-    private List<Finance> financeList;
+    private List<Transaction> transactionList;
 
     public Bank() {
     }
@@ -85,12 +85,12 @@ public class Bank implements BaseEntity {
     }
 
     @XmlTransient
-    public List<Finance> getFinanceList() {
-        return financeList;
+    public List<Transaction> getFinanceList() {
+        return transactionList;
     }
 
-    public void setFinanceList(List<Finance> financeList) {
-        this.financeList = financeList;
+    public void setFinanceList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     @Override

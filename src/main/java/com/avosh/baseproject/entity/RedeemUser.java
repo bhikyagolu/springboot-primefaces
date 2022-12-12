@@ -35,7 +35,7 @@ public class RedeemUser implements BaseEntity {
     @ManyToOne(optional = false)
     private SecUser secUserId;
     @OneToMany(mappedBy = "redeemUserId")
-    private List<Finance> financeList;
+    private List<Transaction> transactionList;
 
     public RedeemUser() {
     }
@@ -77,12 +77,12 @@ public class RedeemUser implements BaseEntity {
     }
 
     @XmlTransient
-    public List<Finance> getFinanceList() {
-        return financeList;
+    public List<Transaction> getFinanceList() {
+        return transactionList;
     }
 
-    public void setFinanceList(List<Finance> financeList) {
-        this.financeList = financeList;
+    public void setFinanceList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     @Override

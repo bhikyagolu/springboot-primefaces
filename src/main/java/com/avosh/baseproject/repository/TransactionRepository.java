@@ -4,7 +4,7 @@
 
 package com.avosh.baseproject.repository;
 
-import com.avosh.baseproject.entity.Finance;
+import com.avosh.baseproject.entity.Transaction;
 
-public interface FinanceRepository extends BaseRepository<Finance, Long> {
+public interface TransactionRepository extends BaseRepository<Transaction, Long> {
 }

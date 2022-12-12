@@ -78,7 +78,7 @@ public class SecUser implements BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<SecUserRole> secUserRoleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
-    private List<Finance> financeList;
+    private List<Transaction> transactionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<Device> deviceList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
@@ -320,12 +320,12 @@ public class SecUser implements BaseEntity {
     }
 
     @XmlTransient
-    public List<Finance> getFinanceList() {
-        return financeList;
+    public List<Transaction> getFinanceList() {
+        return transactionList;
     }
 
-    public void setFinanceList(List<Finance> financeList) {
-        this.financeList = financeList;
+    public void setFinanceList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     @Override

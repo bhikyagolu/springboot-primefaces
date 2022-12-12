@@ -1,29 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.avosh.baseproject.entity;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
-/**
- * @author amirk
- */
 @Entity
-@Table(name = "finance")
+@Table(name = "transaction")
 @XmlRootElement
-public class Finance implements BaseEntity {
+public class Transaction implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "create_datetime")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDatetime;
-    @JoinColumn(name = "bank_id", referencedColumnName = "id")
-    @ManyToOne
-    private Bank bankId;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -33,17 +19,27 @@ public class Finance implements BaseEntity {
     private String desc;
     @Column(name = "amount")
     private Long amount;
+    @Column(name = "status")
+    private Long status;
+    @Column(name = "create_datetime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDatetime;
+    @Column(name = "update_datetime")
+    private Date updateDatetime;
     @JoinColumn(name = "sec_user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SecUser secUserId;
     @JoinColumn(name = "redeem_user_id", referencedColumnName = "id")
     @ManyToOne
     private RedeemUser redeemUserId;
+    @JoinColumn(name = "bank_id", referencedColumnName = "id")
+    @ManyToOne
+    private Bank bankId;
 
-    public Finance() {
+    public Transaction() {
     }
 
-    public Finance(Long id) {
+    public Transaction(Long id) {
         this.id = id;
     }
 
@@ -87,6 +83,22 @@ public class Finance implements BaseEntity {
         this.redeemUserId = redeemUserId;
     }
 
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
+    }
+
+    public Date getUpdateDatetime() {
+        return updateDatetime;
+    }
+
+    public void setUpdateDatetime(Date updateDatetime) {
+        this.updateDatetime = updateDatetime;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -97,10 +109,10 @@ public class Finance implements BaseEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Finance)) {
+        if (!(object instanceof Transaction)) {
             return false;
         }
-        Finance other = (Finance) object;
+        Transaction other = (Transaction) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

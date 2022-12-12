@@ -6,17 +6,17 @@ package com.avosh.baseproject.dto;
 
 import java.util.Date;
 
-public class FinanceDto extends BaseDto {
+public class TransactionDto extends BaseDto {
     private String desc;
     private Long amount;
     private Date createDateTime;
     private UserDto userDto;
     private RedeemDto redeemDto;
 
-    public FinanceDto() {
+    public TransactionDto() {
     }
 
-    public FinanceDto(Long id, String desc, Long amount, Date createDateTime, UserDto userDto, RedeemDto redeemDto) {
+    public TransactionDto(Long id, String desc, Long amount, Date createDateTime, UserDto userDto, RedeemDto redeemDto) {
         this.id = id;
         this.desc = desc;
         this.amount = amount;
