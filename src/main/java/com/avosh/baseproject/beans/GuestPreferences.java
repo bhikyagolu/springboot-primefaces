@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
 import java.util.*;
 
@@ -101,6 +104,23 @@ public class GuestPreferences implements Serializable {
             }
         }
         return themePath;
+    }
+
+    private void readLocaleCodeFromCookie() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+        Cookie[] cookies = request.getCookies();
+        if(Empty.isNotEmpty(cookies)){
+            for (int i = 0; i < cookies.length; i++) {
+                Cookie cookie = cookies[i];
+                if(cookie.getName().equals("localCode")){
+                    captchaLocal = locale = cookie.getValue();
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+        }
     }
 
     public String getTheme() {
