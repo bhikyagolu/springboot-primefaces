@@ -85,6 +85,8 @@ public class SecUser implements BaseEntity {
     private List<SourceAccount> sourceAccounts;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
     private List<DestinationAccount> destinationAccounts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secUserId")
+    private List<SpecialAccounts> specialAccounts;
 
 
     public SecUser() {
@@ -393,12 +395,20 @@ public class SecUser implements BaseEntity {
     public void setSourceAccounts(List<SourceAccount> sourceAccountList) {
         this.sourceAccounts = sourceAccountList;
     }
-
+    @XmlTransient
     public List<DestinationAccount> getDestinationAccounts() {
         return destinationAccounts;
     }
-    @XmlTransient
+
     public void setDestinationAccounts(List<DestinationAccount> destinationAccounts) {
         this.destinationAccounts = destinationAccounts;
+    }
+    @XmlTransient
+    public List<SpecialAccounts> getSpecialAccounts() {
+        return specialAccounts;
+    }
+
+    public void setSpecialAccounts(List<SpecialAccounts> specialAccounts) {
+        this.specialAccounts = specialAccounts;
     }
 }
