@@ -11,7 +11,7 @@ import javax.jms.*;
 
 @EnableJms
 @Configuration
-@Profile("dev")
+@Profile("production")
 public class JmsConf {
     private static final Logger log = Logger.getLogger(JmsConf.class);
 

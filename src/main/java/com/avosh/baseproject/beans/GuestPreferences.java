@@ -43,16 +43,9 @@ public class GuestPreferences implements Serializable {
 
     @PostConstruct
     public void init() {
-        themes = new ArrayList<>();
-        themes.add(new Theme("Blue", "blue", "#2196F3"));
-        themes.add(new Theme("Green", "green", "#4CAF50"));
-        themes.add(new Theme("Orange", "orange", "#FFC107"));
-        themes.add(new Theme("Purple", "purple", "#9C27B0"));
 
         layouts = new ArrayList<>();
-        layouts.add(new Layout("Blue", "blue", "#0388e5"));
         layouts.add(new Layout("Light", "light", "#ffffff"));
-        layouts.add(new Layout("Dark", "dark", "#4d5058"));
 
         countries = new LinkedHashMap<String, Object>();
         countries.put("English", Locale.ENGLISH);
@@ -68,6 +61,7 @@ public class GuestPreferences implements Serializable {
         } else {
             themePath = "custom-ltr.css";
         }
+        readLocaleCodeFromCookie();
     }
 
 
@@ -89,6 +83,7 @@ public class GuestPreferences implements Serializable {
                     themePath = "custom-ltr.css";
                     captchaLocal = locale = "en";
                 }
+                writeLocaleCodeToCookie(locale);
             }
         }
     }
@@ -106,21 +101,44 @@ public class GuestPreferences implements Serializable {
         return themePath;
     }
 
+    private void writeLocaleCodeToCookie(String locale) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+        Cookie cookie = new Cookie("lang", locale);
+        cookie.setMaxAge(259200);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+
+    }
+
     private void readLocaleCodeFromCookie() {
+        Boolean isCookieExist = false;
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
         Cookie[] cookies = request.getCookies();
-        if(Empty.isNotEmpty(cookies)){
+        if (Empty.isNotEmpty(cookies)) {
             for (int i = 0; i < cookies.length; i++) {
                 Cookie cookie = cookies[i];
-                if(cookie.getName().equals("localCode")){
+                if (cookie.getName().equals("lang")) {
                     captchaLocal = locale = cookie.getValue();
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
+                    isCookieExist = true;
+//                    cookie.setMaxAge(0);
+//                    response.addCookie(cookie);
                 }
             }
         }
+        if (!isCookieExist) {
+            if (Empty.isEmpty(locale)) {
+                locale = "en";
+            }
+            Cookie cookie = new Cookie("lang", locale);
+            cookie.setMaxAge(259200);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+
     }
 
     public String getTheme() {
