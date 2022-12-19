@@ -6,8 +6,10 @@
 
 package com.avosh.baseproject.ws;
 
+import com.avosh.baseproject.enums.ResultCods;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.ws.model.Response;
+import com.avosh.baseproject.ws.model.TokenRequest;
 import com.avosh.baseproject.ws.model.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +20,18 @@ public class Token {
     @Autowired
     private TokenService tokenService;
     @PostMapping("/token")
-    public TokenResponse getToken(@RequestParam String username, @RequestParam String password){
+    public TokenResponse getToken(@RequestBody TokenRequest tokenRequest){
         TokenResponse tokenResponse = new TokenResponse();
-        String res = tokenService.getTokenByUserPassword(username,password);
-        tokenResponse.setToken(res);
+        try {
+            String res = tokenService.getTokenByUserPassword(tokenRequest.getUsername(),
+                    tokenRequest.getPassword());
+            tokenResponse.setToken(res);
+            tokenResponse.setResultCode(ResultCods.SUCCESS.getCode());
+            tokenResponse.setResultDescription(ResultCods.SUCCESS.getDescription());
+        } catch (Exception e) {
+            tokenResponse.setResultCode(ResultCods.FAILURE.getCode());
+            tokenResponse.setResultDescription(ResultCods.FAILURE.getDescription());
+        }
         return tokenResponse;
     }
 

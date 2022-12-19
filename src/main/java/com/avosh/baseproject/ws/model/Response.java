@@ -10,15 +10,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response {
-    private String resultCode;
+    private Integer resultCode;
     private String resultDescription;
-    private ExceptionDetail exceptionDetail;
 
-    public String getResultCode() {
+    public Integer getResultCode() {
         return resultCode;
     }
 
-    public void setResultCode(String resultCode) {
+    public void setResultCode(Integer resultCode) {
         this.resultCode = resultCode;
     }
 
@@ -30,11 +29,4 @@ public class Response {
         this.resultDescription = resultDescription;
     }
 
-    public ExceptionDetail getExceptionDetail() {
-        return exceptionDetail;
-    }
-
-    public void setExceptionDetail(ExceptionDetail exceptionDetail) {
-        this.exceptionDetail = exceptionDetail;
-    }
 }
