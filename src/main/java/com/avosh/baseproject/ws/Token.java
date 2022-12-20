@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.*;
 public class Token {
     @Autowired
     private TokenService tokenService;
+
     @PostMapping("/token")
-    public TokenResponse getToken(@RequestBody TokenRequest tokenRequest){
+    public TokenResponse getToken(@RequestBody TokenRequest tokenRequest) {
         TokenResponse tokenResponse = new TokenResponse();
         try {
             String res = tokenService.getTokenByUserPassword(tokenRequest.getUsername(),
-                    tokenRequest.getPassword());
+                    tokenRequest.getPassword(), tokenRequest.getMac());
             tokenResponse.setToken(res);
             tokenResponse.setResultCode(ResultCods.SUCCESS.getCode());
             tokenResponse.setResultDescription(ResultCods.SUCCESS.getDescription());
@@ -35,13 +36,31 @@ public class Token {
         return tokenResponse;
     }
 
-    @PostMapping("/validate/token")
-    public Response validateToken(@PathVariable String token){
-        return null;
+    @PostMapping("/token/validate")
+    public Response validateToken(@PathVariable String token) {
+        Response response = new Response();
+        try {
+            tokenService.validateToken(token);
+            response.setResultCode(ResultCods.SUCCESS.getCode());
+            response.setResultDescription(ResultCods.SUCCESS.getDescription());
+        } catch (Exception e) {
+            response.setResultCode(ResultCods.FAILURE.getCode());
+            response.setResultDescription(ResultCods.FAILURE.getDescription());
+        }
+        return response;
     }
 
-    @PostMapping("/invalidate/token")
-    public Response invalidateToken(@PathVariable String token){
+    @PostMapping("/token/invalidate")
+    public Response invalidateToken(@PathVariable String token) {
+        Response response = new Response();
+        try {
+            tokenService.inValidateToken(token);
+            response.setResultCode(ResultCods.SUCCESS.getCode());
+            response.setResultDescription(ResultCods.SUCCESS.getDescription());
+        } catch (Exception e) {
+            response.setResultCode(ResultCods.FAILURE.getCode());
+            response.setResultDescription(ResultCods.FAILURE.getDescription());
+        }
         return null;
     }
 }
