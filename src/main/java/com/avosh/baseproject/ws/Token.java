@@ -38,10 +38,10 @@ public class Token {
     }
 
     @PostMapping("/token/validate")
-    public Response validateToken(@PathVariable String token) {
+    public Response validateToken(@PathVariable String token,@PathVariable String mac) {
         Response response = new Response();
         try {
-            tokenService.validateToken(token);
+            tokenService.validateToken(token,mac);
             response.setResultCode(ResultCods.SUCCESS.getCode());
             response.setResultDescription(ResultCods.SUCCESS.getDescription());
         } catch (Exception e) {
@@ -53,10 +53,10 @@ public class Token {
     }
 
     @PostMapping("/token/invalidate")
-    public Response invalidateToken(@PathVariable String token) {
+    public Response invalidateToken(@PathVariable String token,@PathVariable String mac) {
         Response response = new Response();
         try {
-            tokenService.inValidateToken(token);
+            tokenService.inValidateToken(token,mac);
             response.setResultCode(ResultCods.SUCCESS.getCode());
             response.setResultDescription(ResultCods.SUCCESS.getDescription());
         } catch (Exception e) {

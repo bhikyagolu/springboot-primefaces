@@ -25,12 +25,12 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public String validateToken(String token) {
+    public String validateToken(String token,String mac) {
         return null;
     }
 
     @Override
-    public String inValidateToken(String token) {
+    public String inValidateToken(String token,String mac) {
         return null;
     }
 }
