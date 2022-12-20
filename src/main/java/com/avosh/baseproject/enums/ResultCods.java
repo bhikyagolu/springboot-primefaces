@@ -2,7 +2,8 @@ package com.avosh.baseproject.enums;
 
 public enum ResultCods {
     SUCCESS(0, "Success"),
-    FAILURE(10001, "Failure");
+    INTERNAL_ERROR(10201, "Internal Error"),
+    FAILURE(10101, "Failure");
 
     private Integer code;
     private String description;

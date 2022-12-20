@@ -32,8 +32,9 @@ public class Token {
         } catch (Exception e) {
             tokenResponse.setResultCode(ResultCods.FAILURE.getCode());
             tokenResponse.setResultDescription(ResultCods.FAILURE.getDescription());
+        }finally {
+            return tokenResponse;
         }
-        return tokenResponse;
     }
 
     @PostMapping("/token/validate")
@@ -46,8 +47,9 @@ public class Token {
         } catch (Exception e) {
             response.setResultCode(ResultCods.FAILURE.getCode());
             response.setResultDescription(ResultCods.FAILURE.getDescription());
+        }finally {
+            return response;
         }
-        return response;
     }
 
     @PostMapping("/token/invalidate")
@@ -60,7 +62,8 @@ public class Token {
         } catch (Exception e) {
             response.setResultCode(ResultCods.FAILURE.getCode());
             response.setResultDescription(ResultCods.FAILURE.getDescription());
+        }finally {
+            return response;
         }
-        return null;
     }
 }
