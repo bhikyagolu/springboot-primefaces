@@ -20,6 +20,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public String getTokenByUserPassword(String user, String pass ,String mac) {
+
         String uuid = UUID.randomUUID().toString();
         return uuid;
     }
