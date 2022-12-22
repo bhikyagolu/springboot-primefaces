@@ -6,10 +6,13 @@
 
 package com.avosh.baseproject.ws;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
 public class News {
+    @PostMapping("/news")
+    public void getNews(@RequestHeader("Token") String token, @RequestBody String body){
+
+    }
 }
