@@ -8,8 +8,10 @@ package com.avosh.baseproject.ws.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.io.Serializable;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Response {
+public class Response implements Serializable {
     private Integer resultCode;
     private String resultDescription;
 
