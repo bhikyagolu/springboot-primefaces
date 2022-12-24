@@ -7,12 +7,18 @@
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCods;
+import com.avosh.baseproject.excptions.DeleteExceptionException;
+import com.avosh.baseproject.excptions.PasswordNotMatchException;
+import com.avosh.baseproject.excptions.UserNotFoundException;
 import com.avosh.baseproject.services.TokenService;
-import com.avosh.baseproject.ws.model.Response;
-import com.avosh.baseproject.ws.model.TokenRequest;
-import com.avosh.baseproject.ws.model.TokenResponse;
+import com.avosh.baseproject.ws.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
@@ -21,49 +27,78 @@ public class Token {
     private TokenService tokenService;
 
     @PostMapping("/token")
-    public TokenResponse getToken(@RequestBody TokenRequest tokenRequest) {
+    public ResponseEntity getToken(@RequestBody TokenRequest tokenRequest) {
         TokenResponse tokenResponse = new TokenResponse();
+        HttpStatus httpStatus = HttpStatus.OK;
         try {
             String res = tokenService.getTokenByUserPassword(tokenRequest.getUsername(),
-                    tokenRequest.getPassword(), tokenRequest.getMac());
+                    tokenRequest.getPassword(), tokenRequest.getMac(),tokenRequest.getName());
             tokenResponse.setToken(res);
             tokenResponse.setResultCode(ResultCods.SUCCESS.getCode());
             tokenResponse.setResultDescription(ResultCods.SUCCESS.getDescription());
+            httpStatus = (ResultCods.SUCCESS.getHttpStatus());
+
+        } catch (UserNotFoundException e) {
+            tokenResponse.setResultCode(ResultCods.USERNAME_PASSWORD_ERROR.getCode());
+            tokenResponse.setResultDescription(ResultCods.USERNAME_PASSWORD_ERROR.getDescription());
+            httpStatus = (ResultCods.USERNAME_PASSWORD_ERROR.getHttpStatus());
+        } catch (PasswordNotMatchException e) {
+            tokenResponse.setResultCode(ResultCods.USERNAME_PASSWORD_ERROR.getCode());
+            tokenResponse.setResultDescription(ResultCods.USERNAME_PASSWORD_ERROR.getDescription());
+            httpStatus = (ResultCods.USERNAME_PASSWORD_ERROR.getHttpStatus());
         } catch (Exception e) {
-            tokenResponse.setResultCode(ResultCods.FAILURE.getCode());
-            tokenResponse.setResultDescription(ResultCods.FAILURE.getDescription());
+            tokenResponse.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
+            tokenResponse.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
+            httpStatus = (ResultCods.UNKNOWN_ERROR.getHttpStatus());
         }finally {
-            return tokenResponse;
+            return new ResponseEntity(tokenResponse,httpStatus);
         }
     }
 
     @PostMapping("/token/validate")
-    public Response validateToken(@PathVariable String token,@PathVariable String mac) {
+    public ResponseEntity validateToken(@RequestBody ValidateTokenRequest request) {
         Response response = new Response();
+        HttpStatus httpStatus = HttpStatus.OK;
         try {
-            tokenService.validateToken(token,mac);
-            response.setResultCode(ResultCods.SUCCESS.getCode());
-            response.setResultDescription(ResultCods.SUCCESS.getDescription());
+            Boolean res = tokenService.isTokenValid(request.getToken(),request.getMac());
+            if(res){
+                response.setResultCode(ResultCods.SUCCESS.getCode());
+                response.setResultDescription(ResultCods.SUCCESS.getDescription());
+                httpStatus = (ResultCods.SUCCESS.getHttpStatus());
+            }else {
+                response.setResultCode(ResultCods.TOKEN_NOT_VALID.getCode());
+                response.setResultDescription(ResultCods.TOKEN_NOT_VALID.getDescription());
+                httpStatus = (ResultCods.TOKEN_NOT_VALID.getHttpStatus());
+            }
+
         } catch (Exception e) {
-            response.setResultCode(ResultCods.FAILURE.getCode());
-            response.setResultDescription(ResultCods.FAILURE.getDescription());
+            response.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
+            response.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
+            httpStatus = (ResultCods.UNKNOWN_ERROR.getHttpStatus());
         }finally {
-            return response;
+            return new ResponseEntity(response,httpStatus);
         }
     }
 
-    @PostMapping("/token/invalidate")
-    public Response invalidateToken(@PathVariable String token,@PathVariable String mac) {
+    @PostMapping("/token/remove")
+    public ResponseEntity removeDevice(@RequestBody DeleteTokenRequest request) {
         Response response = new Response();
+        HttpStatus httpStatus = HttpStatus.OK;
         try {
-            tokenService.inValidateToken(token,mac);
+            tokenService.deleteDeviceByToken(request.getToken());
             response.setResultCode(ResultCods.SUCCESS.getCode());
             response.setResultDescription(ResultCods.SUCCESS.getDescription());
+            httpStatus = (ResultCods.SUCCESS.getHttpStatus());
+        }catch (DeleteExceptionException e){
+            response.setResultCode(ResultCods.REMOVE_ERROR.getCode());
+            response.setResultDescription(ResultCods.REMOVE_ERROR.getDescription());
+            httpStatus = (ResultCods.REMOVE_ERROR.getHttpStatus());
         } catch (Exception e) {
-            response.setResultCode(ResultCods.FAILURE.getCode());
-            response.setResultDescription(ResultCods.FAILURE.getDescription());
+            response.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
+            response.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
+            httpStatus = (ResultCods.UNKNOWN_ERROR.getHttpStatus());
         }finally {
-            return response;
+            return new ResponseEntity(response,httpStatus);
         }
     }
 }

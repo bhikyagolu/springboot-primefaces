@@ -29,8 +29,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     UserRepository repository;
     @Autowired
     PasswordEncoder passwordEncoder;
-    @Autowired
-    UserRepository userRepository;
+
 
 
     @Override
@@ -81,7 +80,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
             if (passwordEncoder.matches(oldPassword, auth.getPassword())) {
-                userRepository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
+                repository.updatePassword(passwordEncoder.encode(newPassword), auth.getSecUser().getId());
                 log.info("Password Has been changed user id = " + auth.getSecUser().getId());
                 return true;
             }
@@ -99,7 +98,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDto.setId(auth.getSecUser().getId());
         try {
-            userRepository.updateContact(userDto);
+            repository.updateContact(userDto);
             log.info("Contact has been updated id = " + auth.getSecUser().getId());
         } catch (Exception e) {
             log.info("Contact not updated id = " + auth.getSecUser().getId());
@@ -114,7 +113,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDto.setId(auth.getSecUser().getId());
         try {
-            userRepository.updateProfile(userDto);
+            repository.updateProfile(userDto);
             log.info("Profile has been updated id = " + auth.getSecUser().getId());
         } catch (Exception e) {
             log.info("Profile not updated id = " + auth.getSecUser().getId());

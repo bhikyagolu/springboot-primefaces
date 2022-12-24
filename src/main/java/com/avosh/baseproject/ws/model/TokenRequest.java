@@ -10,6 +10,7 @@ public class TokenRequest extends Request{
     private String username;
     private String password;
     private String mac;
+    private String name;
 
     public String getUsername() {
         return username;
@@ -33,5 +34,13 @@ public class TokenRequest extends Request{
 
     public void setMac(String mac) {
         this.mac = mac;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

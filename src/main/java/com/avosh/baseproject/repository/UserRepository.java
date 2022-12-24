@@ -14,6 +14,8 @@ public interface UserRepository extends BaseRepository<SecUser, Long> {
 
     SecUser findByEmail(String email);
 
+    SecUser findByCellphone(String cellphone);
+
     @Transactional
     @Modifying
     @Query("UPDATE SecUser s SET s.password = :newPassword WHERE s.id = :id")

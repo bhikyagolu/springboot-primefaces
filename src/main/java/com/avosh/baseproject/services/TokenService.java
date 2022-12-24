@@ -7,7 +7,7 @@
 package com.avosh.baseproject.services;
 
 public interface TokenService {
-    String getTokenByUserPassword(String user, String pass ,String mac);
-    String validateToken(String token,String mac);
-    String inValidateToken(String token,String mac);
+    String getTokenByUserPassword(String user, String pass ,String mac,String name);
+    Boolean isTokenValid(String token, String mac);
+    void deleteDeviceByToken(String token);
 }
