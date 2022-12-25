@@ -8,6 +8,7 @@ package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCods;
 import com.avosh.baseproject.ws.model.NewsDetailResponse;
+import com.avosh.baseproject.ws.model.NewsRequest;
 import com.avosh.baseproject.ws.model.NewsResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ws")
 public class News {
     @PostMapping("/news")
-    public ResponseEntity getNews(@RequestHeader("Token") String token, @RequestBody String body){
+    public ResponseEntity getNews(@RequestHeader("Token") String token, @RequestBody NewsRequest body){
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
@@ -35,7 +36,7 @@ public class News {
     }
 
     @PostMapping("/news/detail")
-    public ResponseEntity getNewsDetail(@RequestHeader("Token") String token, @RequestBody String body){
+    public ResponseEntity getNewsDetail(@RequestHeader("Token") String token, @RequestBody NewsRequest body){
         NewsDetailResponse response = new NewsDetailResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
