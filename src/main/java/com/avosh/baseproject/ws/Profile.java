@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ws")
 public class Profile {
     @PostMapping("/profile")
-    public void getUserProfile(@RequestHeader("Token") String token){
+    public void getUserProfile(@RequestHeader("authorization") String token){
 
     }
 }

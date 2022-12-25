@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ws")
 public class Post {
     @PostMapping("/post")
-    public ResponseEntity getPost(@RequestHeader("Token") String token, @RequestBody PostRequest body){
+    public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body){
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {

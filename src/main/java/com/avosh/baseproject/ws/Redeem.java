@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ws")
 public class Redeem {
     @PostMapping("/redeem")
-    public void setRedeemForUser(@RequestHeader("Token") String token, @PathVariable String redeemCode){
+    public void setRedeemForUser(@RequestHeader("authorization") String token, @PathVariable String redeemCode){
 
     }
 }

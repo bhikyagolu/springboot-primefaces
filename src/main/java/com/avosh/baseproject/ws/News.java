@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ws")
 public class News {
     @PostMapping("/news")
-    public ResponseEntity getNews(@RequestHeader("Token") String token, @RequestBody NewsRequest body){
+    public ResponseEntity getNews(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
@@ -36,7 +36,7 @@ public class News {
     }
 
     @PostMapping("/news/detail")
-    public ResponseEntity getNewsDetail(@RequestHeader("Token") String token, @RequestBody NewsRequest body){
+    public ResponseEntity getNewsDetail(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
         NewsDetailResponse response = new NewsDetailResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {

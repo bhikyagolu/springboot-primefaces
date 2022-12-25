@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ws")
 public class Transaction {
     @PostMapping("/transaction")
-    public void getTransaction(@RequestHeader("Token") String token, @RequestBody String body){
+    public void getTransaction(@RequestHeader("authorization") String token, @RequestBody String body){
 
     }
 }
