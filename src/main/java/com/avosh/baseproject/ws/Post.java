@@ -7,15 +7,19 @@
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCods;
+import com.avosh.baseproject.services.PostService;
 import com.avosh.baseproject.ws.model.NewsResponse;
 import com.avosh.baseproject.ws.model.PostRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class Post {
+public class Post extends BaseWs{
+    @Autowired
+    private PostService postService;
     @PostMapping("/post")
     public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body){
         NewsResponse response = new NewsResponse();

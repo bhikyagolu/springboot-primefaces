@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class Token {
+public class Token{
     @Autowired
     private TokenService tokenService;
 
