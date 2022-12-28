@@ -10,6 +10,7 @@ import com.avosh.baseproject.entity.Device;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.excptions.DeleteExceptionException;
 import com.avosh.baseproject.excptions.PasswordNotMatchException;
+import com.avosh.baseproject.excptions.UserIsDisabledException;
 import com.avosh.baseproject.excptions.UserNotFoundException;
 import com.avosh.baseproject.repository.DeviceRepository;
 import com.avosh.baseproject.repository.UserRepository;
@@ -46,6 +47,10 @@ public class TokenServiceImpl implements TokenService {
         if (!passwordEncoder.matches(pass, res.getPassword())) {
             log.info("password not match : " + user);
             throw new PasswordNotMatchException();
+        }
+        if (!res.getEnable()) {
+            log.info("User is Desabled : " + user);
+            throw new UserIsDisabledException();
         }
         List<Device> devices = res.getDeviceList();
         if (Empty.isEmpty(devices)) {

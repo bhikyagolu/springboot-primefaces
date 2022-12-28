@@ -9,6 +9,7 @@ public enum ResultCods {
     TOKEN_NOT_VALID(10203, "Token is not valid",HttpStatus.OK),
     REMOVE_ERROR(10204, "Remove Exception",HttpStatus.OK),
     USERNAME_PASSWORD_ERROR(10101, "Username or password is not valid",HttpStatus.UNAUTHORIZED),
+    USER_IS_NOT_ENABLE(10102, "User is disabled",HttpStatus.OK),
     FAILURE(10109, "Failure",HttpStatus.OK);
 
     private Integer code;

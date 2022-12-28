@@ -9,6 +9,7 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.enums.ResultCods;
 import com.avosh.baseproject.excptions.DeleteExceptionException;
 import com.avosh.baseproject.excptions.PasswordNotMatchException;
+import com.avosh.baseproject.excptions.UserIsDisabledException;
 import com.avosh.baseproject.excptions.UserNotFoundException;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.ws.model.*;
@@ -38,14 +39,14 @@ public class Token{
             tokenResponse.setResultDescription(ResultCods.SUCCESS.getDescription());
             httpStatus = (ResultCods.SUCCESS.getHttpStatus());
 
-        } catch (UserNotFoundException e) {
+        } catch (UserNotFoundException | PasswordNotMatchException e) {
             tokenResponse.setResultCode(ResultCods.USERNAME_PASSWORD_ERROR.getCode());
             tokenResponse.setResultDescription(ResultCods.USERNAME_PASSWORD_ERROR.getDescription());
             httpStatus = (ResultCods.USERNAME_PASSWORD_ERROR.getHttpStatus());
-        } catch (PasswordNotMatchException e) {
-            tokenResponse.setResultCode(ResultCods.USERNAME_PASSWORD_ERROR.getCode());
-            tokenResponse.setResultDescription(ResultCods.USERNAME_PASSWORD_ERROR.getDescription());
-            httpStatus = (ResultCods.USERNAME_PASSWORD_ERROR.getHttpStatus());
+        } catch (UserIsDisabledException e) {
+            tokenResponse.setResultCode(ResultCods.USER_IS_NOT_ENABLE.getCode());
+            tokenResponse.setResultDescription(ResultCods.USER_IS_NOT_ENABLE.getDescription());
+            httpStatus = (ResultCods.USER_IS_NOT_ENABLE.getHttpStatus());
         } catch (Exception e) {
             tokenResponse.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
             tokenResponse.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
