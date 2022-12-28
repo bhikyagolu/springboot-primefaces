@@ -20,4 +20,17 @@ public abstract class BaseWs {
         }
     }
 
+    public Boolean isTokenValid(String token) {
+        try {
+            Boolean res = tokenService.isTokenValid(token);
+            if (res) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

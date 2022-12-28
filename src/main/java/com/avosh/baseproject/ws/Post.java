@@ -7,6 +7,7 @@
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCods;
+import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.PostService;
 import com.avosh.baseproject.ws.model.NewsResponse;
 import com.avosh.baseproject.ws.model.PostRequest;
@@ -25,8 +26,13 @@ public class Post extends BaseWs{
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-
-
+            if(!isTokenValid(token)){
+                throw new TokenIsNotValidException();
+            }
+        } catch (TokenIsNotValidException e) {
+            response.setResultCode(ResultCods.TOKEN_NOT_VALID.getCode());
+            response.setResultDescription(ResultCods.TOKEN_NOT_VALID.getDescription());
+            httpStatus = (ResultCods.TOKEN_NOT_VALID.getHttpStatus());
         } catch (Exception e) {
             response.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
@@ -34,7 +40,5 @@ public class Post extends BaseWs{
         }finally {
             return new ResponseEntity(response,httpStatus);
         }
-
-
     }
 }

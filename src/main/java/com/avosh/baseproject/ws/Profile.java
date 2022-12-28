@@ -7,6 +7,7 @@
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCods;
+import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.UserProfileService;
 import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,13 @@ public class Profile extends BaseWs{
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-
-
+            if(!isTokenValid(token)){
+                throw new TokenIsNotValidException();
+            }
+        } catch (TokenIsNotValidException e) {
+            response.setResultCode(ResultCods.TOKEN_NOT_VALID.getCode());
+            response.setResultDescription(ResultCods.TOKEN_NOT_VALID.getDescription());
+            httpStatus = (ResultCods.TOKEN_NOT_VALID.getHttpStatus());
         } catch (Exception e) {
             response.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());

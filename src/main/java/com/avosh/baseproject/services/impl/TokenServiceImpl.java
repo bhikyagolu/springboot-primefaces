@@ -99,6 +99,15 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
+    public Boolean isTokenValid(String token) {
+        if (Empty.isNotEmpty(deviceRepository.findByToken(token))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     @Transactional
     public void deleteDeviceByToken(String token) {
         Long res = deviceRepository.deleteByToken(token);
