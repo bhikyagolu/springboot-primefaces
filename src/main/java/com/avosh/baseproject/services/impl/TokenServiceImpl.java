@@ -143,7 +143,8 @@ public class TokenServiceImpl implements TokenService {
 
      protected StringBuilder crunchifyEncodeUsingHEX(byte[] crunchifyByte) {
         StringBuilder crunchifyResult = new StringBuilder();
-        char[] crunchifyKeys = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'I', 'K', 'L', '6', '7', '8', '9' };
+         char[] crunchifyKeys = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+                 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         for (int index = 0; index < crunchifyByte.length; ++index) {
             byte myByte = crunchifyByte[index];
             // Appends the string representation of the char argument to this sequence
