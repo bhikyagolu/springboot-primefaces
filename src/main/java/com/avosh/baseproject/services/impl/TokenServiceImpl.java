@@ -22,6 +22,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.UUID;
 
@@ -119,5 +121,35 @@ public class TokenServiceImpl implements TokenService {
         if (res == 0) {
             throw new DeleteExceptionException();
         }
+    }
+
+    protected void generateUniqueKeyUsingMessageDigest() {
+        try {
+            // cryptographically strong random number generator. Options: NativePRNG or SHA1PRNG
+            SecureRandom crunchifyPRNG = SecureRandom.getInstance("SHA1PRNG");
+            // generate a random number
+            String crunchifyRandomNumber = new Integer(crunchifyPRNG.nextInt()).toString();
+            // Provides applications the functionality of a message digest algorithm, such as MD5 or SHA
+            MessageDigest crunchifyMsgDigest = MessageDigest.getInstance("SHA-256");
+            // Performs a final update on the digest using the specified array of bytes, then completes the digest computation
+            byte[] crunchifyByte = crunchifyMsgDigest.digest(crunchifyRandomNumber.getBytes());
+            System.out.println( crunchifyRandomNumber);
+            System.out.println( crunchifyEncodeUsingHEX(crunchifyByte));
+
+        } catch (Exception e) {
+            System.out.println("Error during creating MessageDigest");
+        }
+    }
+
+     protected StringBuilder crunchifyEncodeUsingHEX(byte[] crunchifyByte) {
+        StringBuilder crunchifyResult = new StringBuilder();
+        char[] crunchifyKeys = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'I', 'K', 'L', '6', '7', '8', '9' };
+        for (int index = 0; index < crunchifyByte.length; ++index) {
+            byte myByte = crunchifyByte[index];
+            // Appends the string representation of the char argument to this sequence
+            crunchifyResult.append(crunchifyKeys[(myByte & 0xf0) >> 9]);
+            crunchifyResult.append(crunchifyKeys[myByte & 0x0f]);
+        }
+        return crunchifyResult;
     }
 }
