@@ -21,6 +21,8 @@ public class Transaction implements BaseEntity {
     private Long amount;
     @Column(name = "status")
     private Long status;
+    @Column(name = "authority")
+    private Long authority;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
@@ -140,4 +142,11 @@ public class Transaction implements BaseEntity {
         this.bankId = bankId;
     }
 
+    public Long getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Long authority) {
+        this.authority = authority;
+    }
 }
