@@ -1,18 +1,13 @@
 package com.avosh.baseproject.util;
 
-import net.bytebuddy.utility.RandomString;
-
 import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TokenUtil {
 
-    /**
-     * Generate a random string.
-     */
+
     public String nextString() {
         for (int idx = 0; idx < buf.length; ++idx)
             buf[idx] = symbols[random.nextInt(symbols.length)];
@@ -41,23 +36,17 @@ public class TokenUtil {
         this.buf = new char[length];
     }
 
-    /**
-     * Create an alphanumeric string generator.
-     */
+
     public TokenUtil(int length, Random random) {
         this(length, random, alphanum);
     }
 
-    /**
-     * Create an alphanumeric strings from a secure generator.
-     */
+
     public TokenUtil(int length) {
         this(length, new SecureRandom());
     }
 
-    /**
-     * Create session identifiers.
-     */
+
     public TokenUtil() {
         this(21);
     }

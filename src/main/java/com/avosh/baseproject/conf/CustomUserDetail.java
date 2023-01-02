@@ -1,28 +1,43 @@
 package com.avosh.baseproject.conf;
 
 
+import com.avosh.baseproject.dto.RoleDto;
 import com.avosh.baseproject.dto.SecUserDto;
+import com.avosh.baseproject.entity.SecUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 public class CustomUserDetail implements UserDetails {
     private SecUserDto secUser;
+    private List<RoleDto> roleDtos;
 
     public CustomUserDetail(SecUserDto secUser) {
         this.secUser = secUser;
+    }
+    public CustomUserDetail(SecUserDto secUser, List<RoleDto> roleDtos) {
+        this.secUser = secUser;
+        this.roleDtos = roleDtos;
     }
 
     public SecUserDto getSecUser() {
         return secUser;
     }
 
+    public List<RoleDto> getRoleDtos() {
+        return roleDtos;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+     List<GrantedAuthority> authorityList = new ArrayList<>();
+
+        for (RoleDto dto: roleDtos) {
+            authorityList.add(new SimpleGrantedAuthority(dto.getRole()));
+        }
+        return authorityList;
 
     }
 
