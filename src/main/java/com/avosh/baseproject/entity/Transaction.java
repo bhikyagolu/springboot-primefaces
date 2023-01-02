@@ -23,6 +23,8 @@ public class Transaction implements BaseEntity {
     private Long status;
     @Column(name = "authority")
     private Long authority;
+    @Column(name = "client_ip")
+    private String clientIp;
     @Column(name = "create_datetime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDatetime;
@@ -148,5 +150,13 @@ public class Transaction implements BaseEntity {
 
     public void setAuthority(Long authority) {
         this.authority = authority;
+    }
+
+    public String getClientIp() {
+        return clientIp;
+    }
+
+    public void setClientIp(String clientIp) {
+        this.clientIp = clientIp;
     }
 }
