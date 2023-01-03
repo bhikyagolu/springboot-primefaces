@@ -43,15 +43,18 @@
                         <h5>#{msg['profile.personal.information']}</h5>
                         <div class="field">
                             <p:outputLabel for="name">#{msg['profile.name']}</p:outputLabel>
-                            <p:inputText id="name" value="#{profileBean.dto.name}" maxlength="12" required="true"/>
+                            <p:inputText id="name" value="#{profileBean.dto.name}" maxlength="12" required="true"
+                                         label="#{msg['profile.name']}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="family">#{msg['profile.family']}</p:outputLabel>
-                            <p:inputText id="family" value="#{profileBean.dto.family}" maxlength="12" required="true"/>
+                            <p:inputText id="family" value="#{profileBean.dto.family}" maxlength="12" required="true"
+                                         label="#{msg['profile.family']}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="gender">#{msg['profile.gender']}</p:outputLabel>
-                            <p:selectOneMenu id="gender" value="#{profileBean.dto.gender}" required="true">
+                            <p:selectOneMenu id="gender" value="#{profileBean.dto.gender}" required="true"
+                                             label="#{msg['profile.gender']}">
                                 <f:selectItem itemLabel="#{msg['profile.gender.select']}" itemValue=""
                                               noSelectionOption="true"/>
                                 <f:selectItem itemLabel="#{msg['profile.male']}" itemValue="true"/>
@@ -61,15 +64,18 @@
                         <div class="field">
                             <p:outputLabel for="nationalcode">#{msg['profile.nationalcode']}</p:outputLabel>
                             <p:inputText id="nationalcode" value="#{profileBean.dto.nationalcode}" maxlength="10"
+                                         label="#{msg['profile.nationalcode']}"
                                          required="true"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="iban">#{msg['profile.iban']}</p:outputLabel>
-                            <p:inputText id="iban" value="#{profileBean.dto.iban}" maxlength="24" required="true"/>
+                            <p:inputText id="iban" value="#{profileBean.dto.iban}" maxlength="24" required="true"
+                                         label="#{msg['profile.iban']}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="bio">#{msg['profile.bio']}</p:outputLabel>
-                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" required="true"/>
+                            <p:inputTextarea id="bio" value="#{profileBean.dto.about}" maxlength="250" required="true"
+                                             label="#{msg['profile.bio']}"/>
                         </div>
                         <div class="field">
                             <p:commandButton update=":messagesPanel" value="#{msg['profile.save']}"
@@ -91,16 +97,19 @@
                             <div class="field col">
                                 <p:outputLabel for="oldPassword">#{msg['profile.password.old']}</p:outputLabel>
                                 <p:password id="oldPassword" maxlength="10" required="true"
+                                            label="#{msg['profile.password.old']}"
                                             value="#{profileBean.oldPassword}"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="newPassword">#{msg['profile.password.new']}</p:outputLabel>
                                 <p:password id="newPassword" feedback="true" match="reNewPassword" maxlength="10"
+                                            label="#{msg['profile.password.new']}"
                                             value="#{profileBean.newPassword}" required="true"/>
                             </div>
                             <div class="field col">
                                 <p:outputLabel for="reNewPassword">#{msg['profile.password.reenter']}</p:outputLabel>
                                 <p:password id="reNewPassword" maxlength="10" required="true"
+                                            label="#{msg['profile.password.reenter']}"
                                             value="#{profileBean.newPassword}"/>
                             </div>
                         </div>
@@ -116,17 +125,20 @@
                         <div class="field">
                             <p:outputLabel for="cellphone">#{msg['profile.cellphone']}</p:outputLabel>
                             <p:inputText id="cellphone" disabled="true" value="#{profileBean.dto.cellphone}"
+                                         label="#{msg['profile.cellphone']}"
                                          maxlength="11" required="true">
                                 <f:validateRegex pattern="09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}"/>
                             </p:inputText>
                         </div>
                         <div class="field">
                             <p:outputLabel for="phone">#{msg['profile.phone']}</p:outputLabel>
-                            <p:inputText id="phone" value="#{profileBean.dto.phone}" maxlength="8" required="true"/>
+                            <p:inputText id="phone" value="#{profileBean.dto.phone}" maxlength="8" required="true"
+                                         label="#{msg['profile.phone']}"/>
                         </div>
                         <div class="field">
                             <p:outputLabel for="email">#{msg['profile.email']}</p:outputLabel>
                             <p:inputText id="email" disabled="true" value="#{profileBean.dto.email}" maxlength="40"
+                                         label="#{msg['profile.email']}"
                                          required="true">
                                 <f:validateRegex
                                         pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
@@ -135,6 +147,7 @@
                         <div class="field">
                             <p:outputLabel for="address">#{msg['profile.address']}</p:outputLabel>
                             <p:inputText id="address" value="#{profileBean.dto.address}" maxlength="150"
+                                         label="#{msg['profile.address']}"
                                          required="true"/>
                         </div>
                         <div class="field">
