@@ -22,6 +22,7 @@ import java.util.Locale;
 
 @SpringBootApplication
 public class BaseProjectApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
+    private static final Integer REST_TEMPLATE_TIMEOUT = 20000;
 
     public static void main(String[] args) {
         SpringApplication.run(BaseProjectApplication.class, args);
@@ -67,9 +68,9 @@ public class BaseProjectApplication extends SpringBootServletInitializer impleme
     @Bean
     public RestTemplate getRestTemplate() {
         HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        httpRequestFactory.setConnectionRequestTimeout(20000);
-        httpRequestFactory.setConnectTimeout(20000);
-        httpRequestFactory.setReadTimeout(20000);
+        httpRequestFactory.setConnectionRequestTimeout(REST_TEMPLATE_TIMEOUT);
+        httpRequestFactory.setConnectTimeout(REST_TEMPLATE_TIMEOUT);
+        httpRequestFactory.setReadTimeout(REST_TEMPLATE_TIMEOUT);
         return new RestTemplate(httpRequestFactory);
     }
 

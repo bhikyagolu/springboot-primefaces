@@ -31,10 +31,10 @@ public class CustomUserDetailService implements UserDetailsService {
 
         SecUser secUser = userRepository.findByEmail(s);
         List<SecUserRole> secUserRole = roleRepository.findBySecUserId(secUser.getId());
-        List<RoleDto> roleDtos = new ArrayList<>();
+        List<RoleDto> roleList = new ArrayList<>();
         for (SecUserRole role: secUserRole) {
             RoleDto dto = new RoleDto(role.getSecRole().getRole(),role.getSecRole().getTitle());
-            roleDtos.add(dto);
+            roleList.add(dto);
         }
 
 
@@ -42,7 +42,7 @@ public class CustomUserDetailService implements UserDetailsService {
                 , secUser.getCellphone(), secUser.getPhone(), secUser.getEmail(), secUser.getAddress(), secUser.getPassword()
                 , secUser.getNationalcode(), secUser.getIsLogin(), secUser.getIsEnable(), secUser.getLastLogin(), secUser.getCreateDate()
                 , secUser.getUpdateDate(), secUser.getToken());
-        CustomUserDetail userDetail = new CustomUserDetail(userDto,roleDtos);
+        CustomUserDetail userDetail = new CustomUserDetail(userDto,roleList);
         return userDetail;
     }
 }
