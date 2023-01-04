@@ -1,7 +1,7 @@
 package com.avosh.baseproject.enums;
 
 public enum AuthorityEnum {
-    LINK_PAY(1, "LINK_PAY");
+    LINK_PAY(10001, "LINK_PAY");
 
     private Integer authority;
     private String description;
