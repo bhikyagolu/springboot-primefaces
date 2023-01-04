@@ -6,7 +6,7 @@
 
 package com.avosh.baseproject.ws;
 
-import com.avosh.baseproject.enums.ResultCods;
+import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TransactionService;
 import com.avosh.baseproject.ws.model.TransactionResponse;
@@ -29,13 +29,13 @@ public class Transaction extends BaseWs{
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
-            response.setResultCode(ResultCods.TOKEN_NOT_VALID.getCode());
-            response.setResultDescription(ResultCods.TOKEN_NOT_VALID.getDescription());
-            httpStatus = (ResultCods.TOKEN_NOT_VALID.getHttpStatus());
+            response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
+            response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());
+            httpStatus = (ResultCodsEnum.TOKEN_NOT_VALID.getHttpStatus());
         } catch (Exception e) {
-            response.setResultCode(ResultCods.UNKNOWN_ERROR.getCode());
-            response.setResultDescription(ResultCods.UNKNOWN_ERROR.getDescription());
-            httpStatus = (ResultCods.UNKNOWN_ERROR.getHttpStatus());
+            response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
+            response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
+            httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
         }finally {
             return new ResponseEntity(response,httpStatus);
         }

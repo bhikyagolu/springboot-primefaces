@@ -2,7 +2,7 @@ package com.avosh.baseproject.enums;
 
 import org.springframework.http.HttpStatus;
 
-public enum ResultCods {
+public enum ResultCodsEnum {
     SUCCESS(0, "Success",HttpStatus.OK),
     INTERNAL_ERROR(10201, "Internal Error",HttpStatus.OK),
     UNKNOWN_ERROR(10202, "Unknown Error",HttpStatus.OK),
@@ -16,7 +16,7 @@ public enum ResultCods {
     private String description;
     private HttpStatus httpStatus;
 
-    ResultCods(Integer code, String description,HttpStatus httpStatus) {
+    ResultCodsEnum(Integer code, String description, HttpStatus httpStatus) {
         this.code = code;
         this.description = description;
         this.httpStatus = httpStatus;
