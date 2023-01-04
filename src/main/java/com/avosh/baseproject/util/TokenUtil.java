@@ -16,7 +16,7 @@ public class TokenUtil {
 
     public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    public static final String lower = upper.toLowerCase(Locale.ROOT);
+    public static final String lower = upper.toLowerCase(Locale.US);
 
     public static final String digits = "0123456789";
 
