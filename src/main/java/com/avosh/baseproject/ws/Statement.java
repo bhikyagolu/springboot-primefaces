@@ -3,14 +3,12 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TransactionService;
+import com.avosh.baseproject.ws.model.StatementRequest;
 import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
@@ -19,7 +17,7 @@ public class Statement extends BaseWs{
     private TransactionService transactionService;
 
     @PostMapping("/account/statement")
-    public ResponseEntity getBalance(@RequestHeader("authorization") String token){
+    public ResponseEntity getBalance(@RequestHeader("authorization") String token , @RequestBody StatementRequest body){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
