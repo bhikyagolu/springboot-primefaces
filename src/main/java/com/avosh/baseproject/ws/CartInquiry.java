@@ -13,15 +13,18 @@ import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class Transaction extends BaseWs{
+public class CartInquiry extends BaseWs{
     @Autowired
     private TransactionService transactionService;
-    @PostMapping("/transaction")
-    public ResponseEntity getTransaction(@RequestHeader("authorization") String token, @RequestBody String body){
+    @PostMapping("/inquiry/cart")
+    public ResponseEntity getCartInquiry(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
