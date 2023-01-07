@@ -28,6 +28,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class TokenServiceImpl implements TokenService {
+    private final Integer TOKEN_LENGTH = 255;
     private static final Logger log = Logger.getLogger(TokenServiceImpl.class);
     @Autowired
     private UserRepository userRepository;
@@ -77,7 +78,7 @@ public class TokenServiceImpl implements TokenService {
     }
 
     private String getTokenFromNewDevice(Long UserId, String mac, String name) {
-        RandomString gen = new RandomString(255, ThreadLocalRandom.current());
+        RandomString gen = new RandomString(TOKEN_LENGTH, ThreadLocalRandom.current());
         String uuid = gen.nextString();
         Device device = new Device();
         device.setToken(uuid);
@@ -89,7 +90,7 @@ public class TokenServiceImpl implements TokenService {
     }
 
     private String getTokenFromExistingDevice(Device device) {
-        RandomString gen = new RandomString(255, ThreadLocalRandom.current());
+        RandomString gen = new RandomString(TOKEN_LENGTH, ThreadLocalRandom.current());
         String uuid = gen.nextString();
         device.setToken(uuid);
         deviceRepository.save(device);
