@@ -15,7 +15,7 @@ public class Balance extends BaseWs{
     @Autowired
     private TransactionService transactionService;
 
-    @PostMapping("/account/blance")
+    @PostMapping("/account/balance")
     public ResponseEntity getBalance(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
