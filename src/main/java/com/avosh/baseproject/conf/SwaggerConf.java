@@ -41,5 +41,9 @@ public class SwaggerConf {
     GroupedOpenApi transactionApis() {
         return GroupedOpenApi.builder().group("Transaction").pathsToMatch("/**/transaction/**").build();
     }
+    @Bean
+    GroupedOpenApi accountApis() {
+        return GroupedOpenApi.builder().group("Account").pathsToMatch("/**/account/**").build();
+    }
 
 }
