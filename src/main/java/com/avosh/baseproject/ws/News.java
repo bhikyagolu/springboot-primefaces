@@ -51,7 +51,7 @@ public class News extends BaseWs{
         NewsDetailResponse response = new NewsDetailResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if(!isTokenValid(token)){
+            if(!tokenService.isTokenValid(token)){
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
