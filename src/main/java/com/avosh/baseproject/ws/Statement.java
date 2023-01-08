@@ -20,7 +20,7 @@ public class Statement extends BaseWs{
     private TokenService tokenService;
 
     @PostMapping("/account/statement")
-    public ResponseEntity getBalance(@RequestHeader("authorization") String token , @RequestBody StatementRequest body){
+    public ResponseEntity getStatement(@RequestHeader("authorization") String token , @RequestBody StatementRequest body){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

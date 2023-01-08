@@ -22,7 +22,7 @@ public class Charge extends BaseWs{
     private TokenService tokenService;
 
     @PostMapping("/charge")
-    public ResponseEntity getCharge(@RequestHeader("authorization") String token){
+    public ResponseEntity charge(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
