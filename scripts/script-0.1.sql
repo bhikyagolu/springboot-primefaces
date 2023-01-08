@@ -13,4 +13,4 @@ INSERT INTO `sec_user_role` (`id`, `create_date`, `sec_user_id`, `sec_role_id`, 
     (1, '2022-07-27 17:05:25', 1, 1, NULL);
 
 INSERT INTO `sec_user_role` (`id`, `create_date`, `sec_user_id`, `sec_role_id`, `update_date`) VALUES
-    (1, '2022-07-27 17:05:25', 1, 2, NULL);
+    (2, '2022-07-27 17:05:25', 1, 2, NULL);

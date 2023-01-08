@@ -12,6 +12,8 @@ services:
       - MYSQL_DATABASE=AvDb
       - MYSQL_USER=db-user
       - MYSQL_PASSWORD=password
+    volumes:
+      - D:/Database:/var/lib/mysql
     ports:
       - 3306:3306
   redis-server:
@@ -73,3 +75,6 @@ services:
 networks:
   avosh-network:
     name: avosh-network
+volumes:
+  data:
+    external: true
