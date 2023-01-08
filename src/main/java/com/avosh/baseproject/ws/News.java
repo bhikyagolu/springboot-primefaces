@@ -9,6 +9,7 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.NewsService;
+import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.ws.model.NewsDetailResponse;
 import com.avosh.baseproject.ws.model.NewsRequest;
 import com.avosh.baseproject.ws.model.NewsResponse;
@@ -22,11 +23,16 @@ import org.springframework.web.bind.annotation.*;
 public class News extends BaseWs{
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private TokenService tokenService;
     @PostMapping("/news")
     public ResponseEntity getNews(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
+            if(!tokenService.isTokenValid(token)){
+                throw new TokenIsNotValidException();
+            }
 
 
         } catch (Exception e) {

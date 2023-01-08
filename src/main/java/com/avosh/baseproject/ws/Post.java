@@ -9,6 +9,7 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.PostService;
+import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.ws.model.NewsResponse;
 import com.avosh.baseproject.ws.model.PostRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,14 @@ import org.springframework.web.bind.annotation.*;
 public class Post extends BaseWs{
     @Autowired
     private PostService postService;
+    @Autowired
+    private TokenService tokenService;
     @PostMapping("/post")
     public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body){
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if(!isTokenValid(token)){
+            if(!tokenService.isTokenValid(token)){
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {

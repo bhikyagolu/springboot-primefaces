@@ -2,6 +2,7 @@ package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
+import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.services.TransactionService;
 import com.avosh.baseproject.ws.model.StatementRequest;
 import com.avosh.baseproject.ws.model.TransactionResponse;
@@ -15,13 +16,15 @@ import org.springframework.web.bind.annotation.*;
 public class Statement extends BaseWs{
     @Autowired
     private TransactionService transactionService;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping("/account/statement")
     public ResponseEntity getBalance(@RequestHeader("authorization") String token , @RequestBody StatementRequest body){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-            if(!isTokenValid(token)){
+            if(!tokenService.isTokenValid(token)){
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
