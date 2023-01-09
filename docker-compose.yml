@@ -68,7 +68,7 @@ services:
       - redis-server
       - mqserver
     ports:
-      - 8080:8080
+      - 80:8080
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://app-mysql:3306/AvDb?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Tehran&characterEncoding=utf-8
       SPRING_DATASOURCE_USERNAME: db-user
