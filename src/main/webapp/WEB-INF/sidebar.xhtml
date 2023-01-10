@@ -31,13 +31,13 @@
                 <div class="menu">
                     <po:menu widgetVar="OmegaMenuWidget">
                         <p:menuitem id="om_dashboard" value="#{msg['sidebar.dashboard']}" icon="pi pi-fw pi-home"
-                                    outcome="/s/dashboard"/>
+                                    outcome="/s/dashboard" rendered="#{request.isUserInRole('ROLE_ADMIN')}"/>
                         <p:menuitem id="om_news" value="#{msg['sidebar.news']}" icon="pi pi-fw pi-home"
-                                    outcome="/s/news/index"/>
+                                    outcome="/s/news/index" rendered="#{request.isUserInRole('ROLE_ADMIN')}"/>
                         <p:menuitem id="om_posts" value="#{msg['sidebar.posts']}" icon="pi pi-fw pi-id-card"
-                                    outcome="/s/posts/index"/>
+                                    outcome="/s/posts/index" rendered="#{request.isUserInRole('ROLE_ADMIN')}"/>
                         <p:submenu id="om_messages" label="#{msg['sidebar.messages']}" icon="pi pi-fw pi-star"
-                                   badge="#{messagePollBean.unreadMessageCount}">
+                                   badge="#{messagePollBean.unreadMessageCount}" rendered="#{request.isUserInRole('ROLE_ADMIN')}">
                             <p:menuitem id="om_messages_input" value="#{msg['sidebar.message.input']}"
                                         icon="pi pi-fw pi-id-card" outcome="/s/messages/inbox"/>
                             <p:menuitem id="om_messages_output" value="#{msg['sidebar.message.output']}"
@@ -46,8 +46,8 @@
                                         icon="pi pi-fw pi-check-square" outcome="/s/messages/sms"/>
                         </p:submenu>
                         <p:menuitem id="om_users" value="#{msg['sidebar.users']}" icon="pi pi-fw pi-id-card"
-                                    outcome="/s/users/index"/>
-                        <p:submenu id="om_financial" label="#{msg['sidebar.financial']}" icon="pi pi-fw pi-star">
+                                    outcome="/s/users/index" rendered="#{request.isUserInRole('ROLE_ADMIN')}"/>
+                        <p:submenu id="om_financial" label="#{msg['sidebar.financial']}" icon="pi pi-fw pi-star" rendered="#{request.isUserInRole('ROLE_ADMIN')}">
                             <p:menuitem id="om_transactions" value="#{msg['sidebar.transactions']}"
                                         icon="pi pi-fw pi-id-card" outcome="/s/transaction/index"/>
                             <p:menuitem id="om_redeem" value="#{msg['sidebar.redeem']}" icon="pi pi-fw pi-check-square"
@@ -56,7 +56,7 @@
                                         icon="pi pi-fw pi-check-square" outcome="/s/transaction/used-redeem"/>
                         </p:submenu>
                         <p:menuitem id="om_help" value="#{msg['sidebar.help']}" icon="pi pi-fw pi-id-card"
-                                    outcome="/s/help/index"/>
+                                    outcome="/s/help/index" rendered="#{request.isUserInRole('ROLE_ADMIN')}"/>
 
                     </po:menu>
                 </div>
