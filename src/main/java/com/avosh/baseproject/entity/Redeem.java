@@ -15,7 +15,7 @@ import java.util.List;
  * @author amirk
  */
 @Entity
-@Table(name = "redeem")
+@Table(name = "av_redeem")
 @XmlRootElement
 public class Redeem implements BaseEntity {
 

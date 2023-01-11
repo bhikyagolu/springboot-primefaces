@@ -15,7 +15,7 @@ import java.util.List;
  * @author amirk
  */
 @Entity
-@Table(name = "bank")
+@Table(name = "av_bank")
 @XmlRootElement
 public class Bank implements BaseEntity {
 

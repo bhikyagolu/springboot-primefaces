@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
 @Entity
-@Table(name = "destination_account")
+@Table(name = "av_destination_account")
 @XmlRootElement
 public class DestinationAccount implements BaseEntity {
     @Id

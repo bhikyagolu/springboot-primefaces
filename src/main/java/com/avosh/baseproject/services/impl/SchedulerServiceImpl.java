@@ -6,12 +6,14 @@ import com.avosh.baseproject.repository.SchedulerRepository;
 import com.avosh.baseproject.services.SchedulerService;
 import com.avosh.baseproject.util.Empty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 @Service
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class SchedulerServiceImpl implements SchedulerService {
     @Autowired
     private SchedulerRepository repository;

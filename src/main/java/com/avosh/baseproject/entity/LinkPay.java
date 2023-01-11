@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "linkpay")
+@Table(name = "av_linkpay")
 @XmlRootElement
 public class LinkPay implements BaseEntity {
     @Id

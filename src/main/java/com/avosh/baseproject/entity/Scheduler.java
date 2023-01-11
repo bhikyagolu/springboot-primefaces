@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "scheduler")
+@Table(name = "av_scheduler")
 @XmlRootElement
 public class Scheduler implements BaseEntity {
     private static final long serialVersionUID = 1L;

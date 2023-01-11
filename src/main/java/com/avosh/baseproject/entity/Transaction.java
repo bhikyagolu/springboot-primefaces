@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "av_transaction")
 @XmlRootElement
 public class Transaction implements BaseEntity {
 

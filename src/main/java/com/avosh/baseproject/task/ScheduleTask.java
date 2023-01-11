@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("dev")
+@Profile("production")
 public class ScheduleTask implements BaseTask{
 
     @Scheduled(fixedRate = 100000)

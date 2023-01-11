@@ -10,12 +10,14 @@ import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UserServiceImpl implements UserService {
     private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 

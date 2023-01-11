@@ -10,6 +10,7 @@ import com.avosh.baseproject.services.NotificationService;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class NotificationServiceImpl implements NotificationService {
     private static final Logger log = Logger.getLogger(NotificationServiceImpl.class);
 

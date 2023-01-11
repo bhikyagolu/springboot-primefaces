@@ -14,6 +14,7 @@ import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserProfileService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UserProfileServiceImpl implements UserProfileService {
     private static final Logger log = Logger.getLogger(UserProfileServiceImpl.class);
 

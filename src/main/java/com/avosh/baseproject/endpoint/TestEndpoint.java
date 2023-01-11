@@ -11,8 +11,8 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
-public class StudentEndpoint extends AbstractEndpoint{
-    private static final Logger log = Logger.getLogger(StudentEndpoint.class);
+public class TestEndpoint extends AbstractEndpoint{
+    private static final Logger log = Logger.getLogger(TestEndpoint.class);
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "StudentDetailsRequest")
     @ResponsePayload
     public StudentDetailsResponse getStudent(@RequestPayload StudentDetailsRequest request) {

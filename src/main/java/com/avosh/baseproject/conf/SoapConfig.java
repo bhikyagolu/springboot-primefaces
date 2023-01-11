@@ -50,7 +50,7 @@ public class SoapConfig extends WsConfigurerAdapter {
     public void addInterceptors(List<EndpointInterceptor> interceptors) {
         PayloadValidatingInterceptor validatingInterceptor = new PayloadValidatingInterceptor();
         validatingInterceptor.setValidateRequest(true);
-        validatingInterceptor.setValidateResponse(true);
+        validatingInterceptor.setValidateResponse(false);
         validatingInterceptor.setXsdSchema(studentSchema());
         interceptors.add(validatingInterceptor);
     }

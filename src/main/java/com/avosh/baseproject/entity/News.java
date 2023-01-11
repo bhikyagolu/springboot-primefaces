@@ -13,7 +13,7 @@ import java.util.Date;
  * @author amirk
  */
 @Entity
-@Table(name = "news")
+@Table(name = "av_news")
 @XmlRootElement
 public class News implements BaseEntity {
 
