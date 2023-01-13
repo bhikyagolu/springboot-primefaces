@@ -1,7 +1,5 @@
 package com.avosh.baseproject.dto;
 
-import java.io.Serializable;
-
 public class RoleDto extends BaseDto {
     private String role;
     private String title;
