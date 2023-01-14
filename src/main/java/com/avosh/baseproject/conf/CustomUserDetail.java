@@ -3,12 +3,13 @@ package com.avosh.baseproject.conf;
 
 import com.avosh.baseproject.dto.RoleDto;
 import com.avosh.baseproject.dto.SecUserDto;
-import com.avosh.baseproject.entity.SecUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class CustomUserDetail implements UserDetails {
     private SecUserDto secUser;

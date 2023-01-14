@@ -1,7 +1,11 @@
 package com.avosh.baseproject.model.response;
 
 import com.avosh.baseproject.model.Student;
-import javax.xml.bind.annotation.*;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)

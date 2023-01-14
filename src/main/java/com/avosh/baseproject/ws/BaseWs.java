@@ -1,8 +1,5 @@
 package com.avosh.baseproject.ws;
 
-import com.avosh.baseproject.services.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
-
 public abstract class BaseWs {
 //    @Autowired
 //    private TokenService tokenService;

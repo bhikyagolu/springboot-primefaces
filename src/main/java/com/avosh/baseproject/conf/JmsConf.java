@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-import javax.jms.*;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
 
 @EnableJms
 @Configuration

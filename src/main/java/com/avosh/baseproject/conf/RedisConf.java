@@ -1,6 +1,5 @@
 package com.avosh.baseproject.conf;
 
-import com.avosh.baseproject.dto.SecUserDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

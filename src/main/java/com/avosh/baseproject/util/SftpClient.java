@@ -6,7 +6,6 @@ import com.enterprisedt.net.ftp.FTPException;
 import com.enterprisedt.net.ftp.FTPMessageCollector;
 import com.jcraft.jsch.*;
 
-
 import java.io.IOException;
 
 
