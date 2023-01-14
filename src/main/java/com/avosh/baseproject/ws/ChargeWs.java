@@ -1,9 +1,3 @@
-/*
- * ******************************************************************************
- *  * Created by Alireza Amirkhani 2022
- *  *****************************************************************************
- */
-
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
@@ -21,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class CartInquiry extends BaseWs{
+public class ChargeWs extends BaseWs{
     @Autowired
     private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
-    @PostMapping("/inquiry/cart")
-    public ResponseEntity getCartInquiry(@RequestHeader("authorization") String token){
+
+    @PostMapping("/charge")
+    public ResponseEntity charge(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

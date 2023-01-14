@@ -8,11 +8,9 @@ package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
-import com.avosh.baseproject.services.NewsService;
+import com.avosh.baseproject.services.RedeemService;
 import com.avosh.baseproject.services.TokenService;
-import com.avosh.baseproject.ws.model.NewsDetailResponse;
-import com.avosh.baseproject.ws.model.NewsRequest;
-import com.avosh.baseproject.ws.model.NewsResponse;
+import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,36 +18,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class News extends BaseWs{
+public class RedeemWs extends BaseWs{
     @Autowired
-    private NewsService newsService;
+    private RedeemService redeemService;
     @Autowired
     private TokenService tokenService;
-    @PostMapping("/news")
-    public ResponseEntity getNews(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
-        NewsResponse response = new NewsResponse();
+    @PostMapping("/redeem")
+    public ResponseEntity redeemForUser(@RequestHeader("authorization") String token, @PathVariable String redeemCode){
         HttpStatus httpStatus = HttpStatus.OK;
-        try {
-            if(!tokenService.isTokenValid(token)){
-                throw new TokenIsNotValidException();
-            }
-
-
-        } catch (Exception e) {
-            response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
-            response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
-            httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
-        }
-
-
-    }
-
-    @PostMapping("/news/detail")
-    public ResponseEntity getNewsDetail(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
-        NewsDetailResponse response = new NewsDetailResponse();
-        HttpStatus httpStatus = HttpStatus.OK;
+        TransactionResponse response = new TransactionResponse();
         try {
             if(!tokenService.isTokenValid(token)){
                 throw new TokenIsNotValidException();

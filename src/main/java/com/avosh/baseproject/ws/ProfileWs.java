@@ -9,22 +9,25 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TokenService;
-import com.avosh.baseproject.services.TransactionService;
+import com.avosh.baseproject.services.UserProfileService;
 import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class IbanInquiry extends BaseWs{
+public class ProfileWs extends BaseWs{
     @Autowired
-    private TransactionService transactionService;
+    private UserProfileService  profileService;
     @Autowired
     private TokenService tokenService;
-    @PostMapping("/inquiry/iban")
-    public ResponseEntity getIbanInquiry(@RequestHeader("authorization") String token){
+    @PostMapping("/profile")
+    public ResponseEntity getUserProfile(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

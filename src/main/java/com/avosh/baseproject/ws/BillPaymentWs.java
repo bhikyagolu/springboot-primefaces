@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class Charge extends BaseWs{
+public class BillPaymentWs extends BaseWs{
     @Autowired
     private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("/charge")
-    public ResponseEntity charge(@RequestHeader("authorization") String token){
+    @PostMapping("/bill/payment")
+    public ResponseEntity billPayment(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

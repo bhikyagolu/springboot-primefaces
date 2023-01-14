@@ -1,15 +1,9 @@
-/*
- * ******************************************************************************
- *  * Created by Alireza Amirkhani 2022
- *  *****************************************************************************
- */
-
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TokenService;
-import com.avosh.baseproject.services.UserProfileService;
+import com.avosh.baseproject.services.TransactionService;
 import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class Profile extends BaseWs{
+public class NotificationWs extends BaseWs{
     @Autowired
-    private UserProfileService  profileService;
+    private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
-    @PostMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader("authorization") String token){
+
+    @PostMapping("/notification")
+    public ResponseEntity getNotification(@RequestHeader("authorization") String token){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

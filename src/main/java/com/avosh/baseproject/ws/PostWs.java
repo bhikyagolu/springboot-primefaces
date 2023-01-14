@@ -1,11 +1,17 @@
+/*
+ * ******************************************************************************
+ *  * Created by Alireza Amirkhani 2022
+ *  *****************************************************************************
+ */
+
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
+import com.avosh.baseproject.services.PostService;
 import com.avosh.baseproject.services.TokenService;
-import com.avosh.baseproject.services.TransactionService;
-import com.avosh.baseproject.ws.model.StatementRequest;
-import com.avosh.baseproject.ws.model.TransactionResponse;
+import com.avosh.baseproject.ws.model.NewsResponse;
+import com.avosh.baseproject.ws.model.PostRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +19,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class Statement extends BaseWs{
+public class PostWs extends BaseWs{
     @Autowired
-    private TransactionService transactionService;
+    private PostService postService;
     @Autowired
     private TokenService tokenService;
-
-    @PostMapping("/account/statement")
-    public ResponseEntity getStatement(@RequestHeader("authorization") String token , @RequestBody StatementRequest body){
+    @PostMapping("/post")
+    public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body){
+        NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
-        TransactionResponse response = new TransactionResponse();
         try {
             if(!tokenService.isTokenValid(token)){
                 throw new TokenIsNotValidException();

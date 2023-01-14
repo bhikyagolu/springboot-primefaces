@@ -1,3 +1,9 @@
+/*
+ * ******************************************************************************
+ *  * Created by Alireza Amirkhani 2022
+ *  *****************************************************************************
+ */
+
 package com.avosh.baseproject.ws;
 
 import com.avosh.baseproject.enums.ResultCodsEnum;
@@ -8,21 +14,17 @@ import com.avosh.baseproject.ws.model.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class BillPayment extends BaseWs{
+public class FundTransferWs extends BaseWs{
     @Autowired
     private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
-
-    @PostMapping("/bill/payment")
-    public ResponseEntity billPayment(@RequestHeader("authorization") String token){
+    @PostMapping("/transaction")
+    public ResponseEntity transaction(@RequestHeader("authorization") String token, @RequestBody String body){
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
