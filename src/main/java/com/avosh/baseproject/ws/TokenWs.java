@@ -33,7 +33,7 @@ public class TokenWs {
         HttpStatus httpStatus = HttpStatus.OK;
         try {
             String res = tokenService.getTokenByUserPassword(tokenRequest.getUsername(),
-                    tokenRequest.getPassword(), tokenRequest.getMac(),tokenRequest.getName());
+                    tokenRequest.getPassword(), tokenRequest.getMac(), tokenRequest.getName());
             tokenResponse.setToken(res);
             tokenResponse.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             tokenResponse.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
@@ -51,8 +51,8 @@ public class TokenWs {
             tokenResponse.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             tokenResponse.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(tokenResponse,httpStatus);
+        } finally {
+            return new ResponseEntity(tokenResponse, httpStatus);
         }
     }
 
@@ -61,12 +61,12 @@ public class TokenWs {
         Response response = new Response();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            Boolean res = tokenService.isTokenValid(request.getToken(),request.getMac());
-            if(res){
+            Boolean res = tokenService.isTokenValid(request.getToken(), request.getMac());
+            if (res) {
                 response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
                 response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
                 httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
-            }else {
+            } else {
                 response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
                 response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());
                 httpStatus = (ResultCodsEnum.TOKEN_NOT_VALID.getHttpStatus());
@@ -76,8 +76,8 @@ public class TokenWs {
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 
@@ -90,7 +90,7 @@ public class TokenWs {
             response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
             httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
-        }catch (DeleteExceptionException e){
+        } catch (DeleteExceptionException e) {
             response.setResultCode(ResultCodsEnum.REMOVE_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.REMOVE_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.REMOVE_ERROR.getHttpStatus());
@@ -98,8 +98,8 @@ public class TokenWs {
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

@@ -33,7 +33,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     PasswordEncoder passwordEncoder;
 
 
-
     @Override
     public void save(UserDto dto) {
         SecUser user = new SecUser();

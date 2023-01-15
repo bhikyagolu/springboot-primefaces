@@ -8,8 +8,8 @@ public enum TransactionStatusEnum {
     POST(100, "Done"),
     ADS(101, "Failed");
 
-    private Integer status;
-    private String description;
+    private final Integer status;
+    private final String description;
 
     TransactionStatusEnum(Integer type, String description) {
         this.status = type;

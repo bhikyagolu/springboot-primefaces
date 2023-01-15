@@ -9,8 +9,8 @@ public enum UserTypeEnum {
     ASSISTANT(2, "Assistant"),
     ORDINARY(3, "Ordinary");
 
-    private Integer code;
-    private String description;
+    private final Integer code;
+    private final String description;
 
     UserTypeEnum(Integer code, String description) {
         this.code = code;

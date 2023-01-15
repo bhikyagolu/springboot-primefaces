@@ -9,7 +9,7 @@ import com.avosh.baseproject.entity.News;
 import com.avosh.baseproject.repository.NewsRepository;
 
 public interface NewsService extends BaseService<NewsRepository, News, NewsDto> {
-    public void deleteById(Long id);
+    void deleteById(Long id);
 //    Iterable<News> retrieveAll();
 
 }

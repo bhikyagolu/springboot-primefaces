@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("production")
-public class ScheduleTask implements BaseTask{
+public class ScheduleTask implements BaseTask {
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-    @Scheduled(fixedRate = 100000)
-    @CheckScheduler(schedulerId = 1)
+    @Scheduled(fixedRate = 10000)
+//    @CheckScheduler(schedulerId = 1)
     public void run() {
         System.out.println("task is running");
     }

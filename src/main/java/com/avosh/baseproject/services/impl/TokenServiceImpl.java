@@ -100,20 +100,12 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Boolean isTokenValid(String token, String mac) {
-        if (Empty.isNotEmpty(deviceRepository.findByTokenAndMac(token, mac))) {
-            return true;
-        } else {
-            return false;
-        }
+        return Empty.isNotEmpty(deviceRepository.findByTokenAndMac(token, mac));
     }
 
     @Override
     public Boolean isTokenValid(String token) {
-        if (Empty.isNotEmpty(deviceRepository.findByToken(token))) {
-            return true;
-        } else {
-            return false;
-        }
+        return Empty.isNotEmpty(deviceRepository.findByToken(token));
     }
 
     @Override

@@ -21,17 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class ProfileWs extends BaseWs{
+public class ProfileWs extends BaseWs {
     @Autowired
-    private UserProfileService  profileService;
+    private UserProfileService profileService;
     @Autowired
     private TokenService tokenService;
+
     @PostMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader("authorization") String token){
+    public ResponseEntity getUserProfile(@RequestHeader("authorization") String token) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
@@ -42,8 +43,8 @@ public class ProfileWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

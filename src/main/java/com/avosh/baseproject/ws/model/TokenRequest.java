@@ -6,7 +6,7 @@
 
 package com.avosh.baseproject.ws.model;
 
-public class TokenRequest extends Request{
+public class TokenRequest extends Request {
     private String username;
     private String password;
     private String mac;

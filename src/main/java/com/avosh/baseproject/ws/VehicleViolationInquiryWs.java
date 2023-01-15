@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/ws")
-public class VehicleViolationInquiryWs extends BaseWs{
+public class VehicleViolationInquiryWs extends BaseWs {
     @Autowired
     private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
 
     @PostMapping("/violation-inquiry")
-    public ResponseEntity getVehicleViolationInquiry(@RequestHeader("authorization") String token){
+    public ResponseEntity getVehicleViolationInquiry(@RequestHeader("authorization") String token) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
@@ -37,8 +37,8 @@ public class VehicleViolationInquiryWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

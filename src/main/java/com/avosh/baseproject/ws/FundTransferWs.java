@@ -18,17 +18,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class FundTransferWs extends BaseWs{
+public class FundTransferWs extends BaseWs {
     @Autowired
     private TransactionService transactionService;
     @Autowired
     private TokenService tokenService;
+
     @PostMapping("/transaction")
-    public ResponseEntity transaction(@RequestHeader("authorization") String token, @RequestBody String body){
+    public ResponseEntity transaction(@RequestHeader("authorization") String token, @RequestBody String body) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
@@ -39,8 +40,8 @@ public class FundTransferWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

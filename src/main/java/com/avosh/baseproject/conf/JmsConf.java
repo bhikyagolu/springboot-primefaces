@@ -31,7 +31,7 @@ public class JmsConf {
         }
     }
 
-    public void sendJmsMessage(){
+    public void sendJmsMessage() {
         jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello World!");
     }
 

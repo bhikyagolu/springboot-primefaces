@@ -6,7 +6,7 @@
 
 package com.avosh.baseproject.ws.model;
 
-public class ValidateTokenRequest extends Request{
+public class ValidateTokenRequest extends Request {
     private String token;
     private String mac;
 

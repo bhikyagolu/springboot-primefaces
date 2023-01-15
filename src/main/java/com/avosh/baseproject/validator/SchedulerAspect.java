@@ -38,7 +38,7 @@ public class SchedulerAspect {
             //todo start
             log.info("Task Num " + schedulerId + " is Started");
             SchedulerDto res = schedulerService.retrieveById(Long.valueOf(schedulerId));
-            if(!res.getStatus()){
+            if (!res.getStatus()) {
                 res.setStatus(true);
                 schedulerService.save(res);
                 point.proceed();
@@ -54,7 +54,7 @@ public class SchedulerAspect {
             log.error(e.getStackTrace());
         } finally {
             long end = System.currentTimeMillis();
-            log.info("Task Num " + schedulerId + " is Ended in "+(end - start) +" milliseconds");
+            log.info("Task Num " + schedulerId + " is Ended in " + (end - start) + " milliseconds");
         }
     }
 

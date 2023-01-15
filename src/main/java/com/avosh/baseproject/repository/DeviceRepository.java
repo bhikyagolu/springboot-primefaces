@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DeviceRepository extends BaseRepository<Device, Long> {
 
-    Device findByTokenAndMac(String token,String mac);
+    Device findByTokenAndMac(String token, String mac);
+
     Device findByToken(String token);
+
     Long deleteByToken(String token);
 }

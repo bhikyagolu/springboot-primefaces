@@ -71,8 +71,6 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
         } catch (Exception e) {
             log.error(e);
             showExceptionMessage(e);
-        } finally {
-
         }
     }
 
@@ -124,7 +122,7 @@ public abstract class BaseBean<SRV extends BaseService, D extends BaseDto> imple
 
     private Locale setLocale() {
         try {
-            String locale =  LocaleContextHolder.getLocale().getLanguage();
+            String locale = LocaleContextHolder.getLocale().getLanguage();
             return new Locale(locale);
         } catch (Exception e) {
             return LocaleContextHolder.getLocale();

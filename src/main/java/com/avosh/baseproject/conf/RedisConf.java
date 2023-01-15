@@ -11,13 +11,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class RedisConf {
 
     @Bean
-    JedisConnectionFactory jedisConnectionFactory(){
+    JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
     }
 
 
     @Bean
-    RedisTemplate<String, Object> redisTemplate(){
+    RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
         return redisTemplate;

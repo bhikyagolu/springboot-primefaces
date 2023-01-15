@@ -1,6 +1,6 @@
 package com.avosh.baseproject.ws.model;
 
-public class NewsRequest extends Request{
+public class NewsRequest extends Request {
 
     private Long page;
 

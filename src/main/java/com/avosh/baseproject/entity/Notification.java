@@ -25,6 +25,8 @@ public class Notification implements BaseEntity {
     private Long id;
     @Column(name = "title")
     private String title;
+    @Column(name = "enable")
+    private Boolean enable;
     @Column(name = "description")
     private String description;
     @Column(name = "create_date")
@@ -64,6 +66,14 @@ public class Notification implements BaseEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     public String getDescription() {
@@ -128,10 +138,7 @@ public class Notification implements BaseEntity {
             return false;
         }
         Notification other = (Notification) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return (this.id != null || other.id == null) && (this.id == null || this.id.equals(other.id));
     }
 
     @Override

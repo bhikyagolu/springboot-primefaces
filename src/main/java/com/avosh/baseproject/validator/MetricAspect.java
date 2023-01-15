@@ -24,12 +24,12 @@ public class MetricAspect {
     public void checkMetric(ProceedingJoinPoint point) {
         long start = System.currentTimeMillis();
         String root = null;
-        String  methodName = null;
+        String methodName = null;
         try {
             MethodSignature signature = (MethodSignature) point.getSignature();
             Method method = signature.getMethod();
             methodName = method.getName();
-            root = method.getDeclaringClass().getName() +" "+method.getName();
+            root = method.getDeclaringClass().getName() + " " + method.getName();
             log.info("Method  " + methodName + " in " + root + " is Started");
             point.proceed();
 

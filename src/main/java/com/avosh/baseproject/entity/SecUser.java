@@ -1,4 +1,3 @@
-
 package com.avosh.baseproject.entity;
 
 import javax.persistence.*;
@@ -6,7 +5,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.List;
-
 
 
 @Entity
@@ -344,10 +342,7 @@ public class SecUser implements BaseEntity {
             return false;
         }
         SecUser other = (SecUser) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return (this.id != null || other.id == null) && (this.id == null || this.id.equals(other.id));
     }
 
     @Override
@@ -371,6 +366,7 @@ public class SecUser implements BaseEntity {
     public void setLogin(Boolean login) {
         isLogin = login;
     }
+
     @XmlTransient
     public Boolean getEnable() {
         return isEnable;
@@ -379,6 +375,7 @@ public class SecUser implements BaseEntity {
     public void setEnable(Boolean enable) {
         isEnable = enable;
     }
+
     @XmlTransient
     public List<Device> getDeviceList() {
         return deviceList;
@@ -387,6 +384,7 @@ public class SecUser implements BaseEntity {
     public void setDeviceList(List<Device> deviceList) {
         this.deviceList = deviceList;
     }
+
     @XmlTransient
     public List<SourceAccount> getSourceAccounts() {
         return sourceAccounts;
@@ -395,6 +393,7 @@ public class SecUser implements BaseEntity {
     public void setSourceAccounts(List<SourceAccount> sourceAccountList) {
         this.sourceAccounts = sourceAccountList;
     }
+
     @XmlTransient
     public List<DestinationAccount> getDestinationAccounts() {
         return destinationAccounts;
@@ -403,6 +402,7 @@ public class SecUser implements BaseEntity {
     public void setDestinationAccounts(List<DestinationAccount> destinationAccounts) {
         this.destinationAccounts = destinationAccounts;
     }
+
     @XmlTransient
     public List<SpecialAccounts> getSpecialAccounts() {
         return specialAccounts;

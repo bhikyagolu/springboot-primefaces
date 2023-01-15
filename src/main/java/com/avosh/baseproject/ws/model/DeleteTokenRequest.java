@@ -6,7 +6,7 @@
 
 package com.avosh.baseproject.ws.model;
 
-public class DeleteTokenRequest extends Request{
+public class DeleteTokenRequest extends Request {
     private String token;
     private String mac;
 

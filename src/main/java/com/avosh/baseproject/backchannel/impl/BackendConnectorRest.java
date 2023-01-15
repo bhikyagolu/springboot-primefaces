@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.logging.Level;
 
 @Service
@@ -43,7 +44,7 @@ public class BackendConnectorRest implements BackendConnector {
             String requestJson = objectMapper.writeValueAsString(request);
             log.info("requestJson ---> " + requestJson);
             HttpHeaders headers = new HttpHeaders();
-            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             headers.setContentType(MediaType.APPLICATION_JSON);
 
 //            String requestStr = request.getMessage();

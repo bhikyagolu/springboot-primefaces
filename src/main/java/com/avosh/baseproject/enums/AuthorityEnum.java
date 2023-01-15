@@ -3,8 +3,8 @@ package com.avosh.baseproject.enums;
 public enum AuthorityEnum {
     LINK_PAY(10001, "LINK_PAY");
 
-    private Integer authority;
-    private String description;
+    private final Integer authority;
+    private final String description;
 
     AuthorityEnum(Integer authority, String description) {
         this.authority = authority;

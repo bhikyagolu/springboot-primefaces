@@ -19,17 +19,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class PostWs extends BaseWs{
+public class PostWs extends BaseWs {
     @Autowired
     private PostService postService;
     @Autowired
     private TokenService tokenService;
+
     @PostMapping("/post")
-    public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body){
+    public ResponseEntity getPost(@RequestHeader("authorization") String token, @RequestBody PostRequest body) {
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
@@ -40,8 +41,8 @@ public class PostWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

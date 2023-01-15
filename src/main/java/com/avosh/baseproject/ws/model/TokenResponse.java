@@ -8,7 +8,7 @@ package com.avosh.baseproject.ws.model;
 
 import java.util.Date;
 
-public class TokenResponse extends Response{
+public class TokenResponse extends Response {
     private String token;
     private Date expireDate;
 

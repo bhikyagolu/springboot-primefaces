@@ -2,7 +2,7 @@ package com.avosh.baseproject.ws.model;
 
 import java.util.Date;
 
-public class StatementRequest extends Request{
+public class StatementRequest extends Request {
 
     private Date fromDate;
     private Date toDate;

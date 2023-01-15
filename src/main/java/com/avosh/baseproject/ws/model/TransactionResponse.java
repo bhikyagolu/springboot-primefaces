@@ -2,7 +2,7 @@ package com.avosh.baseproject.ws.model;
 
 import java.util.Date;
 
-public class TransactionResponse extends Response{
+public class TransactionResponse extends Response {
     private Long id;
     private String desc;
     private Long amount;

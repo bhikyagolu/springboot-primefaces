@@ -20,17 +20,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
-public class NewsWs extends BaseWs{
+public class NewsWs extends BaseWs {
     @Autowired
     private NewsService newsService;
     @Autowired
     private TokenService tokenService;
+
     @PostMapping("/news")
-    public ResponseEntity getNews(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
+    public ResponseEntity getNews(@RequestHeader("authorization") String token, @RequestBody NewsRequest body) {
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
 
@@ -39,19 +40,19 @@ public class NewsWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
 
 
     }
 
     @PostMapping("/news/detail")
-    public ResponseEntity getNewsDetail(@RequestHeader("authorization") String token, @RequestBody NewsRequest body){
+    public ResponseEntity getNewsDetail(@RequestHeader("authorization") String token, @RequestBody NewsRequest body) {
         NewsDetailResponse response = new NewsDetailResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if(!tokenService.isTokenValid(token)){
+            if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
         } catch (TokenIsNotValidException e) {
@@ -62,8 +63,8 @@ public class NewsWs extends BaseWs{
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
             httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        }finally {
-            return new ResponseEntity(response,httpStatus);
+        } finally {
+            return new ResponseEntity(response, httpStatus);
         }
     }
 }

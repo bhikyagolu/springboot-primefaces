@@ -1,6 +1,6 @@
 package com.avosh.baseproject.ws.model;
 
-public class PostRequest extends Request{
+public class PostRequest extends Request {
 
     private Long page;
 

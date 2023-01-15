@@ -20,13 +20,13 @@ public class FtpClient {
     private static final Logger log = Logger.getLogger(FtpClient.class);
     @Autowired
     ApplicationConfig applicationConfig;
-  
+
 
     public static InputStream getFileViaFTP(String fileName, FTPClient ftpClient) {
         InputStream inputStream;
         try {
             inputStream = ftpClient.retrieveFileStream(fileName);
-            if (inputStream == null){
+            if (inputStream == null) {
                 final String logMessage = "FTP retrieve file error : File not found : [" + fileName + "]";
                 log.info(logMessage);
                 throw new RequestedFileNotFoundInServerException();
@@ -82,7 +82,7 @@ public class FtpClient {
 
     }
 
-    public static void sendBinaryFileViaFTP(File content, String destinationFileName, String ftpHost, String userName, String password, String destinationDirectory)  {
+    public static void sendBinaryFileViaFTP(File content, String destinationFileName, String ftpHost, String userName, String password, String destinationDirectory) {
         try {
             sendBinaryFile(content, destinationFileName, ftpHost, userName, password, destinationDirectory);
         } catch (IOException e) {

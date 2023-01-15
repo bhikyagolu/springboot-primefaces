@@ -32,8 +32,8 @@ public class CustomUserDetailService implements UserDetailsService {
         SecUser secUser = userRepository.findByEmail(s);
         List<SecUserRole> secUserRole = roleRepository.findBySecUserId(secUser.getId());
         List<RoleDto> roleList = new ArrayList<>();
-        for (SecUserRole role: secUserRole) {
-            RoleDto dto = new RoleDto(role.getSecRole().getRole(),role.getSecRole().getTitle());
+        for (SecUserRole role : secUserRole) {
+            RoleDto dto = new RoleDto(role.getSecRole().getRole(), role.getSecRole().getTitle());
             roleList.add(dto);
         }
 
@@ -42,7 +42,7 @@ public class CustomUserDetailService implements UserDetailsService {
                 , secUser.getCellphone(), secUser.getPhone(), secUser.getEmail(), secUser.getAddress(), secUser.getPassword()
                 , secUser.getNationalcode(), secUser.getIsLogin(), secUser.getIsEnable(), secUser.getLastLogin(), secUser.getCreateDate()
                 , secUser.getUpdateDate(), secUser.getToken());
-        CustomUserDetail userDetail = new CustomUserDetail(userDto,roleList);
+        CustomUserDetail userDetail = new CustomUserDetail(userDto, roleList);
         return userDetail;
     }
 }

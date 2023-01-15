@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "StudentDetailsRequest" ,namespace = "http://www.avosh.com/xml/definitions")
+@XmlRootElement(name = "StudentDetailsRequest", namespace = "http://www.avosh.com/xml/definitions")
 public class StudentDetailsRequest {
 
     @XmlElement(required = true)

@@ -9,8 +9,8 @@ public enum MessageTypeEnum {
     INSTANT_MESSAGE_RECEIVED(2, "INSTANT_MESSAGE_RECEIVED"),
     SMS(3, "SMS");
 
-    private Integer type;
-    private String description;
+    private final Integer type;
+    private final String description;
 
     MessageTypeEnum(Integer type, String description) {
         this.type = type;

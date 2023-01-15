@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class SchedulerServiceImpl implements SchedulerService {
@@ -37,7 +38,7 @@ public class SchedulerServiceImpl implements SchedulerService {
     public SchedulerDto retrieveById(Long id) {
         SchedulerDto dto = new SchedulerDto();
         Optional<Scheduler> res = repository.findById(id);
-        if(Empty.isEmpty(res)){
+        if (Empty.isEmpty(res)) {
             return null;
         }
         dto.setId(res.get().getId());

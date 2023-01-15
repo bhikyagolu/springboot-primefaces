@@ -12,12 +12,13 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomUserDetail implements UserDetails {
-    private SecUserDto secUser;
+    private final SecUserDto secUser;
     private List<RoleDto> roleDtos;
 
     public CustomUserDetail(SecUserDto secUser) {
         this.secUser = secUser;
     }
+
     public CustomUserDetail(SecUserDto secUser, List<RoleDto> roleDtos) {
         this.secUser = secUser;
         this.roleDtos = roleDtos;
@@ -33,9 +34,9 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-     List<GrantedAuthority> authorityList = new ArrayList<>();
+        List<GrantedAuthority> authorityList = new ArrayList<>();
 
-        for (RoleDto dto: roleDtos) {
+        for (RoleDto dto : roleDtos) {
             authorityList.add(new SimpleGrantedAuthority(dto.getRole()));
         }
         return authorityList;

@@ -8,8 +8,8 @@ public enum PostTypeEnum {
     POST(1, "Post"),
     ADS(2, "Advertisement");
 
-    private Integer type;
-    private String description;
+    private final Integer type;
+    private final String description;
 
     PostTypeEnum(Integer type, String description) {
         this.type = type;

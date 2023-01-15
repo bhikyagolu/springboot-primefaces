@@ -11,20 +11,20 @@ import java.io.IOException;
 
 public class SftpClient {
 
-    private String host;
-    private int port;
-    private String user;
-    private String password;
-    private String localSourceDIR;
-    private String remoteDestDIR;
-    private String remoteSourceDIR;
-    private String localDestDIR;
-    private FTPClient ftp;
-    private FTPMessageCollector listener;
+    private final String host;
+    private final int port;
+    private final String user;
+    private final String password;
+    private final String localSourceDIR;
+    private final String remoteDestDIR;
+    private final String remoteSourceDIR;
+    private final String localDestDIR;
+    private final FTPClient ftp;
+    private final FTPMessageCollector listener;
 
 
-    public SftpClient(String host , String user , String password , String localSourceDIR
-            , String remoteDestDIR , String remoteSourceDIR , String localDestDIR , int port) {
+    public SftpClient(String host, String user, String password, String localSourceDIR
+            , String remoteDestDIR, String remoteSourceDIR, String localDestDIR, int port) {
         this.host = host;
         this.user = user;
         this.password = password;
@@ -37,7 +37,6 @@ public class SftpClient {
         this.listener = new FTPMessageCollector();
         this.ftp.setMessageListener(this.listener);
     }
-
 
 
     public void uploadFileSSH(String fileName) throws FTPException, IOException {
@@ -61,7 +60,7 @@ public class SftpClient {
         }
     }
 
-    public void downloadDir(String srcRemoteDir , String destLocalDir){
+    public void downloadDir(String srcRemoteDir, String destLocalDir) {
         JSch jsch = new JSch();
         Session session = null;
         try {
@@ -73,7 +72,7 @@ public class SftpClient {
             channel.connect();
             ChannelSftp sftpChannel = (ChannelSftp) channel;
 
-            sftpChannel.get(this.remoteSourceDIR,this.localDestDIR);
+            sftpChannel.get(this.remoteSourceDIR, this.localDestDIR);
             sftpChannel.exit();
             session.disconnect();
         } catch (JSchException e) {

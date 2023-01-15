@@ -8,8 +8,8 @@ public enum ApplicationStatusEnum {
     ENABLE(1, "Enable"),
     DISABLE(2, "Disable");
 
-    private Integer stats;
-    private String description;
+    private final Integer stats;
+    private final String description;
 
     ApplicationStatusEnum(Integer stats, String description) {
         this.stats = stats;

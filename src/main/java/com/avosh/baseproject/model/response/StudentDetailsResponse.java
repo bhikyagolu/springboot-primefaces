@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "StudentDetailsResponse",namespace = "http://www.avosh.com/xml/definitions")
+@XmlRootElement(name = "StudentDetailsResponse", namespace = "http://www.avosh.com/xml/definitions")
 public class StudentDetailsResponse {
 
     @XmlElement(name = "Student", required = true)

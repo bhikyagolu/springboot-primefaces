@@ -11,14 +11,15 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
-public class TestEndpoint extends AbstractEndpoint{
+public class TestEndpoint extends AbstractEndpoint {
     private static final Logger log = Logger.getLogger(TestEndpoint.class);
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "StudentDetailsRequest")
     @ResponsePayload
     public StudentDetailsResponse getStudent(@RequestPayload StudentDetailsRequest request) {
         log.info("StudentEndpoint is Started");
         StudentDetailsResponse response = new StudentDetailsResponse();
-        Student res =  new Student();
+        Student res = new Student();
         res.setAddress("address");
         res.setName(request.getName());
         res.setStandard(1);

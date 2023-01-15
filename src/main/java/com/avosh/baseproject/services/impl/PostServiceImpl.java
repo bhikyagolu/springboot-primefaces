@@ -73,7 +73,7 @@ public class PostServiceImpl implements PostService {
             userDto.setFamily(post.getSecUserId().getFamily());
             userDto.setName(post.getSecUserId().getName());
             postDto.setUser(userDto);
-            postDto.setId(Long.valueOf(post.getId()));
+            postDto.setId(post.getId());
             list.add(postDto);
         }
         return list;
