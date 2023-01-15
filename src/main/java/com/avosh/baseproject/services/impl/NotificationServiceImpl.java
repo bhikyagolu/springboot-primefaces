@@ -64,7 +64,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public List<NotificationDto> retrieveActiveNotifications() {
         List<NotificationDto> list = new ArrayList<>();
-        Iterable<Notification> itr = repository.readAllByEnableIsTrueAndEndDate(new Date());
+        Iterable<Notification> itr = repository.findAllByEnableIsTrueAndEndDateBefore(new Date());
         for (Notification notification : itr) {
             UserDto userDto = new UserDto();
             userDto.setId(notification.getSecUserId().getId());
