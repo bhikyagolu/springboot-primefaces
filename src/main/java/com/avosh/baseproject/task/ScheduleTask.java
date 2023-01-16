@@ -5,7 +5,9 @@
 package com.avosh.baseproject.task;
 
 import com.avosh.baseproject.validator.CheckScheduler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
