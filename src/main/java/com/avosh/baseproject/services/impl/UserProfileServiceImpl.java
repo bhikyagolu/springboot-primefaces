@@ -6,10 +6,12 @@ package com.avosh.baseproject.services.impl;
 
 import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.UserDto;
+import com.avosh.baseproject.entity.Device;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.avosh.baseproject.excptions.SaveContactException;
 import com.avosh.baseproject.excptions.SaveProfileException;
+import com.avosh.baseproject.repository.DeviceRepository;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserProfileService;
 import org.apache.log4j.Logger;
@@ -29,6 +31,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     UserRepository repository;
+    @Autowired
+    DeviceRepository deviceRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -123,5 +127,26 @@ public class UserProfileServiceImpl implements UserProfileService {
         }
 
 
+    }
+
+    @Override
+    public UserDto retrieveUserProfileByToken(String token) {
+        Device res = deviceRepository.findByToken(token);
+        SecUser user = res.getSecUserId();;
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setName(user.getName());
+        userDto.setFamily(user.getFamily());
+        userDto.setAddress(user.getAddress());
+        userDto.setCellphone(user.getCellphone());
+        userDto.setCreateDate(user.getCreateDate());
+        userDto.setEmail(user.getEmail());
+        userDto.setGender(user.getGender());
+        userDto.setLastLogin(user.getLastLogin());
+        userDto.setNationalcode(user.getNationalcode());
+        userDto.setIban(user.getIban());
+        userDto.setAbout(user.getAbout());
+        userDto.setPhone(user.getPhone());
+        return userDto;
     }
 }

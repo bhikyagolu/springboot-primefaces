@@ -17,4 +17,5 @@ public interface DeviceRepository extends BaseRepository<Device, Long> {
     Device findByToken(String token);
 
     Long deleteByToken(String token);
+
 }

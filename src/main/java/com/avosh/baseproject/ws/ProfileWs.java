@@ -6,11 +6,12 @@
 
 package com.avosh.baseproject.ws;
 
+import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.services.UserProfileService;
-import com.avosh.baseproject.ws.model.TransactionResponse;
+import com.avosh.baseproject.ws.model.ProfileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +29,17 @@ public class ProfileWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader("authorization") String token) {
+    public ResponseEntity getUserProfile(@RequestHeader("token") String token) {
         HttpStatus httpStatus = HttpStatus.OK;
-        TransactionResponse response = new TransactionResponse();
+        ProfileResponse response = new ProfileResponse();
         try {
             if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
+            UserDto res = profileService.retrieveUserProfileByToken(token);
+            response = prepareResponse(res);
+            response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
+            response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
         } catch (TokenIsNotValidException e) {
             response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
             response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());
@@ -46,5 +51,23 @@ public class ProfileWs extends BaseWs {
         } finally {
             return new ResponseEntity(response, httpStatus);
         }
+    }
+
+    private ProfileResponse prepareResponse(UserDto res) {
+        ProfileResponse response = new ProfileResponse();
+        response.setAbout(res.getAbout());
+        response.setAddress(res.getAddress());
+        response.setFamily(res.getFamily());
+        response.setCellphone(res.getCellphone());
+        response.setName(res.getName());
+        response.setNationalcode(res.getNationalcode());
+        response.setEmail(res.getEmail());
+        response.setGender(res.getGender());
+        response.setPhone(res.getPhone());
+        response.setIban(res.getIban());
+        response.setAbout(res.getAbout());
+        response.setCreateDate(res.getCreateDate());
+        response.setLastLogin(res.getLastLogin());
+        return response;
     }
 }
