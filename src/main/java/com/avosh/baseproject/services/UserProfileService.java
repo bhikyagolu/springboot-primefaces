@@ -18,4 +18,6 @@ public interface UserProfileService extends BaseService<UserRepository, SecUser,
     void updateProfile(UserDto userDto);
 
     UserDto retrieveUserProfileByToken(String token);
+
+    Boolean updatePartOfProfile(UserDto userDto,String token);
 }

@@ -149,4 +149,9 @@ public class UserProfileServiceImpl implements UserProfileService {
         userDto.setPhone(user.getPhone());
         return userDto;
     }
+
+    @Override
+    public Boolean updatePartOfProfile(UserDto userDto, String token) {
+        return null;
+    }
 }
