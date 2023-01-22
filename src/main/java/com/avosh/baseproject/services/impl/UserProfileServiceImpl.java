@@ -23,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -158,6 +159,14 @@ public class UserProfileServiceImpl implements UserProfileService {
         try {
             Device res = deviceRepository.findByToken(token);
             userDto.setId(res.getId());
+            userDto.setCellphone(res.getSecUserId().getCellphone());
+            userDto.setCreateDate(res.getSecUserId().getCreateDate());
+            userDto.setLastLogin(res.getSecUserId().getLastLogin());
+            userDto.setEnable(res.getSecUserId().getEnable());
+            userDto.setPassword(res.getSecUserId().getPassword());
+            userDto.setToken(res.getSecUserId().getToken());
+            userDto.setUpdateDate(new Date());
+            userDto.setLogin(res.getSecUserId().getLogin());
             int result = repository.updateProfile(userDto);
             if (Empty.isNotEmpty(result)) {
                 if (result > 0) {
