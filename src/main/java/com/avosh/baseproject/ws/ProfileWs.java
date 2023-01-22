@@ -9,17 +9,16 @@ package com.avosh.baseproject.ws;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
+import com.avosh.baseproject.excptions.UnknownSystemException;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.services.UserProfileService;
+import com.avosh.baseproject.ws.model.ProfileRequest;
 import com.avosh.baseproject.ws.model.ProfileResponse;
 import com.avosh.baseproject.ws.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ws")
@@ -55,16 +54,35 @@ public class ProfileWs extends BaseWs {
     }
 
     @PostMapping("/profile/update")
-    public ResponseEntity updateProfile(@RequestHeader("token") String token) {
+    public ResponseEntity updateProfile(@RequestHeader("token") String token, @RequestBody ProfileRequest body) {
         HttpStatus httpStatus = HttpStatus.OK;
         Response response = new Response();
         try {
             if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
             }
-            profileService.updatePartOfProfile(null, token);
+            UserDto userDto = new UserDto();
+            userDto.setAbout(body.getAbout());
+            userDto.setAddress(body.getAddress());
+            userDto.setEmail(body.getEmail());
+            userDto.setGender(body.getGender());
+            userDto.setFamily(body.getFamily());
+            userDto.setName(body.getName());
+            userDto.setIban(body.getIban());
+            userDto.setPhone(body.getPhone());
+            userDto.setNationalcode(body.getNationalcode());
+
+            Boolean res = profileService.updatePartOfProfile(userDto, token);
+            if (!res) {
+                throw new UnknownSystemException();
+            }
             response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
+            httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
+        } catch (UnknownSystemException e) {
+            response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
+            response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
+            httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
         } catch (TokenIsNotValidException e) {
             response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
             response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());

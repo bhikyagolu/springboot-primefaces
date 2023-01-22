@@ -11,9 +11,11 @@ import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.avosh.baseproject.excptions.SaveContactException;
 import com.avosh.baseproject.excptions.SaveProfileException;
+import com.avosh.baseproject.model.Email;
 import com.avosh.baseproject.repository.DeviceRepository;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.UserProfileService;
+import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -132,7 +134,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public UserDto retrieveUserProfileByToken(String token) {
         Device res = deviceRepository.findByToken(token);
-        SecUser user = res.getSecUserId();;
+        SecUser user = res.getSecUserId();
+        ;
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setName(user.getName());
@@ -152,6 +155,22 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public Boolean updatePartOfProfile(UserDto userDto, String token) {
-        return null;
+        try {
+            Device res = deviceRepository.findByToken(token);
+            userDto.setId(res.getId());
+            int result = repository.updateProfile(userDto);
+            if (Empty.isNotEmpty(result)) {
+                if (result > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

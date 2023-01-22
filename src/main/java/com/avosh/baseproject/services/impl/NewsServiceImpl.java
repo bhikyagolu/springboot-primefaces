@@ -14,6 +14,8 @@ import com.avosh.baseproject.services.NewsService;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,26 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<NewsDto> retrieveAll(Pageable page) {
+        List<News> res = repository.retrieveAllByType(page);
+        List<NewsDto>  newsDtoList =  new ArrayList<>();
+        for (News news:res) {
+            NewsDto dto = new NewsDto();
+            UserDto userDto = new UserDto();
+            userDto.setId(news.getSecUserId().getId());
+            userDto.setFamily(news.getSecUserId().getFamily());
+            userDto.setName(news.getSecUserId().getName());
+            dto.setNews(news.getNews());
+            dto.setBrief(news.getBrif());
+            dto.setTitle(news.getTitle());
+            dto.setUser(userDto);
+            dto.setCreateDateTime(news.getCreateDate());
+            newsDtoList.add(dto);
+        }
+        return newsDtoList;
     }
 
     @Override

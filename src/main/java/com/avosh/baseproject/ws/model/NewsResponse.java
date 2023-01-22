@@ -1,13 +1,10 @@
 package com.avosh.baseproject.ws.model;
 
-import java.util.Date;
+import java.util.List;
 
 public class NewsResponse extends Response {
     private Page page;
-    private String title;
-    private String brif;
-    private String detail;
-    private Date dateTime;
+    private List<News> news;
 
     public Page getPage() {
         return page;
@@ -17,35 +14,11 @@ public class NewsResponse extends Response {
         this.page = page;
     }
 
-    public String getTitle() {
-        return title;
+    public List<News> getNews() {
+        return news;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBrif() {
-        return brif;
-    }
-
-    public void setBrif(String brif) {
-        this.brif = brif;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
-
-    public Date getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }

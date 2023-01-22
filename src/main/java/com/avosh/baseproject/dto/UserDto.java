@@ -47,9 +47,6 @@ public class UserDto extends BaseDto {
         this.token = token;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

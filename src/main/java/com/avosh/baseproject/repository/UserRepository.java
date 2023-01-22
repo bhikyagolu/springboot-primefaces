@@ -31,5 +31,5 @@ public interface UserRepository extends BaseRepository<SecUser, Long> {
     @Modifying
     @Query("UPDATE SecUser s SET s.name = :#{#userDto.name} , s.family = :#{#userDto.family} , s.nationalcode = :#{#userDto.nationalcode} " +
             ", s.iban = :#{#userDto.iban} , s.about = :#{#userDto.about} , s.gender = :#{#userDto.gender} WHERE s.id = :#{#userDto.id}")
-    void updateProfile(@Param("userDto") UserDto userDto);
+    Integer updateProfile(@Param("userDto") UserDto userDto);
 }
