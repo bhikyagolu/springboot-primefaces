@@ -6,7 +6,7 @@ package com.avosh.baseproject.dto;
 
 import java.io.Serializable;
 
-public class BaseDto implements Serializable, Comparable {
+public abstract class BaseDto implements Serializable, Comparable {
     protected Long id;
 
     public Long getId() {
