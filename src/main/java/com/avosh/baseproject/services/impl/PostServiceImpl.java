@@ -16,6 +16,7 @@ import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.primefaces.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -87,5 +88,28 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<PostDto> retrieveAll(Pageable page) {
+
+        List<PostDto> list = new ArrayList<>();
+        List<Post>  itr = repository.findAll(page);
+        for (Post post : itr) {
+            PostDto postDto = new PostDto();
+            postDto.setCategory(post.getType());
+            postDto.setPost(post.getPost());
+            postDto.setTitle(post.getTitle());
+            postDto.setBrief(post.getBrief());
+            postDto.setCreateDateTime(post.getCreateDatetime());
+            UserDto userDto = new UserDto();
+            userDto.setId(post.getSecUserId().getId());
+            userDto.setFamily(post.getSecUserId().getFamily());
+            userDto.setName(post.getSecUserId().getName());
+            postDto.setUser(userDto);
+            postDto.setId(post.getId());
+            list.add(postDto);
+        }
+        return list;
     }
 }

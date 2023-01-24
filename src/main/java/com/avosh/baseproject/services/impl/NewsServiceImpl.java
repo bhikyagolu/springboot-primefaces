@@ -14,7 +14,6 @@ import com.avosh.baseproject.services.NewsService;
 import com.avosh.baseproject.util.Empty;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,7 +37,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<NewsDto> retrieveAll(Pageable page) {
-        List<News> res = repository.retrieveAllByType(page);
+        List<News> res = repository.findAll(page);
         List<NewsDto>  newsDtoList =  new ArrayList<>();
         for (News news:res) {
             NewsDto dto = new NewsDto();

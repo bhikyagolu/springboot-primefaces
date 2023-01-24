@@ -12,5 +12,5 @@ import java.util.List;
 
 @Repository
 public interface NewsRepository extends BaseRepository<News, Long> {
-    List<News> retrieveAllByType(Pageable pageable);
+    List<News> findAll(Pageable pageable);
 }

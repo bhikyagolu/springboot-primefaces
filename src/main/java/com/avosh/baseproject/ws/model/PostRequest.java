@@ -2,13 +2,22 @@ package com.avosh.baseproject.ws.model;
 
 public class PostRequest extends Request {
 
-    private Long page;
+    private Integer page;
+    private Integer size;
 
-    public Long getPage() {
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(Long page) {
+    public void setPage(Integer page) {
         this.page = page;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
     }
 }
