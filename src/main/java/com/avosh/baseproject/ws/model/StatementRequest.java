@@ -6,7 +6,8 @@ public class StatementRequest extends Request {
 
     private Date fromDate;
     private Date toDate;
-    private Long count;
+    private Integer page;
+    private Integer size;
 
     public Date getFromDate() {
         return fromDate;
@@ -24,11 +25,19 @@ public class StatementRequest extends Request {
         this.toDate = toDate;
     }
 
-    public Long getCount() {
-        return count;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setCount(Long count) {
-        this.count = count;
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
     }
 }

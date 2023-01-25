@@ -12,6 +12,7 @@ import com.avosh.baseproject.repository.TransactionRepository;
 import com.avosh.baseproject.services.TransactionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +62,21 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<TransactionDto> retrieveTransactionsByUserToken(Pageable paging,String token) {
+        List<Transaction> res = repository.findTransactionByToken(token,paging);
+        List<TransactionDto> list = new ArrayList<>();
+        for (Transaction transaction:res) {
+            TransactionDto dto = new TransactionDto();
+            dto.setStatus(transaction.getStatus());
+            dto.setDesc(transaction.getDesc());
+            dto.setAmount(transaction.getAmount());
+            dto.setCreateDateTime(transaction.getCreateDatetime());
+            dto.setId(transaction.getId());
+            list.add(dto);
+        }
+        return list;
     }
 }

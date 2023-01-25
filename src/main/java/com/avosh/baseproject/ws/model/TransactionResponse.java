@@ -1,60 +1,15 @@
 package com.avosh.baseproject.ws.model;
 
-import java.util.Date;
+import java.util.List;
 
 public class TransactionResponse extends Response {
-    private Long id;
-    private String desc;
-    private Long amount;
-    private Long status;
-    private String statusDescription;
-    private Date createDatetime;
+    private List<Transaction> transactionList;
 
-    public Long getId() {
-        return id;
+    public List<Transaction> getTransactionList() {
+        return transactionList;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
-
-    public Long getStatus() {
-        return status;
-    }
-
-    public void setStatus(Long status) {
-        this.status = status;
-    }
-
-    public String getStatusDescription() {
-        return statusDescription;
-    }
-
-    public void setStatusDescription(String statusDescription) {
-        this.statusDescription = statusDescription;
-    }
-
-    public Date getCreateDatetime() {
-        return createDatetime;
-    }
-
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 public class TransactionDto extends BaseDto {
     private String desc;
     private Long amount;
+    private Long status;
     private Date createDateTime;
     private UserDto userDto;
     private RedeemDto redeemDto;
@@ -63,5 +64,13 @@ public class TransactionDto extends BaseDto {
 
     public void setRedeemDto(RedeemDto redeemDto) {
         this.redeemDto = redeemDto;
+    }
+
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
     }
 }
