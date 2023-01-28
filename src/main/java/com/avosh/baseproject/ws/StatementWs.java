@@ -27,7 +27,7 @@ public class StatementWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/account/statement")
-    public ResponseEntity getStatement(@RequestHeader("authorization") String token, @RequestBody StatementRequest body) {
+    public ResponseEntity getStatement(@RequestHeader("token") String token, @RequestBody StatementRequest body) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         List<Transaction> transactionList = new ArrayList<>();

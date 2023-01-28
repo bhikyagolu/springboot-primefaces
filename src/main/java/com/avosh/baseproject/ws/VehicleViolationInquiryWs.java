@@ -22,7 +22,7 @@ public class VehicleViolationInquiryWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/violation-inquiry")
-    public ResponseEntity getVehicleViolationInquiry(@RequestHeader("authorization") String token) {
+    public ResponseEntity getVehicleViolationInquiry(@RequestHeader("token") String token) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

@@ -4,7 +4,7 @@ import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.services.TransactionService;
-import com.avosh.baseproject.ws.model.TransactionResponse;
+import com.avosh.baseproject.ws.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,9 @@ public class ChargeWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/charge")
-    public ResponseEntity charge(@RequestHeader("authorization") String token) {
+    public ResponseEntity charge(@RequestHeader("token") String token) {
         HttpStatus httpStatus = HttpStatus.OK;
-        TransactionResponse response = new TransactionResponse();
+        Response response = new Response();
         try {
             if (!tokenService.isTokenValid(token)) {
                 throw new TokenIsNotValidException();
