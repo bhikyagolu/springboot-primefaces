@@ -16,15 +16,21 @@ import com.avosh.baseproject.repository.DeviceRepository;
 import com.avosh.baseproject.repository.UserRepository;
 import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.util.Empty;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import net.bytebuddy.utility.RandomString;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Service
 public class TokenServiceImpl implements TokenService {
@@ -57,7 +63,7 @@ public class TokenServiceImpl implements TokenService {
         List<Device> devices = res.getDeviceList();
         if (Empty.isEmpty(devices)) {
             log.info("user has no device : " + user);
-            uuid = getTokenFromNewDevice(res.getId(), mac, name);
+            uuid = getTokenFromNewDevice(res.getId(), mac, name,user);
         } else {
             Device device = null;
             for (Device dv : devices) {
@@ -67,19 +73,19 @@ public class TokenServiceImpl implements TokenService {
             }
             if (Empty.isNotEmpty(device)) {
                 log.info("user has a device with this mac : " + user);
-                uuid = getTokenFromExistingDevice(device);
+                uuid = getTokenFromExistingDevice(device,user);
             } else {
                 log.info("user has no device with this mac : " + user);
-                uuid = getTokenFromNewDevice(res.getId(), mac, name);
+                uuid = getTokenFromNewDevice(res.getId(), mac, name,user);
             }
         }
 
         return uuid;
     }
 
-    private String getTokenFromNewDevice(Long UserId, String mac, String name) {
+    private String getTokenFromNewDevice(Long UserId, String mac, String name,String user) {
         RandomString gen = new RandomString(TOKEN_LENGTH, ThreadLocalRandom.current());
-        String uuid = gen.nextString();
+        String uuid = getJWTToken(user);
         Device device = new Device();
         device.setToken(uuid);
         device.setName(name);
@@ -89,9 +95,9 @@ public class TokenServiceImpl implements TokenService {
         return uuid;
     }
 
-    private String getTokenFromExistingDevice(Device device) {
+    private String getTokenFromExistingDevice(Device device,String user) {
         RandomString gen = new RandomString(TOKEN_LENGTH, ThreadLocalRandom.current());
-        String uuid = gen.nextString();
+        String uuid = getJWTToken(user);
         device.setToken(uuid);
         deviceRepository.save(device);
         return uuid;
@@ -115,6 +121,27 @@ public class TokenServiceImpl implements TokenService {
         if (res == 0) {
             throw new DeleteExceptionException();
         }
+    }
+
+    private String getJWTToken(String username) {
+        String secretKey = "mySecretKey";
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+                .commaSeparatedStringToAuthorityList("ROLE_USER");
+
+        String token = Jwts
+                .builder()
+                .setId("softtekJWT")
+                .setSubject(username)
+                .claim("authorities",
+                        grantedAuthorities.stream()
+                                .map(GrantedAuthority::getAuthority)
+                                .collect(Collectors.toList()))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .signWith(SignatureAlgorithm.HS512,
+                        secretKey.getBytes()).compact();
+
+        return "Bearer " + token;
     }
 
 }

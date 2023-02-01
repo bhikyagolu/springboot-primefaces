@@ -1,7 +1,7 @@
 package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
-import com.avosh.baseproject.backchannel.rest.Message;
+import com.avosh.baseproject.backchannel.model.Message;
 import com.avosh.baseproject.backchannel.rest.MessageRequest;
 import com.avosh.baseproject.backchannel.rest.MessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
@@ -18,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.logging.Level;
 

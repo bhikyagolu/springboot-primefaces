@@ -1,6 +1,7 @@
 package com.avosh.baseproject.backchannel.rest;
 
 
+import com.avosh.baseproject.backchannel.model.Message;
 import org.springframework.http.HttpMethod;
 
 
