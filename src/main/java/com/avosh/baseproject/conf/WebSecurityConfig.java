@@ -55,11 +55,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe().key("uniqueAndSecret");
         //todo this line is for JWT
-        http.csrf().disable()
-                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/service").permitAll()
-                .anyRequest().authenticated();
+//        http.csrf().disable()
+//                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .authorizeRequests()
+//                .antMatchers(HttpMethod.POST, "/service").permitAll()
+//                .anyRequest().authenticated();
     }
 
 

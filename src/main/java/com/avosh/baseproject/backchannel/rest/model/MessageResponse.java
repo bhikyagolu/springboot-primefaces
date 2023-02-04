@@ -1,4 +1,4 @@
-package com.avosh.baseproject.backchannel.rest;
+package com.avosh.baseproject.backchannel.rest.model;
 
 
 import com.avosh.baseproject.backchannel.model.Message;

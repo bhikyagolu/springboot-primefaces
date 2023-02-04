@@ -2,8 +2,8 @@ package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
 import com.avosh.baseproject.backchannel.model.Message;
-import com.avosh.baseproject.backchannel.rest.MessageRequest;
-import com.avosh.baseproject.backchannel.rest.MessageResponse;
+import com.avosh.baseproject.backchannel.rest.model.MessageRequest;
+import com.avosh.baseproject.backchannel.rest.model.MessageResponse;
 import com.avosh.baseproject.excptions.BadRequestException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
