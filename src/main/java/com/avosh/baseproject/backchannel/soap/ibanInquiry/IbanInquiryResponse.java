@@ -7,7 +7,9 @@
 
 package com.avosh.baseproject.backchannel.soap.ibanInquiry;
 
-public class IbanInquiryResponse  implements java.io.Serializable {
+import com.avosh.baseproject.backchannel.model.Message;
+
+public class IbanInquiryResponse extends Message {
     private java.lang.String resultCode;
 
     private java.lang.String resultDescription;
@@ -261,4 +263,13 @@ public class IbanInquiryResponse  implements java.io.Serializable {
             _javaType, _xmlType, typeDesc);
     }
 
+    @Override
+    public String getMessage() {
+        return null;
+    }
+
+    @Override
+    public void setMessage(String message) {
+
+    }
 }

@@ -7,7 +7,9 @@
 
 package com.avosh.baseproject.backchannel.soap.ibanInquiry;
 
-public class IbanInquiryRequest  implements java.io.Serializable {
+import com.avosh.baseproject.backchannel.model.Message;
+
+public class IbanInquiryRequest  extends Message {
     private com.avosh.baseproject.backchannel.soap.ibanInquiry.Credential credential;
 
     private java.lang.String IBAN;
@@ -189,4 +191,13 @@ public class IbanInquiryRequest  implements java.io.Serializable {
             _javaType, _xmlType, typeDesc);
     }
 
+    @Override
+    public String getMessage() {
+        return null;
+    }
+
+    @Override
+    public void setMessage(String message) {
+
+    }
 }

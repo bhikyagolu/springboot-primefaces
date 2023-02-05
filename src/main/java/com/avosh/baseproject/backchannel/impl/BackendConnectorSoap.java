@@ -3,13 +3,23 @@ package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
 import com.avosh.baseproject.backchannel.model.Message;
+import com.avosh.baseproject.backchannel.soap.ibanInquiry.IbanInquiryRequest;
+import com.avosh.baseproject.backchannel.soap.ibanInquiry.IbanInquiryResponse;
+import com.avosh.baseproject.backchannel.soap.ibanInquiry.SibService;
 import com.avosh.baseproject.conf.ApplicationConfig;
+import com.avosh.baseproject.excptions.BackendCommunicationException;
 import com.avosh.baseproject.excptions.BadRequestException;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.rmi.RemoteException;
 
 public class BackendConnectorSoap implements BackendConnector {
     private static final Logger logger = Logger.getLogger(BackendConnectorSoap.class);
+    @Autowired
     private ApplicationConfig applicationConfig;
+    @Autowired
+    private SibService service;
 
 
     @Override
@@ -20,12 +30,22 @@ public class BackendConnectorSoap implements BackendConnector {
                     + " requestMessage-->[" + requestMessage + "]");
             throw new BadRequestException();
         }
-        if (true) {
+        if (requestMessage instanceof IbanInquiryRequest) {
+            responseMessage = ibanInquiry((IbanInquiryRequest)requestMessage);
 
         } else {
             throw new UnsupportedOperationException(requestMessage.getClass().getName());
         }
 
         return responseMessage;
+    }
+
+    private IbanInquiryResponse ibanInquiry(IbanInquiryRequest request){
+        try {
+            IbanInquiryResponse response = service.ibanInquiry(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        }
     }
 }
