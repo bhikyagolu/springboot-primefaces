@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://sabapardazesh.com/ws/definitions" xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sabapardazesh.com/ws/definitions"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="FundTransferRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="credential" nillable="false"
+                                    type="tns:Credential"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="sourceAccountNumber" nillable="false">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{4,13}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element maxOccurs="1" minOccurs="1" name="destinationAccountNumber" nillable="false">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{4,13}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element maxOccurs="1" minOccurs="1" name="amount" nillable="false"
+                                    type="xs:nonNegativeInteger"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="paymentCode1" type="xs:integer"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="paymentCode2" type="xs:integer"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="tagCode">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{12}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element maxOccurs="1" minOccurs="0" name="dueDate" type="xs:date"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Credential">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Identity" nillable="false" type="xs:string"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Password" nillable="false" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="FundTransferResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="resultCode" type="xs:string"/>
+                        <xs:element name="resultDescription" type="xs:string"/>
+                        <xs:element name="transactionNumber" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="FundTransferResponse">
+        <wsdl:part element="tns:FundTransferResponse" name="FundTransferResponse"/>
+    </wsdl:message>
+    <wsdl:message name="FundTransferRequest">
+        <wsdl:part element="tns:FundTransferRequest" name="FundTransferRequest"/>
+    </wsdl:message>
+    <wsdl:portType name="SibService">
+        <wsdl:operation name="FundTransfer">
+            <wsdl:input message="tns:FundTransferRequest" name="FundTransferRequest"/>
+            <wsdl:output message="tns:FundTransferResponse" name="FundTransferResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SibServiceSoap11" type="tns:SibService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="FundTransfer">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="FundTransferRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="FundTransferResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SibServiceService">
+        <wsdl:port binding="tns:SibServiceSoap11" name="SibServiceSoap11">
+            <soap:address location="https://cb.tejaratbank.ir:443/service/fundTransferService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
