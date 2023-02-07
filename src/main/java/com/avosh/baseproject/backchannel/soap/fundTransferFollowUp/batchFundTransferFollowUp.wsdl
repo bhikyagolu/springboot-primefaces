@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://sabapardazesh.com/ws/definitions" xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sabapardazesh.com/ws/definitions"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="BatchFundTransferFollowUpRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="credential" nillable="false"
+                                    type="tns:Credential"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="followUpCode" nillable="false" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="rowItems" type="tns:rowItems"/>
+                    </xs:sequence>
+                </xs:complexType>
+
+            </xs:element>
+            <xs:complexType name="rowItems">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="1" name="transactionItem" type="tns:transactionItem"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="transactionItem">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="1" name="rowId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="Credential">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Identity" nillable="false" type="xs:string"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Password" nillable="false" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="BatchFundTransferFollowUpResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="resultCode" nillable="false" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="resultDescription" nillable="false"
+                                    type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="followUpCode" nillable="false" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="transactionNumber" nillable="false"
+                                    type="xs:string"/>
+                        <xs:element minOccurs="0" name="batchFundTransferItems">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element maxOccurs="unbounded" name="batchFundTransferItem"
+                                                type="tns:batchFundTransferItem"/>
+                                </xs:sequence>
+                            </xs:complexType>
+
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:complexType name="batchFundTransferItem">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="1" name="rowId" nillable="false" type="xs:long"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="resultCode" nillable="false" type="xs:string"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="resultDescription" nillable="false" type="xs:string"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="transactionNumber" nillable="false" type="xs:string"/>
+                </xs:sequence>
+
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="BatchFundTransferFollowUpResponse">
+        <wsdl:part element="tns:BatchFundTransferFollowUpResponse" name="BatchFundTransferFollowUpResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="BatchFundTransferFollowUpRequest">
+        <wsdl:part element="tns:BatchFundTransferFollowUpRequest" name="BatchFundTransferFollowUpRequest"/>
+    </wsdl:message>
+
+    <wsdl:portType name="SibService">
+        <wsdl:operation name="BatchFundTransferFollowUp">
+            <wsdl:input message="tns:BatchFundTransferFollowUpRequest" name="BatchFundTransferFollowUpRequest"/>
+            <wsdl:output message="tns:BatchFundTransferFollowUpResponse" name="BatchFundTransferFollowUpResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="SibServiceSoap11" type="tns:SibService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="BatchFundTransferFollowUp">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="BatchFundTransferFollowUpRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchFundTransferFollowUpResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="SibServiceService">
+        <wsdl:port binding="tns:SibServiceSoap11" name="SibServiceSoap11">
+            <soap:address location="https://cb.tejaratbank.ir:443/service/batchFundTransferFollowUpService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
