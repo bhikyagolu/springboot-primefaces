@@ -3,9 +3,22 @@ package com.avosh.baseproject.backchannel.impl;
 
 import com.avosh.baseproject.backchannel.BackendConnector;
 import com.avosh.baseproject.backchannel.model.Message;
+import com.avosh.baseproject.backchannel.soap.balance.BalanceRequest;
+import com.avosh.baseproject.backchannel.soap.balance.BalanceResponse;
+import com.avosh.baseproject.backchannel.soap.billPayment.BatchBillPaymentRequest;
+import com.avosh.baseproject.backchannel.soap.billPayment.BatchBillPaymentResponse;
+import com.avosh.baseproject.backchannel.soap.billPaymentFollowup.BatchBillPaymentFollowupRequest;
+import com.avosh.baseproject.backchannel.soap.billPaymentFollowup.BatchBillPaymentFollowupResponse;
+import com.avosh.baseproject.backchannel.soap.cartInquiry.DestinationCardVerificationRequest;
+import com.avosh.baseproject.backchannel.soap.cartInquiry.DestinationCardVerificationResponse;
+import com.avosh.baseproject.backchannel.soap.cartTransfer.CardTransferRequest;
+import com.avosh.baseproject.backchannel.soap.cartTransfer.CardTransferResponse;
+import com.avosh.baseproject.backchannel.soap.fundTransfer.FundTransferRequest;
+import com.avosh.baseproject.backchannel.soap.fundTransfer.FundTransferResponse;
+import com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.BatchFundTransferFollowUpRequest;
+import com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.BatchFundTransferFollowUpResponse;
 import com.avosh.baseproject.backchannel.soap.ibanInquiry.IbanInquiryRequest;
 import com.avosh.baseproject.backchannel.soap.ibanInquiry.IbanInquiryResponse;
-import com.avosh.baseproject.backchannel.soap.ibanInquiry.SibService;
 import com.avosh.baseproject.conf.ApplicationConfig;
 import com.avosh.baseproject.excptions.BackendCommunicationException;
 import com.avosh.baseproject.excptions.BadRequestException;
@@ -21,30 +34,146 @@ public class BackendConnectorSoap implements BackendConnector {
     @Autowired
     private ApplicationConfig applicationConfig;
     @Autowired
-    private SibService service;
+    private com.avosh.baseproject.backchannel.soap.ibanInquiry.SibService ibanService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.fundTransfer.SibService fundTransferService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.SibService fundTransferFollowUpService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.billPayment.SIBService billPaymentService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.billPaymentFollowup.SIBService billPaymentFollowUpService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.balance.SIBService balanceService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.cartInquiry.SibService cartInquiryService;
+    @Autowired
+    private com.avosh.baseproject.backchannel.soap.cartTransfer.SibService cartTransferService;
+
 
 
     @Override
     public Message executeRequest(Message requestMessage) {
-        Message responseMessage = null;
         if (requestMessage == null) {
             logger.error("Error, Bad requestMessage found in BackendConnectorSoap.executeRequest(Message requestMessage)."
                     + " requestMessage-->[" + requestMessage + "]");
             throw new BadRequestException();
         }
         if (requestMessage instanceof IbanInquiryRequest) {
-            responseMessage = ibanInquiry((IbanInquiryRequest)requestMessage);
+            return ibanInquiry((IbanInquiryRequest) requestMessage);
+        }
+        if (requestMessage instanceof FundTransferRequest) {
+            return fundTransfer((FundTransferRequest) requestMessage);
+        }
+        if (requestMessage instanceof BatchFundTransferFollowUpRequest) {
+            return fundTransferFollowup((BatchFundTransferFollowUpRequest) requestMessage);
+        }
+        if (requestMessage instanceof BatchBillPaymentRequest) {
+            return billPayment((BatchBillPaymentRequest) requestMessage);
+        }
+        if (requestMessage instanceof BatchBillPaymentFollowupRequest) {
+            return billPaymentFollowup((BatchBillPaymentFollowupRequest) requestMessage);
 
         } else {
             throw new UnsupportedOperationException(requestMessage.getClass().getName());
         }
 
-        return responseMessage;
     }
 
-    private IbanInquiryResponse ibanInquiry(IbanInquiryRequest request){
+    private IbanInquiryResponse ibanInquiry(IbanInquiryRequest request) {
         try {
-            IbanInquiryResponse response = service.ibanInquiry(request);
+            IbanInquiryResponse response = ibanService.ibanInquiry(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private FundTransferResponse fundTransfer(FundTransferRequest request) {
+        try {
+            FundTransferResponse response = fundTransferService.fundTransfer(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private BatchFundTransferFollowUpResponse fundTransferFollowup(BatchFundTransferFollowUpRequest request) {
+        try {
+            BatchFundTransferFollowUpResponse response = fundTransferFollowUpService.batchFundTransferFollowUp(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private BatchBillPaymentResponse billPayment(BatchBillPaymentRequest request) {
+        try {
+            BatchBillPaymentResponse response = billPaymentService.batchBillPayment(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private BatchBillPaymentFollowupResponse billPaymentFollowup(BatchBillPaymentFollowupRequest request) {
+        try {
+            BatchBillPaymentFollowupResponse response = billPaymentFollowUpService.batchBillPaymentFollowup(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private BalanceResponse balance(BalanceRequest request) {
+        try {
+            BalanceResponse response = balanceService.balance(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private DestinationCardVerificationResponse cartInquiry(DestinationCardVerificationRequest request) {
+        try {
+            DestinationCardVerificationResponse response = cartInquiryService.destinationCardVerification(request);
+            return response;
+        } catch (RemoteException e) {
+            throw new BackendCommunicationException();
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new UnknownSystemException();
+        }
+    }
+
+    private CardTransferResponse cartTransfer(CardTransferRequest request) {
+        try {
+            CardTransferResponse response = cartTransferService.cardTransfer(request);
             return response;
         } catch (RemoteException e) {
             throw new BackendCommunicationException();

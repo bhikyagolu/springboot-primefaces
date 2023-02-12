@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://sabapardazesh.com/ws/definitions" xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sabapardazesh.com/ws/definitions"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="BatchBillPaymentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="credential" nillable="false"
+                                    type="tns:Credential"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="transactionCount" nillable="false">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:long">
+                                    <xs:minInclusive value="1"/>
+                                    <xs:maxInclusive value="5000"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element maxOccurs="1" minOccurs="1" name="totalAmount" nillable="false" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="sourceAccount" nillable="false">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{4,13}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element maxOccurs="1" minOccurs="1" name="followupCode" nillable="false" type="xs:long"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billPaymentItems" type="tns:billPaymentItems"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Credential">
+                <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Identity" nillable="false" type="xs:string"/>
+                    <xs:element maxOccurs="1" minOccurs="1" name="Password" nillable="false" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="billPaymentItems">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="1" name="billPaymentItem" type="tns:billPaymentItem"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="billPaymentItem">
+                <xs:sequence>
+                    <xs:element name="rowNumber">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:nonNegativeInteger">
+                                <xs:minInclusive value="1"/>
+                                <xs:maxInclusive value="500"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="billID" type="xs:string"/>
+                    <xs:element name="paymentID" type="xs:string"/>
+                    <xs:element name="amount" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+                   targetNamespace="http://sabapardazesh.com/ws/definitions"
+                   xmlns="http://sabapardazesh.com/ws/definitions">
+            <xs:element name="BatchBillPaymentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="resultCodeTotal" type="xs:string"/>
+                        <xs:element name="resultDescriptionTotal" type="xs:string"/>
+                        <xs:element name="followupCode" type="xs:long"/>
+                        <xs:element name="transactionNumberTotal" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="1" name="billPaymentResponses">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element maxOccurs="unbounded" name="billPaymentResponse"
+                                                type="tns:billPaymentResponse"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:complexType name="billPaymentResponse">
+                <xs:sequence>
+                    <xs:element name="rowNumberResponse">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:nonNegativeInteger">
+                                <xs:minInclusive value="1"/>
+                                <xs:maxInclusive value="100"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="resultCode" type="xs:string"/>
+                    <xs:element name="resultDescription" type="xs:string"/>
+                    <xs:element name="transactionNumber" type="xs:string"/>
+                    <xs:element name="billID" type="xs:string"/>
+                    <xs:element name="billType" type="xs:string"/>
+                    <xs:element name="paymentID" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="BatchBillPaymentRequest">
+        <wsdl:part element="tns:BatchBillPaymentRequest" name="BatchBillPaymentRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="BatchBillPaymentResponse">
+        <wsdl:part element="tns:BatchBillPaymentResponse" name="BatchBillPaymentResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="SIBService">
+        <wsdl:operation name="BatchBillPayment">
+            <wsdl:input message="tns:BatchBillPaymentRequest" name="BatchBillPaymentRequest"/>
+            <wsdl:output message="tns:BatchBillPaymentResponse" name="BatchBillPaymentResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="SIBServiceSoap11" type="tns:SIBService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="BatchBillPayment">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="BatchBillPaymentRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchBillPaymentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="SIBServiceService">
+        <wsdl:port binding="tns:SIBServiceSoap11" name="SIBServiceSoap11">
+            <soap:address location="https://cb.tejaratbank.ir:443/service/batchBillPaymentService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
