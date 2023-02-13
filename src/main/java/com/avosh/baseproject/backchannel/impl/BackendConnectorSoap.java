@@ -73,7 +73,15 @@ public class BackendConnectorSoap implements BackendConnector {
         }
         if (requestMessage instanceof BatchBillPaymentFollowupRequest) {
             return billPaymentFollowup((BatchBillPaymentFollowupRequest) requestMessage);
-
+        }
+        if (requestMessage instanceof BalanceRequest) {
+            return balance((BalanceRequest) requestMessage);
+        }
+        if (requestMessage instanceof DestinationCardVerificationRequest) {
+            return cartInquiry((DestinationCardVerificationRequest) requestMessage);
+        }
+        if (requestMessage instanceof CardTransferRequest) {
+            return cartTransfer((CardTransferRequest) requestMessage);
         } else {
             throw new UnsupportedOperationException(requestMessage.getClass().getName());
         }
