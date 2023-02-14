@@ -1,11 +1,15 @@
 /**
  * SibServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package com.avosh.baseproject.backchannel.soap.cartTransfer;
+
+import org.springframework.stereotype.Service;
+
+@Service("LocatorCartTransfer")
 
 public class SibServiceServiceLocator extends org.apache.axis.client.Service implements com.avosh.baseproject.backchannel.soap.cartTransfer.SibServiceService {
 
@@ -40,11 +44,10 @@ public class SibServiceServiceLocator extends org.apache.axis.client.Service imp
     }
 
     public com.avosh.baseproject.backchannel.soap.cartTransfer.SibService getSibServiceSoap11() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(SibServiceSoap11_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getSibServiceSoap11(endpoint);
@@ -55,8 +58,7 @@ public class SibServiceServiceLocator extends org.apache.axis.client.Service imp
             com.avosh.baseproject.backchannel.soap.cartTransfer.SibServiceSoap11Stub _stub = new com.avosh.baseproject.backchannel.soap.cartTransfer.SibServiceSoap11Stub(portAddress, this);
             _stub.setPortName(getSibServiceSoap11WSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -77,8 +79,7 @@ public class SibServiceServiceLocator extends org.apache.axis.client.Service imp
                 _stub.setPortName(getSibServiceSoap11WSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -96,8 +97,7 @@ public class SibServiceServiceLocator extends org.apache.axis.client.Service imp
         java.lang.String inputPortName = portName.getLocalPart();
         if ("SibServiceSoap11".equals(inputPortName)) {
             return getSibServiceSoap11();
-        }
-        else  {
+        } else  {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -119,22 +119,21 @@ public class SibServiceServiceLocator extends org.apache.axis.client.Service imp
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("SibServiceSoap11".equals(portName)) {
+
+        if ("SibServiceSoap11".equals(portName)) {
             setSibServiceSoap11EndpointAddress(address);
-        }
-        else 
+        } else
 { // Unknown Port Name
-            throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
-        }
+    throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
+}
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

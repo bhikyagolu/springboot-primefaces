@@ -7,6 +7,10 @@
 
 package com.avosh.baseproject.backchannel.soap.balance;
 
+import org.springframework.stereotype.Service;
+
+@Service("LocatorBalance")
+
 public class SIBServiceServiceLocator extends org.apache.axis.client.Service implements com.avosh.baseproject.backchannel.soap.balance.SIBServiceService {
 
     public SIBServiceServiceLocator() {

@@ -26,7 +26,10 @@ import com.avosh.baseproject.excptions.BaseException;
 import com.avosh.baseproject.excptions.UnknownSystemException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.annotation.PostConstruct;
+import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
 
 public class BackendConnectorSoap implements BackendConnector {
@@ -34,22 +37,60 @@ public class BackendConnectorSoap implements BackendConnector {
     @Autowired
     private ApplicationConfig applicationConfig;
     @Autowired
+    @Qualifier("LocatorIbanInquiry")
+    private com.avosh.baseproject.backchannel.soap.ibanInquiry.SibServiceServiceLocator sibServiceServiceLocatorIbanService;
+
+    @Autowired
+    @Qualifier("LocatorFundTransfer")
+    private com.avosh.baseproject.backchannel.soap.fundTransfer.SibServiceServiceLocator sibServiceServiceLocatorFundTransfer;
+
+    @Autowired
+    @Qualifier("LocatorFundTransferFollowUp")
+    private com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.SibServiceServiceLocator sibServiceServiceLocatorFundTransferFollowUp;
+    @Autowired
+    @Qualifier("theConverterDAO")
+    private com.avosh.baseproject.backchannel.soap.billPayment.SIBServiceServiceLocator sibServiceServiceLocatorBillPayment;
+    @Autowired
+    @Qualifier("LocatorBillPaymentFollowup")
+    private com.avosh.baseproject.backchannel.soap.billPaymentFollowup.SIBServiceServiceLocator sibServiceServiceLocatorBillPaymentFollowUp;
+    @Autowired
+    @Qualifier("LocatorBalance")
+    private com.avosh.baseproject.backchannel.soap.balance.SIBServiceServiceLocator sibServiceServiceLocatorBalance;
+    @Autowired
+    @Qualifier("LocatorCartInquiry")
+    private com.avosh.baseproject.backchannel.soap.cartInquiry.SibServiceServiceLocator sibServiceServiceLocatorCartInquiry;
+    @Autowired
+    @Qualifier("LocatorCartTransfer")
+    private com.avosh.baseproject.backchannel.soap.cartTransfer.SibServiceServiceLocator sibServiceServiceLocator;
+
+
     private com.avosh.baseproject.backchannel.soap.ibanInquiry.SibService ibanService;
-    @Autowired
     private com.avosh.baseproject.backchannel.soap.fundTransfer.SibService fundTransferService;
-    @Autowired
     private com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.SibService fundTransferFollowUpService;
-    @Autowired
-    private com.avosh.baseproject.backchannel.soap.billPayment.SIBService billPaymentService;
-    @Autowired
     private com.avosh.baseproject.backchannel.soap.billPaymentFollowup.SIBService billPaymentFollowUpService;
-    @Autowired
     private com.avosh.baseproject.backchannel.soap.balance.SIBService balanceService;
-    @Autowired
     private com.avosh.baseproject.backchannel.soap.cartInquiry.SibService cartInquiryService;
-    @Autowired
+    private com.avosh.baseproject.backchannel.soap.billPayment.SIBService billPaymentService;
     private com.avosh.baseproject.backchannel.soap.cartTransfer.SibService cartTransferService;
 
+
+    @PostConstruct
+    private void setupSoapServices() {
+        try {
+            cartTransferService = sibServiceServiceLocator.getSibServiceSoap11();
+            cartInquiryService = sibServiceServiceLocatorCartInquiry.getSibServiceSoap11();
+            balanceService = sibServiceServiceLocatorBalance.getSIBServiceSoap11();
+            balanceService = sibServiceServiceLocatorBalance.getSIBServiceSoap11();
+            billPaymentFollowUpService = sibServiceServiceLocatorBillPaymentFollowUp.getSIBServiceSoap11();
+            billPaymentService = sibServiceServiceLocatorBillPayment.getSIBServiceSoap11();
+            fundTransferFollowUpService = sibServiceServiceLocatorFundTransferFollowUp.getSibServiceSoap11();
+            fundTransferService = sibServiceServiceLocatorFundTransfer.getSibServiceSoap11();
+            ibanService = sibServiceServiceLocatorIbanService.getSibServiceSoap11();
+        } catch (ServiceException e) {
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Override

@@ -7,6 +7,9 @@
 
 package com.avosh.baseproject.backchannel.soap.cartInquiry;
 
+import org.springframework.stereotype.Service;
+
+@Service("LocatorCartInquiry")
 public class SibServiceServiceLocator extends org.apache.axis.client.Service implements com.avosh.baseproject.backchannel.soap.cartInquiry.SibServiceService {
 
     public SibServiceServiceLocator() {

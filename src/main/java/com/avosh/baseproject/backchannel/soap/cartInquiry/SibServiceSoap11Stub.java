@@ -7,6 +7,7 @@
 
 package com.avosh.baseproject.backchannel.soap.cartInquiry;
 
+
 public class SibServiceSoap11Stub extends org.apache.axis.client.Stub implements com.avosh.baseproject.backchannel.soap.cartInquiry.SibService {
     private final java.util.Vector cachedSerClasses = new java.util.Vector();
     private final java.util.Vector cachedSerQNames = new java.util.Vector();

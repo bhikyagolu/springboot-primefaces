@@ -7,6 +7,9 @@
 
 package com.avosh.baseproject.backchannel.soap.billPayment;
 
+import org.springframework.stereotype.Service;
+
+@Service("LocatorBillPayment")
 public class SIBServiceServiceLocator extends org.apache.axis.client.Service implements com.avosh.baseproject.backchannel.soap.billPayment.SIBServiceService {
 
     public SIBServiceServiceLocator() {

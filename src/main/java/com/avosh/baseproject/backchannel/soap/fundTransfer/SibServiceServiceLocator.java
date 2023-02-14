@@ -7,6 +7,9 @@
 
 package com.avosh.baseproject.backchannel.soap.fundTransfer;
 
+import org.springframework.stereotype.Service;
+
+@Service("LocatorFundTransfer")
 public class SibServiceServiceLocator extends org.apache.axis.client.Service implements com.avosh.baseproject.backchannel.soap.fundTransfer.SibServiceService {
 
     public SibServiceServiceLocator() {
