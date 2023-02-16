@@ -27,11 +27,12 @@ import com.avosh.baseproject.excptions.UnknownSystemException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
-
+@Service
 public class BackendConnectorSoap implements BackendConnector {
     private static final Logger logger = Logger.getLogger(BackendConnectorSoap.class);
     @Autowired
@@ -48,7 +49,7 @@ public class BackendConnectorSoap implements BackendConnector {
     @Qualifier("LocatorFundTransferFollowUp")
     private com.avosh.baseproject.backchannel.soap.fundTransferFollowUp.SibServiceServiceLocator sibServiceServiceLocatorFundTransferFollowUp;
     @Autowired
-    @Qualifier("theConverterDAO")
+    @Qualifier("LocatorBillPayment")
     private com.avosh.baseproject.backchannel.soap.billPayment.SIBServiceServiceLocator sibServiceServiceLocatorBillPayment;
     @Autowired
     @Qualifier("LocatorBillPaymentFollowup")
@@ -116,7 +117,8 @@ public class BackendConnectorSoap implements BackendConnector {
             return billPaymentFollowup((BatchBillPaymentFollowupRequest) requestMessage);
         }
         if (requestMessage instanceof BalanceRequest) {
-            return balance((BalanceRequest) requestMessage);
+            BalanceResponse res = balance((BalanceRequest) requestMessage);
+            return res;
         }
         if (requestMessage instanceof DestinationCardVerificationRequest) {
             return cartInquiry((DestinationCardVerificationRequest) requestMessage);
