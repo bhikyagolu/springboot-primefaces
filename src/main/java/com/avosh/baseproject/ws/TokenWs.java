@@ -6,21 +6,25 @@
 
 package com.avosh.baseproject.ws;
 
+import com.avosh.baseproject.conf.CustomUserDetailService;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.DeleteExceptionException;
 import com.avosh.baseproject.excptions.PasswordNotMatchException;
 import com.avosh.baseproject.excptions.UserIsDisabledException;
 import com.avosh.baseproject.excptions.UserNotFoundException;
 import com.avosh.baseproject.services.TokenService;
+import com.avosh.baseproject.util.JwtTokenUtil;
 import com.avosh.baseproject.ws.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,25 +40,27 @@ import org.springframework.security.core.authority.AuthorityUtils;
 @RestController
 @RequestMapping("/ws")
 public class TokenWs {
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
     @Autowired
-    private TokenService tokenService;
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private CustomUserDetailService userDetailsService;
+
 
     @PostMapping("/token")
     public ResponseEntity getToken(@RequestBody TokenRequest tokenRequest) {
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-//                tokenRequest.getUsername(), tokenRequest.getPassword()));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-
         TokenResponse tokenResponse = new TokenResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            String res = tokenService.getTokenByUserPassword(tokenRequest.getUsername(),
-                    tokenRequest.getPassword(), tokenRequest.getMac(), tokenRequest.getName());
-            //todo
-            getJWTToken(tokenRequest.getUsername());
-            tokenResponse.setToken(res);
+        authenticate(tokenRequest.getUsername(), tokenRequest.getPassword());
+        final UserDetails userDetails = userDetailsService
+                .loadUserByUsername(tokenRequest.getUsername());
+
+        final String token = jwtTokenUtil.generateToken(userDetails);
+            tokenResponse.setToken(token);
             tokenResponse.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             tokenResponse.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
             httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
@@ -81,8 +87,8 @@ public class TokenWs {
         Response response = new Response();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            Boolean res = tokenService.isTokenValid(request.getToken(), request.getMac());
-            if (res) {
+//            Boolean res = tokenService.isTokenValid(request.getToken(), request.getMac());
+            if (true) {
                 response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
                 response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
                 httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
@@ -106,7 +112,7 @@ public class TokenWs {
         Response response = new Response();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            tokenService.deleteDeviceByToken(request.getToken());
+//            tokenService.deleteDeviceByToken(request.getToken());
             response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
             httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
@@ -142,5 +148,19 @@ public class TokenWs {
                         secretKey.getBytes()).compact();
 
         return "Bearer " + token;
+    }
+
+
+
+    private void authenticate(String username, String password) throws Exception {
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        } catch (DisabledException e) {
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }catch (Exception e){
+            throw new Exception("UNKNOWN_EXCEPTION", e);
+        }
     }
 }
