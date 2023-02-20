@@ -12,7 +12,6 @@ import com.avosh.baseproject.excptions.DeleteExceptionException;
 import com.avosh.baseproject.excptions.PasswordNotMatchException;
 import com.avosh.baseproject.excptions.UserIsDisabledException;
 import com.avosh.baseproject.excptions.UserNotFoundException;
-import com.avosh.baseproject.services.TokenService;
 import com.avosh.baseproject.util.JwtTokenUtil;
 import com.avosh.baseproject.ws.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +21,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.security.core.authority.AuthorityUtils;
-
 @RestController
-@RequestMapping("/ws")
+
 public class TokenWs {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -55,11 +44,11 @@ public class TokenWs {
         TokenResponse tokenResponse = new TokenResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-        authenticate(tokenRequest.getUsername(), tokenRequest.getPassword());
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(tokenRequest.getUsername());
+            authenticate(tokenRequest.getUsername(), tokenRequest.getPassword());
+            final UserDetails userDetails = userDetailsService
+                    .loadUserByUsername(tokenRequest.getUsername());
 
-        final String token = jwtTokenUtil.generateToken(userDetails);
+            final String token = jwtTokenUtil.generateToken(userDetails);
             tokenResponse.setToken(token);
             tokenResponse.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             tokenResponse.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
@@ -82,7 +71,7 @@ public class TokenWs {
         }
     }
 
-    @PostMapping("/token/validate")
+    @PostMapping("/ws/token/validate")
     public ResponseEntity validateToken(@RequestBody ValidateTokenRequest request) {
         Response response = new Response();
         HttpStatus httpStatus = HttpStatus.OK;
@@ -129,28 +118,6 @@ public class TokenWs {
         }
     }
 
-    private String getJWTToken(String username) {
-        String secretKey = "mySecretKey";
-        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList("ROLE_USER");
-
-        String token = Jwts
-                .builder()
-                .setId("softtekJWT")
-                .setSubject(username)
-                .claim("authorities",
-                        grantedAuthorities.stream()
-                                .map(GrantedAuthority::getAuthority)
-                                .collect(Collectors.toList()))
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
-                .signWith(SignatureAlgorithm.HS512,
-                        secretKey.getBytes()).compact();
-
-        return "Bearer " + token;
-    }
-
-
 
     private void authenticate(String username, String password) throws Exception {
         try {
@@ -159,7 +126,7 @@ public class TokenWs {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("UNKNOWN_EXCEPTION", e);
         }
     }

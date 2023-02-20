@@ -63,8 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //todo this line is for JWT
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/ws/**").permitAll()
-                .anyRequest().authenticated().and()
+                .antMatchers(HttpMethod.POST, "/token").permitAll()
+                .antMatchers(HttpMethod.POST, "/ws/**").authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement();
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
