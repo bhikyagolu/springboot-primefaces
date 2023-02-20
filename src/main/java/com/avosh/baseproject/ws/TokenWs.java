@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
 public class TokenWs {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -87,28 +86,6 @@ public class TokenWs {
                 httpStatus = (ResultCodsEnum.TOKEN_NOT_VALID.getHttpStatus());
             }
 
-        } catch (Exception e) {
-            response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
-            response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
-            httpStatus = (ResultCodsEnum.UNKNOWN_ERROR.getHttpStatus());
-        } finally {
-            return new ResponseEntity(response, httpStatus);
-        }
-    }
-
-    @PostMapping("/token/revoke")
-    public ResponseEntity removeDevice(@RequestBody DeleteTokenRequest request) {
-        Response response = new Response();
-        HttpStatus httpStatus = HttpStatus.OK;
-        try {
-//            tokenService.deleteDeviceByToken(request.getToken());
-            response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
-            response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
-            httpStatus = (ResultCodsEnum.SUCCESS.getHttpStatus());
-        } catch (DeleteExceptionException e) {
-            response.setResultCode(ResultCodsEnum.REMOVE_ERROR.getCode());
-            response.setResultDescription(ResultCodsEnum.REMOVE_ERROR.getDescription());
-            httpStatus = (ResultCodsEnum.REMOVE_ERROR.getHttpStatus());
         } catch (Exception e) {
             response.setResultCode(ResultCodsEnum.UNKNOWN_ERROR.getCode());
             response.setResultDescription(ResultCodsEnum.UNKNOWN_ERROR.getDescription());
