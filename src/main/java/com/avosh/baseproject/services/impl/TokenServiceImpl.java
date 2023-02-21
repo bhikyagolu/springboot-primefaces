@@ -6,6 +6,8 @@
 
 package com.avosh.baseproject.services.impl;
 
+import com.avosh.baseproject.conf.CustomUserDetail;
+import com.avosh.baseproject.conf.CustomUserDetailService;
 import com.avosh.baseproject.entity.Device;
 import com.avosh.baseproject.entity.SecUser;
 import com.avosh.baseproject.excptions.DeleteExceptionException;
@@ -21,8 +23,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import net.bytebuddy.utility.RandomString;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +41,8 @@ import java.util.stream.Collectors;
 public class TokenServiceImpl implements TokenService {
     private final Integer TOKEN_LENGTH = 255;
     private static final Logger log = Logger.getLogger(TokenServiceImpl.class);
+    @Autowired
+    private CustomUserDetailService userDetailService;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -121,6 +128,13 @@ public class TokenServiceImpl implements TokenService {
         if (res == 0) {
             throw new DeleteExceptionException();
         }
+    }
+
+    @Override
+    public UserDetails getUserDetailsFromUserName() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetail userDetails = (CustomUserDetail)auth.getPrincipal();
+        return userDetails;
     }
 
     private String getJWTToken(String username) {
