@@ -38,9 +38,7 @@ public class NewsWs extends BaseWs {
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             Pageable paging = PageRequest.of(body.getPage(), body.getSize());
             List<NewsDto> res = newsService.retrieveAll(paging);
             List<News> newsList = new ArrayList<>();

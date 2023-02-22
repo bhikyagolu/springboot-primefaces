@@ -29,9 +29,7 @@ public class FundTransferWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
         } catch (TokenIsNotValidException e) {
             response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
             response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());

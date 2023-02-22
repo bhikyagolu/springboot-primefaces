@@ -32,9 +32,7 @@ public class IbanInquiryWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         IbanResponse response = new IbanResponse();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
         } catch (TokenIsNotValidException e) {
             response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
             response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());

@@ -33,9 +33,7 @@ public class CartInquiryWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         CartResponse response = new CartResponse();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
         } catch (TokenIsNotValidException e) {
             response.setResultCode(ResultCodsEnum.TOKEN_NOT_VALID.getCode());
             response.setResultDescription(ResultCodsEnum.TOKEN_NOT_VALID.getDescription());

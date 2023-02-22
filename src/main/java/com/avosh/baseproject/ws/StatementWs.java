@@ -32,9 +32,7 @@ public class StatementWs extends BaseWs {
         TransactionResponse response = new TransactionResponse();
         List<Transaction> transactionList = new ArrayList<>();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             Pageable paging = PageRequest.of(body.getPage(), body.getSize());
             List<TransactionDto> res = transactionService.retrieveTransactionsByUserToken(paging,token);
             for (TransactionDto dto:res) {

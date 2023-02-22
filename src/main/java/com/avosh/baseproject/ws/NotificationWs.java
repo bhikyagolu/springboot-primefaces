@@ -31,9 +31,7 @@ public class NotificationWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         NotificationResponse response = new NotificationResponse();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             List<NotificationDto> res = notificationService.retrieveActiveNotifications();
             List<Notification> resultList = new ArrayList<>();
             for (NotificationDto notification : res) {

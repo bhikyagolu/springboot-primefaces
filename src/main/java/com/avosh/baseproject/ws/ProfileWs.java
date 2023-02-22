@@ -33,9 +33,7 @@ public class ProfileWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         ProfileResponse response = new ProfileResponse();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             UserDto res = profileService.retrieveUserProfileByToken(token);
             response = prepareResponse(res);
             response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
@@ -58,9 +56,7 @@ public class ProfileWs extends BaseWs {
         HttpStatus httpStatus = HttpStatus.OK;
         Response response = new Response();
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             UserDto userDto = new UserDto();
             userDto.setAbout(body.getAbout());
             userDto.setAddress(body.getAddress());

@@ -39,9 +39,7 @@ public class PostWs extends BaseWs {
         PostResponse response = new PostResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {
-            if (!tokenService.isTokenValid(token)) {
-                throw new TokenIsNotValidException();
-            }
+
             Pageable paging = PageRequest.of(body.getPage(), body.getSize());
             List<PostDto> res = postService.retrieveAll(paging);
             List<Post> postList = new ArrayList<>();
