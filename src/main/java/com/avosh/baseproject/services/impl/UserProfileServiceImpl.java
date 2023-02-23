@@ -117,69 +117,24 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public void updateProfile(UserDto userDto) {
+    public boolean updateProfile(UserDto userDto) {
         CustomUserDetail auth = (CustomUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDto.setId(auth.getSecUser().getId());
         try {
-            repository.updateProfile(userDto);
-            log.info("Profile has been updated id = " + auth.getSecUser().getId());
+            int res = repository.updateProfile(userDto);
+            if(res>0){
+                log.info("Profile has been updated id = " + auth.getSecUser().getId());
+                return true;
+            }else {
+                log.info("Profile updating has got error id = " + auth.getSecUser().getId());
+                return false;
+            }
         } catch (Exception e) {
             log.info("Profile not updated id = " + auth.getSecUser().getId());
             log.info(e);
             throw new SaveProfileException();
         }
 
-
-    }
-
-    @Override
-    public UserDto retrieveUserProfileByToken(String token) {
-        Device res = deviceRepository.findByToken(token);
-        SecUser user = res.getSecUserId();
-        ;
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setName(user.getName());
-        userDto.setFamily(user.getFamily());
-        userDto.setAddress(user.getAddress());
-        userDto.setCellphone(user.getCellphone());
-        userDto.setCreateDate(user.getCreateDate());
-        userDto.setEmail(user.getEmail());
-        userDto.setGender(user.getGender());
-        userDto.setLastLogin(user.getLastLogin());
-        userDto.setNationalcode(user.getNationalcode());
-        userDto.setIban(user.getIban());
-        userDto.setAbout(user.getAbout());
-        userDto.setPhone(user.getPhone());
-        return userDto;
-    }
-
-    @Override
-    public Boolean updatePartOfProfile(UserDto userDto, String token) {
-        try {
-            Device res = deviceRepository.findByToken(token);
-            userDto.setId(res.getId());
-            userDto.setCellphone(res.getSecUserId().getCellphone());
-            userDto.setCreateDate(res.getSecUserId().getCreateDate());
-            userDto.setLastLogin(res.getSecUserId().getLastLogin());
-            userDto.setEnable(res.getSecUserId().getEnable());
-            userDto.setPassword(res.getSecUserId().getPassword());
-            userDto.setToken(res.getSecUserId().getToken());
-            userDto.setUpdateDate(new Date());
-            userDto.setLogin(res.getSecUserId().getLogin());
-            int result = repository.updateProfile(userDto);
-            if (Empty.isNotEmpty(result)) {
-                if (result > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }

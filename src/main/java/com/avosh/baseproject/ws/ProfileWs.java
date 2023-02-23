@@ -6,6 +6,7 @@
 
 package com.avosh.baseproject.ws;
 
+import com.avosh.baseproject.conf.CustomUserDetail;
 import com.avosh.baseproject.dto.UserDto;
 import com.avosh.baseproject.enums.ResultCodsEnum;
 import com.avosh.baseproject.excptions.TokenIsNotValidException;
@@ -18,6 +19,7 @@ import com.avosh.baseproject.ws.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,12 +31,12 @@ public class ProfileWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/profile")
-    public ResponseEntity getUserProfile(@RequestHeader("token") String token) {
+    public ResponseEntity getUserProfile() {
         HttpStatus httpStatus = HttpStatus.OK;
         ProfileResponse response = new ProfileResponse();
         try {
-
-            UserDto res = profileService.retrieveUserProfileByToken(token);
+            CustomUserDetail user = tokenService.getUserDetailsFromUserName();
+            UserDto res = profileService.retrieveById(user.getSecUser().getId());
             response = prepareResponse(res);
             response.setResultCode(ResultCodsEnum.SUCCESS.getCode());
             response.setResultDescription(ResultCodsEnum.SUCCESS.getDescription());
@@ -68,7 +70,7 @@ public class ProfileWs extends BaseWs {
             userDto.setPhone(body.getPhone());
             userDto.setNationalcode(body.getNationalcode());
 
-            Boolean res = profileService.updatePartOfProfile(userDto, token);
+            boolean res = profileService.updateProfile(userDto);
             if (!res) {
                 throw new UnknownSystemException();
             }

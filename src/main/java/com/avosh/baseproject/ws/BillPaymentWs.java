@@ -23,7 +23,7 @@ public class BillPaymentWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/bill/payment")
-    public ResponseEntity billPayment(@RequestHeader("token") String token) {
+    public ResponseEntity billPayment() {
         HttpStatus httpStatus = HttpStatus.OK;
         Response response = new Response();
         try {

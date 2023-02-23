@@ -26,7 +26,7 @@ public class RedeemWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/redeem")
-    public ResponseEntity redeemForUser(@RequestHeader("token") String token, @PathVariable String redeemCode) {
+    public ResponseEntity redeemForUser(@PathVariable String redeemCode) {
         HttpStatus httpStatus = HttpStatus.OK;
         Response response = new Response();
         try {

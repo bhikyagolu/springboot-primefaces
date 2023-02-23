@@ -25,7 +25,7 @@ public class FundTransferWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/transaction")
-    public ResponseEntity transaction(@RequestHeader("token") String token, @RequestBody String body) {
+    public ResponseEntity transaction(@RequestBody String body) {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

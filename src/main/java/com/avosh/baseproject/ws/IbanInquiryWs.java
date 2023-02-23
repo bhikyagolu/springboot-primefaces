@@ -28,7 +28,7 @@ public class IbanInquiryWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/inquiry/iban")
-    public ResponseEntity getIbanInquiry(@RequestHeader("token") String token) {
+    public ResponseEntity getIbanInquiry() {
         HttpStatus httpStatus = HttpStatus.OK;
         IbanResponse response = new IbanResponse();
         try {

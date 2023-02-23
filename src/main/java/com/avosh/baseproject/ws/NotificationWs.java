@@ -27,7 +27,7 @@ public class NotificationWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/notification")
-    public ResponseEntity getNotification(@RequestHeader("token") String token) {
+    public ResponseEntity getNotification() {
         HttpStatus httpStatus = HttpStatus.OK;
         NotificationResponse response = new NotificationResponse();
         try {

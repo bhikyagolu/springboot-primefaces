@@ -29,7 +29,7 @@ public class CartInquiryWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/inquiry/cart")
-    public ResponseEntity getCartInquiry(@RequestHeader("token") String token) {
+    public ResponseEntity getCartInquiry() {
         HttpStatus httpStatus = HttpStatus.OK;
         CartResponse response = new CartResponse();
         try {

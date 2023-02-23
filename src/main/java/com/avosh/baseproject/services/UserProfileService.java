@@ -15,9 +15,6 @@ public interface UserProfileService extends BaseService<UserRepository, SecUser,
 
     void updateContact(UserDto userDto);
 
-    void updateProfile(UserDto userDto);
+    boolean updateProfile(UserDto userDto);
 
-    UserDto retrieveUserProfileByToken(String token);
-
-    Boolean updatePartOfProfile(UserDto userDto,String token);
 }

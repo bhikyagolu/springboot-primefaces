@@ -22,7 +22,7 @@ public class BalanceWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/account/balance")
-    public ResponseEntity getBalance(@RequestHeader("token") String token) {
+    public ResponseEntity getBalance() {
         HttpStatus httpStatus = HttpStatus.OK;
         TransactionResponse response = new TransactionResponse();
         try {

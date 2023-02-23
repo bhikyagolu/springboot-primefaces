@@ -19,7 +19,7 @@ public class TokenServiceImpl implements TokenService {
     private static final Logger log = Logger.getLogger(TokenServiceImpl.class);
 
     @Override
-    public UserDetails getUserDetailsFromUserName() {
+    public CustomUserDetail getUserDetailsFromUserName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetail userDetails = (CustomUserDetail)auth.getPrincipal();
         return userDetails;

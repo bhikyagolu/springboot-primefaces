@@ -34,7 +34,7 @@ public class NewsWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/news")
-    public ResponseEntity getNews(@RequestHeader("token") String token, @RequestBody NewsRequest body) {
+    public ResponseEntity getNews(@RequestBody NewsRequest body) {
         NewsResponse response = new NewsResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {

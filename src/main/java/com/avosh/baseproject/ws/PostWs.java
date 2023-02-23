@@ -35,7 +35,7 @@ public class PostWs extends BaseWs {
     private TokenService tokenService;
 
     @PostMapping("/post")
-    public ResponseEntity getPost(@RequestHeader("token") String token, @RequestBody PostRequest body) {
+    public ResponseEntity getPost(@RequestBody PostRequest body) {
         PostResponse response = new PostResponse();
         HttpStatus httpStatus = HttpStatus.OK;
         try {

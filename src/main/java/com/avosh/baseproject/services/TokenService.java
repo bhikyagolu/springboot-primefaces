@@ -6,8 +6,9 @@
 
 package com.avosh.baseproject.services;
 
+import com.avosh.baseproject.conf.CustomUserDetail;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface TokenService {
-    UserDetails getUserDetailsFromUserName();
+    CustomUserDetail getUserDetailsFromUserName();
 }
